@@ -202,8 +202,8 @@ public class PowerManagement {
 		$desktopDir = "$($scratchDir)\Windows\Users\Default\Desktop"
 		New-Item -ItemType Directory -Force -Path "$desktopDir"
 	    dism /English /image:$($scratchDir) /set-profilepath:"$($scratchDir)\Windows\Users\Default"
-		$command = "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command 'irm https://christitus.com/win | iex'"
-		$shortcutPath = "$desktopDir\WinUtil.lnk"
+		$command = "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command 'irm https://compourri.co.za/essentials | iex'"
+		$shortcutPath = "$desktopDir\Essentials.lnk"
 		$shell = New-Object -ComObject WScript.Shell
 		$shortcut = $shell.CreateShortcut($shortcutPath)
 
@@ -221,7 +221,7 @@ public class PowerManagement {
 		$shortcut.TargetPath = "powershell.exe"
 		$shortcut.Arguments = "-NoProfile -ExecutionPolicy Bypass -Command `"$command`""
 		$shortcut.Save()
-		Write-Host "Shortcut to winutil created at: $shortcutPath"
+		Write-Host "Shortcut to Compourri Software Essentials created at: $shortcutPath"
 		# *************************** Automation black ***************************
 
 		Write-Host "Copy checkinstall.cmd into the ISO"

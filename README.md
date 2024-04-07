@@ -1,12 +1,14 @@
-# Chris Titus Tech's Windows Utility
+# Compourri Software Essentials
 
-This utility is a compilation of Windows tasks I perform on each Windows system I use. It is meant to streamline *installs*, debloat with *tweaks*, troubleshoot with *config*, and fix Windows *updates*. I am extremely picky about any contributions to keep this project clean and efficient. 
+Compourri Software Essentials was a DVD compiled by us in the 2000's. It had all the essential software for a Windows PC from that era. This script is a continuation of the concept updated for today’s modern Internet-connected Windows 10 / Windows 11 systems. It’s choc-full of over a 100 free software essentials and system tweaks to make your PC perform at its peak.
+
+This utility is a compilation of Windows tasks we perform on each Windows system we install or repair. It is meant to streamline *installs*, debloat with *tweaks*, troubleshoot with *config*, and fix Windows *updates*.
 
 ![screen-install](screen-install.png)
 
 ## Usage
 
-Winutil must be run in Admin mode because it performs system-wide tweaks. To achieve this, open PowerShell or Windows Terminal as an administrator. Here are a few ways to do it:
+Software Essentials must be run in Admin mode because it performs system-wide tweaks. To achieve this, open PowerShell or Windows Terminal as an administrator. Here are a few ways to do it:
 
 1. **Right-Click Method:**
    - Right-click on the start menu.
@@ -23,26 +25,25 @@ Winutil must be run in Admin mode because it performs system-wide tweaks. To ach
 #### Simple way
 
 ```
-irm https://christitus.com/win | iex
+irm https://compourri.co.za/essentials | iex
 ```
-Courtesy of the issue raised at: [#144](/../../issues/144)
 
 or by executing: 
 ```
-iwr -useb https://christitus.com/win | iex
+iwr -useb https://compourri.co.za/essentials | iex
 ```
 
 if for some reason this site is not reachable from your country please try running it directly from github
 
 ```
-irm https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1 | iex
+irm https://raw.githubusercontent.com/Compourri/essentials/main/winutil.ps1 | iex
 ```
 
 #### Automation
 
-Some features are avaliable through automation. This allows you to save your config file pass it to Winutil walk away and come back to a finished system. Here is how you can set it up currently with Winutil >24.01.15
+Some features are avaliable through automation. This allows you to save your config file pass it to Essentials walk away and come back to a finished system. Here is how you can set it up currently with Essentials >24.01.15
 
-1. On the Install Tab, click "Get Installed", this will get all installed apps **supported by Winutil** on the system
+1. On the Install Tab, click "Get Installed", this will get all installed apps **supported by Essentials** on the system
   ![GetInstalled](/wiki/Get-Installed.png)
 2. Click on the Settings cog in the upper right corner and chose Export, chose file file and location, this will export the setting file.
   ![SettingsExport](/wiki/Settings-Export.png)
@@ -51,34 +52,26 @@ Some features are avaliable through automation. This allows you to save your con
 5. Install the Windows image.
 6. In the new Windows, Open PowerShell in the admin mode and run command to automatically apply tweaks and install apps from the config file.
 ```
-irm https://christitus.com/win -Config [path-to-your-config] -Run | iex
+irm https://compourri.co.za/essentials -Config [path-to-your-config] -Run | iex
 ```
 7. Have a cup of coffee! Come back when it's done.
 
 
 ## Issues:
 
-- If you are unable to resolve christitus.com/win and are getting  errors launching the tool, it might be due to India blocking GitHub's content domain and preventing downloads. You may use a VPN or change your DNS provider to Google/Cloudflare/etc.
+- If you are unable to resolve compourri.co.za/essentials and are getting  errors launching the tool, it might be due to India blocking GitHub's content domain and preventing downloads. You may use a VPN or change your DNS provider to Google/Cloudflare/etc.
 
 Source: <https://timesofindia.indiatimes.com/gadgets-news/github-content-domain-blocked-for-these-indian-users-reports/articleshow/96687992.cms>
 
 - Windows Security (formerly Defender) and other anti-virus software are known to block the script. The script gets flagged due to the fact that it requires administrator privileges & makes drastic system changes.
 
-- If you are having TLS 1.2 issues, or are having trouble resolving `christitus.com/win` then run with the following command:
+- If you are having TLS 1.2 issues, or are having trouble resolving `compourri.co.za/essentials` then run with the following command:
 
 ```
-[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1')
+[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/Compourri/essentials/main/winutil.ps1')
 ```
 
 If you are still having issues try changing your DNS provider to 1.1.1.1 || 1.0.0.1 or 8.8.8.8 || 8.8.4.4
-
-## Support
-- To morally and mentally support the project, make sure to leave a ⭐️!
-- EXE Wrapper for $10 @ https://www.cttstore.com/windows-toolbox
-
-## Tutorial
-
-[![Watch the video](https://img.youtube.com/vi/6UQZ5oQg8XA/hqdefault.jpg)](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
 
 ## Overview
 
@@ -120,27 +113,9 @@ If you are still having issues try changing your DNS provider to 1.1.1.1 || 1.0.
   - Disable All Updates (Not Recommended!): Allows users to disable all Windows updates, but it's not recommended due to potential security risks.
 
 
-Video and Written Article walkthrough @ <https://christitus.com/windows-tool/>
-
 ## Issues
 
 If you encounter any challenges or problems with the script, I kindly request that you submit them via the "Issues" tab on the GitHub repository. By filling out the provided template, you can provide specific details about the issue, allowing me to promptly address any bugs or consider feature requests.
 
-## Contribute Code
-
-To contribute new code, please ensure that it is submitted to the **TEST BRANCH**. Please note that merges will not be performed directly on the MAIN branch.
-
-When creating pull requests, it is essential to thoroughly document all changes made. This includes documenting any additions made to the tweaks section and ensuring that corresponding undo measures are in place to remove the newly added tweaks if necessary. Failure to adhere to this format may result in denial of the pull request. Additionally, comprehensive documentation is required for all code changes. Any code lacking sufficient documentation may also be denied.
-
-By following these guidelines, we can maintain a high standard of quality and ensure that the codebase remains organized and well-documented.
-
-NOTE: When creating a function please include "WPF" or "WinUtil" in the name so that it can be loaded into the runspace.
-
-## Thanks to all Contributors
-Thanks a lot for spending your time helping Winutil grow. Thanks a lot! Keep rocking 🍻.
-
-[![Contributors](https://contrib.rocks/image?repo=ChrisTitusTech/winutil)](https://github.com/ChrisTitusTech/winutil/graphs/contributors)
-
-## GitHub Stats
-
-![Alt](https://repobeats.axiom.co/api/embed/aad37eec9114c507f109d34ff8d38a59adc9503f.svg "Repobeats analytics image")
+## Thanks to The Upstream WinUtil
+A huge thanks to Chris Titus for the great work he's doing with the WinUtil.

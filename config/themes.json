@@ -32,7 +32,7 @@
                     "ShadowPulse": "Forever"
                 },                
     "Matrix":  {
-                   "ComboBoxBackgroundColor":  "#000000",
+                   "ComboBoxBackgroundColor":  "#1C1C1C",
                    "LabelboxForegroundColor":  "#FFEE58",
                    "MainForegroundColor":  "#9CCC65",
                    "MainBackgroundColor":  "#000000",
@@ -62,11 +62,11 @@
                    "ShadowPulse": "0:0:3"
                },
      "Dark":  {
-                   "ComboBoxBackgroundColor":  "#000000",
+                   "ComboBoxBackgroundColor":  "#1C1C1C",
                    "LabelboxForegroundColor":  "#FFEE58",
-                   "MainForegroundColor":  "#9CCC65",
-                   "MainBackgroundColor":  "#000000",
-                   "LabelBackgroundColor":  "#000000",
+                   "MainForegroundColor":  "#EEEE22",
+                   "MainBackgroundColor":  "#1C1C1C",
+                   "LabelBackgroundColor":  "#232323",
                    "LinkForegroundColor":  "#add8e6",
                    "LinkHoverForegroundColor":  "#FFFFFF",
                    "ComboBoxForegroundColor":  "#FFEE58",
@@ -78,16 +78,16 @@
                    "ButtonTweaksForegroundColor":  "#FFFFFF",
                    "ButtonConfigForegroundColor":  "#FFFFFF",
                    "ButtonUpdatesForegroundColor":  "#FFFFFF",
-                   "ButtonBackgroundColor":  "#000019",
+                   "ButtonBackgroundColor":  "#1C1C1C",
                    "ButtonBackgroundPressedColor":  "#9CCC65",
-                   "ButtonBackgroundMouseoverColor":  "#FF5733",
-                   "ButtonBackgroundSelectedColor":  "#FF5733",
+                   "ButtonBackgroundMouseoverColor":  "#232323",
+                   "ButtonBackgroundSelectedColor":  "#1C1C1C",
                    "ButtonForegroundColor":  "#9CCC65",
                    "ButtonBorderThickness":  "1",
                    "ButtonMargin":  "1",
                    "ButtonCornerRadius": "2",
                    "ToggleButtonHeight": "25",
-                   "BorderColor": "#FFAC1C",
+                   "BorderColor": "#1C1C1C",
                    "BorderOpacity": "0.2",
                    "ShadowPulse": "Forever"
                }

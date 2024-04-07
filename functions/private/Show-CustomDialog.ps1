@@ -171,9 +171,9 @@ $cttLogoPath = @"
     # Add SVG path to the stack panel
     $stackPanel.Children.Add($viewbox)
 
-    # Add "Winutil" text
+    # Add "Software Essentials" text
     $winutilTextBlock = New-Object Windows.Controls.TextBlock
-    $winutilTextBlock.Text = "Winutil"
+    $winutilTextBlock.Text = "Compourri Software Essentials"
     $winutilTextBlock.FontSize = 18  # Adjust font size as needed
     $winutilTextBlock.Foreground = $foregroundColor
     $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 5, 10, 5)  # Add margins around the text block

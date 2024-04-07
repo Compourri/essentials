@@ -271,7 +271,7 @@ Add-Type @"
 "@
     }
 
-    foreach ($proc in (Get-Process | Where-Object { $_.MainWindowTitle -and $_.MainWindowTitle -like "*titus*" })) {
+    foreach ($proc in (Get-Process | Where-Object { $_.MainWindowTitle -and $_.MainWindowTitle -like "*Essentials*" })) {
         if ($proc.Id -ne [System.IntPtr]::Zero) {
             Write-Debug "MainWindowHandle: $($proc.Id) $($proc.MainWindowTitle) $($proc.MainWindowHandle)"
             $windowHandle = $proc.MainWindowHandle
@@ -441,11 +441,12 @@ $sync["AboutMenuItem"].Add_Click({
     $sync["SettingsPopup"].IsOpen = $false
     # Example usage
     $authorInfo = @"
-Author   : @christitustech
+Author   : @compourri
+WinUtil  : @christitustech
 Runspace : @DeveloperDurp
 GUI      : @KonTy
 MicroWin : @KonTy
-GitHub   : https://github.com/ChrisTitusTech/winutil
+GitHub   : https://github.com/Compourri/essentials
 Version  : $($sync.version)
 "@
     Show-CustomDialog -Message $authorInfo -Width 400

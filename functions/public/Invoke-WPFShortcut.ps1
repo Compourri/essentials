@@ -19,12 +19,12 @@ function Invoke-WPFShortcut {
 
         $iconPath = $null
         Switch ($ShortcutToAdd) {
-            "WinUtil" {
+            "Essentials" {
                 $SourceExe = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
-                $IRM = 'irm https://christitus.com/win | iex'
+                $IRM = 'irm https://compourri.co.za/essentials | iex'
                 $Powershell = '-ExecutionPolicy Bypass -Command "Start-Process powershell.exe -verb runas -ArgumentList'
                 $ArgumentsToSourceExe = "$powershell '$IRM'"
-                $DestinationName = "WinUtil.lnk"
+                $DestinationName = "Essentials.lnk"
 
                 if (Test-Path -Path "$env:TEMP\cttlogo.png") {
                     $iconPath = "$env:SystempRoot\cttlogo.ico"
