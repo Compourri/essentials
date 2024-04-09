@@ -1,12 +1,4 @@
 {
-	"WPFInstall1password": {
-		"category": "Security",
-		"choco": "1password",
-		"content": "1Password",
-		"description": "1Password is a password manager that allows you to store and manage your passwords securely.",
-		"link": "https://1password.com/",
-		"winget": "AgileBits.1Password"
-	},
 	"WPFInstall4kvideodownloaderplus": {
 		"category": "Multimedia",
 		"choco": "na",
@@ -102,14 +94,6 @@
 		"description": "Barrier is an open-source software KVM (keyboard, video, and mouseswitch). It allows users to control multiple computers with a single keyboard and mouse, even if they have different operating systems.",
 		"link": "https://github.com/debauchee/barrier",
 		"winget": "DebaucheeOpenSourceGroup.Barrier"
-	},
-	"WPFInstallbat": {
-		"category": "Utilities",
-		"choco": "bat",
-		"content": "Bat",
-		"description": "Bat is a cat command clone with syntax highlighting. It provides a user-friendly and feature-rich alternative to the traditional cat command for viewing and concatenating files.",
-		"link": "https://github.com/sharkdp/bat",
-		"winget": "sharkdp.bat"
 	},
 	"WPFInstallbitwarden": {
 		"category": "Security",
@@ -262,14 +246,6 @@
 		"description": "Open-source photo editing tool, offering an intuitive interface, advanced editing capabilities, and a non-destructive workflow for seamless image enhancement.",
 		"link": "https://www.darktable.org/install/",
 		"winget": "darktable.darktable"
-	},
-	"WPFInstallDaxStudio": {
-		"category": "Development",
-		"choco": "daxstudio",
-		"content": "DaxStudio",
-		"description": "DAX (Data Analysis eXpressions) Studio is the ultimate tool for executing and analyzing DAX queries against Microsoft Tabular models.",
-		"link": "https://daxstudio.org/",
-		"winget": "DaxStudio.DaxStudio"
 	},
 	"WPFInstallddu": {
 		"category": "Utilities",
@@ -551,22 +527,6 @@
 		"link": "https://www.freedownloadmanager.org/",
 		"winget": "SoftDeluxe.FreeDownloadManager"
 	},	
-	"WPFInstallfzf": {
-		"category": "Utilities",
-		"choco": "fzf",
-		"content": "Fzf",
-		"description": "A command-line fuzzy finder",
-		"link": "https://github.com/junegunn/fzf/",
-		"winget": "junegunn.fzf"
-	},
-	"WPFInstallgeforcenow": {
-		"category": "Games",
-		"choco": "nvidia-geforce-now",
-		"content": "GeForce NOW",
-		"description": "GeForce NOW is a cloud gaming service that allows you to play high-quality PC games on your device.",
-		"link": "https://www.nvidia.com/en-us/geforce-now/",
-		"winget": "Nvidia.GeForceNow"
-	},
 	"WPFInstallgimp": {
 		"category": "Multimedia",
 		"choco": "gimp",
@@ -575,30 +535,6 @@
 		"link": "https://www.gimp.org/",
 		"winget": "GIMP.GIMP"
 	},
-	"WPFInstallgit": {
-		"category": "Development",
-		"choco": "git",
-		"content": "Git",
-		"description": "Git is a distributed version control system widely used for tracking changes in source code during software development.",
-		"link": "https://git-scm.com/",
-		"winget": "Git.Git"
-	},
-	"WPFInstallgitextensions": {
-		"category": "Development",
-		"choco": "git;gitextensions",
-		"content": "Git Extensions",
-		"description": "Git Extensions is a graphical user interface for Git, providing additional features for easier source code management.",
-		"link": "https://gitextensions.github.io/",
-		"winget": "Git.Git;GitExtensionsTeam.GitExtensions"
-	},
-	"WPFInstallgithubcli": {
-		"category": "Development",
-		"choco": "git;gh",
-		"content": "GitHub CLI",
-		"description": "GitHub CLI is a command-line tool that simplifies working with GitHub directly from the terminal.",
-		"link": "https://cli.github.com/",
-		"winget": "Git.Git;GitHub.cli"
-	},
 	"WPFInstallgithubdesktop": {
 		"category": "Development",
 		"choco": "git;github-desktop",
@@ -606,14 +542,6 @@
 		"description": "GitHub Desktop is a visual Git client that simplifies collaboration on GitHub repositories with an easy-to-use interface.",
 		"link": "https://desktop.github.com/",
 		"winget": "Git.Git;GitHub.GitHubDesktop"
-	},
-	"WPFInstallglaryutilities": {
-		"category": "Utilities",
-		"choco": "glaryutilities-free",
-		"content": "Glary Utilities",
-		"description": "Glary Utilities is a comprehensive system optimization and maintenance tool for Windows.",
-		"link": "https://www.glarysoft.com/glary-utilities/",
-		"winget": "Glarysoft.GlaryUtilities"
 	},
 	"WPFInstallgog": {
 		"category": "Games",
@@ -639,14 +567,6 @@
 		"link": "https://www.techpowerup.com/gpuz/",
 		"winget": "TechPowerUp.GPU-Z"
 	},
-	"WPFInstallgsudo": {
-		"category": "Utilities",
-		"choco": "gsudo",
-		"content": "Gsudo",
-		"description": "Gsudo is a sudo implementation for Windows, allowing elevated privilege execution.",
-		"link": "https://gerardog.github.io/gsudo/",
-		"winget": "gerardog.gsudo"
-	},
 	"WPFInstallhandbrake": {
 		"category": "Multimedia",
 		"choco": "handbrake",
@@ -662,14 +582,6 @@
 		"description": "HeidiSQL is a powerful and easy-to-use client for MySQL, MariaDB, Microsoft SQL Server, and PostgreSQL databases. It provides tools for database management and development.",
 		"link": "https://www.heidisql.com/",
 		"winget": "HeidiSQL.HeidiSQL"
-	},
-	"WPFInstallhelix": {
-		"category": "Development",
-		"choco": "helix",
-		"content": "Helix",
-		"description": "Helix is a neovim alternative built in rust.",
-		"link": "https://helix-editor.com/",
-		"winget": "Helix.Helix"
 	},
 	"WPFInstallheroiclauncher": {
 		"category": "Games",
@@ -807,14 +719,6 @@
 		"link": "https://krita.org/en/features/",
 		"winget": "KDE.Krita"
 	},
-	"WPFInstalllazygit": {
-		"category": "Development",
-		"choco": "lazygit",
-		"content": "Lazygit",
-		"description": "Simple terminal UI for git commands",
-		"link": "https://github.com/jesseduffield/lazygit/",
-		"winget": "JesseDuffield.lazygit"
-	},
 	"WPFInstalllibreoffice": {
 		"category": "Office",
 		"choco": "libreoffice-fresh",
@@ -879,14 +783,6 @@
 		"link": "https://masscode.io/",
 		"winget": "antonreshetov.massCode"
 	},
-	"WPFInstallmatrix": {
-		"category": "Communications",
-		"choco": "element-desktop",
-		"content": "Matrix",
-		"description": "Matrix is an open network for secure, decentralized communication with features like chat, VoIP, and collaboration tools.",
-		"link": "https://element.io/",
-		"winget": "Element.Element"
-	},
 	"WPFInstallmeld": {
 		"category": "Utilities",
 		"choco": "meld",
@@ -926,14 +822,6 @@
 		"description": "Media Player Classic is a lightweight, open-source media player that supports a wide range of audio and video formats. It includes features like customizable toolbars and support for subtitles.",
 		"link": "https://mpc-hc.org/",
 		"winget": "clsid2.mpc-hc"
-	},
-	"WPFInstallmremoteng": {
-		"category": "Utilities",
-		"choco": "mremoteng",
-		"content": "mRemoteNG",
-		"description": "mRemoteNG is a free and open-source remote connections manager. It allows you to view and manage multiple remote sessions in a single interface.",
-		"link": "https://mremoteng.org/",
-		"winget": "mRemoteNG.mRemoteNG"
 	},
 	"WPFInstallmsiafterburner": {
 		"category": "Benchmarking",
@@ -1023,14 +911,6 @@
 		"link": "https://www.nuget.org/",
 		"winget": "Microsoft.NuGet"
 	},
-	"WPFInstallnushell": {
-		"category": "Utilities",
-		"choco": "nushell",
-		"content": "Nushell",
-		"description": "Nushell is a new shell that takes advantage of modern hardware and systems to provide a powerful, expressive, and fast experience.",
-		"link": "https://www.nushell.sh/",
-		"winget": "Nushell.Nushell"
-	},
 	"WPFInstallnvclean": {
 		"category": "Utilities",
 		"choco": "na",
@@ -1038,14 +918,6 @@
 		"description": "NVCleanstall is a tool designed to customize NVIDIA driver installations, allowing advanced users to control more aspects of the installation process.",
 		"link": "https://www.techpowerup.com/nvcleanstall/",
 		"winget": "TechPowerUp.NVCleanstall"
-	},
-	"WPFInstallnvm": {
-		"category": "Development",
-		"choco": "nvm",
-		"content": "Node Version Manager",
-		"description": "Node Version Manager (NVM) for Windows allows you to easily switch between multiple Node.js versions.",
-		"link": "https://github.com/coreybutler/nvm-windows",
-		"winget": "CoreyButler.NVMforWindows"
 	},
 	"WPFInstallobs": {
 		"category": "Multimedia",
@@ -1087,22 +959,6 @@
 		"link": "https://www.onlyoffice.com/desktop.aspx",
 		"winget": "ONLYOFFICE.DesktopEditors"
 	},
-	"WPFInstallOPAutoClicker": {
-		"category": "Utilities",
-		"choco": "autoclicker",
-		"content": "OPAutoClicker",
-		"description": "A full-fledged autoclicker with two modes of autoclicking, at your dynamic cursor location or at a prespecified location.",
-		"link": "https://www.opautoclicker.com",
-		"winget": "OPAutoClicker.OPAutoClicker"
-	},
-	"WPFInstallopenhashtab": {
-		"category": "Utilities",
-		"choco": "openhashtab",
-		"content": "OpenHashTab",
-		"description": "OpenHashTab is a shell extension for conveniently calculating and checking file hashes from file properties.",
-		"link": "https://github.com/namazso/OpenHashTab/",
-		"winget": "namazso.OpenHashTab"
-	},
 	"WPFInstallopenrgb": {
 		"category": "Utilities",
 		"choco": "openrgb",
@@ -1118,14 +974,6 @@
 		"description": "OpenSCAD is a free and open-source script-based 3D CAD modeler. It is especially useful for creating parametric designs for 3D printing.",
 		"link": "https://www.openscad.org/",
 		"winget": "OpenSCAD.OpenSCAD"
-	},
-	"WPFInstallopenshell": {
-		"category": "Utilities",
-		"choco": "open-shell",
-		"content": "Open Shell",
-		"description": "Open Shell is a Windows Start Menu replacement with enhanced functionality and customization options.",
-		"link": "https://github.com/Open-Shell/Open-Shell-Menu",
-		"winget": "Open-Shell.Open-Shell-Menu"
 	},
 	"WPFInstallOpenVPN": {
 		"category": "Security",
@@ -1150,14 +998,6 @@
 		"description": "Paint.NET is a free image and photo editing software for Windows. It features an intuitive user interface and supports a wide range of powerful editing tools.",
 		"link": "https://www.getpaint.net/",
 		"winget": "dotPDN.PaintDotNet"
-	},
-	"WPFInstallparsec": {
-		"category": "Utilities",
-		"choco": "parsec",
-		"content": "Parsec",
-		"description": "Parsec is a low-latency, high-quality remote desktop sharing application for collaborating and gaming across devices.",
-		"link": "https://parsec.app/",
-		"winget": "Parsec.Parsec"
 	},
 	"WPFInstallpdf24creator": {
 		"category": "Office",
@@ -1191,14 +1031,6 @@
 		"link": "https://playnite.link/",
 		"winget": "Playnite.Playnite"
 	},
-	"WPFInstallplex": {
-		"category": "Multimedia",
-		"choco": "plexmediaserver",
-		"content": "Plex Media Server",
-		"description": "Plex Media Server is a media server software that allows you to organize and stream your media library. It supports various media formats and offers a wide range of features.",
-		"link": "https://www.plex.tv/your-media/",
-		"winget": "Plex.PlexMediaServer"
-	},
 	"WPFInstallPortmaster": {
 		"category": "Security",
 		"choco": "portmaster",
@@ -1214,14 +1046,6 @@
 		"description": "Oh My Posh is a cross-platform prompt theme engine for any shell.",
 		"link": "https://ohmyposh.dev/",
 		"winget": "JanDeDobbeleer.OhMyPosh"
-	},
-	"WPFInstallpowerbi": {
-		"category": "Microsoft",
-		"choco": "powerbi",
-		"content": "Power BI",
-		"description": "Create stunning reports and visualizations with Power BI Desktop. It puts visual analytics at your fingertips with intuitive report authoring. Drag-and-drop to place content exactly where you want it on the flexible and fluid canvas. Quickly discover patterns as you explore a single unified view of linked, interactive visualizations.",
-		"link": "https://www.microsoft.com/en-us/power-platform/products/power-bi/",
-		"winget": "Microsoft.PowerBI"
 	},
 	"WPFInstallpowershell": {
 		"category": "Microsoft",
@@ -1255,14 +1079,6 @@
 		"link": "https://docs.microsoft.com/en-us/sysinternals/downloads/procmon",
 		"winget": "Microsoft.Sysinternals.ProcessMonitor"
 	},
-	"WPFInstallprucaslicer": {
-		"category": "Utilities",
-		"choco": "prusaslicer",
-		"content": "PrusaSlicer",
-		"description": "PrusaSlicer is a powerful and easy-to-use slicing software for 3D printing with Prusa 3D printers.",
-		"link": "https://www.prusa3d.com/prusaslicer/",
-		"winget": "Prusa3d.PrusaSlicer"
-	},
 	"WPFInstallpsremoteplay": {
 		"category": "Games",
 		"choco": "ps-remote-play",
@@ -1295,14 +1111,6 @@
 		"link": "https://www.revouninstaller.com/",
 		"winget": "RevoUninstaller.RevoUninstaller"
 	},
-	"WPFInstallripgrep": {
-		"category": "Utilities",
-		"choco": "ripgrep",
-		"content": "Ripgrep",
-		"description": "Fast and powerful commandline search tool",
-		"link": "https://github.com/BurntSushi/ripgrep/",
-		"winget": "BurntSushi.ripgrep.MSVC"
-	},
 	"WPFInstallrufus": {
 		"category": "Utilities",
 		"choco": "rufus",
@@ -1332,8 +1140,8 @@
 		"choco": "scrcpy",
 		"content": "Scrcpy",
 		"description": "Scrcpy mirrors Android devices connected via USB or over TCP/IP, and allows to control the device with the keyboard and mouse.",
-		"link": "https://github.com/Genymobile/scrcpy",
-		"winget": "Genymobile.scrcpy"
+		"link": "https://github.com/Frontesque/scrcpy-plus",
+		"winget": "Frontesque.scrcpy+"
 	},	
 	"WPFInstallsdio": {
 		"category": "Utilities",
@@ -1415,14 +1223,6 @@
 		"link": "https://www.speedtest.net/",
 		"winget": "Ookla.Speedtest.Desktop"
 	},	
-	"WPFInstallstarship": {
-		"category": "Development",
-		"choco": "starship",
-		"content": "Starship",
-		"description": "Starship is a minimal, fast, and customizable prompt for any shell.",
-		"link": "https://starship.rs/",
-		"winget": "starship"
-	},
 	"WPFInstallstartallback": {
 		"category": "Utilities",
 		"choco": "na",
@@ -1510,14 +1310,6 @@
 		"description": "Windows tray utility / filesystem watcher / launcher for Syncthing",
 		"link": "https://github.com/canton7/SyncTrayzor/",
 		"winget": "SyncTrayzor.SyncTrayzor"
-	},
-	"WPFInstalltailscale": {
-		"category": "Security",
-		"choco": "tailscale",
-		"content": "Tailscale",
-		"description": "Tailscale is a secure and easy-to-use VPN solution for connecting your devices and networks.",
-		"link": "https://tailscale.com/",
-		"winget": "tailscale.tailscale"
 	},
 	"WPFInstalltcpview": {
 		"category": "Microsoft",
@@ -1935,14 +1727,6 @@
 		"description": "Xournal++ is an open-source handwriting notetaking software with PDF annotation capabilities.",
 		"link": "https://xournalpp.github.io/",
 		"winget": "Xournal++.Xournal++"
-	},
-	"WPFInstallxpipe": {
-		"category": "Development",
-		"choco": "xpipe",
-		"content": "XPipe",
-		"description": "XPipe is an open-source tool for orchestrating containerized applications. It simplifies the deployment and management of containerized services in a distributed environment.",
-		"link": "https://xpipe.io/",
-		"winget": "xpipe-io.xpipe"
 	},
 	"WPFInstallyarn": {
 		"category": "Development",
