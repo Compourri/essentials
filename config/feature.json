@@ -305,6 +305,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "link": "https://christitustech.github.io/winutil/dev/features/Legacy-Windows-Panels/user"
+    "link": "https://compourri.github.io/winutil/dev/features/Legacy-Windows-Panels/user"
   },
   "WPFWinUtilInstallPSProfile": {
     "Content": "Install PowerShell Profile",
