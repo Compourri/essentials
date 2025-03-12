@@ -191,6 +191,14 @@
         "link": "https://calibre-ebook.com/",
         "winget": "calibre.calibre"
     },
+    "canary": {
+        "category": "Office",
+        "choco": "na",
+        "content": "Canary Mail",
+        "description": "Say hello to the AI email assistant that makes managing email smarter, faster, and more secure than ever.",
+        "link": "https://canarymail.io/",
+        "winget": "9MT5MZ5H9WL6"
+    },
     "carnac": {
         "category": "Utilities",
         "choco": "carnac",
@@ -927,6 +935,14 @@
         "link": "https://logseq.com/",
         "winget": "Logseq.Logseq"
     },
+    "mailspring": {
+        "category": "Office",
+        "choco": "mailspring",
+        "content": "Mailspring",
+        "description": "Boost your productivity and send better email with Mailspring, the best mail client for Mac, Linux, and Windows.",
+        "link": "https://www.malwarebytes.com/",
+        "winget": "Malwarebytes.Malwarebytes"
+    },
     "malwarebytes": {
         "category": "Security",
         "choco": "malwarebytes",
@@ -1014,6 +1030,14 @@
         "description": "MSI Afterburner is a graphics card overclocking utility with advanced features.",
         "link": "https://www.msi.com/Landing/afterburner",
         "winget": "Guru3D.Afterburner"
+    },
+    "outlook": {
+        "category": "Office",
+        "choco": "na",
+        "content": "Outlook for Windows",
+        "description": "The new Outlook for Windows is a best-in-class email experience that is free for anyone with Windows.",
+        "link": "https://apps.microsoft.com/detail/9nrx63209r7b?hl=en-US&gl=US",
+        "winget": "9NRX63209R7B"
     },
     "BorderlessGaming": {
         "category": "Utilities",
@@ -1382,6 +1406,14 @@
         "description": "We built ProtonVPN with extra security features to make it better at protecting your privacy than an ordinary VPN.",
         "link": "https://protonvpn.com/",
         "winget": "Proton.ProtonVPN"
+    },
+    "snippingtool": {
+        "category": "Multimedia",
+        "choco": "na",
+        "content": "Snipping Tool",
+        "description": "Capture images easily with the new Snipping Tool app on Windows 11.",
+        "link": "https://apps.microsoft.com/detail/9mz95kl8mr0l?hl=en-US&gl=ZA",
+        "winget": "9MZ95KL8MR0L"
     },
     "spotify": {
         "category": "Multimedia",
