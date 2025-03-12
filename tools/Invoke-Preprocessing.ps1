@@ -125,7 +125,7 @@ function Invoke-Preprocessing {
         $fullFileName = $files[$i]
 
         # TODO:
-        #   make more formatting rules, and document them in WinUtil Official Documentation
+        #   make more formatting rules, and document them in Software Essentials Official Documentation
         (Get-Content "$fullFileName").TrimEnd() `
             -replace ('\t', '    ') `
             -replace ('\)\s*\{', ') {') `

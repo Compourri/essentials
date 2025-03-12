@@ -26,7 +26,7 @@
 - [Set Services to Manual](../dev/tweaks/Essential-Tweaks/Services/)
 ### Shortcuts
 
-- [Create WinUtil Shortcut](../dev/tweaks/Shortcuts/Shortcut/)
+- [Create Software Essentials Shortcut](../dev/tweaks/Shortcuts/Shortcut/)
 ### z--Advanced-Tweaks---CAUTION
 
 - [Adobe Debloat](../dev/tweaks/z--Advanced-Tweaks---CAUTION/DebloatAdobe/)

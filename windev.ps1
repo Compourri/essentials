@@ -38,7 +38,7 @@ function RedirectToLatestPreRelease {
     $script = Invoke-RestMethod $url
     # Elevate Shell if necessary
     if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Output "Winutil needs to be run as Administrator. Attempting to relaunch."
+        Write-Output "Software Essentialsneeds to be run as Administrator. Attempting to relaunch."
 
         $powershellcmd = if (Get-Command pwsh -ErrorAction SilentlyContinue) { "pwsh" } else { "powershell" }
         $processCmd = if (Get-Command wt.exe -ErrorAction SilentlyContinue) { "wt.exe" } else { $powershellcmd }

@@ -23,7 +23,7 @@
 === "Get Installed"
 
     * Click the `Get Installed` button.
-    * This will scan for and select all installed programs in WinUtil that WinGet supports.
+    * This will scan for and select all installed programs in Software Essentials that WinGet supports.
 
 === "Clear Selection"
     * Click the `Clear Selection` button.
@@ -31,8 +31,8 @@
 
 === "prefer Chocolatey"
     * Check the `prefer Chocolatey` checkbox
-    * By default Winutil will use winget to install/upgrade/remove packages and fallback to Chocolatey. This option reverses the preference.
-    * This preference will be used for all Buttons on the Install page and persist across Winutil restarts
+    * By default Software Essentialswill use winget to install/upgrade/remove packages and fallback to Chocolatey. This option reverses the preference.
+    * This preference will be used for all Buttons on the Install page and persist across Software Essentialsrestarts
 
 ![Install Image](assets/Install-Tab-Dark.png#only-dark#gh-dark-mode-only)
 ![Install Image](assets/Install-Tab-Light.png#only-light#gh-light-mode-only)
@@ -66,7 +66,7 @@ Advanced Tweaks are intended for experienced users who have a solid understandin
 ### O&O Shutup
 
 
-[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from WinUtil with only one button click. It is a free privacy tool for Windows that lets users easily manage their privacy settings. It disables telemetry, controls updates, and manages app permissions to enhance security and privacy. The tool offers recommended settings for optimal privacy with just a few clicks.
+[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from Software Essentials with only one button click. It is a free privacy tool for Windows that lets users easily manage their privacy settings. It disables telemetry, controls updates, and manages app permissions to enhance security and privacy. The tool offers recommended settings for optimal privacy with just a few clicks.
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/3HvNr8eMcv0" title="O&O ShutUp10++: For Windows 10 & 11, with Dark Mode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -240,7 +240,7 @@ With MicroWin, you can also configure your user before proceeding if you don't w
 
 ## Automation
 
-* Some features are available through automation. This allows you to save your config file, pass it to WinUtil, walk away and come back to a finished system. Here is how you can set it up currently with Winutil >24.01.15
+* Some features are available through automation. This allows you to save your config file, pass it to WinUtil, walk away and come back to a finished system. Here is how you can set it up currently with Software Essentials>24.01.15
 
 * On the Install Tab, click "Get Installed", this will get all installed apps **supported by Winutil** on the system.
 ![GetInstalled](assets/Get-Installed-Dark.png#only-dark#gh-dark-mode-only)

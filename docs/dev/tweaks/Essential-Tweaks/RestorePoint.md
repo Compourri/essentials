@@ -7,7 +7,7 @@ Last Updated: 2024-08-07
      The Development Documentation is auto generated for every compilation of WinUtil, meaning a part of it will always stay up-to-date. **Developers do have the ability to add custom content, which won't be updated automatically.**
 ## Description
 
-Creates a restore point at runtime in case a revert is needed from WinUtil modifications
+Creates a restore point at runtime in case a revert is needed from Software Essentials modifications
 
 <!-- BEGIN CUSTOM CONTENT -->
 
@@ -19,7 +19,7 @@ Creates a restore point at runtime in case a revert is needed from WinUtil modif
 ```json
 {
   "Content": "Create Restore Point",
-  "Description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications",
+  "Description": "Creates a restore point at runtime in case a revert is needed from Software Essentials modifications",
   "category": "Essential Tweaks",
   "panel": "1",
   "Checked": "False",

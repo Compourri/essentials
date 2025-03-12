@@ -46,7 +46,7 @@ function Show-CustomDialog {
     The Color used when creating the Drop-down Shadow effect for dialog window.
 
     .PARAMETER LogoColor
-    The Color of WinUtil Text found next to WinUtil's Logo inside dialog window.
+    The Color of Software Essentials Text found next to WinUtil's Logo inside dialog window.
 
     .PARAMETER LinkForegroundColor
     The Foreground Color for Links inside dialog window.
@@ -85,7 +85,7 @@ function Show-CustomDialog {
         [int]$HeaderFontSize = $sync.Form.Resources.CustomDialogFontSizeHeader,
         [int]$LogoSize = $sync.Form.Resources.CustomDialogLogoSize,
 
-        [System.Windows.Media.Color]$ShadowColor = "#AAAAAAAA",
+        [System.Windows.Media.Color]$ShadowColor = "#AAAAAA",
         [System.Windows.Media.SolidColorBrush]$LogoColor = $sync.Form.Resources.LabelboxForegroundColor,
         [System.Windows.Media.SolidColorBrush]$BorderColor = $sync.Form.Resources.BorderColor,
         [System.Windows.Media.SolidColorBrush]$ForegroundColor = $sync.Form.Resources.MainForegroundColor,
@@ -175,9 +175,9 @@ function Show-CustomDialog {
     # Add SVG path to the stack panel
     $stackPanel.Children.Add((Invoke-WinUtilAssets -Type "logo" -Size $LogoSize))
 
-    # Add "Winutil" text
+    # Add "Software Essentials" text
     $winutilTextBlock = New-Object Windows.Controls.TextBlock
-    $winutilTextBlock.Text = "Winutil"
+    $winutilTextBlock.Text = "Software Essentials"
     $winutilTextBlock.FontSize = $HeaderFontSize
     $winutilTextBlock.Foreground = $LogoColor
     $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the text block

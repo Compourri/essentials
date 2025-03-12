@@ -12,7 +12,7 @@
         Height="Auto"
         MaxWidth="1380"
         MaxHeight="800"
-        Title="Chris Titus Tech's Windows Utility">
+        Title="Compourri Software Essentials">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" CornerRadius="10"/>
     </WindowChrome.WindowChrome>
@@ -986,7 +986,7 @@
                     Margin="0,5,5,0"
                     FontFamily="Segoe MDL2 Assets"
                     Content="N/A"
-                    ToolTip="Change the Winutil UI Theme"
+                    ToolTip="Change the Software EssentialsUI Theme"
                 />
                 <Popup Grid.Column="2" Name="ThemePopup"
                     IsOpen="False"
@@ -1394,8 +1394,8 @@
                                     <TextBlock Margin="15,0,0,0" Text="- Get newest ISO automatically: Choose Windows 11 Edition and preferred language." Foreground="{DynamicResource ComboBoxForegroundColor}"/> <LineBreak/>
                                 May take several minutes to process the ISO depending on your machine and connection <LineBreak/>
                                 - Put it somewhere on the C:\ drive so it is easily accessible <LineBreak/>
-                                - Launch WinUtil and MicroWin  <LineBreak/>
-                                - Click on the "Select Windows ISO" button and wait for WinUtil to process the image <LineBreak/>
+                                - Launch Software Essentials and MicroWin  <LineBreak/>
+                                - Click on the "Select Windows ISO" button and wait for Software Essentials to process the image <LineBreak/>
                                 It will be processed and unpacked which may take some time <LineBreak/>
                                 - Once complete, choose which Windows flavor you want to base your image on <LineBreak/>
                                 - Click the "Start Process" button <LineBreak/>

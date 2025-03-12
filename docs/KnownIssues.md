@@ -125,7 +125,7 @@ Launch the Script and click *Enable Action Center*.
 - Change the *Open File Explorer to* option to *This PC*.
 
 ### Battery drains too fast
-If you're using a laptop or tablet and find your battery drains too fast, please try the below troubleshooting steps, and report the results back to the Winutil community.
+If you're using a laptop or tablet and find your battery drains too fast, please try the below troubleshooting steps, and report the results back to the Software Essentialscommunity.
 
 1. **Check Battery Health:**
     - Press `Windows Key`+`X` and select *PowerShell (Admin)* in Windows 10, or `Windows Terminal (Admin)` in Windows 11.

@@ -2,7 +2,7 @@
 
 ## Testing
 
-* Test the latest changes to WinUtil by running the pre-release and reporting issues you are encountering to help us continually improve WinUtil!
+* Test the latest changes to Software Essentials by running the pre-release and reporting issues you are encountering to help us continually improve WinUtil!
 
 #### **Run the latest pre-release**
    ```ps1
@@ -66,7 +66,7 @@ graph TD
      This is a diagram to guide you through the process. It may vary depending on the type of change you're making.
 
 ### Fork the Repo
-* Fork the WinUtil Repository [here](https://github.com/ChrisTitusTech/winutil) to create a copy that will be available in your repository list.
+* Fork the Software Essentials Repository [here](https://github.com/ChrisTitusTech/winutil) to create a copy that will be available in your repository list.
 
 ![Fork Image](assets/Fork-Button-Dark.png#only-dark#gh-dark-mode-only)
 
@@ -82,7 +82,7 @@ graph TD
 * Choose the fork under "Your Repositories" and press "clone {repo name}"
 * Create a new branch and name it something relatable to your changes.
 
-* Now you can modify WinUtil to your liking using your preferred text editor.
+* Now you can modify Software Essentials to your liking using your preferred text editor.
 
 
 ### Testing your changes
