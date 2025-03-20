@@ -52,5 +52,5 @@ You can find information about Optional Windows Features on [Microsoft's Website
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/feature.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/feature.json)
 

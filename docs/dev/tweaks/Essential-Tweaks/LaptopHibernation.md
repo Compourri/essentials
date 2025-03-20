@@ -7,7 +7,7 @@ Last Updated: 2024-08-07
      The Development Documentation is auto generated for every compilation of WinUtil, meaning a part of it will always stay up-to-date. **Developers do have the ability to add custom content, which won't be updated automatically.**
 ## Description
 
-Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery. See issue https://github.com/ChrisTitusTech/winutil/issues/1399
+Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery. See issue https://github.com/Compourri/essentials/issues/1399
 
 <!-- BEGIN CUSTOM CONTENT -->
 
@@ -19,7 +19,7 @@ Most modern laptops have connected standby enabled which drains the battery, thi
 ```json
 {
   "Content": "Set Hibernation as default (good for laptops)",
-  "Description": "Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery. See issue https://github.com/ChrisTitusTech/winutil/issues/1399",
+  "Description": "Most modern laptops have connected standby enabled which drains the battery, this sets hibernation as default which will not drain the battery. See issue https://github.com/Compourri/essentials/issues/1399",
   "category": "Essential Tweaks",
   "panel": "1",
   "Order": "a014_",
@@ -128,5 +128,5 @@ You can find information about the registry on [Wikipedia](https://www.wikiwand.
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/tweaks.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/tweaks.json)
 

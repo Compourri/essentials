@@ -69,5 +69,5 @@ function Invoke-WinUtilShowExt {
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/tweaks.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/tweaks.json)
 

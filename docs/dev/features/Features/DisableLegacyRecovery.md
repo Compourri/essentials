@@ -57,5 +57,5 @@ Disables Advanced Boot Options screen that lets you start Windows in advanced tr
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/feature.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/feature.json)
 

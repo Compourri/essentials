@@ -435,7 +435,7 @@ function Generate-MarkdownFiles {
             }
         }
 
-        $jsonLink = "[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/$jsonFilePath)"
+        $jsonLink = "[View the JSON file](https://github.com/Compourri/essentials/tree/main/$jsonFilePath)"
         $customContentStartTag = "<!-- BEGIN CUSTOM CONTENT -->"
         $customContentEndTag = "<!-- END CUSTOM CONTENT -->"
         $secondCustomContentStartTag = "<!-- BEGIN SECOND CUSTOM CONTENT -->"

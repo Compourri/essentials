@@ -66,17 +66,17 @@ function Invoke-WinUtilUninstallPSProfile {
             }
         }
 
-        # Check if Chris Titus Tech's PowerShell profile is currently available in the PowerShell profile folder.
+        # Check if Compourri PowerShell profile is currently available in the PowerShell profile folder.
         if (Test-Path $PSProfile -PathType Leaf) {
-            # Set the GitHub repo path used for looking up the name of Chris Titus Tech's powershell-profile repo.
-            $GitHubRepoPath = "ChrisTitusTech/powershell-profile"
+            # Set the GitHub repo path used for looking up the name of Compourri powershell-profile repo.
+            $GitHubRepoPath = "Compourri/powershell-profile"
 
-            # Get the unique identifier used to test for the presence of Chris Titus Tech's PowerShell profile.
+            # Get the unique identifier used to test for the presence of Compourri PowerShell profile.
             $PSProfileIdentifier = (Invoke-RestMethod "https://api.github.com/repos/$GitHubRepoPath").full_name
 
-            # Check if Chris Titus Tech's PowerShell profile is currently installed in the PowerShell profile folder.
+            # Check if Compourri PowerShell profile is currently installed in the PowerShell profile folder.
             if ((Get-Content $PSProfile) -match $PSProfileIdentifier) {
-                # Attempt to uninstall Chris Titus Tech's PowerShell profile from the PowerShell profile folder.
+                # Attempt to uninstall Compourri PowerShell profile from the PowerShell profile folder.
                 try {
                     # Get the content of the backup PowerShell profile and store it in-memory.
                     $PSProfileContent = Get-Content "$PSProfile.bak"

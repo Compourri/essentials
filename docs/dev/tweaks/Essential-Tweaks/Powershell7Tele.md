@@ -53,5 +53,5 @@ This will create an Environment Variable called 'POWERSHELL_TELEMETRY_OPTOUT' wi
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/tweaks.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/tweaks.json)
 

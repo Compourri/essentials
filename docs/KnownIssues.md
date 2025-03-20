@@ -9,14 +9,14 @@ To resolve this, allow/whitelist the script in your anti-virus software settings
 If `https://christitus.com/win` is not working, or you want to download the code from GitHub directly, you can use the direct download link:
 
 ```ps1
-irm https://github.com/ChrisTitusTech/winutil/releases/latest/download/winutil.ps1 | iex
+irm https://github.com/Compourri/essentials/releases/latest/download/winutil.ps1 | iex
 ```
 
 If you are seeing errors referencing TLS or security, you may be running an older version of Windows where TLS 1.2 is not the default security protocol used for network connections. The following commands will force .NET to use TLS 1.2, and download the script directly using .NET instead of PowerShell:
 
 ```ps1
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-iex (New-Object Net.WebClient).DownloadString('https://github.com/ChrisTitusTech/winutil/releases/latest/download/winutil.ps1')
+iex (New-Object Net.WebClient).DownloadString('https://github.com/Compourri/essentials/releases/latest/download/winutil.ps1')
 ```
 
 If it still isn't working and you live in India, it might be due to India blocking GitHub's content domain and preventing downloads. See more on [Times of India](https://timesofindia.indiatimes.com/gadgets-news/github-content-domain-blocked-for-these-indian-users-reports/articleshow/96687992.cms).
@@ -100,10 +100,10 @@ This could be for a number of reasons:
         ```bat
         powercfg /H off
         ```
-Related issue: [#69](https://github.com/ChrisTitusTech/winutil/issues/69)
+Related issue: [#69](https://github.com/Compourri/essentials/issues/69)
 
 ### Windows Search does not work
-Enable Background Apps. Related issues: [#69](https://github.com/ChrisTitusTech/winutil/issues/69) [95](https://github.com/ChrisTitusTech/winutil/issues/95) [#232](https://github.com/ChrisTitusTech/winutil/issues/232)
+Enable Background Apps. Related issues: [#69](https://github.com/Compourri/essentials/issues/69) [95](https://github.com/Compourri/essentials/issues/95) [#232](https://github.com/Compourri/essentials/issues/232)
 
 ### Xbox Game Bar Activation Broken
 Set the Xbox Accessory Management Service to Automatic:
@@ -112,7 +112,7 @@ Set the Xbox Accessory Management Service to Automatic:
 Get-Service -Name "XboxGipSvc" | Set-Service -StartupType Automatic
 ```
 
-Related issue: [#198](https://github.com/ChrisTitusTech/winutil/issues/198)
+Related issue: [#198](https://github.com/Compourri/essentials/issues/198)
 
 ### Windows 11: Quick Settings no longer works
 Launch the Script and click *Enable Action Center*.

@@ -75,5 +75,5 @@ Great Windows 11 tweak to bring back good context menus when right clicking thin
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/tweaks.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/tweaks.json)
 

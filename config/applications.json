@@ -940,8 +940,8 @@
         "choco": "mailspring",
         "content": "Mailspring",
         "description": "Boost your productivity and send better email with Mailspring, the best mail client for Mac, Linux, and Windows.",
-        "link": "https://www.malwarebytes.com/",
-        "winget": "Malwarebytes.Malwarebytes"
+        "link": "https://www.getmailspring.com/",
+        "winget": "Foundry376.Mailspring"
     },
     "malwarebytes": {
         "category": "Security",

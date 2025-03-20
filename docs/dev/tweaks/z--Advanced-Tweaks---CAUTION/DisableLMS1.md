@@ -141,5 +141,5 @@ Intel LMS service is always listening on all ports and could be a huge security 
 <!-- END SECOND CUSTOM CONTENT -->
 
 
-[View the JSON file](https://github.com/ChrisTitusTech/winutil/tree/main/config/tweaks.json)
+[View the JSON file](https://github.com/Compourri/essentials/tree/main/config/tweaks.json)
 
