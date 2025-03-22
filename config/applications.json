@@ -1298,7 +1298,7 @@
     "pcmanager": {
         "category": "Utilities",
         "choco": "na",
-        "content": "PDF24 creator",
+        "content": "Microsoft PC Manager",
         "description": "Safeguard your PC in a quiet and reliable way",
         "link": "https://pcmanager.microsoft.com/en-us",
         "winget": "Microsoft.PCManager"
