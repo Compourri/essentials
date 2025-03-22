@@ -1295,6 +1295,14 @@
         "link": "https://www.getpaint.net/",
         "winget": "dotPDN.PaintDotNet"
     },
+    "pcmanager": {
+        "category": "Utilities",
+        "choco": "na",
+        "content": "PDF24 creator",
+        "description": "Safeguard your PC in a quiet and reliable way",
+        "link": "https://pcmanager.microsoft.com/en-us",
+        "winget": "Microsoft.PCManager"
+    },
     "pdf24creator": {
         "category": "Office",
         "choco": "pdf24",
