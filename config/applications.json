@@ -551,6 +551,14 @@
         "link": "https://file-converter.io/",
         "winget": "AdrienAllard.FileConverter"
     },
+    "filelight": {
+        "category": "Utilities",
+        "choco": "filelight",
+        "content": "Filelight",
+        "description": "Filelight is an application to visualize the disk usage on your computer by showing folders using an easy-to-understand view of concentric rings. Filelight makes it simple to free up space!",
+        "link": "https://apps.kde.org/filelight/",
+        "winget": "KDE.Filelight"
+    },
     "files": {
         "category": "Utilities",
         "choco": "files",
