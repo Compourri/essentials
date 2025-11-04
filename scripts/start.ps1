@@ -1,8 +1,9 @@
 <#
 .NOTES
-    Author         : Chris Titus @christitustech
+    Author         : George van der Westhuizen @Compourri
+    Upstream       : Chris Titus @ChrisTitusTech
     Runspace Author: @DeveloperDurp
-    GitHub         : https://github.com/ChrisTitusTech
+    GitHub         : https://github.com/Compourri
     Version        : #{replaceme}
 #>
 
