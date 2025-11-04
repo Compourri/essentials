@@ -1178,7 +1178,7 @@
     "mpcbe": {
         "category": "Multimedia",
         "choco": "mpc-be",
-        "content": "Media Player Classic - Black Edition",
+        "content": "MPC-BE",
         "description": "MPC-BE (Media Player Classic - Black Edition) is a free, open-source media player for Windows, based on Media Player Classic Home Cinema, featuring lightweight design, broad codec support, and customizable playback options.",
             "link": "https://sourceforge.net/projects/mpcbe/",
         "winget": "MPC-BE.MPC-BE"
@@ -1266,7 +1266,7 @@
     "nglide": {
         "category": "Multimedia",
         "choco": "na",
-        "content": "nGlide (3dfx compatibility)",
+        "content": "nGlide",
         "description": "nGlide is a 3Dfx Voodoo Glide wrapper. It allows you to play games that use Glide API on modern graphics cards without the need for a 3Dfx Voodoo graphics card.",
         "link": "https://www.zeus-software.com/downloads/nglide",
         "winget": "ZeusSoftware.nGlide"
@@ -1418,7 +1418,7 @@
     "openshell": {
         "category": "Utilities",
         "choco": "open-shell",
-        "content": "Open Shell (Start Menu)",
+        "content": "Open Shell",
         "description": "Open Shell is a Windows Start Menu replacement with enhanced functionality and customization options.",
         "link": "https://github.com/Open-Shell/Open-Shell-Menu",
         "winget": "Open-Shell.Open-Shell-Menu"

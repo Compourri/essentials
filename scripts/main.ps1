@@ -203,7 +203,7 @@ Invoke-WPFRunspace -ScriptBlock {
 #===========================================================================
 
 # Print the logo
-Show-CTTLogo
+Show-CompourriLogo
 
 # Progress bar in taskbaritem > Set-WinUtilProgressbar
 $sync["Form"].TaskbarItemInfo = New-Object System.Windows.Shell.TaskbarItemInfo
