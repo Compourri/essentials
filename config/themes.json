@@ -96,6 +96,7 @@
         "ScrollBarHoverColor": "#EEEE22",
         "ScrollBarDraggingColor": "#EEEE22",
 
+        "MicrowinBusyColor": "#2e77ff",
         "ProgressBarForegroundColor": "#EEEE22",
         "ProgressBarBackgroundColor": "Transparent",
         "ProgressBarTextColor": "#F7F7F7",
