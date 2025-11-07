@@ -46,9 +46,9 @@
     "Light": {
         "AppInstallUnselectedColor": "#F9F9F9",
         "AppInstallHighlightedColor": "#EEEE22",
-        "AppInstallSelectedColor": "#80EEEE22",
+        "AppInstallSelectedColor": "#EEEE22",
         "ComboBoxForegroundColor":  "#000000",
-        "ComboBoxBackgroundColor":  "#99EEEE22",
+        "ComboBoxBackgroundColor":  "#EEEE22",
         "LabelboxForegroundColor":  "#000000",
         "MainForegroundColor":  "#000000",
         "MainBackgroundColor":  "#FFFFFF",
@@ -83,9 +83,9 @@
     "Dark": {
         "AppInstallUnselectedColor": "#222222",
         "AppInstallHighlightedColor": "#2F2F2F",
-        "AppInstallSelectedColor": "#99EEEE22",
+        "AppInstallSelectedColor": "#EEEE22",
         "ComboBoxForegroundColor":  "#F7F7F7",
-        "ComboBoxBackgroundColor":  "#CC2F2F2F",
+        "ComboBoxBackgroundColor":  "#2F2F2F",
         "LabelboxForegroundColor":  "#EEEE22",
         "MainForegroundColor":  "#F7F7F7",
         "MainBackgroundColor":  "#191919",
@@ -96,7 +96,7 @@
         "ScrollBarHoverColor": "#EEEE22",
         "ScrollBarDraggingColor": "#EEEE22",
 
-        "MicrowinBusyColor": "#2e77ff",
+        "MicrowinBusyColor": "#EEEE22",
         "ProgressBarForegroundColor": "#EEEE22",
         "ProgressBarBackgroundColor": "Transparent",
         "ProgressBarTextColor": "#F7F7F7",

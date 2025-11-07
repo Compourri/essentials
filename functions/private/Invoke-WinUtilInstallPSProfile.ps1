@@ -53,7 +53,7 @@ function Invoke-WinUtilInstallPSProfile {
                 Write-Host "===> Installing Profile... <===" -ForegroundColor Yellow
 
                 # Start a new hidden PowerShell instance because setup.ps1 does not work in runspaces.
-                Start-Process -FilePath "pwsh" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"Invoke-Expression (Invoke-WebRequest `'https://github.com/ChrisTitusTech/powershell-profile/raw/main/setup.ps1`')`"" -WindowStyle Hidden -Wait
+                Start-Process -FilePath "pwsh" -ArgumentList "-ExecutionPolicy Bypass -NoProfile -Command `"Invoke-Expression (Invoke-WebRequest `'https://raw.githubusercontent.com/Compourri/powershell-profile/refs/heads/main/setup.ps1`')`"" -WindowStyle Hidden -Wait
 
                 # Let the user know Chris Titus Tech's PowerShell profile has been installed successfully.
                 Write-Host "Profile has been installed. Please restart your shell to reflect the changes!" -ForegroundColor Magenta

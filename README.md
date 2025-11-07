@@ -5,7 +5,7 @@
 
 Back in 2008, we compiled a DVD called 'Compourri Software Essentials.' It contained all the crucial software for Windows PCs from that era. Fast forward to today, and we've updated the concept for modern Windows 10 and Windows 11 systems—software essentials galore!
 
-![screen-install](./docs/assets/Title-Screen.png)
+![screen-install](https://compourri.co.za/wp-content/uploads/2025/11/Title-Screen-1024x559.webp)
 
 ## 💡 Usage
 
@@ -26,11 +26,9 @@ Software Essentials must be run in Admin mode because it performs system-wide tw
 irm "https://compourri.co.za/essentials" | iex
 ```
 
-If you have Issues, refer to [Known Issues](https://github.com/Compourri/essentials/blob/main/docs/KnownIssues.md)
-
 ## 🎓 Documentation
 
-### [Software Essentials Official Documentation](https://compourri.github.io/essentials/)
+### [Software Essentials User Guide](https://compourri.co.za/user-guide/)
 
 ### [Compourri Website](https://compourri.co.za/)
 

@@ -12,7 +12,7 @@
         Height="Auto"
         MinWidth="800"
         MinHeight="600"
-        Title="WinUtil">
+        Title="Essentials">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" CornerRadius="10"/>
     </WindowChrome.WindowChrome>
@@ -1024,7 +1024,7 @@
                     Margin="0,0,2,0"
                     FontFamily="Segoe MDL2 Assets"
                     Content="N/A"
-                    ToolTip="Change the Winutil UI Theme"
+                    ToolTip="Change the Essentials UI Theme"
                 />
                     <Popup Name="ThemePopup"
                     IsOpen="False"
@@ -1482,7 +1482,7 @@
                             <CheckBox Name="MicroWinUnsupported" Margin="{DynamicResource MicrowinCheckBoxMargin}" IsChecked="False" ToolTip="If enabled then it will allow you to upgrade your PC to Windows 11 if your PC does not support Windows 11 yet. This is good for if you do not have a USB and want to upgrade to Windows 11 on unsupported hardware."><AccessText TextWrapping="Wrap" Text="Allow this PC to upgrade to Windows 11" /></CheckBox>
                             <CheckBox Name="MicroWinESD" Margin="{DynamicResource MicrowinCheckBoxMargin}" IsChecked="False" ToolTip="The ESD file format compresses the installation image even further, therefore reducing ISO file sizes a little more. Select this if you have a small USB."><AccessText TextWrapping="Wrap" Text="Convert this image to ESD (This will take longer)" /></CheckBox>
                             <CheckBox Name="MicroWinNoFLA" Margin="{DynamicResource MicrowinCheckBoxMargin}" IsChecked="True" ToolTip="The First Logon Animation is an animation that is played when a user logs on for the first time. It can artificially increase wait times. Select this option to automatically close the first logon animation and reach the desktop quicker (additional system preparation will still be done)"><AccessText TextWrapping="Wrap" Text="Skip First Logon Animation" /></CheckBox>
-                            <TextBlock Margin="6" Padding="1" TextWrapping="Wrap">WinUtil configuration file (JSON)</TextBlock>
+                            <TextBlock Margin="6" Padding="1" TextWrapping="Wrap">Essentials configuration file (JSON)</TextBlock>
                             <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" /> <!-- Takes the remaining space -->
@@ -1576,10 +1576,10 @@
                                     <TextBlock Margin="15,0,0,0" Text="- Get newest ISO automatically: Choose Windows 11 Edition and preferred language." Foreground="{DynamicResource ComboBoxForegroundColor}"/> <LineBreak/>
                                 May take several minutes to process the ISO depending on your machine and connection <LineBreak/>
                                 - Put it somewhere on the C:\ drive so it is easily accessible <LineBreak/>
-                                - Launch WinUtil and MicroWin  <LineBreak/>
-                                - Click on the "Get Windows ISO" button and wait for WinUtil to process the image <LineBreak/>
+                                - Launch Essentials and MicroWin  <LineBreak/>
+                                - Click on the "Get Windows ISO" button and wait for Essentials to process the image <LineBreak/>
                                 It will be processed and unpacked which may take some time <LineBreak/>
-                                - Once complete, choose which Windows flavor you want to base your image on <LineBreak/>
+                                - Once complete, choose which Windows flavour you want to base your image on <LineBreak/>
                                 - Click the "Start Process" button <LineBreak/>
                                 The process of creating the Windows image may take some time, please check the console and wait for it to say "Done" <LineBreak/>
                                 - Once complete, the target ISO file will be in the directory you have specified <LineBreak/>
