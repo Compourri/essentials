@@ -46,7 +46,7 @@
     "Light": {
         "AppInstallUnselectedColor": "#F9F9F9",
         "AppInstallHighlightedColor": "#EEEE22",
-        "AppInstallSelectedColor": "#EEEE22",
+        "AppInstallSelectedColor": "#80EEEE22",
         "ComboBoxForegroundColor":  "#000000",
         "ComboBoxBackgroundColor":  "#EEEE22",
         "LabelboxForegroundColor":  "#000000",
@@ -83,7 +83,7 @@
     "Dark": {
         "AppInstallUnselectedColor": "#222222",
         "AppInstallHighlightedColor": "#2F2F2F",
-        "AppInstallSelectedColor": "#EEEE22",
+        "AppInstallSelectedColor": "#80EEEE22",
         "ComboBoxForegroundColor":  "#F7F7F7",
         "ComboBoxBackgroundColor":  "#2F2F2F",
         "LabelboxForegroundColor":  "#EEEE22",
@@ -111,7 +111,7 @@
         "ButtonBackgroundColor":  "#2F2F2F",
         "ButtonBackgroundPressedColor":  "#EEEE22",
         "ButtonBackgroundMouseoverColor":  "#222222",
-        "ButtonBackgroundSelectedColor":  "#EEEE22",
+        "ButtonBackgroundSelectedColor":  "#80EEEE22",
         "ButtonForegroundColor":  "#F7F7F7",
         "ToggleButtonOnColor": "#EEEE22",
         "ToggleButtonOffColor": "#949494",

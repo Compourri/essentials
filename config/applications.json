@@ -2106,7 +2106,7 @@
     "upscayl": {
         "category": "Multimedia",
         "choco": "upscayl",
-        "content": "Upscayl.Upscayl",
+        "content": "Upscayl",
         "description": "Upscayl is a powerful image upscaling tool that uses advanced AI technology to enhance your images.",
         "link": "https://upscayl.org/download",
         "winget": "Upscayl.Upscayl"
@@ -2407,13 +2407,13 @@
         "link": "https://xpipe.io/",
         "winget": "xpipe-io.xpipe"
     },
-    "ytdlp": {
+    "ytdlpgui": {
         "category": "Multimedia",
         "choco": "yt-dlp",
-        "content": "Yt-dlp",
-        "description": "Command-line tool that allows you to download videos from YouTube and other supported sites. It is an improved version of the popular youtube-dl.",
-        "link": "https://github.com/yt-dlp/yt-dlp",
-        "winget": "yt-dlp.yt-dlp"
+        "content": "Yt-dlp-GUI",
+        "description": "Simplistic graphical interface for the command line tool yt-dlp that allows you to download videos from YouTube and other supported sites. It is an improved version of the popular youtube-dl.",
+        "link": "https://github.com/dsymbol/yt-dlp-gui",
+        "winget": "dsymbol.yt-dlp-gui"
     },
     "ZenBrowser": {
         "category": "Browsers",
