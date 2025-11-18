@@ -10,7 +10,7 @@
     "adobe": {
         "category": "Office",
         "choco": "adobereader",
-        "content": "Adobe Acrobat Reader",
+        "content": "Adobe Reader",
         "description": "Adobe Acrobat Reader is a free PDF viewer with essential features for viewing, printing, and annotating PDF documents.",
         "link": "https://www.adobe.com/acrobat/pdf-reader.html",
         "winget": "Adobe.Acrobat.Reader.64-bit"
@@ -50,7 +50,7 @@
     "alacritty": {
         "category": "Utilities",
         "choco": "alacritty",
-        "content": "Alacritty Terminal",
+        "content": "Alacritty",
         "description": "Alacritty is a fast, cross-platform, and GPU-accelerated terminal emulator. It is designed for performance and aims to be the fastest terminal emulator available.",
         "link": "https://alacritty.org/",
         "winget": "Alacritty.Alacritty"
@@ -58,7 +58,7 @@
     "AmbieWhiteNoise": {
         "category": "Utilities",
         "choco": "na",
-        "content": "Ambie White Noise",
+        "content": "Ambie",
         "description": "Ambie is the ultimate app to help you focus, study, or relax. We use white noise and nature sounds combined with an innovative focus timer to keep you concentrated on doing your best work.",
         "link": "https://ambieapp.com/",
         "winget": "9P07XNM5CHP0"
@@ -70,14 +70,6 @@
         "description": "Angry IP Scanner is an open-source and cross-platform network scanner. It is used to scan IP addresses and ports, providing information about network connectivity.",
         "link": "https://angryip.org/",
         "winget": "angryziber.AngryIPScanner"
-    },
-    "anki": {
-        "category": "Office",
-        "choco": "anki",
-        "content": "Anki",
-        "description": "Anki is a flashcard application that helps you memorize information with intelligent spaced repetition.",
-        "link": "https://apps.ankiweb.net/",
-        "winget": "Anki.Anki"
     },
     "anydesk": {
         "category": "Utilities",
@@ -98,7 +90,7 @@
     "autodarkmode": {
         "category": "Utilities",
         "choco": "auto-dark-mode",
-        "content": "Windows Auto Dark Mode",
+        "content": "Auto Dark Mode",
         "description": "Automatically switches between the dark and light theme of Windows 10 and Windows 11",
         "link": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode",
         "winget": "Armin2208.WindowsAutoNightMode"
@@ -207,6 +199,14 @@
         "link": "https://www.bulkrenameutility.co.uk",
         "winget": "TGRMNSoftware.BulkRenameUtility"
     },
+    "calculator": {
+        "category": "Microsoft",
+        "choco": "na",
+        "content": "Calculator",
+        "description": "A simple yet powerful calculator that includes standard, scientific, programmer, and graphing calculator functionality, as well as a set of converters between various units of measurement and currencies.",
+        "link": "https://apps.microsoft.com/detail/9wzdncrfhvn5?hl=en-US&gl=ZA",
+        "winget": "9WZDNCRFHVN5"
+    },
     "calibre": {
         "category": "Office",
         "choco": "calibre",
@@ -239,6 +239,14 @@
         "link": "https://cemu.info/",
         "winget": "Cemu.Cemu"
     },
+    "chatGPT": {
+        "category": "AI",
+        "choco": "na",
+        "content": "ChatGPT",
+        "description": "The official ChatGPT desktop app brings you the newest model improvements from OpenAI.",
+        "link": "https://chatgpt.com/",
+        "winget": "9NT1R1C2HH7J"
+    },
     "chrome": {
         "category": "Browsers",
         "choco": "googlechrome",
@@ -263,6 +271,14 @@
         "link": "https://www.maxon.net/en/cinebench",
         "winget": "Maxon.CinebenchR23"
     },
+    "claude": {
+        "category": "AI",
+        "choco": "claude",
+        "content": "Claude",
+        "description": "Claude is a desktop application that helps you focus on your work. It's designed to be fast, focused, and to help you get more done.",
+        "link": "https://claude.com/download",
+        "winget": "Anthropic.Claude"
+    },
     "clementine": {
         "category": "Multimedia",
         "choco": "clementine",
@@ -279,6 +295,14 @@
         "link": "https://clonehero.net/",
         "winget": "CloneHeroTeam.CloneHero"
     },
+    "Comet": {
+        "category": "Browsers",
+        "choco": "na",
+        "content": "Comet",
+        "description": "Comet is a Chromium-based browser that integrates advanced AI capabilities powered by Perplexity.",
+        "link": "https://www.perplexity.ai/comet",
+        "winget": "Perplexity.Comet"
+    },
     "CompactGUI": {
         "category": "Utilities",
         "choco": "compactgui",
@@ -286,6 +310,14 @@
         "description": "Transparently compress active games and programs using Windows 10/11 APIs",
         "link": "https://github.com/IridiumIO/CompactGUI",
         "winget": "IridiumIO.CompactGUI"
+    },
+    "copilot": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Copilot",
+        "description": "From the convenience of your desktop, it’s your thinking partner, your organizer, your guide",
+        "link": "https://copilot.microsoft.com/",
+        "winget": "9NHT9RB2F4HD"
     },
     "copyq": {
         "category": "Utilities",
@@ -302,14 +334,6 @@
         "description": "CPU-Z is a system monitoring and diagnostic tool for Windows. It provides detailed information about the computer's hardware components, including the CPU, memory, and motherboard.",
         "link": "https://www.cpuid.com/softwares/cpu-z.html",
         "winget": "CPUID.CPU-Z"
-    },
-    "croc": {
-        "category": "Utilities",
-        "choco": "croc",
-        "content": "croc",
-        "description": "Easily and securely send things from one computer to another.",
-        "link": "https://github.com/schollz/croc",
-        "winget": "schollz.croc"
     },
     "crystaldiskinfo": {
         "category": "Benchmarking",
@@ -330,7 +354,7 @@
     "darktable": {
         "category": "Multimedia",
         "choco": "darktable",
-        "content": "darktable",
+        "content": "Darktable",
         "description": "Open-source photo editing tool, offering an intuitive interface, advanced editing capabilities, and a non-destructive workflow for seamless image enhancement.",
         "link": "https://www.darktable.org/install/",
         "winget": "darktable.darktable"
@@ -342,22 +366,6 @@
         "description": "Display Driver Uninstaller (DDU) is a tool for completely uninstalling graphics drivers from NVIDIA, AMD, and Intel. It is useful for troubleshooting graphics driver-related issues.",
         "link": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
         "winget": "Wagnardsoft.DisplayDriverUninstaller"
-    },
-    "deluge": {
-        "category": "Utilities",
-        "choco": "deluge",
-        "content": "Deluge",
-        "description": "Deluge is a free and open-source BitTorrent client. It features a user-friendly interface, support for plugins, and the ability to manage torrents remotely.",
-        "link": "https://deluge-torrent.org/",
-        "winget": "DelugeTeam.Deluge"
-    },
-    "devtoys": {
-        "category": "Utilities",
-        "choco": "devtoys",
-        "content": "DevToys",
-        "description": "DevToys is a collection of development-related utilities and tools for Windows. It includes tools for file management, code formatting, and productivity enhancements for developers.",
-        "link": "https://devtoys.app/",
-        "winget": "DevToys-app.DevToys"
     },
     "digikam": {
         "category": "Multimedia",
@@ -554,18 +562,10 @@
     "ESETonline": {
         "category": "Security",
         "choco": "na",
-        "content": "ESET Online Virus Scanner",
+        "content": "ESET Online",
         "description": "Expert removal of malware—clean viruses and spyware from your computer.",
         "link": "https://www.eset.com/int/support/av-rem",
         "winget": "ESET.AVRemover"
-    },
-    "espanso": {
-        "category": "Utilities",
-        "choco": "espanso",
-        "content": "Espanso",
-        "description": "Cross-platform and open-source Text Expander written in Rust",
-        "link": "https://espanso.org/",
-        "winget": "Espanso.Espanso"
     },
     "ExifCleaner": {
         "category": "Utilities",
@@ -623,6 +623,14 @@
         "link": "https://file-converter.io/",
         "winget": "AdrienAllard.FileConverter"
     },
+    "filelight": {
+        "category": "Utilities",
+        "choco": "filelight",
+        "content": "Filelight",
+        "description": "Filelight is an application to visualize the disk usage on your computer by showing folders using an easy-to-understand view of concentric rings.",
+        "link": "https://apps.kde.org/filelight/",
+        "winget": "KDE.Filelight"
+    },
     "files": {
         "category": "Utilities",
         "choco": "files",
@@ -670,14 +678,6 @@
         "description": "Floorp is an open-source web browser project that aims to provide a simple and fast browsing experience.",
         "link": "https://floorp.app/",
         "winget": "Ablaze.Floorp"
-    },
-    "flow": {
-        "category": "Utilities",
-        "choco": "flow-launcher",
-        "content": "Flow launcher",
-        "description": "Keystroke launcher for Windows to search, manage and launch files, folders bookmarks, websites and more.",
-        "link": "https://www.flowlauncher.com/",
-        "winget": "Flow-Launcher.Flow-Launcher"
     },
     "flux": {
         "category": "Utilities",
@@ -751,14 +751,6 @@
         "link": "https://www.gimp.org/",
         "winget": "GIMP.GIMP.3"
     },
-    "glazewm": {
-        "category": "Utilities",
-        "choco": "na",
-        "content": "GlazeWM",
-        "description": "GlazeWM is a tiling window manager for Windows inspired by i3 and Polybar",
-        "link": "https://github.com/glzr-io/glazewm",
-        "winget": "glzr-io.glazewm"
-    },
     "gog": {
         "category": "Games",
         "choco": "goggalaxy",
@@ -790,14 +782,6 @@
         "description": "Greenshot is a light-weight screenshot software tool with built-in image editor and customizable capture options.",
         "link": "https://getgreenshot.org/",
         "winget": "Greenshot.Greenshot"
-    },
-    "gsudo": {
-        "category": "Utilities",
-        "choco": "gsudo",
-        "content": "Gsudo",
-        "description": "Gsudo is a sudo implementation for Windows, allowing elevated privilege execution.",
-        "link": "https://gerardog.github.io/gsudo/",
-        "winget": "gerardog.gsudo"
     },
     "guilded": {
         "category": "Communications",
@@ -911,14 +895,6 @@
         "link": "https://www.apple.com/itunes/",
         "winget": "Apple.iTunes"
     },
-    "jami": {
-        "category": "Communications",
-        "choco": "jami",
-        "content": "Jami",
-        "description": "Jami is a secure and privacy-focused communication platform that offers audio and video calls, messaging, and file sharing.",
-        "link": "https://jami.net/",
-        "winget": "SFLinux.Jami"
-    },
     "jellyfinmediaplayer": {
         "category": "Multimedia",
         "choco": "jellyfin-media-player",
@@ -960,7 +936,7 @@
         "winget": "JTKsoftware.JoyToKey"
     },
     "jpegview": {
-        "category": "Utilities",
+        "category": "Multimedia",
         "choco": "jpegview",
         "content": "JPEG View",
         "description": "JPEGView is a lean, fast and highly configurable viewer/editor for JPEG, BMP, PNG, WEBP, TGA, GIF, JXL, HEIC, HEIF, AVIF and TIFF images with a minimal GUI",
@@ -1047,14 +1023,6 @@
         "link": "https://app.prntscr.com/",
         "winget": "Skillbrains.Lightshot"
     },
-    "linkshellextension": {
-        "category": "Utilities",
-        "choco": "linkshellextension",
-        "content": "Link Shell extension",
-        "description": "Link Shell Extension (LSE) provides for the creation of Hardlinks, Junctions, Volume Mountpoints, Symbolic Links, a folder cloning process that utilises Hardlinks or Symbolic Links and a copy process taking care of Junctions, Symbolic Links, and Hardlinks. LSE, as its name implies is implemented as a Shell extension and is accessed from Windows Explorer, or similar file/folder managers.",
-        "link": "https://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html",
-        "winget": "HermannSchinagl.LinkShellExtension"
-    },
     "livelywallpaper": {
         "category": "Utilities",
         "choco": "lively",
@@ -1062,6 +1030,14 @@
         "description": "Free and open-source software that allows users to set animated desktop wallpapers and screensavers.",
         "link": "https://www.rocksdanister.com/lively/",
         "winget": "rocksdanister.LivelyWallpaper"
+    },
+    "lmstudio": {
+        "category": "AI",
+        "choco": "lmstudio",
+        "content": "LM Studio",
+        "description": "LM Studio is an easy to use desktop app for experimenting with local and open-source Large Language Models",
+        "link": "https://lmstudio.ai/",
+        "winget": "ElementLabs.LMStudio"
     },
     "localsend": {
         "category": "Smartphone",
@@ -1111,53 +1087,13 @@
         "link": "https://www.getmailspring.com/",
         "winget": "Foundry376.Mailspring"
     },
-    "masscode": {
-        "category": "Office",
-        "choco": "na",
-        "content": "massCode",
-        "description": "massCode is a fast and efficient open-source code snippet manager for developers.",
-        "link": "https://masscode.io/",
-        "winget": "antonreshetov.massCode"
-    },
-    "matrix": {
-        "category": "Communications",
-        "choco": "element-desktop",
-        "content": "Element",
-        "description": "Element is a client for Matrix; an open network for secure, decentralized communication.",
-        "link": "https://element.io/",
-        "winget": "Element.Element"
-    },
-    "meld": {
-        "category": "Utilities",
-        "choco": "meld",
-        "content": "Meld",
-        "description": "Meld is a visual diff and merge tool for files and directories.",
-        "link": "https://meldmerge.org/",
-        "winget": "Meld.Meld"
-    },
     "Microsoft365": {
-        "category": "Office",
+        "category": "Microsoft",
         "choco": "na",
         "content": "Microsoft 365",
         "description": "Microsoft 365 Apps for enterprise is the most productive and most secure Office experience for enterprises, allowing your teams to work together seamlessly from anywhere, anytime.",
         "link": "https://www.microsoft.com/en-us/microsoft-365/download-office",
         "winget": "Microsoft.Office"
-    },
-    "ModernFlyouts": {
-        "category": "Multimedia",
-        "choco": "na",
-        "content": "Modern Flyouts",
-        "description": "An open source, modern, Fluent Design-based set of flyouts for Windows.",
-        "link": "https://github.com/ModernFlyouts-Community/ModernFlyouts/",
-        "winget": "ModernFlyouts.ModernFlyouts"
-    },
-    "monitorian": {
-        "category": "Utilities",
-        "choco": "monitorian",
-        "content": "Monitorian",
-        "description": "Monitorian is a utility for adjusting monitor brightness and contrast on Windows.",
-        "link": "https://github.com/emoacht/Monitorian",
-        "winget": "emoacht.Monitorian"
     },
     "moonlight": {
         "category": "Games",
@@ -1231,14 +1167,6 @@
         "link": "https://www.mp3tag.de/en/",
         "winget": "Mp3tag.Mp3tag"
     },
-    "nanazip": {
-        "category": "Utilities",
-        "choco": "nanazip",
-        "content": "NanaZip",
-        "description": "NanaZip is a fast and efficient file compression and decompression tool.",
-        "link": "https://github.com/M2Team/NanaZip",
-        "winget": "M2Team.NanaZip"
-    },
     "naps2": {
         "category": "Office",
         "choco": "naps2",
@@ -1246,14 +1174,6 @@
         "description": "NAPS2 is a document scanning application that simplifies the process of creating electronic documents.",
         "link": "https://www.naps2.com/",
         "winget": "Cyanfish.NAPS2"
-    },
-    "nditools": {
-        "category": "Multimedia",
-        "choco": "na",
-        "content": "NDI Tools",
-        "description":"NDI, or Network Device Interface, is a video connectivity standard that enables multimedia systems to identify and communicate with one another over IP and to encode, transmit, and receive high-quality, low latency, frame-accurate video and audio, and exchange metadata in real-time.",
-        "link": "https://ndi.video/",
-        "winget": "NDI.NDITools"
     },
     "nextclouddesktop": {
         "category": "Office",
@@ -1270,14 +1190,6 @@
         "description": "nGlide is a 3Dfx Voodoo Glide wrapper. It allows you to play games that use Glide API on modern graphics cards without the need for a 3Dfx Voodoo graphics card.",
         "link": "https://www.zeus-software.com/downloads/nglide",
         "winget": "ZeusSoftware.nGlide"
-    },
-    "nilesoftShell": {
-        "category": "Utilities",
-        "choco": "nilesoft-shell",
-        "content": "Nilesoft Shell",
-        "description": "Shell is an expanded context menu tool that adds extra functionality and customization options to the Windows context menu.",
-        "link": "https://nilesoft.org/",
-        "winget": "Nilesoft.Shell"
     },
     "nmap": {
         "category": "Security",
@@ -1351,14 +1263,6 @@
         "link": "https://www.ocbase.com/download",
         "winget": "OCBase.OCCT.Personal"
     },
-    "OFGB": {
-        "category": "Utilities",
-        "choco": "ofgb",
-        "content": "OFGB",
-        "description":"GUI Tool to remove ads from various places around Windows 11",
-        "link": "https://github.com/xM4ddy/OFGB",
-        "winget": "xM4ddy.OFGB"
-    },
     "okular": {
         "category": "Office",
         "choco": "okular",
@@ -1368,7 +1272,7 @@
         "winget": "KDE.Okular"
     },
     "onedrive": {
-        "category": "Office",
+        "category": "Microsoft",
         "choco": "onedrive",
         "content": "OneDrive",
         "description": "OneDrive is a cloud storage service provided by Microsoft, allowing users to store and share files securely across devices.",
@@ -1390,14 +1294,6 @@
         "description": "A full-fledged autoclicker with two modes of autoclicking, at your dynamic cursor location or at a prespecified location.",
         "link": "https://www.opautoclicker.com",
         "winget": "OPAutoClicker.OPAutoClicker"
-    },
-    "openhashtab": {
-        "category": "Utilities",
-        "choco": "openhashtab",
-        "content": "OpenHashTab",
-        "description": "OpenHashTab is a shell extension for conveniently calculating and checking file hashes from file properties.",
-        "link": "https://github.com/namazso/OpenHashTab/",
-        "winget": "namazso.OpenHashTab"
     },
     "openrgb": {
         "category": "Utilities",
@@ -1431,6 +1327,14 @@
         "link": "https://github.com/SoftFever/OrcaSlicer",
         "winget": "SoftFever.OrcaSlicer"
     },
+    "Outlook": {
+        "category": "Microsoft",
+        "choco": "na",
+        "content": "Outlook",
+        "description": "The new Outlook for Windows is a best-in-class email experience that is free for anyone with Windows.",
+        "link": "https://apps.microsoft.com/detail/9nrx63209r7b?hl=en-US&gl=US",
+        "winget": "9NRX63209R7B"
+    },
     "OVirtualBox": {
         "category": "Utilities",
         "choco": "virtualbox",
@@ -1456,12 +1360,20 @@
         "winget": "dotPDN.PaintDotNet"
     },
     "pcmanager": {
-        "category": "Utilities",
+        "category": "Microsoft",
         "choco": "na",
-        "content": "Microsoft PC Manager",
+        "content": "PC Manager",
         "description": "Safeguard your PC in a quiet and reliable way",
         "link": "https://pcmanager.microsoft.com/en-us",
         "winget": "9PM860492SZD"
+    },
+    "perplexity": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Perplexity",
+        "description": "Perplexity — Ask Anything. Cut through the all the noise and get straight to credible, up-to-date answers.",
+        "link": "https://www.perplexity.ai/",
+        "winget": "XP8JNQFBQH6PVF"
     },
     "pdfgear": {
         "category": "Office",
@@ -1471,21 +1383,13 @@
         "link": "https://www.pdfgear.com/",
         "winget": "PDFgear.PDFgear"
     },
-    "pdfsam": {
-        "category": "Office",
-        "choco": "pdfsam",
-        "content": "PDFsam Basic",
-        "description": "PDFsam Basic is a free and open-source tool for splitting, merging, and rotating PDF files.",
-        "link": "https://pdfsam.org/",
-        "winget": "PDFsam.PDFsam"
-    },
-    "peazip": {
-        "category": "Utilities",
-        "choco": "peazip",
-        "content": "PeaZip",
-        "description": "PeaZip is a free, open-source file archiver utility that supports multiple archive formats and provides encryption features.",
-        "link": "https://peazip.github.io/",
-        "winget": "Giorgiotani.Peazip"
+    "photos": {
+        "category": "Microsoft",
+        "choco": "na",
+        "content": "Photos",
+        "description": "Microsoft Photos is a rich media experience that empowers you to do more with your photos and videos.",
+        "link": "https://apps.microsoft.com/detail/9wzdncrfjbh4?hl=en-US&gl=ZA",
+        "winget": "9WZDNCRFJBH4"
     },
     "piimager": {
         "category": "Utilities",
@@ -1586,7 +1490,7 @@
     "processmonitor": {
         "category": "Microsoft",
         "choco": "procexp",
-        "content": "SysInternals Process Monitor",
+        "content": "Process Monitor",
         "description": "SysInternals Process Monitor is an advanced monitoring tool that shows real-time file system, registry, and process/thread activity.",
         "link": "https://docs.microsoft.com/en-us/sysinternals/downloads/procmon",
         "winget": "Microsoft.Sysinternals.ProcessMonitor"
@@ -1703,18 +1607,10 @@
         "link": "https://sagethumbs.en.lo4d.com/windows",
         "winget": "CherubicSoftware.SageThumbs"
     },
-    "sandboxie": {
-        "category": "Utilities",
-        "choco": "sandboxie",
-        "content": "Sandboxie Plus",
-        "description": "Sandboxie Plus is a sandbox-based isolation program that provides enhanced security by running applications in an isolated environment.",
-        "link": "https://github.com/sandboxie-plus/Sandboxie",
-        "winget": "Sandboxie.Plus"
-    },
     "sdio": {
         "category": "Utilities",
         "choco": "sdio",
-        "content": "Snappy Driver Installer Origin",
+        "content": "Snappy Driver",
         "description": "Snappy Driver Installer Origin is a free and open-source driver updater with a vast driver database for Windows.",
         "link": "https://www.glenn.delahoy.com/snappy-driver-installer-origin/",
         "winget": "GlennDelahoy.SnappyDriverInstallerOrigin"
@@ -1799,10 +1695,18 @@
         "link": "https://www.smplayer.info",
         "winget": "SMPlayer.SMPlayer"
     },
+    "snippingtool": {
+        "category": "Microsoft",
+        "choco": "na",
+        "content": "Snipping Tool",
+        "description": "Capture images easily with the new Snipping Tool app on Windows 11. ",
+        "link": "https://apps.microsoft.com/detail/9mz95kl8mr0l?hl=en-US&gl=ZA",
+        "winget": "9MZ95KL8MR0L"
+    },
     "spacedrive": {
         "category": "Utilities",
         "choco": "na",
-        "content": "Spacedrive File Manager",
+        "content": "Spacedrive",
         "description": "Spacedrive is a file manager that offers cloud storage integration and file synchronization across devices.",
         "link": "https://www.spacedrive.com/",
         "winget": "spacedrive.Spacedrive"
@@ -1826,7 +1730,7 @@
     "sqlmanagementstudio": {
         "category": "Microsoft",
         "choco": "sql-server-management-studio",
-        "content": "Microsoft SQL Server Management Studio",
+        "content": "SQL Server Studio",
         "description": "SQL Server Management Studio (SSMS) is an integrated environment for managing any SQL infrastructure, from SQL Server to Azure SQL Database. SSMS provides tools to configure, monitor, and administer instances of SQL Server and databases.",
         "link": "https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16",
         "winget": "Microsoft.SQLServerManagementStudio"
@@ -1874,23 +1778,15 @@
     "sunshine": {
         "category": "Games",
         "choco": "sunshine",
-        "content": "Sunshine/GameStream Server",
+        "content": "Sunshine",
         "description": "Sunshine is a GameStream server that allows you to remotely play PC games on Android devices, offering low-latency streaming.",
         "link": "https://github.com/LizardByte/Sunshine",
         "winget": "LizardByte.Sunshine"
     },
-    "superf4": {
-        "category": "Utilities",
-        "choco": "superf4",
-        "content": "SuperF4",
-        "description": "SuperF4 is a utility that allows you to terminate programs instantly by pressing a customizable hotkey.",
-        "link": "https://stefansundin.github.io/superf4/",
-        "winget": "StefanSundin.Superf4"
-    },
     "Superposition": {
         "category": "Benchmarking",
         "choco": "superposition-benchmark",
-        "content": "Unigine Superposition",
+        "content": "Superposition",
         "description": "Extreme performance and stability test for PC hardware: video card, power supply, cooling system. ",
         "link": "https://benchmark.unigine.com/superposition",
         "winget": "Unigine.SuperpositionBenchmark"
@@ -1938,7 +1834,7 @@
     "tcpview": {
         "category": "Microsoft",
         "choco": "tcpview",
-        "content": "SysInternals TCPView",
+        "content": "TCPView",
         "description": "SysInternals TCPView is a network monitoring tool that displays a detailed list of all TCP and UDP endpoints on your system.",
         "link": "https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview",
         "winget": "Microsoft.Sysinternals.TCPView"
@@ -1978,7 +1874,7 @@
     "terminal": {
         "category": "Microsoft",
         "choco": "microsoft-windows-terminal",
-        "content": "Windows Terminal",
+        "content": "Terminal",
         "description": "Windows Terminal is a modern, fast, and efficient terminal application for command-line users, supporting multiple tabs, panes, and more.",
         "link": "https://aka.ms/terminal",
         "winget": "Microsoft.WindowsTerminal"
@@ -1986,7 +1882,7 @@
     "thorium": {
         "category": "Browsers",
         "choco": "na",
-        "content": "Thorium Browser AVX2",
+        "content": "Thorium AVX2",
         "description": "Browser built for speed over vanilla chromium. It is built with AVX2 optimizations and is the fastest browser on the market.",
         "link": "https://thorium.rocks/",
         "winget": "Alex313031.Thorium.AVX2"
@@ -2018,7 +1914,7 @@
     "tor": {
         "category": "Browsers",
         "choco": "tor-browser",
-        "content": "Tor Browser",
+        "content": "Tor",
         "description": "Tor Browser is designed for anonymous web browsing, utilizing the Tor network to protect user privacy and security.",
         "link": "https://www.torproject.org/",
         "winget": "TorProject.TorBrowser"
@@ -2039,14 +1935,6 @@
         "link": "https://transmissionbt.com/",
         "winget": "Transmission.Transmission"
     },
-    "treesize": {
-        "category": "Utilities",
-        "choco": "treesizefree",
-        "content": "TreeSize Free",
-        "description": "TreeSize Free is a disk space manager that helps you analyze and visualize the space usage on your drives.",
-        "link": "https://www.jam-software.com/treesize_free/",
-        "winget": "JAMSoftware.TreeSize.Free"
-    },
     "ttaskbar": {
         "category": "Utilities",
         "choco": "translucenttb",
@@ -2054,14 +1942,6 @@
         "description": "TranslucentTB is a tool that allows you to customize the transparency of the Windows taskbar.",
         "link": "https://github.com/TranslucentTB/TranslucentTB",
         "winget": "9PF4KZ2VN4W9"
-    },
-    "twinkletray": {
-        "category": "Utilities",
-        "choco": "twinkle-tray",
-        "content": "Twinkle Tray",
-        "description": "Twinkle Tray lets you easily manage the brightness levels of multiple monitors.",
-        "link": "https://twinkletray.com/",
-        "winget": "xanderfrangos.twinkletray"
     },
     "ubisoft": {
         "category": "Games",
@@ -2098,7 +1978,7 @@
     "uad": {
         "category": "Smartphone",
         "choco": "na",
-        "content": "Universal Android Debloater",
+        "content": "Android Debloater",
         "description": "Improve privacy and battery performance by removing unnecessary and obscure system apps.",
         "link": "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
         "winget": "Universal-Debloater-Alliance.uad-ng"
@@ -2114,7 +1994,7 @@
     "vc2015_32": {
         "category": "Microsoft",
         "choco": "na",
-        "content": "Visual C++ 2015-2022 32-bit",
+        "content": "Visual C++ x86",
         "description": "Visual C++ 2015-2022 32-bit redistributable package installs runtime components of Visual C++ libraries required to run 32-bit applications.",
         "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
         "winget": "Microsoft.VCRedist.2015+.x86"
@@ -2122,7 +2002,7 @@
     "vc2015_64": {
         "category": "Microsoft",
         "choco": "na",
-        "content": "Visual C++ 2015-2022 64-bit",
+        "content": "Visual C++ x64",
         "description": "Visual C++ 2015-2022 64-bit redistributable package installs runtime components of Visual C++ libraries required to run 64-bit applications.",
         "link": "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
         "winget": "Microsoft.VCRedist.2015+.x64"
@@ -2258,7 +2138,7 @@
     "windowsfirewallcontrol": {
         "category": "Security",
         "choco": "windowsfirewallcontrol",
-        "content": "Windows Firewall Control",
+        "content": "Firewall Control",
         "description": "Windows Firewall Control is a powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better.",
         "link": "https://www.binisoft.org/wfc",
         "winget": "BiniSoft.WindowsFirewallControl"
@@ -2266,18 +2146,10 @@
     "windowspchealth": {
         "category": "Utilities",
         "choco": "na",
-        "content": "Windows PC Health Check",
+        "content": "PC Health Check",
         "description": "Windows PC Health Check is a tool that helps you check if your PC meets the system requirements for Windows 11.",
         "link": "https://support.microsoft.com/en-us/windows/how-to-use-the-pc-health-check-app-9c8abd9b-03ba-4e67-81ef-36f37caa7844",
         "winget": "Microsoft.WindowsPCHealthCheck"
-    },
-    "WindowGrid": {
-        "category": "Utilities",
-        "choco": "windowgrid",
-        "content": "WindowGrid",
-        "description": "WindowGrid is a modern window management program for Windows that allows the user to quickly and easily layout their windows on a dynamic grid using just the mouse.",
-        "link": "http://windowgrid.net/",
-        "winget": "na"
     },
     "wingetui": {
         "category": "Utilities",
@@ -2346,7 +2218,7 @@
     "WiseProgramUninstaller": {
         "category": "Utilities",
         "choco": "na",
-        "content": "Wise Program Uninstaller",
+        "content": "Wise Uninstaller",
         "description": "Wise Program Uninstaller is the perfect solution for uninstalling Windows programs, allowing you to uninstall applications quickly and completely using its simple and user-friendly interface.",
         "link": "https://www.wisecleaner.com/wise-program-uninstaller.html",
         "winget": "WiseCleaner.WiseProgramUninstaller"
@@ -2384,7 +2256,7 @@
         "winget": "xemu-project.xemu"
     },
     "xnview": {
-        "category": "Utilities",
+        "category": "Multimedia",
         "choco": "xnview",
         "content": "XnView classic",
         "description": "XnView is an efficient image viewer, browser and converter for Windows.",
@@ -2398,14 +2270,6 @@
         "description": "Xournal++ is an open-source handwriting notetaking software with PDF annotation capabilities.",
         "link": "https://xournalpp.github.io/",
         "winget": "Xournal++.Xournal++"
-    },
-    "xpipe": {
-        "category": "Utilities",
-        "choco": "xpipe",
-        "content": "XPipe",
-        "description": "XPipe is an open-source tool for orchestrating containerized applications. It simplifies the deployment and management of containerized services in a distributed environment.",
-        "link": "https://xpipe.io/",
-        "winget": "xpipe-io.xpipe"
     },
     "ytdlpgui": {
         "category": "Multimedia",
@@ -2470,13 +2334,5 @@
         "description": "Zoxide is a fast and efficient directory changer (cd) that helps you navigate your file system with ease.",
         "link": "https://github.com/ajeetdsouza/zoxide",
         "winget": "ajeetdsouza.zoxide"
-    },
-    "zulip": {
-        "category": "Communications",
-        "choco": "zulip",
-        "content": "Zulip",
-        "description": "Zulip is an open-source team collaboration tool with chat streams for productive and organized communication.",
-        "link": "https://zulipchat.com/",
-        "winget": "Zulip.Zulip"
     }
 }
