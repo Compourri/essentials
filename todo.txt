@@ -1,0 +1,16 @@
+# feature.json add:
+
+    "WPFActivate": {
+    "Content": "Activate Windows & Office",
+    "category": "Fixes",
+    "panel": "1",
+    "Order": "a046_",
+    "Type": "Button",
+    "ButtonWidth": "300",
+    "link": "https://compourri.co.za/KMS"
+  },
+
+# Invoke-WPFButton.ps1 add:
+        "WPFActivate" {Invoke-WPFActivate}
+
+
