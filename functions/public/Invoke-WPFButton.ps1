@@ -62,6 +62,7 @@ function Invoke-WPFButton {
         "WPFWinUtilInstallPSProfile" {Invoke-WinUtilInstallPSProfile}
         "WPFWinUtilUninstallPSProfile" {Invoke-WinUtilUninstallPSProfile}
         "WPFWinUtilSSHServer" {Invoke-WPFSSHServer}
+        "WPFWinUtilKMS" {Invoke-WinUtilKMS}
         "WPFselectedAppsButton" {$sync.selectedAppsPopup.IsOpen = -not $sync.selectedAppsPopup.IsOpen}
         "WPFMicrowinPanelBack" {Toggle-MicrowinPanel 1}
         "MicrowinAutoConfigBtn" {Invoke-AutoConfigDialog}

