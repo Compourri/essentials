@@ -175,9 +175,9 @@ function Show-CustomDialog {
     # Add SVG path to the stack panel
     $stackPanel.Children.Add((Invoke-WinUtilAssets -Type "logo" -Size $LogoSize))
 
-    # Add "Winutil" text
+    # Add "Software Essentials" text
     $winutilTextBlock = New-Object Windows.Controls.TextBlock
-    $winutilTextBlock.Text = "Winutil"
+    $winutilTextBlock.Text = "      Software Essentials"
     $winutilTextBlock.FontSize = $HeaderFontSize
     $winutilTextBlock.Foreground = $LogoColor
     $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the text block

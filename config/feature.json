@@ -136,10 +136,18 @@
     "ButtonWidth": "300",
     "link": "https://winutil.christitus.com/dev/features/features/install"
   },
+    "WPFWinUtilKMS": {
+    "Content": "Activate Windows & Office",
+    "category": "Fixes",
+    "panel": "1",
+    "Order": "a040_",
+    "Type": "Button",
+    "ButtonWidth": "300"
+  },
   "WPFPanelAutologin": {
     "Content": "Set Up Autologin",
     "category": "Fixes",
-    "Order": "a040_",
+    "Order": "a041_",
     "panel": "1",
     "Type": "Button",
     "ButtonWidth": "300",
@@ -149,7 +157,7 @@
     "Content": "Reset Windows Update",
     "category": "Fixes",
     "panel": "1",
-    "Order": "a041_",
+    "Order": "a042_",
     "Type": "Button",
     "ButtonWidth": "300",
     "link": "https://winutil.christitus.com/dev/features/fixes/update"
@@ -157,7 +165,7 @@
   "WPFFixesNetwork": {
     "Content": "Reset Network",
     "category": "Fixes",
-    "Order": "a042_",
+    "Order": "a043_",
     "panel": "1",
     "Type": "Button",
     "ButtonWidth": "300",
@@ -167,7 +175,7 @@
     "Content": "System Corruption Scan",
     "category": "Fixes",
     "panel": "1",
-    "Order": "a043_",
+    "Order": "a044_",
     "Type": "Button",
     "ButtonWidth": "300",
     "link": "https://winutil.christitus.com/dev/features/fixes/dism"
@@ -262,7 +270,7 @@
     "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/timedate"
   },
   "WPFWinUtilInstallPSProfile": {
-    "Content": "Install CTT PowerShell Profile",
+    "Content": "Install PowerShell Profile",
     "category": "Powershell Profile Powershell 7+ Only",
     "panel": "2",
     "Order": "a083_",
@@ -271,7 +279,7 @@
     "link": "https://winutil.christitus.com/dev/features/powershell-profile-powershell-7--only/installpsprofile"
   },
   "WPFWinUtilUninstallPSProfile": {
-    "Content": "Uninstall CTT PowerShell Profile",
+    "Content": "Uninstall PowerShell Profile",
     "category": "Powershell Profile Powershell 7+ Only",
     "panel": "2",
     "Order": "a084_",

