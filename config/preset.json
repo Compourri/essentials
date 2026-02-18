@@ -12,7 +12,14 @@
     "WPFTweaksDeleteTempFiles",
     "WPFTweaksEndTaskOnTaskbar",
     "WPFTweaksRestorePoint",
-    "WPFTweaksPowershell7Tele"
+    "WPFTweaksPowershell7Tele",
+    "WPFTweaksWidget",
+    "WPFTweaksStorage",
+    "WPFTweaksTeredo",
+    "WPFTweaksEdgeDebloat",
+    "WPFTweaksRemoveGallery",
+    "WPFTweaksRemoveHome",
+    "WPFTweaksXboxRemoval"
   ],
   "Minimal": [
     "WPFTweaksConsumerFeatures",
