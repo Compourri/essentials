@@ -77,8 +77,8 @@
         "Content": "Highlight FOSS",
         "Category": "__Selection",
         "Type": "Toggle",
-        "Checked": true,
+        "Checked": false,
         "Order": "6",
-        "Description": "Toggle the green highlight for FOSS applications"
+        "Description": "Toggle the highlight for FOSS applications"
     }
 }

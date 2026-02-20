@@ -175,13 +175,13 @@ function Invoke-WinutilThemeChange {
     }
 
     # Set FOSS Highlight Color
-    $fossEnabled = $true
+    $fossEnabled = $false
     if ($sync.WPFToggleFOSSHighlight) {
         $fossEnabled = $sync.WPFToggleFOSSHighlight.IsChecked
     }
 
     if ($fossEnabled) {
-         $sync.Form.Resources["FOSSColor"] = [Windows.Media.SolidColorBrush]::new([Windows.Media.Color]::FromRgb(76, 175, 80)) # #4CAF50
+         $sync.Form.Resources["FOSSColor"] = [Windows.Media.SolidColorBrush]::new([Windows.Media.Color]::FromRgb(238, 238, 34)) # #EEEE22
     } else {
          $sync.Form.Resources["FOSSColor"] = $sync.Form.Resources["MainForegroundColor"]
     }

@@ -63,7 +63,7 @@ function Initialize-InstallAppEntry {
         $appName.Style = $sync.Form.Resources.AppEntryNameStyle
         $appName.Text = $Apps.$appKey.content
 
-        # Change color to Green if FOSS
+        # Change color to Yellow if FOSS
         if ($Apps.$appKey.foss -eq $true) {
             $appName.SetResourceReference([Windows.Controls.Control]::ForegroundProperty, "FOSSColor")
             $appName.FontWeight = "Bold"

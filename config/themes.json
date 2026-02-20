@@ -82,9 +82,9 @@
 
     },
     "Dark": {
-        "AppInstallUnselectedColor": "#222222",
+        "AppInstallUnselectedColor": "#191919",
         "AppInstallHighlightedColor": "#2F2F2F",
-        "AppInstallSelectedColor": "#80EEEE22",
+        "AppInstallSelectedColor": "#2F2F2F",
         "AppInstallOverlayBackgroundColor":"#2E3135",
         "ComboBoxForegroundColor":  "#F7F7F7",
         "ComboBoxBackgroundColor":  "#2F2F2F",
