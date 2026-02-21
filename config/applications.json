@@ -1151,7 +1151,7 @@
     "moonlight": {
         "category": "Games",
         "choco": "moonlight-qt",
-        "content": "Moonlight/GameStream Client",
+        "content": "Moonlight",
         "description": "Moonlight/GameStream Client allows you to stream PC games to other devices over your local network.",
         "link": "https://moonlight-stream.org/",
         "winget": "MoonlightGameStreamingProject.Moonlight",
@@ -2181,7 +2181,7 @@
     "Vortex": {
         "category": "Games",
         "choco": "vortex",
-        "content": "Vortec Mod Manager",
+        "content": "Vortex Mod Manager",
         "description": "Vortex is the new, modern mod manager from Nexus Mods",
         "link": "https://www.nexusmods.com/site/mods/1",
         "winget": "NexusMods.Vortex"
