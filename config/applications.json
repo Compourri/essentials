@@ -1221,7 +1221,7 @@
     "musicbee": {
         "category": "Multimedia",
         "choco": "musicbee",
-        "content": "MusicBee (Music Player)",
+        "content": "MusicBee",
         "description": "MusicBee is a customizable music player with support for various audio formats. It includes features like an integrated search function, tag editing, and more.",
         "link": "https://getmusicbee.com/",
         "winget": "MusicBee.MusicBee"
