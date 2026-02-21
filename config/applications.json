@@ -369,6 +369,14 @@
         "winget": "CrystalDewWorld.CrystalDiskMark",
         "foss": true
     },
+        "cursor": {
+        "category": "Utilities",
+        "choco": "na",
+        "content": "Cursor",
+        "description": "Cursor is an AI-powered code editor that helps developers write and edit code more efficiently.",
+        "link": "https://cursor.com/",
+        "winget": "Anysphere.Cursor"
+    },
     "darktable": {
         "category": "Multimedia",
         "choco": "darktable",
@@ -701,6 +709,14 @@
         "link": "https://github.com/7gxycn08/ForceAutoHDR",
         "winget": "ForceAutoHDR.7gxycn08",
         "foss": true
+    },
+    "foxpdfreader": {
+        "category": "Office",
+        "choco": "foxitreader",
+        "content": "Foxit PDF Reader",
+        "description": "Foxit PDF Reader is a free PDF viewer with a familiar ribbon-style interface.",
+        "link": "https://www.foxit.com/pdf-reader/",
+        "winget": "Foxit.FoxitReader"
     },
     "freecad": {
         "category": "Multimedia",
@@ -1201,6 +1217,14 @@
         "link": "https://musescore.org/en",
         "winget": "Musescore.Musescore",
         "foss": true
+    },
+    "musicbee": {
+        "category": "Multimedia",
+        "choco": "musicbee",
+        "content": "MusicBee (Music Player)",
+        "description": "MusicBee is a customizable music player with support for various audio formats. It includes features like an integrated search function, tag editing, and more.",
+        "link": "https://getmusicbee.com/",
+        "winget": "MusicBee.MusicBee"
     },
     "naps2": {
         "category": "Office",
@@ -2205,6 +2229,15 @@
         "link": "https://www.whatsapp.com/?lang=en/",
         "winget": "9NKSQGP7F2NH"
     },
+    "winamp": {
+        "category": "Multimedia",
+        "choco": "winamp",
+        "content": "Winamp",
+        "description": "Winamp is a media player that supports a wide range of audio and video formats.",
+        "link": "https://www.winamp.com/",
+        "winget": "Winamp.Winamp"
+    },
+
     "windowsfirewallcontrol": {
         "category": "Security",
         "choco": "windowsfirewallcontrol",
