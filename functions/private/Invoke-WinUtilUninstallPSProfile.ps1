@@ -7,5 +7,4 @@ function Invoke-WinUtilUninstallPSProfile {
         Remove-Item $Profile
     }
 
-    Write-Host "Successfully uninstalled Powershell Profile" -ForegroundColor Green
 }
