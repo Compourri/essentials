@@ -30,18 +30,22 @@ Function Install-WinUtilProgramWinget {
     .PARAMETER wingetId
     The Id of the Program that Winget should Install/Uninstall
 
+    .PARAMETER source
+    The source to use for the package
+
     .NOTES
     Invoke Winget uses the public variable $Action defined outside the function to determine if a Program should be installed or removed
     #>
         param (
-            [string]$wingetId
+            [string]$wingetId,
+            [string]$source = "winget"
         )
 
         $commonArguments = "--id $wingetId --silent"
         $arguments = if ($Action -eq "Install") {
-            "install $commonArguments --accept-source-agreements --accept-package-agreements --source winget"
+            "install $commonArguments --accept-source-agreements --accept-package-agreements --source $source"
         } else {
-            "uninstall $commonArguments --source winget"
+            "uninstall $commonArguments --source $source"
         }
 
         $processParams = @{
@@ -61,21 +65,21 @@ Function Install-WinUtilProgramWinget {
     Contains the Install Logic and return code handling from winget
 
     .PARAMETER Program
-    The Winget ID of the Program that should be installed
+    The Program object with id and source
     #>
         param (
-            [string]$Program
+            [psobject]$Program
         )
-        $status = Invoke-Winget -wingetId $Program
+        $status = Invoke-Winget -wingetId $Program.id -source $Program.source
         if ($status -eq 0) {
-            Write-Host "$($Program) installed successfully."
+            Write-Host "$($Program.id) installed successfully."
             return $true
         } elseif ($status -eq -1978335189) {
-            Write-Host "$($Program) No applicable update found"
+            Write-Host "$($Program.id) No applicable update found"
             return $true
         }
 
-        Write-Host "Failed to install $($Program)."
+        Write-Host "Failed to install $($Program.id)."
         return $false
     }
 
@@ -85,23 +89,23 @@ Function Install-WinUtilProgramWinget {
         Contains the Uninstall Logic and return code handling from winget
 
         .PARAMETER Program
-        The Winget ID of the Program that should be uninstalled
+        The Program object with id and source
         #>
         param (
-            [string]$Program
+            [psobject]$Program
         )
 
         try {
-            $status = Invoke-Winget -wingetId $Program
+            $status = Invoke-Winget -wingetId $Program.id -source $Program.source
             if ($status -eq 0) {
-                Write-Host "$($Program) uninstalled successfully."
+                Write-Host "$($Program.id) uninstalled successfully."
                 return $true
             } else {
-                Write-Host "Failed to uninstall $($Program)."
+                Write-Host "Failed to uninstall $($Program.id)."
                 return $false
             }
         } catch {
-            Write-Host "Failed to uninstall $($Program) due to an error: $_"
+            Write-Host "Failed to uninstall $($Program.id) due to an error: $_"
             return $false
         }
     }
@@ -116,7 +120,7 @@ Function Install-WinUtilProgramWinget {
     for ($i = 0; $i -lt $count; $i++) {
         $Program = $Programs[$i]
         $result = $false
-        Set-WinUtilProgressBar -label "$Action $($Program)" -percent ($i / $count * 100)
+        Set-WinUtilProgressBar -label "$Action $($Program.id)" -percent ($i / $count * 100)
         Invoke-WPFUIThread -ScriptBlock{ Set-WinUtilTaskbaritem -value ($i / $count)}
 
         $result = switch ($Action) {
@@ -126,7 +130,7 @@ Function Install-WinUtilProgramWinget {
         }
 
         if (-not $result) {
-            $failedPackages += $Program
+            $failedPackages += $Program.id
         }
     }
 
