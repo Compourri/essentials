@@ -488,7 +488,7 @@ $sync["AboutMenuItem"].Add_Click({
 
     $authorInfo = @"
 Author   : <a href="https://github.com/Compourri">@compourri</a>
-Upstream   : <a href="https://github.com/ChrisTitusTech">@christitustech</a>
+Upstream : <a href="https://github.com/ChrisTitusTech">@christitustech</a>
 UI       : <a href="https://github.com/MyDrift-user">@MyDrift-user</a>, <a href="https://github.com/Marterich">@Marterich</a>
 Runspace : <a href="https://github.com/DeveloperDurp">@DeveloperDurp</a>, <a href="https://github.com/Marterich">@Marterich</a>
 GitHub   : <a href="https://github.com/Compourri/essentials">Compourri/essentials</a>

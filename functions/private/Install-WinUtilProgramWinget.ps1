@@ -65,7 +65,9 @@ Function Install-WinUtilProgramWinget {
     Contains the Install Logic and return code handling from winget
 
     .PARAMETER Program
-    The Program object with id and source
+    The Program object with id and source information that should be installed
+
+     .NOTES
     #>
         param (
             [psobject]$Program
@@ -89,7 +91,7 @@ Function Install-WinUtilProgramWinget {
         Contains the Uninstall Logic and return code handling from winget
 
         .PARAMETER Program
-        The Program object with id and source
+        The Program object with id and source that should be uninstalled
         #>
         param (
             [psobject]$Program

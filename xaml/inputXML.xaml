@@ -1056,6 +1056,7 @@
                     Margin="0,0,2,0"
                     FontFamily="Segoe MDL2 Assets"
                     Content="N/A"
+                    ToolTip="Change the Essentials UI Theme"
                 />
                     <Popup Name="ThemePopup"
                     IsOpen="False"

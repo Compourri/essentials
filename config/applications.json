@@ -33,6 +33,15 @@
         "winget": "ToEverything.AFFiNE",
         "foss": true
     },
+    "ai-as-workspace": {
+        "category": "AI",
+        "choco": "na",
+        "content": "AI as Workspace",
+        "description": "Workspace-style AI chat client with multiple workspaces, plugins, and local-first design; open-source (BSD-3-Clause).",
+        "link": "https://aiaw.app/",
+        "winget": "NitroRCr.AIasWorkspace",
+        "foss": true
+    },
     "aimp": {
         "category": "Multimedia",
         "choco": "aimp",
@@ -86,14 +95,14 @@
         "winget": "Audacity.Audacity",
         "foss": true
     },
-    "autodarkmode": {
-        "category": "Utilities",
-        "choco": "auto-dark-mode",
-        "content": "Auto Dark Mode",
-        "description": "Automatically switches between the dark and light theme of Windows 10 and Windows 11",
-        "link": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode",
-        "winget": "Armin2208.WindowsAutoNightMode",
-        "foss": true
+    "autoit": {
+        "category": "AI",
+        "choco": "autoit.install",
+        "content": "AutoIt",
+        "description": "Windows GUI automation scripting tool (freeware) used to automate keystrokes, mouse actions, and window/control interactions.",
+        "link": "https://www.autoitscript.com/site/autoit/",
+        "winget": "na",
+        "foss": false
     },
     "autoruns": {
         "category": "Microsoft",
@@ -208,6 +217,15 @@
         "link": "https://www.bulkrenameutility.co.uk",
         "winget": "TGRMNSoftware.BulkRenameUtility"
     },
+    "buzz": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Buzz",
+        "description": "Offline audio transcription and translation desktop app powered by Whisper, packaged for Windows and available via WinGet.",
+        "link": "https://github.com/chidiwilliams/buzz",
+        "winget": "ChidiWilliams.Buzz",
+        "foss": true
+    },
     "calibre": {
         "category": "Office",
         "choco": "calibre",
@@ -248,10 +266,10 @@
         "category": "AI",
         "choco": "na",
         "content": "ChatGPT",
-        "description": "The official ChatGPT desktop app brings you the newest model improvements from OpenAI.",
-        "link": "https://chatgpt.com/",
+         "description": "ChatGPT desktop app provides direct access to OpenAI's conversational AI assistant for writing, analysis, and productivity tasks.",
+        "link": "https://openai.com/chatgpt/desktop/",
         "winget": "9NT1R1C2HH7J",
-        "source": "msstore"
+        "foss": false
     },
     "chrome": {
         "category": "Browsers",
@@ -284,7 +302,17 @@
         "content": "Claude",
         "description": "Claude is a desktop application that helps you focus on your work. It's designed to be fast, focused, and to help you get more done.",
         "link": "https://claude.com/download",
-        "winget": "Anthropic.Claude"
+        "winget": "Anthropic.Claude",
+        "foss": false
+    },
+    "claude-code": {
+        "category": "AI",
+        "choco": "claude-code",
+        "content": "Claude Code",
+        "description": "Anthropic's agentic coding tool for the terminal/IDE workflows, available on Windows and distributed via WinGet.",
+        "link": "https://code.claude.com/",
+        "winget": "Anthropic.ClaudeCode",
+        "foss": false
     },
     "clementine": {
         "category": "Multimedia",
@@ -326,7 +354,6 @@
         "content": "Copilot",
         "description": "From the convenience of your desktop, it’s your thinking partner, your organizer, your guide",
         "link": "https://copilot.microsoft.com/",
-        "source": "msstore",
         "winget": "9NHT9RB2F4HD"
     },
     "copyq": {
@@ -389,6 +416,15 @@
         "link": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
         "winget": "Wagnardsoft.DisplayDriverUninstaller",
         "foss": true
+    },
+    "deepl": {
+        "category": "AI",
+        "choco": "deepl",
+        "content": "DeepL",
+        "description": "DeepL desktop translation and writing assistant for Windows, including shortcuts and in-app writing improvement features.",
+        "link": "https://www.deepl.com/en/windows-app",
+        "winget": "DeepL.DeepL",
+        "foss": false
     },
     "digikam": {
         "category": "Multimedia",
@@ -463,6 +499,14 @@
         "description": ".NET Desktop Runtime 9 is a runtime environment required for running applications developed with .NET 9.",
         "link": "https://dotnet.microsoft.com/download/dotnet/9.0",
         "winget": "Microsoft.DotNet.DesktopRuntime.9"
+    },
+    "dotnet10": {
+        "category": "Microsoft",
+        "choco": "dotnet-10.0-runtime",
+        "content": ".NET Desktop Runtime 10",
+        "description": ".NET Desktop Runtime 10 is a runtime environment required for running applications developed with .NET 10.",
+        "link": "https://dotnet.microsoft.com/download/dotnet/10.0",
+        "winget": "Microsoft.DotNet.DesktopRuntime.10"
     },
     "dmt": {
         "winget": "GNE.DualMonitorTools",
@@ -773,6 +817,15 @@
         "link": "https://www.google.com/drive/",
         "winget": "Google.GoogleDrive"
     },
+    "gpt4all": {
+        "category": "AI",
+        "choco": "gpt4all",
+        "content": "GPT4All",
+        "description": "Open-source desktop application to run LLMs locally with an emphasis on privacy (MIT-licensed codebase).",
+        "link": "https://nomic.ai/gpt4all",
+        "winget": "nomic.gpt4all",
+        "foss": true
+    },
     "gpuz": {
         "category": "Benchmarking",
         "choco": "gpu-z",
@@ -789,14 +842,6 @@
         "link": "https://getgreenshot.org/",
         "winget": "Greenshot.Greenshot",
         "foss": true
-    },
-    "guilded": {
-        "category": "Communications",
-        "choco": "na",
-        "content": "Guilded",
-        "description": "Guilded is a communication and productivity platform that includes chat, scheduling, and collaborative tools for gaming and communities.",
-        "link": "https://www.guilded.gg/",
-        "winget": "Guilded.Guilded"
     },
     "handbrake": {
         "category": "Multimedia",
@@ -918,6 +963,15 @@
         "description": "iTunes is a media player, media library, and online radio broadcaster application developed by Apple Inc.",
         "link": "https://www.apple.com/itunes/",
         "winget": "Apple.iTunes"
+    },
+    "jan": {
+        "category": "AI",
+        "choco": "jan",
+        "content": "Jan",
+        "description": "Open-source ChatGPT alternative that runs on your computer (offline-first desktop AI assistant / local model runner).",
+        "link": "https://jan.ai/",
+        "winget": "Jan.Jan",
+        "foss": true
     },
     "jellyfinmediaplayer": {
         "category": "Multimedia",
@@ -1082,7 +1136,8 @@
         "content": "LM Studio",
         "description": "LM Studio is an easy to use desktop app for experimenting with local and open-source Large Language Models",
         "link": "https://lmstudio.ai/",
-        "winget": "ElementLabs.LMStudio"
+        "winget": "ElementLabs.LMStudio",
+        "foss": false
     },
     "localsend": {
         "category": "Smartphone",
@@ -1134,6 +1189,15 @@
         "description": "Boost your productivity and send better email with Mailspring, the best mail client for Mac, Linux, and Windows",
         "link": "https://www.getmailspring.com/",
         "winget": "Foundry376.Mailspring",
+        "foss": true
+    },
+    "microsoft-aishell": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Microsoft AI Shell",
+        "description": "CLI shell that connects to AI assistance providers ('agents') for command-line productivity; distributed via WinGet.",
+        "link": "https://github.com/PowerShell/AIShell",
+        "winget": "Microsoft.AIShell",
         "foss": true
     },
     "Microsoft365": {
@@ -1285,14 +1349,6 @@
         "winget": "Notepad++.Notepad++",
         "foss": true
     },
-    "ntlite": {
-        "category": "Microsoft",
-        "choco": "ntlite-free",
-        "content": "NTLite",
-        "description": "Integrate updates, drivers, automate Windows and application setup, speedup Windows deployment process and have it all set for the next time.",
-        "link": "https://ntlite.com",
-        "winget": "Nlitesoft.NTLite"
-    },
     "nuget": {
         "category": "Microsoft",
         "choco": "nuget.commandline",
@@ -1342,6 +1398,15 @@
         "description": "Okular is a versatile document viewer with advanced features.",
         "link": "https://okular.kde.org/",
         "winget": "KDE.Okular",
+        "foss": true
+    },
+    "ollama": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Ollama",
+        "description": "Ollama lets you run and manage local large language models on your desktop.",
+        "link": "https://ollama.com/",
+        "winget": "Ollama.Ollama",
         "foss": true
     },
     "onedrive": {
@@ -1414,6 +1479,14 @@
         "link": "https://apps.microsoft.com/detail/9nrx63209r7b?hl=en-US&gl=US",
         "winget": "9NRX63209R7B"
     },
+    "Overwolf": {
+        "category": "Games",
+        "choco": "overwolf",
+        "content": "Overwolf",
+        "description": "Popular platform for game overlays and companion apps (mod managers, trackers, etc.), widely used by gamers.",
+        "link": "https://www.overwolf.com/app/overwolf-curseforge",
+        "winget": "Overwolf.CurseForge"
+    },
     "OVirtualBox": {
         "category": "Utilities",
         "choco": "virtualbox",
@@ -1465,6 +1538,14 @@
         "description": "PDFgear is a piece of full-featured PDF management software for Windows, Mac, and mobile, and it's completely free to use.",
         "link": "https://www.pdfgear.com/",
         "winget": "PDFgear.PDFgear"
+    },
+    "pdf-xchange": {
+        "category": "Office",
+        "choco": "pdfxchangeeditor",
+        "content": "PDF-XChangeEditor",
+        "description": "a comprehensive Windows-based software suite and editor for creating, viewing, editing, annotating, and signing PDF files.",
+        "link": "https://www.pdf-xchange.com/",
+        "winget": "TrackerSoftware.PDF-XChangeEditor"
     },
     "piimager": {
         "category": "Utilities",
