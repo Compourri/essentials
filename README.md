@@ -5,7 +5,7 @@
 
 Back in 2008, we compiled a DVD called 'Compourri Software Essentials.' It contained all the crucial software for Windows PCs from that era. Fast forward to today, and we've updated the concept for modern Windows 10 and Windows 11 systems—software essentials galore!
 
-![screen](https://compourri.co.za/screen.webp)
+![screen](https://compourri.co.za/images/screen.webp)
 
 ## 💡 Usage
 
