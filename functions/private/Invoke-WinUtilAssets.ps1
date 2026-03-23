@@ -24,7 +24,7 @@ function Invoke-WinUtilAssets {
 
   switch ($type) {
       'logo' {
-        $LogoUrl = "https://compourri.co.za/wp-content/uploads/2021/02/icon-e1762290054241.png"
+        $LogoUrl = "https://compourri.co.za/images/essentials.png"
         $BitmapImage = [Windows.Media.Imaging.BitmapImage]::new([Uri]::new($LogoUrl))
 
         # Create an Image control to hold the BitmapImage
