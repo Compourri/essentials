@@ -801,6 +801,15 @@
         "winget": "GIMP.GIMP.3",
         "foss": true
     },
+        "githubdesktop": {
+        "category": "Utilities",
+        "choco": "na",
+        "content": "Github Desktop",
+        "description": "Github Desktop is a simple and intuitive way to use Git and GitHub on your computer.",
+        "link": "https://desktop.github.com/",
+        "winget": "GitHub.GitHubDesktop",
+        "foss": true
+    },
     "gog": {
         "category": "Games",
         "choco": "goggalaxy",
