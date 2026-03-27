@@ -39,15 +39,6 @@ function Show-CustomDialog {
     .PARAMETER ButtonBackgroundColor
     The Background Color for Buttons in dialog window.
 
-    .PARAMETER ButtonForegroundColor
-    The Foreground Color for Buttons in dialog window.
-
-    .PARAMETER ShadowColor
-    The Color used when creating the Drop-down Shadow effect for dialog window.
-
-    .PARAMETER LogoColor
-    The Color of WinUtil Text found next to WinUtil's Logo inside dialog window.
-
     .PARAMETER LinkForegroundColor
     The Foreground Color for Links inside dialog window.
 

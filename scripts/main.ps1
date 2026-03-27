@@ -499,7 +499,7 @@ Version  : <a href="https://github.com/Compourri/essentials/releases/tag/$($sync
 $sync["DocumentationMenuItem"].Add_Click({
     Write-Debug "Documentation clicked"
     Invoke-WPFPopup -Action "Hide" -Popups @("Settings")
-    Start-Process "https://compourri.co.za/user-guide/"
+    Start-Process "https://compourri.co.za/getting-started"
 })
 
 # Font Scaling Event Handlers
