@@ -354,7 +354,8 @@
         "content": "Copilot",
         "description": "From the convenience of your desktop, it’s your thinking partner, your organizer, your guide",
         "link": "https://copilot.microsoft.com/",
-        "winget": "XP9CXNGPPJ97XX"
+        "winget": "XP9CXNGPPJ97XX",
+        "source": "msstore"
     },
     "copyq": {
         "category": "Utilities",
