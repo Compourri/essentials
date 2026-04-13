@@ -262,7 +262,7 @@
         "winget": "Cemu.Cemu",
         "foss": true
     },
-    "chatGPT": {
+    "chatgpt": {
         "category": "AI",
         "choco": "na",
         "content": "ChatGPT",
@@ -352,7 +352,7 @@
         "category": "AI",
         "choco": "na",
         "content": "Copilot",
-        "description": "From the convenience of your desktop, it’s your thinking partner, your organizer, your guide",
+        "description": "From the convenience of your desktop, it's your thinking partner, your organizer, your guide",
         "link": "https://copilot.microsoft.com/",
         "winget": "XP9CXNGPPJ97XX",
         "source": "msstore"
@@ -426,6 +426,15 @@
         "link": "https://www.deepl.com/en/windows-app",
         "winget": "DeepL.DeepL",
         "foss": false
+    },
+    "deluge": {
+        "category": "Utilities",
+        "choco": "deluge",
+        "content": "Deluge",
+        "description": "Deluge is a free and open-source BitTorrent client. It features a user-friendly interface, support for plugins, and the ability to manage torrents remotely.",
+        "link": "https://deluge-torrent.org/",
+        "winget": "DelugeTeam.Deluge",
+        "foss": true
     },
     "digikam": {
         "category": "Multimedia",
@@ -585,6 +594,15 @@
         "winget": "Emulationstation.Emulationstation",
         "foss": true
     },
+    "entauth": {
+        "category": "Security",
+        "choco": "ente-auth",
+        "content": "Ente Auth",
+        "description": "Ente Auth is a free, cross-platform, end-to-end encrypted authenticator app.",
+        "link": "https://ente.io/auth/",
+        "winget": "ente-io.auth-desktop",
+        "foss": true
+    },
     "epicgames": {
         "category": "Games",
         "choco": "epicgameslauncher",
@@ -725,6 +743,24 @@
         "winget": "Mozilla.Firefox",
         "foss": true
     },
+    "firefoxesr": {
+        "category": "Browsers",
+        "choco": "FirefoxESR",
+        "content": "Firefox ESR",
+        "description": "Mozilla Firefox is an open-source web browser known for its customization options, privacy features, and extensions. Firefox ESR (Extended Support Release) receives major updates every 42 weeks with minor updates such as crash fixes, security fixes and policy updates as needed, but at least every four weeks.",
+        "link": "https://www.mozilla.org/en-US/firefox/enterprise/",
+        "winget": "Mozilla.Firefox.ESR",
+        "foss": true
+    },
+    "floorp": {
+        "category": "Browsers",
+        "choco": "na",
+        "content": "Floorp",
+        "description": "Floorp is an open-source web browser project that aims to provide a simple and fast browsing experience.",
+        "link": "https://floorp.app/",
+        "winget": "Ablaze.Floorp",
+        "foss": true
+    },
     "flameshot": {
         "category": "Multimedia",
         "choco": "flameshot",
@@ -750,6 +786,14 @@
         "link": "https://github.com/7gxycn08/ForceAutoHDR",
         "winget": "ForceAutoHDR.7gxycn08",
         "foss": true
+    },
+    "foxpdfeditor": {
+        "category": "Office",
+        "choco": "na",
+        "content": "Foxit PDF Editor",
+        "description": "Foxit PDF Editor is a feature-rich PDF editor and viewer with a familiar ribbon-style interface.",
+        "link": "https://www.foxit.com/pdf-editor/",
+        "winget": "Foxit.PhantomPDF"
     },
     "foxpdfreader": {
         "category": "Office",
@@ -2443,6 +2487,15 @@
         "description": "XEMU is an open-source Xbox emulator that allows you to play Xbox games on your PC, aiming for accuracy and compatibility.",
         "link": "https://xemu.app/",
         "winget": "xemu-project.xemu",
+        "foss": true
+    },
+    "xenia": {
+        "category": "Games",
+        "choco": "na",
+        "content": "Xenia Canary",
+        "description": "Xenia is an open-source Xbox 360 emulator that allows you to play Xbox 360 games on your PC, aiming for high performance and compatibility.",
+        "link": "https://github.com/xenia-canary/xenia-canary",
+        "winget": "Xenia.XeniaCanary",
         "foss": true
     },
     "xnview": {
