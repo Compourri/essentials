@@ -1323,6 +1323,15 @@
         "winget": "MullvadVPN.MullvadVPN",
         "foss": true
     },
+    "tailscale": {
+        "category": "Security",
+        "choco": "tailscale",
+        "content": "Tailscale",
+        "description": "Tailscale is a secure and easy-to-use VPN solution for connecting your devices and networks.",
+        "link": "https://tailscale.com/",
+        "winget": "tailscale.tailscale",
+        "foss": true
+    },
     "musescore": {
         "category": "Multimedia",
         "choco": "musescore",
