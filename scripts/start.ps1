@@ -3,7 +3,6 @@
     Author         : George van der Westhuizen @Compourri
     Upstream       : Chris Titus @ChrisTitusTech
     Runspace Author: @DeveloperDurp
-    Runspace Author: @DeveloperDurp
     GitHub         : https://github.com/Compourri
     Version        : #{replaceme}
 #>
@@ -35,6 +34,10 @@ if ($Offline) {
     $PARAM_OFFLINE = $true
 }
 
+if ($ExecutionContext.SessionState.LanguageMode -ne 'FullLanguage') {
+    Write-Host "WinUtil is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
+    return
+}
 
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Output "Winutil needs to be run as Administrator. Attempting to relaunch."

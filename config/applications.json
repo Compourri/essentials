@@ -1045,14 +1045,6 @@
         "winget": "Jellyfin.Server",
         "foss": true
     },
-        "jbs": {
-        "category": "Utilities",
-        "choco": "na",
-        "content": "John’s Background Switcher",
-        "description": "John’s Background Switcher puts beautiful full-screen photos and stunning montages on your desktop from places like your computer, Flickr, SmugMug, Unsplash, Pixabay and plenty more places. ",
-        "link": "https://johnsad.ventures/software/backgroundswitcher/",
-        "winget": "johnsadventures.JohnsBackgroundSwitcher"
-    },
     "joplin": {
         "category": "Office",
         "choco": "joplin",
@@ -1843,15 +1835,6 @@
         "winget": "Rufus.Rufus",
         "foss": true
     },
-    "rustdesk": {
-        "category": "Utilities",
-        "choco": "rustdesk.portable",
-        "content": "RustDesk",
-        "description": "RustDesk is a free and open-source remote desktop application. It provides a secure way to connect to remote machines and access desktop environments.",
-        "link": "https://rustdesk.com/",
-        "winget": "RustDesk.RustDesk",
-        "foss": true
-    },
     "sagethumbs": {
         "category": "Utilities",
         "choco": "sagethumbs",
@@ -1964,6 +1947,15 @@
         "description": "A tool application that lets you understand how folders and files are structured on your disks",
         "link": "http://www.uderzo.it/main_products/space_sniffer/",
         "winget": "UderzoSoftware.SpaceSniffer"
+    },
+    "spice": {
+        "category": "Utilities",
+        "choco": "na",
+        "content": "Spice",
+        "description": "Spice is a premium wallpaper manager that automatically cycles high-quality wallpapers from Wallhaven, Pexels, curated museum collections, your personal Google Photos, and Wikimedia Commons.",
+        "link": "https://github.com/dixieflatline76/Spice",
+        "winget": "dixieflatline76.Spice",
+        "foss": true
     },
     "spotify": {
         "category": "Multimedia",

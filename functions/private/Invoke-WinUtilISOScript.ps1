@@ -50,7 +50,6 @@ function Invoke-WinUtilISOScript {
     .NOTES
         Author  : Chris Titus @christitustech
         GitHub  : https://github.com/ChrisTitusTech
-        Version : 26.03.02
     #>
     param (
         [Parameter(Mandatory)][string]$ScratchDir,
@@ -116,48 +115,25 @@ function Invoke-WinUtilISOScript {
         ForEach-Object { if ($_ -match 'PackageName : (.*)') { $matches[1] } }
 
     $packagePrefixes = @(
-        'AppUp.IntelManagementandSecurityStatus',
         'Clipchamp.Clipchamp',
-        'DolbyLaboratories.DolbyAccess',
-        'DolbyLaboratories.DolbyDigitalPlusDecoderOEM',
         'Microsoft.BingNews',
         'Microsoft.BingSearch',
         'Microsoft.BingWeather',
-        'Microsoft.Copilot',
-        'Microsoft.Windows.CrossDevice',
         'Microsoft.GetHelp',
-        'Microsoft.Getstarted',
-        'Microsoft.Microsoft3DViewer',
         'Microsoft.MicrosoftOfficeHub',
         'Microsoft.MicrosoftSolitaireCollection',
         'Microsoft.MicrosoftStickyNotes',
-        'Microsoft.MixedReality.Portal',
-        'Microsoft.MSPaint',
-        'Microsoft.Office.OneNote',
-        'Microsoft.OfficePushNotificationUtility',
         'Microsoft.OutlookForWindows',
         'Microsoft.Paint',
-        'Microsoft.People',
         'Microsoft.PowerAutomateDesktop',
-        'Microsoft.SkypeApp',
         'Microsoft.StartExperiencesApp',
         'Microsoft.Todos',
-        'Microsoft.Wallet',
         'Microsoft.Windows.DevHome',
-        'Microsoft.Windows.Copilot',
-        'Microsoft.Windows.Teams',
-        'Microsoft.WindowsAlarms',
-        'Microsoft.WindowsCamera',
-        'microsoft.windowscommunicationsapps',
         'Microsoft.WindowsFeedbackHub',
-        'Microsoft.WindowsMaps',
         'Microsoft.WindowsSoundRecorder',
         'Microsoft.ZuneMusic',
-        'Microsoft.ZuneVideo',
-        'MicrosoftCorporationII.MicrosoftFamily',
         'MicrosoftCorporationII.QuickAssist',
-        'MSTeams',
-        'MicrosoftTeams'
+        'MSTeams'
     )
 
     $packages | Where-Object { $pkg = $_; $packagePrefixes | Where-Object { $pkg -like "*$_*" } } |
@@ -193,13 +169,7 @@ function Invoke-WinUtilISOScript {
         & $Log "Driver injection skipped."
     }
 
-    # ── 3. Remove OneDrive ────────────────────────────────────────────────────
-    & $Log "Removing OneDrive..."
-    & takeown /f "$ScratchDir\Windows\System32\OneDriveSetup.exe" | Out-Null
-    & icacls    "$ScratchDir\Windows\System32\OneDriveSetup.exe" /grant "$($adminGroup.Value):(F)" /T /C | Out-Null
-    Remove-Item -Path "$ScratchDir\Windows\System32\OneDriveSetup.exe" -Force -ErrorAction SilentlyContinue
-
-    # ── 4. Registry tweaks ────────────────────────────────────────────────────
+    # ── 3. Registry tweaks ────────────────────────────────────────────────────
     & $Log "Loading offline registry hives..."
     reg load HKLM\zCOMPONENTS "$ScratchDir\Windows\System32\config\COMPONENTS"
     reg load HKLM\zDEFAULT    "$ScratchDir\Windows\System32\config\default"
@@ -353,7 +323,7 @@ function Invoke-WinUtilISOScript {
     reg unload HKLM\zSOFTWARE
     reg unload HKLM\zSYSTEM
 
-    # ── 5. Delete scheduled task definition files ─────────────────────────────
+    # ── 4. Delete scheduled task definition files ─────────────────────────────
     & $Log "Deleting scheduled task definition files..."
     $tasksPath = "$ScratchDir\Windows\System32\Tasks"
     Remove-Item "$tasksPath\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" -Force -ErrorAction SilentlyContinue
@@ -369,7 +339,7 @@ function Invoke-WinUtilISOScript {
     Remove-Item "$tasksPath\Microsoft\WindowsUpdate"                                                   -Recurse -Force -ErrorAction SilentlyContinue
     & $Log "Scheduled task files deleted."
 
-    # ── 6. Remove ISO support folder ─────────────────────────────────────────
+    # ── 5. Remove ISO support folder ─────────────────────────────────────────
     if ($ISOContentsDir -and (Test-Path $ISOContentsDir)) {
         & $Log "Removing ISO support\ folder..."
         Remove-Item -Path (Join-Path $ISOContentsDir "support") -Recurse -Force -ErrorAction SilentlyContinue

@@ -136,6 +136,6 @@ Function Install-WinUtilProgramWinget {
         }
     }
 
-    Set-WinUtilProgressBar -label "$($Action)ation done" -percent 100
+    Set-WinUtilProgressBar -label "$($Action)action done" -percent 100
     return $failedPackages
 }

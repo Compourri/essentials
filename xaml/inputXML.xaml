@@ -1181,6 +1181,7 @@
                             <Separator/>
                             <MenuItem FontSize="{DynamicResource ButtonFontSize}" Header="About" Name="AboutMenuItem" Foreground="{DynamicResource MainForegroundColor}"/>
                             <MenuItem FontSize="{DynamicResource ButtonFontSize}" Header="Documentation" Name="DocumentationMenuItem" Foreground="{DynamicResource MainForegroundColor}"/>
+                            <MenuItem FontSize="{DynamicResource ButtonFontSize}" Header="Sponsors" Name="SponsorMenuItem" Foreground="{DynamicResource MainForegroundColor}"/>
                         </StackPanel>
                     </Border>
                 </Popup>
@@ -1324,6 +1325,8 @@
                                          - Feature updates delayed by 365 days
                                         <LineBreak/>
                                          - Security updates installed after 4 days
+                                        <LineBreak/>
+                                         - Prevents Windows Update from installing drivers
                                         <LineBreak/><LineBreak/>
                                         <Run FontWeight="SemiBold">Feature Updates:</Run> New features and potential bugs
                                         <LineBreak/>

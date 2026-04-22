@@ -501,7 +501,6 @@ $sync["DocumentationMenuItem"].Add_Click({
     Invoke-WPFPopup -Action "Hide" -Popups @("Settings")
     Start-Process "https://compourri.co.za/getting-started"
 })
-
 # Font Scaling Event Handlers
 $sync["FontScalingButton"].Add_Click({
     Write-Debug "FontScalingButton clicked"

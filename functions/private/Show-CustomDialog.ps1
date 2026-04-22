@@ -39,6 +39,15 @@ function Show-CustomDialog {
     .PARAMETER ButtonBackgroundColor
     The Background Color for Buttons in dialog window.
 
+    .PARAMETER ButtonForegroundColor
+    The Foreground Color for Buttons in dialog window.
+
+    .PARAMETER ShadowColor
+    The Color used when creating the Drop-down Shadow effect for dialog window.
+
+    .PARAMETER LogoColor
+    The Color of WinUtil Text found next to WinUtil's Logo inside dialog window.
+
     .PARAMETER LinkForegroundColor
     The Foreground Color for Links inside dialog window.
 
@@ -168,8 +177,8 @@ function Show-CustomDialog {
 
     # Add "Winutil" text
     $winutilTextBlock = New-Object Windows.Controls.TextBlock
+    $winutilTextBlock.Text = "    Compourri Software Essentials"
     $winutilTextBlock.FontSize = $HeaderFontSize
-    $winutilTextBlock.Text = "      Compourri Software Essentials"
     $winutilTextBlock.Foreground = $LogoColor
     $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the text block
     $stackPanel.Children.Add($winutilTextBlock)
