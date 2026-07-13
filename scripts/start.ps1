@@ -102,5 +102,5 @@ New-Item $logdir -ItemType Directory -Force | Out-Null
 Start-Transcript -Path "$logdir\essentials_$dateTime.log" -Append -NoClobber | Out-Null
 
 # Set PowerShell window title
-$Host.UI.RawUI.WindowTitle = "Essentials (Admin)"
+$Host.UI.RawUI.WindowTitle = "Software Essentials (Admin)"
 clear-host

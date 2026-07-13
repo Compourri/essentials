@@ -92,10 +92,10 @@ dateFormat = "January 2, 2006"
   displayLogo = true
 
     [params.navbar.logo]
-    path = "navlogo.png"
-    dark = "navlogo.png"
+    path = "navlogo.webp"
+    dark = "navlogo.webp"
     link = "/"
-    width = 150
+    width = 200
     height = 50
 
   [params.theme]

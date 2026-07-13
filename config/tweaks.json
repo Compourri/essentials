@@ -842,7 +842,7 @@
   },
   "WPFTweaksRestorePoint": {
     "Content": "Restore Point - Create",
-    "Description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications.",
+    "Description": "Creates a restore point at runtime in case a revert is needed from Software Essentials modifications.",
     "category": "Essential Tweaks",
     "panel": "1",
     "Checked": "False",
@@ -861,7 +861,7 @@
           Enable-ComputerRestore -Drive $Env:SystemDrive
       }
 
-      Checkpoint-Computer -Description \"System Restore Point created by WinUtil\" -RestorePointType MODIFY_SETTINGS
+      Checkpoint-Computer -Description \"System Restore Point created by Software Essentials\" -RestorePointType MODIFY_SETTINGS
       Write-Host \"System Restore Point Created Successfully\" -ForegroundColor Green
       "
     ],

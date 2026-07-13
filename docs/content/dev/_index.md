@@ -9,7 +9,7 @@ toc: false
 
 ## Architecture
 
-- [Architecture & Design](architecture/) - Code structure, data flow, and how Winutil works internally
+- [Architecture & Design](architecture/) - Code structure, data flow, and how Software Essentials works internally
 
 ## Tweaks
 

@@ -75,7 +75,7 @@ Run:
 
 Verify:
 
-- WinUtil launches correctly
+- Software Essentials launches correctly
 - Your feature works
 - Nothing else breaks
 

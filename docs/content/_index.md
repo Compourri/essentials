@@ -1,5 +1,5 @@
 ---
-title: Welcome to WinUtil Documentation!
+title: Welcome to Software Essentials Documentation!
 toc: false
 width: full
 ---
@@ -10,11 +10,11 @@ width: full
   <a href="https://discord.gg/RUbZUZyByQ"><img src="https://dcbadge.limes.pink/api/server/https://discord.gg/RUbZUZyByQ" alt="Discord Community Server" style="height: 28px; width: auto; min-width: 10px; object-fit: contain; margin: 0;"></a>
 </div>
 
-Welcome to the official documentation for WinUtil, your go-to utility for optimizing and managing your Windows environment. Whether you’re an IT professional, power user, or regular user, WinUtil provides a comprehensive set of tools to enhance your Windows experience.
+Welcome to the official documentation for Software Essentials, your go-to utility for optimizing and managing your Windows environment. Whether you’re an IT professional, power user, or regular user, Software Essentials provides a comprehensive set of tools to enhance your Windows experience.
 
-{{< image src="images/Title-Screen" alt="WinUtil title screen" >}}
+{{< image src="images/Title-Screen" alt="Software Essentials title screen" >}}
 
-## Running the latest release of WinUtil
+## Running the latest release of Software Essentials
 
 * You will first need to start a PowerShell terminal **as Admin**.
 * Now you can run the following command:
@@ -25,4 +25,4 @@ irm "https://compourri.co.za/win" | iex
 
 
 > [!IMPORTANT]
-> WinUtil is updated frequently as of the time of writing. Consequently, features and functionalities may evolve, and the documentation may not always reflect the most current images or information.
+> Software Essentials is updated frequently as of the time of writing. Consequently, features and functionalities may evolve, and the documentation may not always reflect the most current images or information.

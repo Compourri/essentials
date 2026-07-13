@@ -2,7 +2,7 @@
 
 ## Testing
 
-* Test the latest changes to WinUtil by running the pre-release and reporting issues you are encountering to help us continually improve WinUtil!
+* Test the latest changes to Software Essentials by running the pre-release and reporting issues you are encountering to help us continually improve Software Essentials!
 
 #### **Run the latest pre-release**
    ```ps1
@@ -33,7 +33,7 @@
 
 !!! note
 
-     When creating a function, please include "WPF" or "WinUtil" in the file name so it can be loaded into the runspace.
+     When creating a function, please include "WPF" or "WinUtil" in the file name so it can be loaded into the runspace. (Note: "WinUtil" in file names is a technical convention and should remain as-is.)
 
 ## Walk through
 
@@ -75,14 +75,14 @@ graph TD
 ### Clone the Fork
 !!! tip
 
-     While you can make your changes directly through the Web, we recommend cloning the repo to your device using the application GitHub Desktop (available in WinUtil) to test your fork easily.
+     While you can make your changes directly through the Web, we recommend cloning the repo to your device using the application GitHub Desktop (available in Software Essentials) to test your fork easily.
 
 * Install GitHub Desktop if it is not already installed.
-* Log in using the same GitHub account you used to fork WinUtil.
+* Log in using the same GitHub account you used to fork Software Essentials.
 * Choose the fork under "Your Repositories" and press "clone {repo name}"
 * Create a new branch and name it something relatable to your changes.
 
-* Now you can modify WinUtil to your liking using your preferred text editor.
+* Now you can modify Software Essentials to your liking using your preferred text editor.
 
 
 ### Testing your changes
@@ -91,7 +91,7 @@ graph TD
 
 * Change the directory where you are running the commands to the forked project.
 * `cd {path to the folder with the compile.ps1}`
-* Run the following command to compile and run WinUtil:
+* Run the following command to compile and run Software Essentials:
 * `.\Compile.ps1 -run`
 
 ![Compile](assets/Compile.png)
@@ -114,4 +114,4 @@ graph TD
 ### Making a PR
 * To make a PR on your repo under a new branch linking to the main branch, a button will show and say Preview and Create pull request. Click that button and fill in all the information that is provided on the template. Once all the information is filled in correctly, check your PR to make sure there is not a WinUtil.ps1 file attached to the PR. Once everything is good, make the PR and wait for Chris (the maintainer) to accept or deny your PR. Once it is accepted by Chris, you will be able to see your changes in the "/windev" build.
 * If you do not see your feature in the main "/win" build, that is fine. All new changes go into the /windev build to make sure everything is working OK before going fully public.
-* Congratulations! You just submitted your first PR. Thank you so much for contributing to WinUtil.
+* Congratulations! You just submitted your first PR. Thank you so much for contributing to Software Essentials.

@@ -6,13 +6,13 @@ toc: true
 
 ## Overview
 
-WinUtil is a PowerShell-based Windows utility with a WPF (Windows Presentation Foundation) GUI. This document explains the architecture, code structure, and how different components work together.
+Software Essentials is a PowerShell-based Windows utility with a WPF (Windows Presentation Foundation) GUI. This document explains the architecture, code structure, and how different components work together.
 
 ## High-Level Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                    Winutil GUI                      │
+│                    Software Essentials GUI                      │
 │              (WPF XAML Interface)                   │
 └──────────────────┬──────────────────────────────────┘
                    │
@@ -130,7 +130,7 @@ winutil/
 
 ## Win11 Creator Architecture
 
-The **Win11 Creator** is a specialized subsystem within Winutil that creates customized Windows 11 ISOs. It operates independently from the main package installation and tweak system.
+The **Win11 Creator** is a specialized subsystem within Software Essentials that creates customized Windows 11 ISOs. It operates independently from the main package installation and tweak system.
 
 ### Win11 Creator Components
 
@@ -395,7 +395,7 @@ Update UI
 
 ## PowerShell Runspace
 
-Winutil uses PowerShell runspaces for the GUI to remain responsive:
+Software Essentials uses PowerShell runspaces for the GUI to remain responsive:
 
 ```powershell
 # Create runspace
@@ -457,7 +457,7 @@ choco install $app.choco -y
 
 ## Error Handling
 
-Winutil uses PowerShell error handling:
+Software Essentials uses PowerShell error handling:
 
 ```powershell
 try {
@@ -475,7 +475,7 @@ catch {
 
 ## Configuration Loading
 
-At startup, Winutil loads all configurations:
+At startup, Software Essentials loads all configurations:
 
 ```powershell
 # Load JSON configs

@@ -6,39 +6,39 @@ toc: true
 ## General Questions
 
 ### Is Windows 10 still supported?
-No. Windows 10 is no longer supported by WinUtil because it reached the end of support on **October 14, 2025**.
-WinUtil is focused on Windows 11.
+No. Windows 10 is no longer supported by Software Essentials because it reached the end of support on **October 14, 2025**.
+Software Essentials is focused on Windows 11.
 
-### How do I uninstall WinUtil?
-You do not need to uninstall WinUtil. Because it runs as a PowerShell script, it is loaded into memory only while it is open. Once you close it, it is removed from memory and does not remain installed on your system.
+### How do I uninstall Software Essentials?
+You do not need to uninstall Software Essentials. Because it runs as a PowerShell script, it is loaded into memory only while it is open. Once you close it, it is removed from memory and does not remain installed on your system.
 
-### Is WinUtil safe to use?
-Yes, WinUtil is open source, and the code is publicly available on GitHub. Thousands of users run it daily. However, like any system modification tool, you should:
+### Is Software Essentials safe to use?
+Yes, Software Essentials is open source, and the code is publicly available on GitHub. Thousands of users run it daily. However, like any system modification tool, you should:
 - Run it as Administrator (required)
 - Create a restore point before major changes
 - Understand what tweaks you're applying
 - Run only from [official source](https://github.com/Compourri/essentials/)
 
-### Do I need to keep running WinUtil?
-No. Once you've applied tweaks or installed applications, you can close WinUtil. Changes persist after closing. You only need to run WinUtil again when you want to make additional changes or undo tweaks.
+### Do I need to keep running Software Essentials?
+No. Once you've applied tweaks or installed applications, you can close Software Essentials. Changes persist after closing. You only need to run Software Essentials again when you want to make additional changes or undo tweaks.
 
-### Does Winutil require internet access?
+### Does Software Essentials require internet access?
 - **For downloading**: Yes, installing applications requires the Internet
 - **For tweaks**: No, most tweaks work offline
 - **Initial run**: Yes, to run the latest script
 
-### How often is WinUtil updated?
-WinUtil is actively maintained with frequent updates. New features, bug fixes, and application additions are released regularly. The script auto-downloads the latest version each time you run it.
+### How often is Software Essentials updated?
+Software Essentials is actively maintained with frequent updates. New features, bug fixes, and application additions are released regularly. The script auto-downloads the latest version each time you run it.
 
 ## Installation & Running
 
-### How do I run WinUtil?
+### How do I run Software Essentials?
 1. Open PowerShell as Administrator
 2. Run: `irm "https://compourri.co.za/win" | iex`
 3. Wait for the GUI to appear
 
 ### Why do I need Administrator rights?
-WinUtil makes system-level changes (registry edits, service modifications, software installation) that require elevated permissions. Without admin rights, most features won't work.
+Software Essentials makes system-level changes (registry edits, service modifications, software installation) that require elevated permissions. Without admin rights, most features won't work.
 
 ### The script won't download. What do I do?
 Try these solutions in order:
@@ -74,7 +74,7 @@ This only affects the current PowerShell session and is safe.
 
 ### I applied a tweak and now something doesn't work. What do I do?
 If you applied a tweak and it breaks something, you can revert it:
-1. Open Winutil again
+1. Open Software Essentials again
 2. Go to the **Tweaks** tab
 3. Select the same tweak you applied
 4. Click **Undo Selected Tweaks**
@@ -97,7 +97,7 @@ Alternatively, use System Restore if you created a restore point.
 Most tweaks persist through updates, but some may be reset by major Windows feature updates. You may need to reapply certain tweaks afterwards.
 
 ### Can I create my own tweak presets?
-Currently, Winutil uses predefined presets (Standard, Minimal). Custom presets aren't directly supported in the GUI, but you can script your preferred configuration.
+Currently, Software Essentials uses predefined presets (Standard, Minimal). Custom presets aren't directly supported in the GUI, but you can script your preferred configuration.
 
 ### What's the difference between Essential and Advanced tweaks?
 - **Essential Tweaks**: Safe for most users, improve performance/privacy with minimal risk
@@ -105,8 +105,8 @@ Currently, Winutil uses predefined presets (Standard, Minimal). Custom presets a
 
 ## Application Installation
 
-### How does Winutil install applications?
-Winutil uses Windows Package Manager (WinGet) and Chocolatey to automate installations. It downloads applications from official sources and installs them silently without bloatware.
+### How does Software Essentials install applications?
+Software Essentials uses Windows Package Manager (WinGet) and Chocolatey to automate installations. It downloads applications from official sources and installs them silently without bloatware.
 
 ### Can I install multiple applications at once?
 Yes! Check the boxes for all applications you want, then click "Install Selected". They'll install sequentially.
@@ -121,14 +121,14 @@ Yes! Check the boxes for all applications you want, then click "Install Selected
 ### Do installed applications have bloatware or bundled software?
 No. WinGet and Chocolatey install clean versions of applications without bundled offers, toolbars, or bloatware.
 
-### Can I uninstall applications through Winutil?
-Winutil primarily focuses on installing and managing applications rather than providing a full GUI for uninstalling every program. To remove applications you can:
+### Can I uninstall applications through Software Essentials?
+Software Essentials primarily focuses on installing and managing applications rather than providing a full GUI for uninstalling every program. To remove applications you can:
 - Use Windows Settings > Apps > Installed apps to uninstall programs.
 - Use package manager commands in PowerShell (for example `winget uninstall <package>` or `choco uninstall <package>`).
-- Some packages installed by Winutil (AppX/MSIX) include removal helpers; check the app entry or use Winutil's remove helpers when available.
+- Some packages installed by Software Essentials (AppX/MSIX) include removal helpers; check the app entry or use Software Essentials' remove helpers when available.
 
 ### Will installed apps auto-update?
-Applications with built-in update mechanisms will auto-update. You can also update them via WinGet/Chocolatey commands or through Winutil's "Upgrade Selected" feature.
+Applications with built-in update mechanisms will auto-update. You can also update them via WinGet/Chocolatey commands or through Software Essentials' "Upgrade Selected" feature.
 
 ## Updates & Maintenance
 
@@ -139,7 +139,7 @@ Generally, **no**. Security updates are important. However, you might:
 - Disable only during critical work periods
 
 ### How do I re-enable updates after disabling them?
-1. Open Winutil
+1. Open Software Essentials
 2. Go to the **Updates** tab
 3. Click **Default Updates**
 4. Updates will resume normally
@@ -150,15 +150,15 @@ Generally, **no**. Security updates are important. However, you might:
 
 ## Troubleshooting
 
-### Winutil won't open after running the command
+### Software Essentials won't open after running the command
 Possible causes:
 1. **Antivirus blocking**: Add PowerShell exception
 2. **Not run as Admin**: Restart PowerShell as Administrator
 3. **Corrupted download**: Close PowerShell, reopen, try again
 4. **Windows Defender**: Allow the script
 
-### My antivirus flags Winutil as malicious
-This is a false positive. Winutil makes system changes that antivirus programs may flag. The code is open source and audited. Add an exception if needed.
+### My antivirus flags Software Essentials as malicious
+This is a false positive. Software Essentials makes system changes that antivirus programs may flag. The code is open source and audited. Add an exception if needed.
 
 ### An application failed to install
 Troubleshooting steps:
@@ -169,7 +169,7 @@ Troubleshooting steps:
 5. Try the WinGet Reinstall fix
 
 ### Network tweaks broke my internet connection
-1. Open Winutil
+1. Open Software Essentials
 2. Go to **Config** > **Fixes**
 3. Click **Reset Network**
 4. Restart your computer
@@ -177,7 +177,7 @@ Troubleshooting steps:
 
 ### I can't access certain Windows features after applying tweaks
 Undo the tweaks that might have affected those features:
-1. Reopen Winutil
+1. Reopen Software Essentials
 2. Select the tweaks you applied
 3. Click **Undo Selected Tweaks**
 
@@ -185,23 +185,23 @@ If that doesn't work, use System Restore to revert to a previous state.
 
 ## Advanced Topics
 
-### Can I run Winutil on Windows Server?
-Yes, Winutil works on Windows Server editions, though some features may not be applicable or may behave differently.
+### Can I run Software Essentials on Windows Server?
+Yes, Software Essentials works on Windows Server editions, though some features may not be applicable or may behave differently.
 
-### Does Winutil work with Windows LTSC?
-Yes, Winutil works with Windows 10/11 LTSC editions. Some applications may not be available depending on your configuration.
+### Does Software Essentials work with Windows LTSC?
+Yes, Software Essentials works with Windows 10/11 LTSC editions. Some applications may not be available depending on your configuration.
 
-### Can I use Winutil in a corporate/enterprise environment?
+### Can I use Software Essentials in a corporate/enterprise environment?
 Yes, but check your organization's policies first. Some tweaks may conflict with Group Policy or other corporate requirements.
 
-### How do I automate Winutil for multiple PCs?
+### How do I automate Software Essentials for multiple PCs?
 See the [Automation Guide](/userguide/automation/) for details on:
 - Configuration files
 - PowerShell parameters
 - Batch deployment
 - Silent installation
 
-### Can I contribute to Winutil?
+### Can I contribute to Software Essentials?
 Yes! Contributions are welcome:
 - Report bugs on GitHub Issues
 - Submit pull requests for fixes/features
@@ -212,8 +212,8 @@ See the [Contributing Guide](/contributing/) for details.
 
 ## Privacy & Security
 
-### Does Winutil collect any data?
-No, Winutil itself doesn't collect or transmit any user data. It's a local PowerShell script.
+### Does Software Essentials collect any data?
+No, Software Essentials itself doesn't collect or transmit any user data. It's a local PowerShell script.
 
 ### What telemetry does the Disable Telemetry tweak block?
 It disables:
@@ -228,7 +228,7 @@ No, Windows security updates are independent of the Microsoft Store.
 
 ## Performance
 
-### Will Winutil make my PC faster?
+### Will Software Essentials make my PC faster?
 Tweaks can improve performance by:
 - Reducing background processes
 - Disabling unnecessary services
@@ -244,8 +244,8 @@ Use the **Desktop** preset, then additionally apply:
 - Disable full-screen optimizations (Advanced)
 - Set display for performance (Advanced)
 
-### How much RAM does Winutil use?
-Winutil itself uses about 50-100 MB while running. Once closed, it is removed from memory.
+### How much RAM does Software Essentials use?
+Software Essentials itself uses about 50-100 MB while running. Once closed, it is removed from memory.
 
 ## Error Messages
 
