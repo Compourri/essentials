@@ -101,7 +101,7 @@
         "content": "AutoIt",
         "description": "Windows GUI automation scripting tool (freeware) used to automate keystrokes, mouse actions, and window/control interactions.",
         "link": "https://www.autoitscript.com/site/autoit/",
-        "winget": "na",
+        "winget": "AutoIt.AutoIt",
         "foss": false
     },
     "autoruns": {
@@ -188,7 +188,7 @@
         "content": "Borderless Gaming",
         "description": "Play your favorite games in a borderless window; no more time consuming alt-tabs.",
         "link": "https://github.com/Codeusa/Borderless-Gaming",
-        "winget": "Codeusa.BorderlessGaming",
+        "winget": "na",
         "foss": true
     },
     "brave": {
@@ -998,7 +998,7 @@
         "content": "Intel-PresentMon",
         "description": "A new gaming performance overlay and telemetry application to monitor and measure your gaming experience.",
         "link": "https://game.intel.com/us/stories/intel-presentmon/",
-        "winget": "Intel.PresentMon.Beta",
+        "winget": "Intel.PresentMon",
         "foss": true
     },
     "itch": {
@@ -1151,14 +1151,6 @@
         "winget": "LibreWolf.LibreWolf",
         "foss": true
     },
-    "lightshot": {
-        "category": "Multimedia",
-        "choco": "lightshot",
-        "content": "Lightshot",
-        "description": "Ligthshot is an Easy-to-use, light-weight screenshot software tool, where you can optionally edit your screenshots using different tools, share them via Internet and/or save to disk, and customize the available options.",
-        "link": "https://app.prntscr.com/",
-        "winget": "Skillbrains.Lightshot"
-    },
     "linkshellextension": {
         "category": "Utilities",
         "choco": "linkshellextension",
@@ -1269,7 +1261,7 @@
         "content": "Mp3tag",
         "description": "Mp3tag is a powerful and yet easy-to-use tool to edit metadata of common audio formats.",
         "link": "https://www.mp3tag.de/en/",
-        "winget": "Mp3tag.Mp3tag"
+        "winget": "FlorianHeidenreich.Mp3tag"
     },
     "mpcbe": {
         "category": "Multimedia",
@@ -1357,7 +1349,7 @@
         "content": "NetBird",
         "description": "NetBird is a Open Source alternative comparable to TailScale that can be connected to a selfhosted Server.",
         "link": "https://netbird.io/",
-        "winget": "netbird",
+        "winget": "Netbird.Netbird",
         "foss": true
     },
     "nextclouddesktop": {
@@ -1748,13 +1740,22 @@
         "winget": "Proton.ProtonVPN",
         "foss": true
     },
-    "prucaslicer": {
+    "prusaslicer": {
         "category": "Multimedia",
         "choco": "prusaslicer",
         "content": "PrusaSlicer",
         "description": "PrusaSlicer is a powerful and easy-to-use slicing software for 3D printing with Prusa 3D printers.",
         "link": "https://www.prusa3d.com/prusaslicer/",
         "winget": "Prusa3d.PrusaSlicer",
+        "foss": false
+    },
+    "putty": {
+        "category": "Utilities",
+        "choco": "putty",
+        "content": "PuTTY",
+        "description": "PuTTY is a free and open-source terminal emulator, serial console, and network file transfer application. It supports multiple network protocols such as SSH, Telnet, and SCP.",
+        "link": "https://www.chiark.greenend.org.uk/~sgtatham/putty/",
+        "winget": "PuTTY.PuTTY",
         "foss": true
     },
     "psremoteplay": {
@@ -1816,15 +1817,6 @@
         "description": "Revo Uninstaller is an advanced uninstaller tool that helps you remove unwanted software and clean up your system.",
         "link": "https://www.revouninstaller.com/",
         "winget": "RevoUninstaller.RevoUninstaller"
-    },
-    "revolt": {
-        "category": "Communications",
-        "choco": "na",
-        "content": "Revolt",
-        "description": "Find your community, connect with the world. Revolt is one of the best ways to stay connected with your friends and community without sacrificing any usability.",
-        "link": "https://revolt.chat/",
-        "winget": "Revolt.RevoltDesktop",
-        "foss": true
     },
     "rufus": {
         "category": "Utilities",
@@ -2201,19 +2193,11 @@
     "ungoogled": {
         "category": "Browsers",
         "choco": "ungoogled-chromium",
-        "content": "Ungoogled",
+        "content": "Ungoogled Chromium",
         "description": "Ungoogled Chromium is a version of Chromium without Google's integration for enhanced privacy and control.",
         "link": "https://github.com/Eloston/ungoogled-chromium",
         "winget": "eloston.ungoogled-chromium",
         "foss": true
-    },
-    "unigram": {
-        "category": "Communications",
-        "choco": "na",
-        "content": "Unigram",
-        "description": "Unigram - Telegram for Windows",
-        "link": "https://unigramdev.github.io/",
-        "winget": "Telegram.Unigram"
     },
     "uad": {
         "category": "Smartphone",
@@ -2384,7 +2368,7 @@
         "content": "UniGetUI",
         "description": "UniGetUI is a GUI for Winget, Chocolatey, and other Windows CLI package managers.",
         "link": "https://www.marticliment.com/wingetui/",
-        "winget": "MartiCliment.UniGetUI",
+        "winget": "Devolutions.UniGetUI",
         "foss": true
     },
     "winmerge": {

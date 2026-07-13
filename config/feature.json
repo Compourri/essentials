@@ -9,7 +9,7 @@
       "NetFx3"
     ],
     "InvokeScript": [],
-    "link": "https://winutil.christitus.com/dev/features/features/dotnet"
+    "link": "https://compourri.github.io/essentials/dev/features/features/dotnet"
   },
   "WPFFixesNTPPool": {
     "Content": "NTP Server - Enable",
@@ -19,7 +19,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFFixesNTPPool",
-    "link": "https://winutil.christitus.com/dev/features/fixes/ntppool"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/ntppool"
   },
   "WPFFeatureshyperv": {
     "Content": "Hyper-V - Enable",
@@ -32,7 +32,7 @@
     "InvokeScript": [
       "bcdedit /set hypervisorschedulertype classic"
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/hyperv"
+    "link": "https://compourri.github.io/essentials/dev/features/features/hyperv"
   },
   "WPFFeatureslegacymedia": {
     "Content": "Legacy Media Components (WMP, DirectPlay) - Enable",
@@ -46,7 +46,7 @@
       "LegacyComponents"
     ],
     "InvokeScript": [],
-    "link": "https://winutil.christitus.com/dev/features/features/legacymedia"
+    "link": "https://compourri.github.io/essentials/dev/features/features/legacymedia"
   },
   "WPFFeaturewsl": {
     "Content": "Windows Subsystem for Linux (WSL) - Enable",
@@ -58,7 +58,7 @@
       "Microsoft-Windows-Subsystem-Linux"
     ],
     "InvokeScript": [],
-    "link": "https://winutil.christitus.com/dev/features/features/wsl"
+    "link": "https://compourri.github.io/essentials/dev/features/features/wsl"
   },
   "WPFFeaturenfs": {
     "Content": "Network File System (NFS) - Enable",
@@ -77,7 +77,7 @@
       "nfsadmin client start",
       "nfsadmin client localhost config fileaccess=755 SecFlavors=+sys -krb5 -krb5i"
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/nfs"
+    "link": "https://compourri.github.io/essentials/dev/features/features/nfs"
   },
   "WPFFeatureRegBackup": {
     "Content": "Registry Backup (Daily Task 12:30am) - Enable",
@@ -94,7 +94,7 @@
       Register-ScheduledTask -Action $action -Trigger $trigger -TaskName 'AutoRegBackup' -Description 'Create System Registry Backups' -User 'System'
       "
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/regbackup"
+    "link": "https://compourri.github.io/essentials/dev/features/features/regbackup"
   },
   "WPFFeatureEnableLegacyRecovery": {
     "Content": "Legacy F8 Boot Recovery - Enable",
@@ -105,7 +105,7 @@
     "InvokeScript": [
       "bcdedit /set bootmenupolicy legacy"
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/enablelegacyrecovery"
+    "link": "https://compourri.github.io/essentials/dev/features/features/enablelegacyrecovery"
   },
   "WPFFeatureDisableLegacyRecovery": {
     "Content": "Legacy F8 Boot Recovery - Disable",
@@ -116,7 +116,7 @@
     "InvokeScript": [
       "bcdedit /set bootmenupolicy standard"
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/disablelegacyrecovery"
+    "link": "https://compourri.github.io/essentials/dev/features/features/disablelegacyrecovery"
   },
   "WPFFeaturesSandbox": {
     "Content": "Windows Sandbox - Enable",
@@ -126,7 +126,7 @@
     "feature": [
       "Containers-DisposableClientVM"
     ],
-    "link": "https://winutil.christitus.com/dev/features/features/sandbox"
+    "link": "https://compourri.github.io/essentials/dev/features/features/sandbox"
   },
   "WPFFeatureInstall": {
     "Content": "Run Features",
@@ -135,7 +135,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFFeatureInstall",
-    "link": "https://winutil.christitus.com/dev/features/features/install"
+    "link": "https://compourri.github.io/essentials/dev/features/features/install"
   },
     "WPFWinUtilKMS": {
     "Content": "Windows & Office - Activate",
@@ -143,7 +143,8 @@
     "panel": "1",
     "Type": "Button",
     "ButtonWidth": "300",
-    "function": "Invoke-WinUtilKMS"
+    "function": "Invoke-WinUtilKMS",
+      "link": "https://compourri.github.io/essentials/dev/features/fixes/kms"
   },
 
   "WPFPanelAutologin": {
@@ -153,7 +154,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFPanelAutologin",
-    "link": "https://winutil.christitus.com/dev/features/fixes/autologin"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/autologin"
   },
   "WPFFixesUpdate": {
     "Content": "Windows Update - Reset",
@@ -162,7 +163,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFFixesUpdate",
-    "link": "https://winutil.christitus.com/dev/features/fixes/update"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/update"
   },
   "WPFFixesNetwork": {
     "Content": "Network - Reset",
@@ -171,7 +172,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFFixesNetwork",
-    "link": "https://winutil.christitus.com/dev/features/fixes/network"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/network"
   },
   "WPFPanelDISM": {
     "Content": "System Corruption Scan - Run",
@@ -180,7 +181,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFSystemRepair",
-    "link": "https://winutil.christitus.com/dev/features/fixes/dism"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/dism"
   },
   "WPFFixesWinget": {
     "Content": "WinGet - Reinstall",
@@ -189,7 +190,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFFixesWinget",
-    "link": "https://winutil.christitus.com/dev/features/fixes/winget"
+    "link": "https://compourri.github.io/essentials/dev/features/fixes/winget"
   },
   "WPFPanelControl": {
     "Content": "Control Panel",
@@ -200,7 +201,7 @@
     "InvokeScript": [
       "control"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/control"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/control"
   },
   "WPFPanelComputer": {
     "Content": "Computer Management",
@@ -211,7 +212,7 @@
     "InvokeScript": [
       "compmgmt.msc"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/computer"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/computer"
   },
   "WPFPanelNetwork": {
     "Content": "Network Connections",
@@ -222,7 +223,7 @@
     "InvokeScript": [
       "ncpa.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/network"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/network"
   },
   "WPFPanelPower": {
     "Content": "Power Panel",
@@ -233,7 +234,7 @@
     "InvokeScript": [
       "powercfg.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/power"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/power"
   },
   "WPFPanelPrinter": {
     "Content": "Printer Panel",
@@ -244,7 +245,7 @@
     "InvokeScript": [
       "Start-Process 'shell:::{A8A91A66-3A7D-4424-8D24-04E180695C7A}'"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/printer"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/printer"
   },
   "WPFPanelRegion": {
     "Content": "Region",
@@ -255,7 +256,7 @@
     "InvokeScript": [
       "intl.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/region"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/region"
   },
   "WPFPanelRestore": {
     "Content": "Windows Restore",
@@ -266,7 +267,7 @@
     "InvokeScript": [
       "rstrui.exe"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/restore"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/restore"
   },
   "WPFPanelSound": {
     "Content": "Sound Settings",
@@ -277,7 +278,7 @@
     "InvokeScript": [
       "mmsys.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/sound"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/sound"
   },
   "WPFPanelSystem": {
     "Content": "System Properties",
@@ -288,7 +289,7 @@
     "InvokeScript": [
       "sysdm.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/system"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/system"
   },
   "WPFPanelTimedate": {
     "Content": "Time and Date",
@@ -299,7 +300,7 @@
     "InvokeScript": [
       "timedate.cpl"
     ],
-    "link": "https://winutil.christitus.com/dev/features/legacy-windows-panels/timedate"
+    "link": "https://compourri.github.io/essentials/dev/features/legacy-windows-panels/timedate"
   },
   "WPFWinUtilInstallPSProfile": {
     "Content": "PowerShell Profile - Install",
@@ -308,7 +309,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WinUtilInstallPSProfile",
-    "link": "https://winutil.christitus.com/dev/features/powershell-profile-powershell-7--only/installpsprofile"
+    "link": "https://compourri.github.io/essentials/dev/features/powershell-profile-powershell-7--only/installpsprofile"
   },
   "WPFWinUtilUninstallPSProfile": {
     "Content": "PowerShell Profile - Remove",
@@ -317,7 +318,7 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WinUtilUninstallPSProfile",
-    "link": "https://winutil.christitus.com/dev/features/powershell-profile-powershell-7--only/uninstallpsprofile"
+    "link": "https://compourri.github.io/essentials/dev/features/powershell-profile-powershell-7--only/uninstallpsprofile"
   },
   "WPFWinUtilSSHServer": {
     "Content": "OpenSSH Server - Enable",
@@ -326,6 +327,6 @@
     "Type": "Button",
     "ButtonWidth": "300",
     "function": "Invoke-WPFSSHServer",
-    "link": "https://winutil.christitus.com/dev/features/remote-access/sshserver"
+    "link": "https://compourri.github.io/essentials/dev/features/remote-access/sshserver"
   }
 }

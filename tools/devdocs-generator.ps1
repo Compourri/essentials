@@ -177,7 +177,7 @@ $publicFunctionsDir  = "$repoRoot/functions/public"
 $privateFunctionsDir = "$repoRoot/functions/private"
 
 $itemnametocut = 'WPF(WinUtil|Toggle|Features?|Tweaks?|Panel|Fix(es)?)?'
-$baseUrl       = "https://winutil.christitus.com"
+$baseUrl       = "https://compourri.github.io/essentials"
 
 # Categories with generated docs
 $documentedCategories = @(
