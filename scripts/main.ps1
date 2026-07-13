@@ -71,7 +71,7 @@ $sync.configs.applications.PSObject.Properties | ForEach-Object {
 Set-Preferences
 
 if ($PARAM_NOUI) {
-    Show-CTTLogo
+    Show-CompourriLogo
     if ($PARAM_CONFIG -and -not [string]::IsNullOrWhiteSpace($PARAM_CONFIG)) {
         Write-Host "Running config file tasks..."
         Invoke-WPFImpex -type "import" -Config $PARAM_CONFIG
@@ -121,7 +121,7 @@ try {
 
 if (-NOT ($readerOperationSuccessful)) {
     Write-Host "Failed to parse xaml content using Windows.Markup.XamlReader's Load Method." -ForegroundColor Red
-    Write-Host "Quitting winutil..." -ForegroundColor Red
+    Write-Host "Quitting Essentials..." -ForegroundColor Red
     $sync.runspace.Dispose()
     $sync.runspace.Close()
     [System.GC]::Collect()

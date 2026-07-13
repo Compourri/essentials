@@ -1,6 +1,6 @@
 baseURL = "https://compourri.github.io/essentials/"
 languageCode = "en-us"
-title = "WinUtil Documentation"
+title = "Compourri Software Essentials"
 enableGitInfo = true
 canonifyURLs = true
 
@@ -58,13 +58,13 @@ parent = "help"
 [[menu.main]]
 identifier = "forums"
 name = "Forums"
-url = "https://forum.christitus.com/"
+url = "https://compourri.co.za"
 weight = 3
 parent = "help"
 
 [[menu.main]]
 name = "Store"
-url = "https://christitus.com/downloads/"
+url = "https://compourri.co.za"
 weight = 5
 
 [[menu.main]]
@@ -77,13 +77,13 @@ weight = 6
 [[menu.main]]
 name = "GitHub"
 weight = 7
-url = "https://github.com/christitustech/winutil"
+url = "https://github.com/Compourri/essentials"
 
   [menu.main.params]
   icon = "github"
 
 [params]
-description = "Chris Titus Tech's Windows Utility - Install Programs, Tweaks, Fixes, and Updates"
+description = "Compourri Software Essentials - Install Programs, Tweaks, Fixes, and Updates"
 displayUpdatedDate = true
 dateFormat = "January 2, 2006"
 
@@ -125,7 +125,7 @@ display = "hover"
 
   [[menu.sidebar]]
   name = "GitHub Repo ↗"
-  url = "https://github.com/ChrisTitusTech/winutil"
+  url = "https://github.com/Compourri/essentials"
   weight = 2
 
   [[menu.sidebar]]

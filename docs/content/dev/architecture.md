@@ -598,7 +598,7 @@ Outputs `winutil.ps1` in the root directory.
 1. Tag release in Git
 2. GitHub Actions builds and uploads `winutil.ps1`
 3. Release appears on GitHub Releases
-4. Users download via `irm christitus.com/win`
+4. Users download via `irm compourri.co.za/win`
 
 ## Dependencies
 
@@ -661,11 +661,11 @@ Outputs `winutil.ps1` in the root directory.
 
 ## Additional Resources
 
-- **GitHub Repository**: [ChrisTitusTech/winutil](https://github.com/ChrisTitusTech/winutil)
+- **GitHub Repository**: [Compourri/essentials](https://github.com/Compourri/essentials)
 - **PowerShell Docs**: [Microsoft Docs](https://docs.microsoft.com/powershell/)
 - **WPF Guide**: [WPF Documentation](https://docs.microsoft.com/dotnet/desktop/wpf/)
 
 ---
 
 **Last Updated**: January 2026
-**Maintainers**: Chris Titus Tech and contributors
+**Maintainers**: Compourri and contributors

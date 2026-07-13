@@ -16,11 +16,11 @@ WinUtil supports predefined presets that apply common configurations automatical
 Example:
 
 ```powershell
-& ([ScriptBlock]::Create((irm "https://christitus.com/win"))) -Preset Standard
+& ([ScriptBlock]::Create((irm "https://compourri.co.za/win"))) -Preset Standard
 ```
 
 To view exactly what each preset does, see:
-https://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json
+https://github.com/Compourri/essentials/blob/main/config/preset.json
 
 To create your own config file:
 
@@ -31,7 +31,7 @@ To create your own config file:
 
 Once you have exported a config, launch WinUtil with it using this command:
 ```powershell
-& ([ScriptBlock]::Create((irm "https://christitus.com/win"))) -Config "C:\Path\To\Config.json"
+& ([ScriptBlock]::Create((irm "https://compourri.co.za/win"))) -Config "C:\Path\To\Config.json"
 ```
 
 This is useful for:

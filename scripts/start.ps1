@@ -35,12 +35,12 @@ if ($Offline) {
 }
 
 if ($ExecutionContext.SessionState.LanguageMode -ne 'FullLanguage') {
-    Write-Host "WinUtil is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
+    Write-Host "Essentials is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
     return
 }
 
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Output "Winutil needs to be run as Administrator. Attempting to relaunch."
+    Write-Output "Essentials needs to be run as Administrator. Attempting to relaunch."
     $argList = @()
 
     $PSBoundParameters.GetEnumerator() | ForEach-Object {
@@ -99,8 +99,8 @@ New-Item $winutildir -ItemType Directory -Force | Out-Null
 
 $logdir = "$winutildir\logs"
 New-Item $logdir -ItemType Directory -Force | Out-Null
-Start-Transcript -Path "$logdir\winutil_$dateTime.log" -Append -NoClobber | Out-Null
+Start-Transcript -Path "$logdir\essentials_$dateTime.log" -Append -NoClobber | Out-Null
 
 # Set PowerShell window title
-$Host.UI.RawUI.WindowTitle = "WinUtil (Admin)"
+$Host.UI.RawUI.WindowTitle = "Essentials (Admin)"
 clear-host

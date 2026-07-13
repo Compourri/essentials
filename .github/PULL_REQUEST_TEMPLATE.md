@@ -1,4 +1,4 @@
-<!--Before you make this PR have you followed the docs here? - https://winutil.christitus.com/contributing/ -->
+<!--Before you make this PR have you followed the docs here? - https://compourri.github.io/essentials/CONTRIBUTING/ -->
 
 ## Type of Change
 - [ ] New feature

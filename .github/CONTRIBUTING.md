@@ -6,7 +6,7 @@
 
 #### **Run the latest pre-release**
    ```ps1
-   irm https://christitus.com/windev | iex
+   irm https://compourri.co.za/windev | iex
    ```
 
 !!! bug "Keep in mind"
@@ -66,7 +66,7 @@ graph TD
      This is a diagram to guide you through the process. It may vary depending on the type of change you're making.
 
 ### Fork the Repo
-* Fork the WinUtil Repository [here](https://github.com/ChrisTitusTech/winutil) to create a copy that will be available in your repository list.
+* Fork the Essentials Repository [here](https://github.com/Compourri/essentials) to create a copy that will be available in your repository list.
 
 ![Fork Image](assets/Fork-Button-Dark.png#only-dark#gh-dark-mode-only)
 
