@@ -1,0 +1,74 @@
+# Branding Guide
+
+This document lists all Compourri branding locations that must be maintained after merging upstream changes from ChrisTitusTech/winutil.
+
+## Quick Fix
+
+Run the post-merge branding script after each upstream merge:
+
+```powershell
+.\scripts\Apply-Branding.ps1
+```
+
+## Branding Locations
+
+### scripts/start.ps1
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 3 | `Author: Chris Titus @ChrisTitusTech` | `Author: George van der Westhuizen @Compourri` |
+| 6 | `GitHub: https://github.com/ChrisTitusTech/winutil` | `GitHub: https://github.com/Compourri` |
+| 38 | `"WinUtil is unable to run..."` | `"Essentials is unable to run..."` |
+| 43 | `"Winutil needs to be run as Administrator..."` | `"Essentials needs to be run as Administrator..."` |
+| 102 | `winutil_$dateTime.log` | `essentials_$dateTime.log` |
+| 105 | `"WinUtil (Admin)"` | `"Software Essentials (Admin)"` |
+
+### scripts/main.ps1
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 124 | `"Quitting winutil..."` | `"Quitting Essentials..."` |
+| 323 | `"WinUtil lost focus"` | `"Software Essentials lost focus"` |
+| 489-495 | CTT author info block | Compourri author info block |
+
+### xaml/inputXML.xaml
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 15 | `Title="WinUtil"` | `Title="Software Essentials"` |
+
+### functions/private/Show-CustomDialog.ps1
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 180 | `"WinUtil"` | `"Compourri Software Essentials"` |
+
+### functions/public/Show-CompourriLogo.ps1
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 29 | `=== WinUtil ===` | `=== Compourri Software Essentials ===` |
+
+### functions/public/Invoke-WPFButton.ps1
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 16 | `"Chris Titus Tech's Windows Utility"` | `"Compourri Software Essentials"` |
+
+### config/tweaks.json
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 845 | `"WinUtil modifications"` | `"Software Essentials modifications"` |
+| 864 | `"created by WinUtil"` | `"created by Software Essentials"` |
+
+### MessageBox Titles (functions/public/*.ps1)
+All `MessageBox` calls with title `"Winutil"` should be changed to `"Essentials"`:
+- Invoke-WPFFeatureInstall.ps1
+- Invoke-WPFInstall.ps1
+- Invoke-WPFGetInstalled.ps1
+- Invoke-WPFInstallUpgrade.ps1
+- Invoke-WPFtweaksbutton.ps1
+- Invoke-WPFundoall.ps1
+- Invoke-WPFUnInstall.ps1
+
+## Docs & Config (Fork-Only, Safe from Upstream)
+
+These files only exist in our fork and won't be overwritten:
+- `docs/` — all content, branding, logo, screenshots
+- `.github/` — CONTRIBUTING, SECURITY, issue templates
+- `docs/hugo.toml`, `docs/i18n/en.yaml`
+- `config/preset.json`
