@@ -9,14 +9,14 @@ cascade:
     breadcrumbs: false
 ---
 
-Welcome to the official User Guide for **Winutil**, your all-in-one Windows toolkit.
+Welcome to the official User Guide for **Software Essentials**, your all-in-one Windows toolkit.
 
 > [!IMPORTANT]
-> Windows 10 is not supported by Winutil. Windows 10 reached the end of support on **October 14, 2025**.
+> Windows 10 is not supported by Software Essentials. Windows 10 reached the end of support on **October 14, 2025**.
 
-## What is Winutil?
+## What is Software Essentials?
 
-Winutil (Compourri's Windows Utility) is a comprehensive PowerShell-based tool that helps you:
+Software Essentials (Compourri's Windows Utility) is a comprehensive PowerShell-based tool that helps you:
 
 - **Install Applications**: Quickly install popular software without manual downloads
 - **Apply Tweaks**: Optimize Windows for performance, privacy, and usability
@@ -24,9 +24,9 @@ Winutil (Compourri's Windows Utility) is a comprehensive PowerShell-based tool t
 - **Manage Updates**: Control how and when Windows updates install
 - **Access Tools**: Quick access to Windows panels and utilities
 
-## Who Should Use Winutil?
+## Who Should Use Software Essentials?
 
-Winutil is designed for:
+Software Essentials is designed for:
 
 - **Home Users**: People who want to optimize their personal PCs
 - **Power Users**: Users who want fine-grained control over Windows
@@ -37,9 +37,9 @@ Winutil is designed for:
 
 ## Getting Started
 
-New to Winutil? Follow the guides below in order to get up and running quickly:
+New to Software Essentials? Follow the guides below in order to get up and running quickly:
 
-1. **[Getting Started](getting-started/)** - Learn how to launch Winutil and understand the basics.
+1. **[Getting Started](getting-started/)** - Learn how to launch Software Essentials and understand the basics.
 2. **[Applications](application/)** - Install, update, and remove apps with ease.
 3. **[Tweaks](tweaks/)** - Apply performance, privacy, and usability improvements.
 4. **[Features](features/)** - Explore built-in tools and common Windows fixes.
@@ -83,7 +83,7 @@ Take control of Windows Updates with options to:
 
 ### Automation
 
-Automate Winutil configurations for:
+Automate Software Essentials configurations for:
 - Multiple PC setups
 - Enterprise deployments
 - Consistent configurations
@@ -99,7 +99,7 @@ Build a custom Windows 11 ISO with bloatware removed, telemetry disabled, and ha
 
 ## Safety and Best Practices
 
-Before using Winutil:
+Before using Software Essentials:
 
 ✅ **Always**:
 - Run PowerShell as Administrator
@@ -129,13 +129,13 @@ Need help?
 - **Documentation**: You're reading it. Use the navigation menu.
 - **FAQ**: Check [Frequently Asked Questions](../faq/)
 - **Known Issues**: Review [Known Issues](../knownissues/)
-- **Discord**: Join the [community Discord](https://discord.gg/RUbZUZyByQ)
+- **Facebook**: Join the [Facebook Community](https://www.facebook.com/compourri)
 - **GitHub**: Report bugs on [GitHub Issues](https://github.com/Compourri/essentials/issues)
 - **YouTube**: Watch [video tutorials](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
 
 ## Contributing
 
-Want to help improve Winutil?
+Want to help improve Software Essentials?
 
 - **Report Bugs**: Submit issues on GitHub
 - **Suggest Features**: Open feature requests
@@ -147,7 +147,7 @@ Want to help improve Winutil?
 
 ## Video Tutorial
 
-Watch the complete WinUtil overview:
+Watch the complete Software Essentials overview:
 
 {{< youtube id=6UQZ5oQg8XA loading=lazy >}}
 
@@ -158,5 +158,5 @@ Ready to get started? Head to the **[Getting Started Guide](getting-started/)**.
 Dive right into the following section to get started:
 
 {{< cards >}}
-  {{< card link="getting-started" title="Getting Started" icon="document-text" subtitle="Learn how to use WinUtil." >}}
+  {{< card link="getting-started" title="Getting Started" icon="document-text" subtitle="Learn how to use Software Essentials." >}}
 {{< /cards >}}

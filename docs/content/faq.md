@@ -34,7 +34,7 @@ Software Essentials is actively maintained with frequent updates. New features, 
 
 ### How do I run Software Essentials?
 1. Open PowerShell as Administrator
-2. Run: `irm "https://compourri.co.za/win" | iex`
+2. Run: `irm "https://compourri.co.za/essentials" | iex`
 3. Wait for the GUI to appear
 
 ### Why do I need Administrator rights?
@@ -51,7 +51,7 @@ Try these solutions in order:
 2. **Force TLS 1.2**:
    ```powershell
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   irm "https://compourri.co.za/win" | iex
+irm "https://compourri.co.za/essentials" | iex
    ```
 
    > [!NOTE]
@@ -65,7 +65,7 @@ Try these solutions in order:
 Run this command first to allow script execution:
 ```powershell
 Set-ExecutionPolicy Unrestricted -Scope Process -Force
-irm "https://compourri.co.za/win" | iex
+irm "https://compourri.co.za/essentials" | iex
 ```
 
 This only affects the current PowerShell session and is safe.
@@ -261,6 +261,6 @@ Can't find your answer? Try these resources:
 
 - **[Known Issues](/knownissues/)** - Check if it's a known problem
 - **[User Guide](/userguide/)** - Comprehensive documentation
-- **[Discord Community](https://discord.gg/RUbZUZyByQ)** - Get help from other users
+- **[Facebook Community](https://www.facebook.com/compourri)** - Get help from other users
 - **[GitHub Issues](https://github.com/Compourri/essentials/issues)** - Report bugs
 - **[YouTube Tutorial](https://www.youtube.com/watch?v=6UQZ5oQg8XA)** - Video walkthrough

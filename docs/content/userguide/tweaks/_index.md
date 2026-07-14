@@ -41,7 +41,7 @@ Essential Tweaks are the safest starting point for most systems. They focus on l
 Advanced Tweaks are for users who understand the side effects of deeper Windows changes. Create a restore point first, review each item, and avoid treating the full advanced list as a one-click baseline.
 
 ### O&O ShutUp10++
-[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from WinUtil with one click. It is a free privacy tool for Windows that helps users manage telemetry, update behavior, and app permission settings.
+[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from Software Essentials with one click. It is a free privacy tool for Windows that helps users manage telemetry, update behavior, and app permission settings.
 
 {{< youtube id=3HvNr8eMcv0 loading=lazy >}}
 

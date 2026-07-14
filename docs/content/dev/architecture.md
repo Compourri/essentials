@@ -598,7 +598,7 @@ Outputs `winutil.ps1` in the root directory.
 1. Tag release in Git
 2. GitHub Actions builds and uploads `winutil.ps1`
 3. Release appears on GitHub Releases
-4. Users download via `irm compourri.co.za/win`
+4. Users download via `irm compourri.co.za/essentials`
 
 ## Dependencies
 

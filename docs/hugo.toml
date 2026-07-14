@@ -129,8 +129,8 @@ display = "hover"
   weight = 2
 
   [[menu.sidebar]]
-  name = "Discord Server ↗"
-  url = "https://discord.gg/RUbZUZyByQ"
+  name = "Facebook Community ↗"
+  url = "https://www.facebook.com/compourri"
   weight = 3
 
 
