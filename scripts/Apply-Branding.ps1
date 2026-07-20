@@ -104,6 +104,18 @@ $themesPath = Join-Path $repoRoot "config\themes.json"
 if (Test-Path $themesPath) {
     $content = Get-Content $themesPath -Raw
     $content = $content -replace '"HeaderFontFamily": "Consolas, Monaco"', '"HeaderFontFamily": "Segoe UI Variable, Segoe UI"'
+    $content = $content -replace '"ProgressBarForegroundColor": "#2E77FF"', '"ProgressBarForegroundColor": "#EEEE22"'
+    $content = $content -replace '"ToggleButtonOnColor": "#2E77FF"', '"ToggleButtonOnColor": "#EEEE22"'
+    $content = $content -replace '"LabelboxForegroundColor": "#5BDCFF"', '"LabelboxForegroundColor": "#EEEE22"'
+    $content = $content -replace '"LinkForegroundColor": "#ADD8E6"', '"LinkForegroundColor": "#EEEE22"'
+    $content = $content -replace '"ScrollBarHoverColor": "#3B4252"', '"ScrollBarHoverColor": "#EEEE22"'
+    $content = $content -replace '"ScrollBarDraggingColor": "#5E81AC"', '"ScrollBarDraggingColor": "#EEEE22"'
+    $content = $content -replace '"ProgressBarForegroundColor": "#6EFF72"', '"ProgressBarForegroundColor": "#EEEE22"'
+    $content = $content -replace '"ComboBoxBackgroundColor": "#1E3747"', '"ComboBoxBackgroundColor": "#2F2F2F"'
+    $content = $content -replace '"ButtonBackgroundColor": "#1E3747"', '"ButtonBackgroundColor": "#2F2F2F"'
+    $content = $content -replace '"ButtonBackgroundPressedColor": "#F7F7F7"', '"ButtonBackgroundPressedColor": "#EEEE22"'
+    $content = $content -replace '"ButtonBackgroundMouseoverColor": "#3B4252"', '"ButtonBackgroundMouseoverColor": "#222222"'
+    $content = $content -replace '"ButtonBackgroundSelectedColor": "#5E81AC"', '"ButtonBackgroundSelectedColor": "#80EEEE22"'
     $content | Set-Content $themesPath -NoNewline
     Write-Host "  [OK] config/themes.json" -ForegroundColor Green
 }
