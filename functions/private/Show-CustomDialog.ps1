@@ -164,7 +164,7 @@ function Show-CustomDialog {
 
     # Add StackPanel for horizontal layout with margins
     $stackPanel = New-Object Windows.Controls.StackPanel
-    $stackPanel.Margin = New-Object Windows.Thickness(10)  # Add margins around the stack panel
+    $stackPanel.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the stack panel
     $stackPanel.Orientation = [Windows.Controls.Orientation]::Horizontal
     $stackPanel.HorizontalAlignment = [Windows.HorizontalAlignment]::Left  # Align to the left
     $stackPanel.VerticalAlignment = [Windows.VerticalAlignment]::Top  # Align to the top
@@ -186,9 +186,10 @@ function Show-CustomDialog {
     $messageTextBlock = New-Object Windows.Controls.TextBlock
     $messageTextBlock.FontSize = $FontSize
     $messageTextBlock.TextWrapping = [Windows.TextWrapping]::Wrap  # Enable text wrapping
+    $messageTextBlock.LineHeight = $FontSize * 1.6  # Add line spacing
     $messageTextBlock.HorizontalAlignment = [Windows.HorizontalAlignment]::Left
     $messageTextBlock.VerticalAlignment = [Windows.VerticalAlignment]::Top
-    $messageTextBlock.Margin = New-Object Windows.Thickness(10)  # Add margins around the text block
+    $messageTextBlock.Margin = New-Object Windows.Thickness(10, 15, 10, 10)  # Add margins around the text block
 
     # Define the Regex to find hyperlinks formatted as HTML <a> tags
     $regex = [regex]::new('<a href="([^"]+)">([^<]+)</a>')
