@@ -99,6 +99,15 @@ if (Test-Path $tweaksPath) {
     Write-Host "  [OK] config/tweaks.json" -ForegroundColor Green
 }
 
+# --- config/themes.json ---
+$themesPath = Join-Path $repoRoot "config\themes.json"
+if (Test-Path $themesPath) {
+    $content = Get-Content $themesPath -Raw
+    $content = $content -replace '"HeaderFontFamily": "Consolas, Monaco"', '"HeaderFontFamily": "Segoe UI Variable, Segoe UI"'
+    $content | Set-Content $themesPath -NoNewline
+    Write-Host "  [OK] config/themes.json" -ForegroundColor Green
+}
+
 # --- MessageBox titles in functions/public/*.ps1 ---
 $publicFunctions = Join-Path $repoRoot "functions\public\*.ps1"
 $MessageBoxFiles = @(
