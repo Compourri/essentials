@@ -365,14 +365,16 @@ $sync["SearchBar"].Add_TextChanged({
 
 # Quick Category Search Chips
 $sync["WPFSearchChipAll"].Add_Click({ Set-WinUtilAppCategoryFilter })
+$sync["WPFSearchChipAI"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "AI" })
+$sync["WPFSearchChipBenchmarking"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Benchmarking" })
 $sync["WPFSearchChipBrowsers"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Browsers" })
 $sync["WPFSearchChipCommunications"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Communications" })
-$sync["WPFSearchChipDevelopment"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Development" })
 $sync["WPFSearchChipGames"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Games" })
-$sync["WPFSearchChipMicrosoftTools"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Microsoft Tools" })
-$sync["WPFSearchChipMultimediaTools"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Multimedia Tools" })
-$sync["WPFSearchChipProTools"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Pro Tools" })
-$sync["WPFSearchChipSelfhostedTools"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Selfhosted Tools" })
+$sync["WPFSearchChipMicrosoft"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Microsoft" })
+$sync["WPFSearchChipMultimedia"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Multimedia" })
+$sync["WPFSearchChipOffice"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Office" })
+$sync["WPFSearchChipSecurity"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Security" })
+$sync["WPFSearchChipSmartphone"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Smartphone" })
 $sync["WPFSearchChipUtilities"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Utilities" })
 
 $sync["Form"].Add_Loaded({

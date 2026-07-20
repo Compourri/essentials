@@ -1322,16 +1322,18 @@
                                    Background="Transparent"
                                    VerticalAlignment="Center"
                                    Margin="15,0,8,0"/>
-                        <Button Name="WPFSearchChipAll"             Content="All"               Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipBrowsers"        Content="Browsers"          Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipCommunications"  Content="Communications"    Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipDevelopment"     Content="Development"       Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipGames"           Content="Games"             Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipMicrosoftTools"  Content="Microsoft Tools"   Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipMultimediaTools" Content="Multimedia Tools"  Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipProTools"        Content="Pro Tools"         Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipSelfhostedTools" Content="Selfhosted Tools"  Style="{StaticResource FilterChipStyle}"/>
-                        <Button Name="WPFSearchChipUtilities"       Content="Utilities"         Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipAll"           Content="All"          Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipAI"            Content="AI"           Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipBenchmarking"   Content="Benchmarking" Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipBrowsers"       Content="Browsers"     Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipCommunications" Content="Communications" Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipGames"          Content="Games"        Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipMicrosoft"      Content="Microsoft"    Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipMultimedia"     Content="Multimedia"   Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipOffice"         Content="Office"       Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipSecurity"       Content="Security"     Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipSmartphone"     Content="Smartphone"   Style="{StaticResource FilterChipStyle}"/>
+                        <Button Name="WPFSearchChipUtilities"      Content="Utilities"    Style="{StaticResource FilterChipStyle}"/>
                     </WrapPanel>
 
                     <Grid Grid.Row="1" Margin="{DynamicResource TabContentMargin}">
