@@ -162,6 +162,33 @@ if (Test-Path $updatesPath) {
     Write-Host "  [OK] functions/public/Invoke-WPFUpdatesdefault.ps1" -ForegroundColor Green
 }
 
+# --- PowerShell Profile functions ---
+$psProfileInstall = Join-Path $repoRoot "functions\private\Invoke-WinUtilInstallPSProfile.ps1"
+if (Test-Path $psProfileInstall) {
+    $content = Get-Content $psProfileInstall -Raw
+    $content = $content -replace 'ChrisTitusTech/powershell-profile', 'Compourri/powershell-profile'
+    $content | Set-Content $psProfileInstall -NoNewline
+    Write-Host "  [OK] functions/private/Invoke-WinUtilInstallPSProfile.ps1" -ForegroundColor Green
+}
+
+$psProfileUninstall = Join-Path $repoRoot "functions\private\Invoke-WinUtilUninstallPSProfile.ps1"
+if (Test-Path $psProfileUninstall) {
+    $content = Get-Content $psProfileUninstall -Raw
+    $content = $content -replace 'CTT PowerShell Profile', 'Compourri PowerShell Profile'
+    $content | Set-Content $psProfileUninstall -NoNewline
+    Write-Host "  [OK] functions/private/Invoke-WinUtilUninstallPSProfile.ps1" -ForegroundColor Green
+}
+
+# --- config/feature.json (PowerShell Profile entries) ---
+$featurePath = Join-Path $repoRoot "config\feature.json"
+if (Test-Path $featurePath) {
+    $content = Get-Content $featurePath -Raw
+    $content = $content -replace 'CTT PowerShell Profile', 'PowerShell Profile'
+    $content = $content -replace 'ChrisTitusTech/powershell-profile', 'Compourri/powershell-profile'
+    $content | Set-Content $featurePath -NoNewline
+    Write-Host "  [OK] config/feature.json (PS Profile)" -ForegroundColor Green
+}
+
 Write-Host ""
 Write-Host "Branding patches applied successfully!" -ForegroundColor Cyan
 Write-Host "Review changes with: git diff" -ForegroundColor Yellow
