@@ -1,6 +1,6 @@
 function Invoke-WPFAppxRemoval {
     if ($sync.ProcessRunning) {
-        Show-WinUtilMessage -Message "An AppX process is currently running." -Title "WinUtil" -Button "OK" -Icon "Warning"
+        Show-WinUtilMessage -Message "An AppX process is currently running." -Title "Essentials" -Button "OK" -Icon "Warning"
         return
     }
 

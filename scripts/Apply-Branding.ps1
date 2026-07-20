@@ -31,6 +31,7 @@ if (Test-Path $startPath) {
 
     # Window title
     $content = $content -replace '"WinUtil \(Admin\)"', '"Software Essentials (Admin)"'
+    $content = $content -replace '"WinUtil"', '"Essentials"'
 
     $content | Set-Content $startPath -NoNewline
     Write-Host "  [OK] scripts/start.ps1" -ForegroundColor Green
@@ -58,6 +59,10 @@ $xamlPath = Join-Path $repoRoot "xaml\inputXML.xaml"
 if (Test-Path $xamlPath) {
     $content = Get-Content $xamlPath -Raw
     $content = $content -replace 'Title="WinUtil"', 'Title="Software Essentials"'
+    $content = $content -replace 'managed by WinUtil\.', 'managed by Essentials.'
+    $content = $content -replace 'applied by WinUtil', 'applied by Essentials'
+    $content = $content -replace 'undo WinUtil update policies', 'undo Essentials update policies'
+    $content = $content -replace 'Change the WinUtil UI Theme', 'Change the Essentials UI Theme'
     $content | Set-Content $xamlPath -NoNewline
     Write-Host "  [OK] xaml/inputXML.xaml" -ForegroundColor Green
 }
@@ -129,19 +134,32 @@ $MessageBoxFiles = @(
     "Invoke-WPFInstallUpgrade.ps1",
     "Invoke-WPFtweaksbutton.ps1",
     "Invoke-WPFundoall.ps1",
-    "Invoke-WPFUnInstall.ps1"
+    "Invoke-WPFUnInstall.ps1",
+    "Invoke-WPFAppxInstall.ps1",
+    "Invoke-WPFAppxRemoval.ps1",
+    "Invoke-WPFOOSU.ps1"
 )
 
 foreach ($file in $MessageBoxFiles) {
     $filePath = Join-Path $repoRoot "functions\public\$file"
     if (Test-Path $filePath) {
         $content = Get-Content $filePath -Raw
-        $newContent = $content -replace '"Winutil"', '"Essentials"'
+        $newContent = $content -replace '"Winutil"', '"Essentials"' -replace '"WinUtil"', '"Essentials"'
         if ($newContent -ne $content) {
             $newContent | Set-Content $filePath -NoNewline
             Write-Host "  [OK] functions/public/$file" -ForegroundColor Green
         }
     }
+}
+
+# --- functions/public/Invoke-WPFUpdatesdefault.ps1 ---
+$updatesPath = Join-Path $repoRoot "functions\public\Invoke-WPFUpdatesdefault.ps1"
+if (Test-Path $updatesPath) {
+    $content = Get-Content $updatesPath -Raw
+    $content = $content -replace 'managed by WinUtil', 'managed by Essentials'
+    $content = $content -replace "WinUtil's legacy", "Essentials' legacy"
+    $content | Set-Content $updatesPath -NoNewline
+    Write-Host "  [OK] functions/public/Invoke-WPFUpdatesdefault.ps1" -ForegroundColor Green
 }
 
 Write-Host ""
