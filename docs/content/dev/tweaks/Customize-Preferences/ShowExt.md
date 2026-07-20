@@ -3,10 +3,10 @@ title: "File Explorer File Extensions"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1278}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1328}
   "WPFToggleShowExt": {
     "Content": "File Explorer File Extensions",
-    "Description": "If enabled, File extensions (e.g., .txt, .jpg) are visible.",
+    "Description": "Shows .file extensions in Explorer (.exe, .png, etc.)",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
@@ -36,4 +36,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

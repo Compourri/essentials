@@ -24,7 +24,7 @@ Use the quick-selection buttons at the top of the Tweaks tab to speed up setup:
 * **Run Tweaks**: After selecting the desired tweaks, click **Run Tweaks** at the bottom of the screen.
 
 > [!NOTE]
-> To see what each preset includes, view [preset.json](https://github.com/Compourri/essentials/blob/main/config/preset.json).
+> To see what each preset includes, view [preset.json](https://github.com/ChrisTitusTech/winutil/blob/main/config/preset.json).
 
 > [!IMPORTANT]
 > Some tweaks take effect immediately, while others may require Explorer to restart, a sign-out, or a full reboot.
@@ -34,6 +34,14 @@ Use the quick-selection buttons at the top of the Tweaks tab to speed up setup:
 * **Select Tweaks to Remove**: Choose the tweaks you want to disable or remove.
 * **Undo Tweaks**: Click **Undo Selected Tweaks** at the bottom of the screen to apply the changes.
 
+### AppX Packages
+
+Open **AppX Removal** from the Tweaks tab to manage the listed Windows apps. Select one or more packages, then choose **Install Selected** or **Remove Selected**.
+
+When installing a selected package, WinUtil first registers an existing local `AppxManifest.xml`. If no usable local manifest remains, WinUtil installs the package from the Microsoft Store through WinGet when a Store product ID is available.
+
+During AppX installation or removal, the window-level progress bar shows the current package, completed package count, and overall progress. The Windows taskbar also reflects progress and the final success or failure state.
+
 ### Essential Tweaks
 Essential Tweaks are the safest starting point for most systems. They focus on lower-risk changes that improve usability, reduce noise, and avoid the more invasive changes found in advanced options.
 
@@ -41,7 +49,7 @@ Essential Tweaks are the safest starting point for most systems. They focus on l
 Advanced Tweaks are for users who understand the side effects of deeper Windows changes. Create a restore point first, review each item, and avoid treating the full advanced list as a one-click baseline.
 
 ### O&O ShutUp10++
-[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from Software Essentials with one click. It is a free privacy tool for Windows that helps users manage telemetry, update behavior, and app permission settings.
+[O&O ShutUp10++](https://www.oo-software.com/en/shutup10) can be launched from WinUtil with one click. It is a free privacy tool for Windows that helps users manage telemetry, update behavior, and app permission settings.
 
 {{< youtube id=3HvNr8eMcv0 loading=lazy >}}
 

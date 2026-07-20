@@ -1,18 +1,12 @@
-function Get-WinUtilSelectedPackages
-{
-     <#
-    .SYNOPSIS
-        Sorts given packages based on installer preference and availability.
+function Get-WinUtilSelectedPackages {
 
-    .OUTPUTS
-        Hashtable. Key = Package Manager, Value = ArrayList of packages to install
-    #>
-    param (
-        [Parameter(Mandatory=$true)]
-        $PackageList,
-        [Parameter(Mandatory=$true)]
-        [PackageManagers]$Preference
-    )
+     param(
+         [Parameter(Mandatory = $true)]
+         [object] $PackageList,
+
+         [Parameter(Mandatory = $true)]
+         [string] $Preference
+     )
 
     if ($PackageList.count -eq 1) {
         Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "Indeterminate" -value 0.01 -overlay "logo" }
@@ -20,39 +14,39 @@ function Get-WinUtilSelectedPackages
         Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "Normal" -value 0.01 -overlay "logo" }
     }
 
-    $packages = [System.Collections.Hashtable]::new()
     $packagesWinget = [System.Collections.ArrayList]::new()
     $packagesChoco = [System.Collections.ArrayList]::new()
-    $packages[[PackageManagers]::Winget] = $packagesWinget
-    $packages[[PackageManagers]::Choco] = $packagesChoco
+    $packages = @{
+        Winget = $packagesWinget
+        Choco = $packagesChoco
+    }
 
-    Write-Debug "Checking packages using Preference '$($Preference)'"
+    function Add-PackageId {
+        param(
+            [System.Collections.ArrayList]$Target,
+            $PackageId
+        )
+
+        if ([string]::IsNullOrWhiteSpace([string]$PackageId) -or $PackageId -eq "na") {
+            return
+        }
+
+        if (-not $Target.Contains($PackageId)) {
+            $null = $Target.Add($PackageId)
+        }
+    }
 
     foreach ($package in $PackageList) {
         switch ($Preference) {
             "Choco" {
-                if ($package.choco -eq "na") {
-                    Write-Debug "$($package.content) has no Choco value."
-                    $source = if ($package.source) { $package.source } else { "winget" }
-                    $null = $packagesWinget.add(@{id=$package.winget; source=$source})
-                    Write-Host "Queueing $($package.winget) for Winget"
+                if ([string]::IsNullOrWhiteSpace([string]$package.choco) -or $package.choco -eq "na") {
+                    Add-PackageId -Target $packagesWinget -PackageId $package.winget
                 } else {
-                    $null = $packagesChoco.add($package.choco)
-                    Write-Host "Queueing $($package.choco) for Chocolatey"
+                    Add-PackageId -Target $packagesChoco -PackageId $package.choco
                 }
-                break
             }
             "Winget" {
-                if ($package.winget -eq "na") {
-                    Write-Debug "$($package.content) has no Winget value."
-                    $null = $packagesChoco.add($package.choco)
-                    Write-Host "Queueing $($package.choco) for Chocolatey"
-                } else {
-                    $source = if ($package.source) { $package.source } else { "winget" }
-                    $null = $packagesWinget.add(@{id=$package.winget; source=$source})
-                    Write-Host "Queueing $($package.winget) for Winget"
-                }
-                break
+                Add-PackageId -Target $packagesWinget -PackageId $package.winget
             }
         }
     }

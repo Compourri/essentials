@@ -15,28 +15,36 @@ Function Invoke-WinUtilCurrentSystem {
     )
     if ($CheckBox -eq "choco") {
         $apps = (choco list | Select-String -Pattern "^\S+").Matches.Value
-        $filter = Get-WinUtilVariables -Type Checkbox | Where-Object {$psitem -like "WPFInstall*"}
-        $sync.GetEnumerator() | Where-Object {$psitem.Key -in $filter} | ForEach-Object {
-            $dependencies = @($sync.configs.applications.$($psitem.Key).choco -split ";")
-            if ($dependencies -in $apps) {
-                Write-Output $psitem.name
+        $sync.configs.applicationsHashtable.GetEnumerator() | ForEach-Object {
+            $packageId = ($_.Value.choco -split ";")[-1].Trim()
+            if ($packageId -ne "na" -and $packageId -in $apps) {
+                Write-Output $_.Key
             }
         }
     }
 
     if ($checkbox -eq "winget") {
-
         $originalEncoding = [Console]::OutputEncoding
-        [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
-        $Sync.InstalledPrograms = winget list -s winget | Select-Object -skip 3 | ConvertFrom-String -PropertyNames "Name", "Id", "Version", "Available" -Delimiter '\s{2,}'
-        [Console]::OutputEncoding = $originalEncoding
+        try {
+            [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
+            $installedProgramOutput = @(winget list --accept-source-agreements --disable-interactivity 2>&1)
+            if ($LASTEXITCODE -ne 0) {
+                throw "winget list failed with exit code $LASTEXITCODE."
+            }
+        } finally {
+            [Console]::OutputEncoding = $originalEncoding
+        }
+        $installedProgramText = $installedProgramOutput -join "`n"
 
-        $filter = Get-WinUtilVariables -Type Checkbox | Where-Object {$psitem -like "WPFInstall*"}
-        $sync.GetEnumerator() | Where-Object {$psitem.Key -in $filter} | ForEach-Object {
-            $dependencies = @($sync.configs.applications.$($psitem.Key).winget -split ";")
+        $sync.configs.applicationsHashtable.GetEnumerator() | ForEach-Object {
+            $packageId = (($_.Value.winget -split ";")[-1] -replace "^msstore:", "").Trim()
+            if ([string]::IsNullOrWhiteSpace($packageId) -or $packageId -eq "na") {
+                return
+            }
 
-            if ($dependencies[-1] -in $sync.InstalledPrograms.Id) {
-                Write-Output $psitem.name
+            $packagePattern = "(?im)[^\S\r\n]{2,}$([regex]::Escape($packageId))(?=[^\S\r\n]{2,}|$)"
+            if ($installedProgramText -match $packagePattern) {
+                Write-Output $_.Key
             }
         }
     }
@@ -44,21 +52,16 @@ Function Invoke-WinUtilCurrentSystem {
     if ($CheckBox -eq "tweaks") {
 
         if (!(Test-Path 'HKU:\')) {$null = (New-PSDrive -PSProvider Registry -Name HKU -Root HKEY_USERS)}
-        $ScheduledTasks = Get-ScheduledTask
 
         $sync.configs.tweaks | Get-Member -MemberType NoteProperty | ForEach-Object {
 
             $Config = $psitem.Name
-            #WPFEssTweaksTele
             $entry = $sync.configs.tweaks.$Config
             $registryKeys = $entry.registry
-            $scheduledtaskKeys = $entry.scheduledtask
             $serviceKeys = $entry.service
-            $appxKeys = $entry.appx
-            $invokeScript = $entry.InvokeScript
             $entryType = $entry.Type
 
-            if ($registryKeys -or $scheduledtaskKeys -or $serviceKeys) {
+            if ($registryKeys -or $serviceKeys) {
                 $Values = @()
 
                 if ($entryType -eq "Toggle") {
@@ -103,20 +106,6 @@ Function Invoke-WinUtilCurrentSystem {
                     }
                 }
 
-                Foreach ($tweaks in $scheduledtaskKeys) {
-                    Foreach ($tweak in $tweaks) {
-                        $task = $ScheduledTasks | Where-Object {$($psitem.TaskPath + $psitem.TaskName) -like "\$($tweak.name)"}
-
-                        if ($task) {
-                            $actualValue = $task.State
-                            $expectedValue = $tweak.State
-                            if ($expectedValue -ne $actualValue) {
-                                $values += $False
-                            }
-                        }
-                    }
-                }
-
                 Foreach ($tweaks in $serviceKeys) {
                     Foreach ($tweak in $tweaks) {
                         $Service = Get-Service -Name $tweak.Name
@@ -133,10 +122,6 @@ Function Invoke-WinUtilCurrentSystem {
 
                 if ($values -notcontains $false) {
                     Write-Output $Config
-                }
-            } else {
-                if ($invokeScript -or $appxKeys) {
-                    Write-Debug "Skipping $Config in Get Installed: no detectable registry, scheduled task, or service state."
                 }
             }
         }

@@ -3,7 +3,7 @@ title: "Network Connections"
 description: ""
 ---
 
-```json {filename="config/feature.json",linenos=inline,linenostart=217}
+```json {filename="config/feature.json",linenos=inline,linenostart=215}
   "WPFPanelNetwork": {
     "Content": "Network Connections",
     "category": "Legacy Windows Panels",

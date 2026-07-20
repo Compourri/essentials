@@ -3,7 +3,7 @@ title: "Telemetry - Disable"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=456}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=446}
   "WPFTweaksTelemetry": {
     "Content": "Telemetry - Disable",
     "Description": "Disables Microsoft Telemetry.",
@@ -106,6 +106,9 @@ description: ""
       # Disable (Windows Error Reporting Manager) Service
       Set-Service -Name wermgr -StartupType Disabled
 
+      # Disable PowerShell 7 telemetry
+      [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
+
       Remove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Siuf\\Rules\" -Name PeriodInNanoSeconds
       "
     ],
@@ -119,6 +122,9 @@ description: ""
 
       # Enable (Windows Error Reporting Manager) Service
       Set-Service -Name wermgr -StartupType Automatic
+
+      # Enable PowerShell 7 telemetry
+      [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '', 'Machine')
       "
     ],
 ```
@@ -127,4 +133,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

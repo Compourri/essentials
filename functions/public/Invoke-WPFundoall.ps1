@@ -24,6 +24,7 @@ function Invoke-WPFundoall {
         param($tweaks)
 
         $sync.ProcessRunning = $true
+        Write-WinUtilLog -Component "Tweaks" -Message "Undo tweaks requested: $(@($tweaks).Count) selected tweak(s)."
         if ($tweaks.count -eq 1) {
             Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "Indeterminate" -value 0.01 -overlay "logo" }
         } else {
@@ -32,17 +33,18 @@ function Invoke-WPFundoall {
 
 
         for ($i = 0; $i -lt $tweaks.Count; $i++) {
-            Set-WinUtilProgressBar -Label "Undoing $($tweaks[$i])" -Percent ($i / $tweaks.Count * 100)
+            Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Undoing $($tweaks[$i]) ($($i + 1)/$($tweaks.Count))" -Percent ($i / $tweaks.Count * 100)
             Invoke-WinUtiltweaks $tweaks[$i] -undo $true
             Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -value ($i/$tweaks.Count) }
         }
 
-        Set-WinUtilProgressBar -Label "Undo Tweaks Finished" -Percent 100
+        Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Undo Tweaks Finished" -Percent 100
         $sync.ProcessRunning = $false
         Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "None" -overlay "checkmark" }
         Write-Host "=================================="
         Write-Host "---  Undo Tweaks are Finished  ---"
         Write-Host "=================================="
+        Write-WinUtilLog -Component "Tweaks" -Message "Undo tweaks workflow completed."
 
     }
 }

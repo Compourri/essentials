@@ -3,7 +3,7 @@ title: "Printer Panel"
 description: ""
 ---
 
-```json {filename="config/feature.json",linenos=inline,linenostart=239}
+```json {filename="config/feature.json",linenos=inline,linenostart=237}
   "WPFPanelPrinter": {
     "Content": "Printer Panel",
     "category": "Legacy Windows Panels",

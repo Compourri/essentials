@@ -3,7 +3,7 @@ title: "System Properties"
 description: ""
 ---
 
-```json {filename="config/feature.json",linenos=inline,linenostart=283}
+```json {filename="config/feature.json",linenos=inline,linenostart=292}
   "WPFPanelSystem": {
     "Content": "System Properties",
     "category": "Legacy Windows Panels",

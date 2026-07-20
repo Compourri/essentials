@@ -177,38 +177,25 @@ function Invoke-WPFUIElements {
                         $itemsControl.Items.Add($dockPanel) | Out-Null
 
                         $sync[$entryInfo.Name] = $checkBox
-                        if ($entryInfo.Name -eq "WPFToggleFOSSHighlight") {
-                             if ($entryInfo.Checked -eq $true) {
-                                 $sync[$entryInfo.Name].IsChecked = $true
-                             }
+                        $sync[$entryInfo.Name].IsChecked = (Get-WinUtilToggleStatus $entryInfo.Name)
 
-                             $sync[$entryInfo.Name].Add_Checked({
-                                 Invoke-WPFButton -Button "WPFToggleFOSSHighlight"
-                             })
-                             $sync[$entryInfo.Name].Add_Unchecked({
-                                 Invoke-WPFButton -Button "WPFToggleFOSSHighlight"
-                             })
-                        } else {
-                            $sync[$entryInfo.Name].IsChecked = (Get-WinUtilToggleStatus $entryInfo.Name)
+                        $sync[$entryInfo.Name].Add_Checked({
+                            [System.Object]$Sender = $args[0]
+                            Invoke-WPFSelectedCheckboxesUpdate -type "Add" -checkboxName $Sender.name
+                            # Skip applying tweaks while an import is restoring toggle states
+                            if (-not $sync.ImportInProgress) {
+                                Invoke-WinUtilTweaks $Sender.name
+                            }
+                        })
 
-                            $sync[$entryInfo.Name].Add_Checked({
-                                [System.Object]$Sender = $args[0]
-                                Invoke-WPFSelectedCheckboxesUpdate -type "Add" -checkboxName $Sender.name
-                                # Skip applying tweaks while an import is restoring toggle states
-                                if (-not $sync.ImportInProgress) {
-                                    Invoke-WinUtilTweaks $Sender.name
-                                }
-                            })
-
-                            $sync[$entryInfo.Name].Add_Unchecked({
-                                [System.Object]$Sender = $args[0]
-                                Invoke-WPFSelectedCheckboxesUpdate -type "Remove" -checkboxName $Sender.name
-                                # Skip undoing tweaks while an import is restoring toggle states
-                                if (-not $sync.ImportInProgress) {
-                                    Invoke-WinUtiltweaks $Sender.name -undo $true
-                                }
-                            })
-                        }
+                        $sync[$entryInfo.Name].Add_Unchecked({
+                            [System.Object]$Sender = $args[0]
+                            Invoke-WPFSelectedCheckboxesUpdate -type "Remove" -checkboxName $Sender.name
+                            # Skip undoing tweaks while an import is restoring toggle states
+                            if (-not $sync.ImportInProgress) {
+                                Invoke-WinUtiltweaks $Sender.name -undo $true
+                            }
+                        })
                     }
 
                     "ToggleButton" {
@@ -236,6 +223,18 @@ function Invoke-WPFUIElements {
                         $sync[$entryInfo.Name].Add_Unchecked({
                             $this.Content = $this.Tag.contentOff
                         })
+
+                        if ($null -eq $sync.Buttons) {
+                            $sync.Buttons = [System.Collections.Generic.List[PSObject]]::new()
+                        }
+
+                        if ($sync.Buttons -notcontains $toggleButton.Name) {
+                            $toggleButton.Add_Click({
+                                [System.Object]$Sender = $args[0]
+                                Invoke-WPFButton $Sender.name
+                            })
+                            $sync.Buttons.Add($toggleButton.Name) | Out-Null
+                        }
                     }
 
                     "Combobox" {
@@ -307,6 +306,18 @@ function Invoke-WPFUIElements {
                         $itemsControl.Items.Add($button) | Out-Null
 
                         $sync[$entryInfo.Name] = $button
+
+                        if ($null -eq $sync.Buttons) {
+                            $sync.Buttons = [System.Collections.Generic.List[PSObject]]::new()
+                        }
+
+                        if ($sync.Buttons -notcontains $button.Name) {
+                            $button.Add_Click({
+                                [System.Object]$Sender = $args[0]
+                                Invoke-WPFButton $Sender.name
+                            })
+                            $sync.Buttons.Add($button.Name) | Out-Null
+                        }
                     }
 
                     "RadioButton" {
@@ -346,6 +357,28 @@ function Invoke-WPFUIElements {
                         $sync[$entryInfo.Name] = $radioButton
                     }
 
+                    "Note" {
+                        $textBlock = New-Object Windows.Controls.TextBlock
+                        $textBlock.TextWrapping = "Wrap"
+                        $textBlock.Margin = "5,5,5,5"
+                        $textBlock.UseLayoutRounding = $true
+
+                        $bulletRun = New-Object Windows.Documents.Run
+                        $bulletRun.Text = [char]0x25CF
+                        $bulletRun.Foreground = [Windows.Media.SolidColorBrush]::new([Windows.Media.Color]::FromRgb(110, 255, 114))
+                        $bulletRun.FontSize = 11.5
+
+                        $textRun = New-Object Windows.Documents.Run
+                        $textRun.Text = " $($entryInfo.Content)"
+                        $textRun.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "FontSize")
+                        $textRun.Foreground = [Windows.Media.SolidColorBrush]::new([Windows.Media.Color]::FromRgb(19, 143, 83))
+
+                        $textBlock.Inlines.Add($bulletRun)
+                        $textBlock.Inlines.Add($textRun)
+
+                        $itemsControl.Items.Add($textBlock) | Out-Null
+                    }
+
                     default {
                         $horizontalStackPanel = New-Object Windows.Controls.StackPanel
                         $horizontalStackPanel.Orientation = "Horizontal"
@@ -372,6 +405,32 @@ function Invoke-WPFUIElements {
                             $textBlock.Style = $HoverTextBlockStyle
                             $textBlock.UseLayoutRounding = $true
 
+                            $textBlock.VerticalAlignment = "Center"
+                            $textBlock.SetResourceReference([Windows.Controls.Control]::FontSizeProperty, "FontSize")
+                            $textBlock.Tag = $checkBox
+
+                            $textBlock.Add_MouseUp({
+                                [System.Object]$Sender = $args[0]
+                                Start-Process $Sender.ToolTip -ErrorAction Stop
+                            })
+
+                            $updateLinkMargin = {
+                                [System.Object]$Sender = $args[0]
+                                $linkedCheckBox = $Sender.Tag
+                                $MarginTopBase = if ($linkedCheckBox) { $linkedCheckBox.Margin.Top } else { 0 }
+                                $Sender.Margin = New-Object Windows.Thickness(
+                                    [math]::Round($Sender.FontSize * 0.5),
+                                    ($MarginTopBase - [math]::Round($Sender.FontSize / 2)),
+                                    0, 0
+                                )
+                            }
+                            $textBlock.Add_Loaded($updateLinkMargin)
+                            $fontSizeDescriptor = [System.ComponentModel.DependencyPropertyDescriptor]::FromProperty(
+                                [Windows.Controls.Control]::FontSizeProperty,
+                                [Windows.Controls.TextBlock]
+                            )
+                            $fontSizeDescriptor.AddValueChanged($textBlock, $updateLinkMargin)
+
                             $horizontalStackPanel.Children.Add($textBlock) | Out-Null
 
                             $sync[$textBlock.Name] = $textBlock
@@ -387,7 +446,7 @@ function Invoke-WPFUIElements {
 
                         $sync[$entryInfo.Name].Add_Unchecked({
                             [System.Object]$Sender = $args[0]
-                            Invoke-WPFSelectedCheckboxesUpdate -type "Remove" -checkbox $Sender.name
+                            Invoke-WPFSelectedCheckboxesUpdate -type "Remove" -checkboxName $Sender.name
                         })
                     }
                 }

@@ -3,7 +3,7 @@ title: "Restore Point - Create"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=843}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=828}
   "WPFTweaksRestorePoint": {
     "Content": "Restore Point - Create",
     "Description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications.",
@@ -35,4 +35,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

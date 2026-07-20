@@ -3,10 +3,10 @@ title: "Start Menu Recommendations"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1581}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1674}
   "WPFToggleStartMenuRecommendations": {
     "Content": "Start Menu Recommendations",
-    "Description": "If disabled, then you will not see recommendations in the Start Menu. WARNING: This will also disable Windows Spotlight on your Lock Screen as a side effect.",
+    "Description": "Toggles the recommendations section in the Start Menu. WARNING: This will also disable Windows Spotlight on your Lock Screen as a side effect.",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
@@ -52,4 +52,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

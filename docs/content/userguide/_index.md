@@ -9,7 +9,10 @@ cascade:
     breadcrumbs: false
 ---
 
-Welcome to the official User Guide for **Software Essentials**, your all-in-one Windows toolkit.
+Welcome to the official User Guide for **Winutil**, your all-in-one Windows toolkit.
+
+> [!IMPORTANT]
+> Windows 10 is not supported by Winutil. Windows 10 reached the end of support on **October 14, 2025**.
 
 > [!IMPORTANT]
 > Windows 10 is not supported by Software Essentials. Windows 10 reached the end of support on **October 14, 2025**.
@@ -37,9 +40,9 @@ Software Essentials is designed for:
 
 ## Getting Started
 
-New to Software Essentials? Follow the guides below in order to get up and running quickly:
+New to Winutil? Follow the guides below in order to get up and running quickly:
 
-1. **[Getting Started](getting-started/)** - Learn how to launch Software Essentials and understand the basics.
+1. **[Getting Started](getting-started/)** - Learn how to launch Winutil and understand the basics.
 2. **[Applications](application/)** - Install, update, and remove apps with ease.
 3. **[Tweaks](tweaks/)** - Apply performance, privacy, and usability improvements.
 4. **[Features](features/)** - Explore built-in tools and common Windows fixes.
@@ -129,8 +132,8 @@ Need help?
 - **Documentation**: You're reading it. Use the navigation menu.
 - **FAQ**: Check [Frequently Asked Questions](../faq/)
 - **Known Issues**: Review [Known Issues](../knownissues/)
-- **Facebook**: Join the [Facebook Community](https://www.facebook.com/compourri)
-- **GitHub**: Report bugs on [GitHub Issues](https://github.com/Compourri/essentials/issues)
+- **Discord**: Join the [community Discord](https://discord.gg/RUbZUZyByQ)
+- **GitHub**: Report bugs on [GitHub Issues](https://github.com/ChrisTitusTech/winutil/issues)
 - **YouTube**: Watch [video tutorials](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
 
 ## Contributing
@@ -147,7 +150,7 @@ Want to help improve Software Essentials?
 
 ## Video Tutorial
 
-Watch the complete Software Essentials overview:
+Watch the complete WinUtil overview:
 
 {{< youtube id=6UQZ5oQg8XA loading=lazy >}}
 
@@ -158,5 +161,5 @@ Ready to get started? Head to the **[Getting Started Guide](getting-started/)**.
 Dive right into the following section to get started:
 
 {{< cards >}}
-  {{< card link="getting-started" title="Getting Started" icon="document-text" subtitle="Learn how to use Software Essentials." >}}
+  {{< card link="getting-started" title="Getting Started" icon="document-text" subtitle="Learn how to use WinUtil." >}}
 {{< /cards >}}

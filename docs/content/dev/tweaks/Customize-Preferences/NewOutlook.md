@@ -3,10 +3,10 @@ title: "Microsoft Outlook New Version"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1352}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1402}
   "WPFToggleNewOutlook": {
     "Content": "Microsoft Outlook New Version",
-    "Description": "If disabled, it removes the new Outlook toggle, disables the new Outlook migration, and ensures the classic Outlook application is used.",
+    "Description": "This will ensures the classic Outlook application is used.",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
@@ -50,4 +50,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

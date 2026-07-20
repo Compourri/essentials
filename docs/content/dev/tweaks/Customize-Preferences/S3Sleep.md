@@ -3,10 +3,10 @@ title: "S3 Sleep"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1509}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1585}
   "WPFToggleS3Sleep": {
     "Content": "S3 Sleep",
-    "Description": "Toggles between Modern Standby and S3 Sleep.",
+    "Description": "Toggles between Modern Standby and S3 Sleep, which cuts off power to the CPU while continuing to refresh the memory.",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
@@ -26,4 +26,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

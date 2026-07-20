@@ -6,46 +6,46 @@ toc: true
 ## General Questions
 
 ### Is Windows 10 still supported?
-No. Windows 10 is no longer supported by Software Essentials because it reached the end of support on **October 14, 2025**.
-Software Essentials is focused on Windows 11.
+No. Windows 10 is no longer supported by WinUtil because it reached the end of support on **October 14, 2025**.
+WinUtil is focused on Windows 11.
 
-### How do I uninstall Software Essentials?
-You do not need to uninstall Software Essentials. Because it runs as a PowerShell script, it is loaded into memory only while it is open. Once you close it, it is removed from memory and does not remain installed on your system.
+### How do I uninstall WinUtil?
+You do not need to uninstall WinUtil. Because it runs as a PowerShell script, it is loaded into memory only while it is open. Once you close it, it is removed from memory and does not remain installed on your system.
 
-### Is Software Essentials safe to use?
-Yes, Software Essentials is open source, and the code is publicly available on GitHub. Thousands of users run it daily. However, like any system modification tool, you should:
+### Is WinUtil safe to use?
+Yes, WinUtil is open source, and the code is publicly available on GitHub. Thousands of users run it daily. However, like any system modification tool, you should:
 - Run it as Administrator (required)
 - Create a restore point before major changes
 - Understand what tweaks you're applying
-- Run only from [official source](https://github.com/Compourri/essentials/)
+- Run only from [official source](https://github.com/ChrisTitusTech/winutil/)
 
-### Do I need to keep running Software Essentials?
-No. Once you've applied tweaks or installed applications, you can close Software Essentials. Changes persist after closing. You only need to run Software Essentials again when you want to make additional changes or undo tweaks.
+### Do I need to keep running WinUtil?
+No. Once you've applied tweaks or installed applications, you can close WinUtil. Changes persist after closing. You only need to run WinUtil again when you want to make additional changes or undo tweaks.
 
-### Does Software Essentials require internet access?
+### Does Winutil require internet access?
 - **For downloading**: Yes, installing applications requires the Internet
 - **For tweaks**: No, most tweaks work offline
 - **Initial run**: Yes, to run the latest script
 
-### How often is Software Essentials updated?
-Software Essentials is actively maintained with frequent updates. New features, bug fixes, and application additions are released regularly. The script auto-downloads the latest version each time you run it.
+### How often is WinUtil updated?
+WinUtil is actively maintained with frequent updates. New features, bug fixes, and application additions are released regularly. The script auto-downloads the latest version each time you run it.
 
 ## Installation & Running
 
-### How do I run Software Essentials?
+### How do I run WinUtil?
 1. Open PowerShell as Administrator
 2. Run: `irm "https://compourri.co.za/essentials" | iex`
 3. Wait for the GUI to appear
 
 ### Why do I need Administrator rights?
-Software Essentials makes system-level changes (registry edits, service modifications, software installation) that require elevated permissions. Without admin rights, most features won't work.
+WinUtil makes system-level changes (registry edits, service modifications, software installation) that require elevated permissions. Without admin rights, most features won't work.
 
 ### The script won't download. What do I do?
 Try these solutions in order:
 
 1. **Use the direct GitHub link**:
    ```powershell
-   irm https://github.com/Compourri/essentials/releases/latest/download/Winutil.ps1 | iex
+   irm https://github.com/ChrisTitusTech/winutil/releases/latest/download/Winutil.ps1 | iex
    ```
 
 2. **Force TLS 1.2**:
@@ -97,7 +97,7 @@ Alternatively, use System Restore if you created a restore point.
 Most tweaks persist through updates, but some may be reset by major Windows feature updates. You may need to reapply certain tweaks afterwards.
 
 ### Can I create my own tweak presets?
-Currently, Software Essentials uses predefined presets (Standard, Minimal). Custom presets aren't directly supported in the GUI, but you can script your preferred configuration.
+Currently, Winutil uses predefined presets (Standard, Minimal). Custom presets aren't directly supported in the GUI, but you can script your preferred configuration.
 
 ### What's the difference between Essential and Advanced tweaks?
 - **Essential Tweaks**: Safe for most users, improve performance/privacy with minimal risk
@@ -121,11 +121,11 @@ Yes! Check the boxes for all applications you want, then click "Install Selected
 ### Do installed applications have bloatware or bundled software?
 No. WinGet and Chocolatey install clean versions of applications without bundled offers, toolbars, or bloatware.
 
-### Can I uninstall applications through Software Essentials?
-Software Essentials primarily focuses on installing and managing applications rather than providing a full GUI for uninstalling every program. To remove applications you can:
+### Can I uninstall applications through Winutil?
+Winutil primarily focuses on installing and managing applications rather than providing a full GUI for uninstalling every program. To remove applications you can:
 - Use Windows Settings > Apps > Installed apps to uninstall programs.
 - Use package manager commands in PowerShell (for example `winget uninstall <package>` or `choco uninstall <package>`).
-- Some packages installed by Software Essentials (AppX/MSIX) include removal helpers; check the app entry or use Software Essentials' remove helpers when available.
+- Some packages installed by Winutil (AppX/MSIX) include removal helpers; check the app entry or use Winutil's remove helpers when available.
 
 ### Will installed apps auto-update?
 Applications with built-in update mechanisms will auto-update. You can also update them via WinGet/Chocolatey commands or through Software Essentials' "Upgrade Selected" feature.
@@ -139,7 +139,7 @@ Generally, **no**. Security updates are important. However, you might:
 - Disable only during critical work periods
 
 ### How do I re-enable updates after disabling them?
-1. Open Software Essentials
+1. Open Winutil
 2. Go to the **Updates** tab
 3. Click **Default Updates**
 4. Updates will resume normally
@@ -191,10 +191,10 @@ Yes, Software Essentials works on Windows Server editions, though some features 
 ### Does Software Essentials work with Windows LTSC?
 Yes, Software Essentials works with Windows 10/11 LTSC editions. Some applications may not be available depending on your configuration.
 
-### Can I use Software Essentials in a corporate/enterprise environment?
+### Can I use Winutil in a corporate/enterprise environment?
 Yes, but check your organization's policies first. Some tweaks may conflict with Group Policy or other corporate requirements.
 
-### How do I automate Software Essentials for multiple PCs?
+### How do I automate Winutil for multiple PCs?
 See the [Automation Guide](/userguide/automation/) for details on:
 - Configuration files
 - PowerShell parameters
@@ -244,8 +244,8 @@ Use the **Desktop** preset, then additionally apply:
 - Disable full-screen optimizations (Advanced)
 - Set display for performance (Advanced)
 
-### How much RAM does Software Essentials use?
-Software Essentials itself uses about 50-100 MB while running. Once closed, it is removed from memory.
+### How much RAM does Winutil use?
+Winutil itself uses about 50-100 MB while running. Once closed, it is removed from memory.
 
 ## Error Messages
 
@@ -261,6 +261,6 @@ Can't find your answer? Try these resources:
 
 - **[Known Issues](/knownissues/)** - Check if it's a known problem
 - **[User Guide](/userguide/)** - Comprehensive documentation
-- **[Facebook Community](https://www.facebook.com/compourri)** - Get help from other users
-- **[GitHub Issues](https://github.com/Compourri/essentials/issues)** - Report bugs
+- **[Discord Community](https://discord.gg/RUbZUZyByQ)** - Get help from other users
+- **[GitHub Issues](https://github.com/ChrisTitusTech/winutil/issues)** - Report bugs
 - **[YouTube Tutorial](https://www.youtube.com/watch?v=6UQZ5oQg8XA)** - Video walkthrough

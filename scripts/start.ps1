@@ -9,25 +9,10 @@
 
 param (
     [string]$Config,
-    [switch]$Run,
-    [switch]$Noui,
+    [ValidateSet("Standard", "Minimal", "Advanced", "")]
+    [string]$Preset,
     [switch]$Offline
 )
-
-if ($Config) {
-    $PARAM_CONFIG = $Config
-}
-
-$PARAM_RUN = $false
-# Handle the -Run switch
-if ($Run) {
-    $PARAM_RUN = $true
-}
-
-$PARAM_NOUI = $false
-if ($Noui) {
-    $PARAM_NOUI = $true
-}
 
 $PARAM_OFFLINE = $false
 if ($Offline) {
@@ -35,12 +20,12 @@ if ($Offline) {
 }
 
 if ($ExecutionContext.SessionState.LanguageMode -ne 'FullLanguage') {
-    Write-Host "Essentials is unable to run on your system, powershell execution is restricted by security policies" -ForegroundColor Red
+    Write-Host "WinUtil is unable to run on your system. PowerShell execution is restricted by security policies." -ForegroundColor Red
     return
 }
 
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Output "Essentials needs to be run as Administrator. Attempting to relaunch."
+    Write-Output "WinUtil needs to be run as Administrator. Attempting to relaunch."
     $argList = @()
 
     $PSBoundParameters.GetEnumerator() | ForEach-Object {
@@ -71,36 +56,29 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     break
 }
 
-# Load DLLs
-Add-Type -AssemblyName PresentationFramework
-Add-Type -AssemblyName System.Windows.Forms
-
 # Variable to sync between runspaces
 $sync = [Hashtable]::Synchronized(@{})
-$sync.PSScriptRoot = $PSScriptRoot
 $sync.version = "#{replaceme}"
 $sync.configs = @{}
 $sync.Buttons = [System.Collections.Generic.List[PSObject]]::new()
 $sync.preferences = @{}
 $sync.ProcessRunning = $false
+$sync.Win11ISOProcessRunning = $false
+$sync.selectedAppx = [System.Collections.Generic.List[string]]::new()
 $sync.selectedApps = [System.Collections.Generic.List[string]]::new()
 $sync.selectedTweaks = [System.Collections.Generic.List[string]]::new()
 $sync.selectedToggles = [System.Collections.Generic.List[string]]::new()
 $sync.selectedFeatures = [System.Collections.Generic.List[string]]::new()
 $sync.currentTab = "Install"
-$sync.selectedAppsStackPanel
-$sync.selectedAppsPopup
 
 $dateTime = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
-
-# Set the path for the winutil directory
 $winutildir = "$env:LocalAppData\winutil"
-New-Item $winutildir -ItemType Directory -Force | Out-Null
+$sync.winutildir = $winutildir
 
 $logdir = "$winutildir\logs"
-New-Item $logdir -ItemType Directory -Force | Out-Null
-Start-Transcript -Path "$logdir\essentials_$dateTime.log" -Append -NoClobber | Out-Null
+$sync.logPath = "$logdir\winutil_$dateTime.log"
+$sync.transcriptPath = $sync.logPath
+Start-Transcript -Path $sync.logPath -Append -NoClobber | Out-Null
 
-# Set PowerShell window title
-$Host.UI.RawUI.WindowTitle = "Software Essentials (Admin)"
-clear-host
+$Host.UI.RawUI.WindowTitle = "WinUtil"
+Clear-Host

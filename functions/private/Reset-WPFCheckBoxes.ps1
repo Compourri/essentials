@@ -21,15 +21,11 @@ function Reset-WPFCheckBoxes {
         [string]$checkboxfilterpattern = "**"
     )
 
-    $CheckBoxesToCheck = $sync.selectedApps + $sync.selectedTweaks + $sync.selectedFeatures
-    $CheckBoxes = ($sync.GetEnumerator()).where{ $_.Value -is [System.Windows.Controls.CheckBox] -and $_.Name -notlike "WPFToggle*" -and $_.Name -like "$checkboxfilterpattern"}
-    Write-Debug "Getting checkboxes to set, number of checkboxes: $($CheckBoxes.Count)"
-
-    if ($CheckBoxesToCheck -ne "") {
-        $debugMsg = "CheckBoxes to Check are: "
-        $CheckBoxesToCheck | ForEach-Object { $debugMsg += "$_, " }
-        $debugMsg = $debugMsg -replace (',\s*$', '')
-        Write-Debug "$debugMsg"
+    $CheckBoxesToCheck = $sync.selectedApps + $sync.selectedTweaks + $sync.selectedFeatures + $sync.selectedAppx
+    $CheckBoxes = foreach ($syncEntry in $sync.GetEnumerator()) {
+        if ($syncEntry.Value -is [System.Windows.Controls.CheckBox] -and $syncEntry.Name -notlike "WPFToggle*" -and $syncEntry.Name -like $checkboxfilterpattern) {
+            $syncEntry
+        }
     }
 
     foreach ($CheckBox in $CheckBoxes) {
@@ -43,11 +39,9 @@ function Reset-WPFCheckBoxes {
         if ($CheckBoxesToCheck -contains $checkboxName) {
             # If it exists, set IsChecked to true
             $sync.$checkboxName.IsChecked = $true
-            Write-Debug "$checkboxName is checked"
         } else {
             # If it doesn't exist, set IsChecked to false
             $sync.$checkboxName.IsChecked = $false
-            Write-Debug "$checkboxName is not checked"
         }
     }
 
@@ -60,7 +54,7 @@ function Reset-WPFCheckBoxes {
 
     if($doToggles) {
         # Restore toggle switch states from imported config.
-        # Only act on toggles that are explicitly listed in the import — toggles absent
+        # Only act on toggles that are explicitly listed in the import - toggles absent
         # from the export file were not part of the saved config and should keep whatever
         # state the live system already has (set during UI initialisation via Get-WinUtilToggleStatus).
         $importedToggles = $sync.selectedToggles
@@ -68,7 +62,6 @@ function Reset-WPFCheckBoxes {
         foreach ($toggle in $allToggles) {
             if ($importedToggles -contains $toggle.Key) {
                 $sync[$toggle.Key].IsChecked = $true
-                Write-Debug "Restoring toggle: $($toggle.Key) = checked"
             }
             # Toggles not present in the import are intentionally left untouched;
             # their current UI state already reflects the real system state.

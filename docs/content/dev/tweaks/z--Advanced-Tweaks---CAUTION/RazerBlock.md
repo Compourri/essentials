@@ -3,7 +3,7 @@ title: "Razer Software Auto-Install - Disable"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=958}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=963}
   "WPFTweaksRazerBlock": {
     "Content": "Razer Software Auto-Install - Disable",
     "Description": "Blocks ALL Razer Software installations. The hardware works fine without any software.",
@@ -27,7 +27,7 @@ description: ""
     ],
     "InvokeScript": [
       "
-      $RazerPath = \"C:\\Windows\\Installer\\Razer\"
+      $RazerPath = \"$Env:SystemRoot\\Installer\\Razer\"
 
       if (Test-Path $RazerPath) {
         Remove-Item $RazerPath\\* -Recurse -Force
@@ -40,7 +40,7 @@ description: ""
     ],
     "UndoScript": [
       "
-      icacls \"C:\\Windows\\Installer\\Razer\" /remove:d Everyone
+      icacls \"$Env:SystemRoot\\Installer\\Razer\" /remove:d Everyone
       "
     ],
 ```
@@ -49,4 +49,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

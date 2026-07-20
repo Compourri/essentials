@@ -44,10 +44,10 @@ function Invoke-WPFImpex {
             try {
                 $Config = ConfigDialog
                 if ($Config) {
-                    $allConfs = ($sync.selectedApps + $sync.selectedTweaks + $sync.selectedToggles + $sync.selectedFeatures) | ForEach-Object { [string]$_ }
+                    $allConfs = ($sync.selectedApps + $sync.selectedTweaks + $sync.selectedToggles + $sync.selectedFeatures + $sync.selectedAppx) | ForEach-Object { [string]$_ }
                     if (-not $allConfs) {
                         [System.Windows.MessageBox]::Show(
-                            "No settings are selected to export. Please select at least one app, tweak, toggle, or feature before exporting.",
+                            "No settings are selected to export. Please select at least one app, tweak, toggle, feature, or AppX package before exporting.",
                             "Nothing to Export", "OK", "Warning")
                         return
                     }
@@ -86,6 +86,7 @@ function Invoke-WPFImpex {
 
                     # Clear all existing selections before importing so the import replaces
                     # the current state rather than merging with it
+                    $sync.selectedAppx = [System.Collections.Generic.List[string]]::new()
                     $sync.selectedApps = [System.Collections.Generic.List[string]]::new()
                     $sync.selectedTweaks = [System.Collections.Generic.List[string]]::new()
                     $sync.selectedToggles = [System.Collections.Generic.List[string]]::new()
@@ -93,15 +94,8 @@ function Invoke-WPFImpex {
 
                     Update-WinUtilSelections -flatJson $flattenedJson
 
-                    if (!$PARAM_NOUI) {
-                        # Set flag so toggle Checked/Unchecked events don't trigger registry writes
-                        # while we're programmatically restoring UI state from the imported config
-                        $sync.ImportInProgress = $true
-                        try {
-                            Reset-WPFCheckBoxes -doToggles $true
-                        } finally {
-                            $sync.ImportInProgress = $false
-                        }
+                    if ($sync.Form) {
+                        Reset-WPFCheckBoxes -doToggles $true
                     }
                 }
             } catch {

@@ -5,6 +5,17 @@ function Invoke-WinUtilAssets {
       [switch]$render
   )
 
+  if ($render -and $null -ne $sync) {
+      if ($null -eq $sync.RenderedAssetCache) {
+          $sync.RenderedAssetCache = @{}
+      }
+
+      $cacheKey = "$(([string]$type).ToLowerInvariant())|$Size"
+      if ($sync.RenderedAssetCache.ContainsKey($cacheKey)) {
+          return $sync.RenderedAssetCache[$cacheKey]
+      }
+  }
+
   # Create the Viewbox and set its size
   $LogoViewbox = New-Object Windows.Controls.Viewbox
   $LogoViewbox.Width = $Size
@@ -142,6 +153,13 @@ function Invoke-WinUtilAssets {
       $bitmapImage.StreamSource = $imageStream
       $bitmapImage.CacheOption = [Windows.Media.Imaging.BitmapCacheOption]::OnLoad
       $bitmapImage.EndInit()
+      if ($bitmapImage.CanFreeze) {
+          $bitmapImage.Freeze()
+      }
+
+      if ($null -ne $sync -and $sync.ContainsKey("RenderedAssetCache")) {
+          $sync.RenderedAssetCache[$cacheKey] = $bitmapImage
+      }
 
       return $bitmapImage
   } else {

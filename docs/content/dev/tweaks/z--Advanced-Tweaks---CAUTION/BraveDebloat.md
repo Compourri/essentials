@@ -3,7 +3,7 @@ title: "Brave Browser - Debloat"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=245}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=186}
   "WPFTweaksBraveDebloat": {
     "Content": "Brave Browser - Debloat",
     "Description": "Disables various annoyances like Brave Rewards, Leo AI, Crypto Wallet and VPN.",
@@ -44,6 +44,55 @@ description: ""
         "Value": "0",
         "Type": "DWord",
         "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "BraveNewsDisabled",
+        "Value": "1",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "BraveTalkDisabled",
+        "Value": "1",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "TorDisabled",
+        "Value": "1",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "BraveP3AEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "UrlKeyedAnonymizedDataCollectionEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "SafeBrowsingExtendedReportingEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
+      },
+      {
+        "Path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+        "Name": "MetricsReportingEnabled",
+        "Value": "0",
+        "Type": "DWord",
+        "OriginalValue": "<RemoveEntry>"
       }
     ],
 ```
@@ -52,4 +101,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).

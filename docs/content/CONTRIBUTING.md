@@ -16,7 +16,7 @@ toc: true
 
 ### 1. Fork the Repository
 
-Go to the Compourri/essentials repository on GitHub and click the Fork button in the top right corner.
+Go to the ChrisTitusTech/winutil repository on GitHub and click the Fork button in the top right corner.
 
 <img width="171" height="50" alt="{650A4723-F38A-44A4-9820-D232BC87C8A0}" src="https://github.com/user-attachments/assets/a214f27c-2fee-444a-920f-d87b14f5896f" />
 
@@ -25,8 +25,8 @@ Go to the Compourri/essentials repository on GitHub and click the Fork button in
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/essentials.git
-cd essentials
+git clone https://github.com/YOUR_USERNAME/winutil.git
+cd winutil
 ```
 
 ---
@@ -64,7 +64,7 @@ Open PowerShell as Administrator.
 Go to the project folder:
 
 ```powershell
-cd path\to\essentials
+cd path\to\winutil
 ```
 
 Run:
@@ -75,7 +75,7 @@ Run:
 
 Verify:
 
-- Software Essentials launches correctly
+- WinUtil launches correctly
 - Your feature works
 - Nothing else breaks
 

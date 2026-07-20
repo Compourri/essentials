@@ -6,7 +6,7 @@ toc: true
 
 ## Overview
 
-Software Essentials is a PowerShell-based Windows utility with a WPF (Windows Presentation Foundation) GUI. This document explains the architecture, code structure, and how different components work together.
+WinUtil is a PowerShell-based Windows utility with a WPF (Windows Presentation Foundation) GUI. This document explains the architecture, code structure, and how different components work together.
 
 ## High-Level Architecture
 
@@ -130,7 +130,7 @@ winutil/
 
 ## Win11 Creator Architecture
 
-The **Win11 Creator** is a specialized subsystem within Software Essentials that creates customized Windows 11 ISOs. It operates independently from the main package installation and tweak system.
+The **Win11 Creator** is a specialized subsystem within Winutil that creates customized Windows 11 ISOs. It operates independently from the main package installation and tweak system.
 
 ### Win11 Creator Components
 

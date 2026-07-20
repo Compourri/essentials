@@ -11,57 +11,117 @@ function Invoke-WPFUnInstall {
 
     if($sync.ProcessRunning) {
         $msg = "[Invoke-WPFUnInstall] Install process is currently running"
-        [System.Windows.MessageBox]::Show($msg, "Essentials", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        Show-WinUtilMessage -Message $msg -Title "Winutil" -Button "OK" -Icon "Warning"
         return
     }
 
     if ($PackagesToUninstall.Count -eq 0) {
         $WarningMsg = "Please select the program(s) to uninstall"
-        [System.Windows.MessageBox]::Show($WarningMsg, $AppTitle, [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Warning)
+        Show-WinUtilMessage -Message $WarningMsg -Title $AppTitle -Button "OK" -Icon "Warning"
         return
     }
 
-    $ButtonType = [System.Windows.MessageBoxButton]::YesNo
+    $ButtonType = "YesNo"
     $MessageboxTitle = "Are you sure?"
     $Messageboxbody = ("This will uninstall the following applications: `n $($PackagesToUninstall | Select-Object Name, Description| Out-String)")
-    $MessageIcon = [System.Windows.MessageBoxImage]::Information
+    $MessageIcon = "Information"
 
-    $confirm = [System.Windows.MessageBox]::Show($Messageboxbody, $MessageboxTitle, $ButtonType, $MessageIcon)
+    $confirm = Show-WinUtilMessage -Message $Messageboxbody -Title $MessageboxTitle -Button $ButtonType -Icon $MessageIcon
 
     if($confirm -eq "No") {return}
 
     $ManagerPreference = $sync.preferences.packagemanager
+    Write-WinUtilLog -Component "Uninstall" -Message "Uninstall requested for $(@($PackagesToUninstall).Count) selected package(s) using preference: $ManagerPreference"
+    $packageSummary = Get-WinUtilPackageLogSummary -Packages $PackagesToUninstall -Preference $ManagerPreference
+    Write-WinUtilLog -Component "Uninstall" -Message "Uninstall selected package(s): $($packageSummary -join '; ')"
 
     Invoke-WPFRunspace -ParameterList @(("PackagesToUninstall", $PackagesToUninstall),("ManagerPreference", $ManagerPreference)) -ScriptBlock {
         param($PackagesToUninstall, $ManagerPreference)
 
         $packagesSorted = Get-WinUtilSelectedPackages -PackageList $PackagesToUninstall -Preference $ManagerPreference
-        $packagesWinget = $packagesSorted[[PackageManagers]::Winget]
-        $packagesChoco = $packagesSorted[[PackageManagers]::Choco]
+
+        $packagesWinget = $packagesSorted['Winget']
+        $packagesChoco = $packagesSorted['Choco']
+        $totalPackages = @($packagesWinget).Count + @($packagesChoco).Count
+        $completedPackages = 0
+        $hasUI = $null -ne $sync.Form -and $null -ne $sync.Form.Dispatcher
+        Write-WinUtilLog -Component "Uninstall" -Message "Uninstall package manager split: winget=$(@($packagesWinget).Count), choco=$(@($packagesChoco).Count)"
 
         try {
             $sync.ProcessRunning = $true
-            Show-WPFInstallAppBusy -text "Uninstalling apps..."
+            if ($hasUI) {
+                Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Preparing app uninstall (0/$totalPackages)" -Percent 0
+                Invoke-WPFUIThread -ScriptBlock {
+                    if ($null -ne $sync.ItemsControl) {
+                        $sync.ItemsControl.IsEnabled = $false
+                    }
+                }
+            }
+
+            if ($packagesWinget -contains "Microsoft.Edge") {
+                New-Item -Path "$Env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
+            }
 
             # Uninstall all selected programs in new window
             if($packagesWinget.Count -gt 0) {
-                Install-WinUtilProgramWinget -Action Uninstall -Programs $packagesWinget
+                foreach ($program in $packagesWinget) {
+                    $position = $completedPackages + 1
+                    $startPercent = [int](($completedPackages / $totalPackages) * 100)
+                    if ($hasUI) {
+                        Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Uninstalling $program ($position/$totalPackages)" -Percent $startPercent
+                    }
+
+                    Install-WinUtilProgramWinget -Action Uninstall -Programs @($program)
+                    $completedPackages++
+                    $completedPercent = [int](($completedPackages / $totalPackages) * 100)
+                    if ($hasUI) {
+                        Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Uninstalled $program ($completedPackages/$totalPackages)" -Percent $completedPercent
+                        Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -value ($completedPercent / 100) }
+                    }
+                }
             }
             if($packagesChoco.Count -gt 0) {
+                $position = $completedPackages + 1
+                $startPercent = [int](($completedPackages / $totalPackages) * 100)
+                if ($hasUI) {
+                    Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Uninstalling Chocolatey packages ($position/$totalPackages)" -Percent $startPercent
+                }
+
                 Install-WinUtilProgramChoco -Action Uninstall -Programs $packagesChoco
+                $completedPackages += @($packagesChoco).Count
+                $completedPercent = [int](($completedPackages / $totalPackages) * 100)
+                if ($hasUI) {
+                    Set-WinUtilTweaksProgressIndicator -Visible $true -Label "Uninstalled Chocolatey packages ($completedPackages/$totalPackages)" -Percent $completedPercent
+                    Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -value ($completedPercent / 100) }
+                }
             }
-            Hide-WPFInstallAppBusy
             Write-Host "==========================================="
             Write-Host "--       Uninstalls have finished       ---"
             Write-Host "==========================================="
-            Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "None" -overlay "checkmark" }
+            Write-WinUtilLog -Component "Uninstall" -Message "Uninstall workflow completed."
+            if ($hasUI) {
+                Set-WinUtilTweaksProgressIndicator -Visible $true -Label "App uninstall finished" -Percent 100
+                Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "None" -overlay "checkmark" }
+            }
         } catch {
             Write-Host "==========================================="
             Write-Host "Error: $_"
             Write-Host "==========================================="
-           Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "Error" -overlay "warning" }
+            Write-WinUtilLog -Level "ERROR" -Component "Uninstall" -Message "Uninstall workflow failed: $($_.Exception.Message)"
+            if ($hasUI) {
+                Set-WinUtilTweaksProgressIndicator -Visible $true -Label "App uninstall failed" -Percent 100
+                Invoke-WPFUIThread -ScriptBlock { Set-WinUtilTaskbaritem -state "Error" -overlay "warning" }
+            }
+        } finally {
+            if ($hasUI) {
+                Invoke-WPFUIThread -ScriptBlock {
+                    if ($null -ne $sync.ItemsControl) {
+                        $sync.ItemsControl.IsEnabled = $true
+                    }
+                }
+            }
+            $sync.ProcessRunning = $False
         }
-        $sync.ProcessRunning = $False
 
     }
 }

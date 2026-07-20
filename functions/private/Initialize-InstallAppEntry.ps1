@@ -60,25 +60,54 @@ function Initialize-InstallAppEntry {
             $borderElement.SetResourceReference([Windows.Controls.Control]::BackgroundProperty, "AppInstallUnselectedColor")
         })
 
+        $contentPanel = New-Object Windows.Controls.StackPanel
+        $contentPanel.Orientation = "Horizontal"
+        $contentPanel.VerticalAlignment = [Windows.VerticalAlignment]::Center
+
+        $icon = New-Object Windows.Controls.Grid
+        $icon.SetResourceReference([Windows.FrameworkElement]::WidthProperty, "AppEntryIconSize")
+        $icon.SetResourceReference([Windows.FrameworkElement]::HeightProperty, "AppEntryIconSize")
+        $icon.Margin = New-Object Windows.Thickness(0, 0, 8, 0)
+        $fallback = New-Object Windows.Controls.TextBlock
+        $fallback.Text = $app.content.TrimStart(".").Substring(0, 1).ToUpper()
+        $fallback.FontWeight = "Bold"; $fallback.HorizontalAlignment = "Center"; $fallback.VerticalAlignment = "Center"
+        if ($app.link) { $fallback.Visibility = "Collapsed" }
+        $fallback.SetResourceReference([Windows.Controls.TextBlock]::FontSizeProperty, "AppEntryFontSize")
+        $fallback.SetResourceReference([Windows.Controls.TextBlock]::ForegroundProperty, "ToggleButtonOnColor")
+        [void]$icon.Children.Add($fallback)
+        if ($app.link) {
+            $logo = New-Object Windows.Controls.Image
+            $logo.Stretch = [Windows.Media.Stretch]::Uniform
+            $logo.Source = "https://www.google.com/s2/favicons?sz=64&domain_url=$([uri]::EscapeDataString($app.link))"
+            $logo.Add_ImageFailed({ $this.Visibility = "Collapsed"; $this.Parent.Children[0].Visibility = "Visible" })
+            [void]$icon.Children.Add($logo)
+        }
+        [void]$contentPanel.Children.Add($icon)
+
         # Create the TextBlock for the application name
         $appName = New-Object Windows.Controls.TextBlock
         $appName.Style = $sync.Form.Resources.AppEntryNameStyle
         $appName.Text = $app.content
 
-        # Change color to Green if FOSS
+        # Add FOSS label after the name if FOSS
         if ($app.foss -eq $true) {
-            $appName.SetResourceReference([Windows.Controls.Control]::ForegroundProperty, "FOSSColor")
-            $appName.FontWeight = "Bold"
-        }
+            $fossRun = [System.Windows.Documents.Run]::new(" $([char]0x25CF)")
+            $fossRun.Foreground = [Windows.Media.SolidColorBrush]::new([Windows.Media.Color]::FromRgb(110, 255, 114))
+            $fossRun.FontSize = 11.5
 
-        # Add the name to the Checkbox
-        $checkBox.Content = $appName
+            [void]$appName.Inlines.Add($fossRun)
+        }
+        [void]$contentPanel.Children.Add($appName)
+        $checkBox.Content = $contentPanel
 
         # Add accessibility properties to make the elements screen reader friendly
         $checkBox.SetValue([Windows.Automation.AutomationProperties]::NameProperty, $app.content)
         $border.SetValue([Windows.Automation.AutomationProperties]::NameProperty, $app.content)
 
         $border.Child = $checkBox
+        if ($sync.selectedApps -contains $appKey) {
+            $checkBox.IsChecked = $true
+        }
         # Add the border to the corresponding Category
         $TargetElement.Children.Add($border) | Out-Null
         return $checkbox

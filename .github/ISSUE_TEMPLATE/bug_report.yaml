@@ -6,57 +6,55 @@ body:
   - type: markdown
     attributes:
       value: |
-        # 🐞 **Issue Report**
-        Thank you for taking the time to report an issue! Please provide as much detail as possible to help us address the problem efficiently.
-
-        ## ⚠️ **IMPORTANT**
-        - 🛠️ **Supported environments only:** We only support Windows 11.
-        - 💡 For general questions, use the [Discussions section](https://github.com/Christitustech/winutil/discussions) or join our Community-driven [Facebook Community](https://www.facebook.com/compourri).
+        - Remember, we only support Windows 11. If you encounter problems on Windows 10, please consider upgrading to Windows 11.
+        - For general questions, join our Community-driven [Discord Server](https://discord.gg/RUbZUZyByQ).
 
   - type: checkboxes
+    id: read_issues
     attributes:
-      label: ⚙️ Issue Checklist
+      label: "I have read the known issues"
+      description: "You [better do](https://winutil.christitus.com/knownissues/), cause your issue can be already there"
       options:
-        - label: I have read the guidelines.
-        - label: I checked for duplicate issues.
-        - label: I searched for existing discussions.
-        - label: I checked for an existing pull request that addresses this issue.
+        - label: Yes, I did
+          required: true
+
+  - type: input
+    id: winutil_version
+    attributes:
+      label: "Version of WinUtil"
+      description: "Provide a version that you are using when issue submitted (it can be found in right corner of app)"
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: affected_part
     attributes:
-      label: 📜 What part of Winutil are you having issues with?
-      placeholder: "e.g., Tweaks, etc."
+      label: What part of WinUtil are you having issues with?
+      options:
+        - Program Install Tab
+        - Tweaks Tab
+        - Config Tab
+        - Updates Tab
+        - Win11 Creator Tab
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: issue_description
     attributes:
-      label: 📝 Provide a clear and concise description of the issue.
+      label: Provide a clear and concise description of the issue.
     validations:
       required: true
 
   - type: textarea
-    id: steps_to_reproduce
+    id: tweaks_applied
     attributes:
-      label: 🔄 Steps to reproduce the issue.
-      placeholder: "e.g., Step 1: ..., Step 2: ..."
+      label: List the tweaks you applied before the issue occurred.
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: error_output
     attributes:
-      label: ❌ Paste the full error output (if available).
+      label: Paste the full error output (if available) or Screenshot or Video.
       placeholder: "Include any relevant logs or error messages."
-
-  - type: textarea
-    id: additional_context
-    attributes:
-      label: 🖼️ Additional context.
-      placeholder: "Include screenshots, code blocks (use triple backticks ```), or any other relevant information."
-    validations:
-      required: false

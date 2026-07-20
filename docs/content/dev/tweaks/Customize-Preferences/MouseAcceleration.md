@@ -3,10 +3,10 @@ title: "Mouse Acceleration"
 description: ""
 ---
 
-```json {filename="config/tweaks.json",linenos=inline,linenostart=1431}
+```json {filename="config/tweaks.json",linenos=inline,linenostart=1489}
   "WPFToggleMouseAcceleration": {
     "Content": "Mouse Acceleration",
-    "Description": "If enabled, the Cursor movement is affected by the speed of your physical mouse movements.",
+    "Description": "Makes it so Cursor movement is affected by the speed of your physical mouse movements.",
     "category": "Customize Preferences",
     "panel": "2",
     "Type": "Toggle",
@@ -42,4 +42,4 @@ description: ""
 
 Applications and System Components store and retrieve configuration data to modify Windows settings, so we can use the registry to change many settings in one place.
 
-You can find information about the registry on [Wikipedia](https://www.wikiwand.com/en/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
+You can find information about the registry on [Wikipedia](https://en.wikipedia.org/wiki/Windows_Registry) and [Microsoft's Website](https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry).
