@@ -180,7 +180,7 @@ function Show-CustomDialog {
     $winutilTextBlock.Text = "Compourri Software Essentials"
     $winutilTextBlock.FontSize = $HeaderFontSize
     $winutilTextBlock.Foreground = $LogoColor
-    $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the text block
+    $winutilTextBlock.Margin = New-Object Windows.Thickness(15, 10, 10, 5)  # Add margins around the text block
     $stackPanel.Children.Add($winutilTextBlock)
     # Add TextBlock for information with text wrapping and margins
     $messageTextBlock = New-Object Windows.Controls.TextBlock
