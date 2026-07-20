@@ -177,7 +177,7 @@ function Show-CustomDialog {
 
     # Add "Essentials" text
     $winutilTextBlock = New-Object Windows.Controls.TextBlock
-    $winutilTextBlock.Text = "WinUtil"
+    $winutilTextBlock.Text = "Compourri Software Essentials"
     $winutilTextBlock.FontSize = $HeaderFontSize
     $winutilTextBlock.Foreground = $LogoColor
     $winutilTextBlock.Margin = New-Object Windows.Thickness(10, 10, 10, 5)  # Add margins around the text block

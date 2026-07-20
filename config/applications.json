@@ -1111,6 +1111,15 @@
         "winget": "OPAutoClicker.OPAutoClicker",
         "foss": false
     },
+    "opencode": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Opencode Desktop",
+        "description": "The open source AI coding agent. Free models included or connect any model from any provider.",
+        "link": "https://opencode.ai/",
+        "winget": "SST.OpenCodeDesktop",
+        "foss": true
+    },
     "openrgb": {
         "category": "Utilities",
         "choco": "openrgb",

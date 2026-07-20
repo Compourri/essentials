@@ -178,6 +178,17 @@ Proceed without asking when:
 - Ambiguity can be resolved by reading the code or running a local command.
 - The user already answered the question in this session.
 
+## 14. Fork Context (Compourri/essentials)
+
+This is a fork of ChrisTitusTech/winutil with branding applied.
+
+**Post-upstream-merge workflow:**
+1. Run `.\scripts\Apply-Branding.ps1` to restore Compourri branding
+2. Review with `git diff`
+3. Commit the branding patches
+
+All branding locations are documented in `BRANDING.md`.
+
 ## 13. Project Learnings
 
 When the user corrects an agent approach, add or tighten one concrete rule here before ending the session. Keep this section short and prune rules that no longer matter.

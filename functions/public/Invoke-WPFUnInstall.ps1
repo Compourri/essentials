@@ -11,7 +11,7 @@ function Invoke-WPFUnInstall {
 
     if($sync.ProcessRunning) {
         $msg = "[Invoke-WPFUnInstall] Install process is currently running"
-        Show-WinUtilMessage -Message $msg -Title "Winutil" -Button "OK" -Icon "Warning"
+        Show-WinUtilMessage -Message $msg -Title "Essentials" -Button "OK" -Icon "Warning"
         return
     }
 
