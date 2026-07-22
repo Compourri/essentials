@@ -65,8 +65,7 @@
         "content": "Ambie",
         "description": "Ambie is the ultimate app to help you focus, study, or relax. We use white noise and nature sounds combined with an innovative focus timer to keep you concentrated on doing your best work.",
         "link": "https://ambieapp.com/",
-        "winget": "9P07XNM5CHP0",
-        "source": "msstore",
+        "winget": "msstore:9P07XNM5CHP0",
         "foss": true
     },
     "angryipscanner": {
@@ -268,7 +267,7 @@
         "content": "ChatGPT",
          "description": "ChatGPT desktop app provides direct access to OpenAI's conversational AI assistant for writing, analysis, and productivity tasks.",
         "link": "https://openai.com/chatgpt/desktop/",
-        "winget": "9NT1R1C2HH7J",
+        "winget": "msstore:9NT1R1C2HH7J",
         "foss": false
     },
     "chrome": {
@@ -354,8 +353,7 @@
         "content": "Copilot",
         "description": "From the convenience of your desktop, it's your thinking partner, your organizer, your guide",
         "link": "https://copilot.microsoft.com/",
-        "winget": "XP9CXNGPPJ97XX",
-        "source": "msstore"
+        "winget": "msstore:XP9CXNGPPJ97XX"
     },
     "copyq": {
         "category": "Utilities",
@@ -642,9 +640,8 @@
         "choco": "eset-internet-security",
         "content": "ESET Home Security",
         "description": "Antivirus, worry-free payments, and online privacy protection including anti-phishing and Wi-Fi protection.",
-        "source": "msstore",
         "link": "https://www.eset.com/za/home/protection-plans/",
-        "winget": "XPFM2WPGW7NLVB"
+        "winget": "msstore:XPFM2WPGW7NLVB"
     },
     "ESETonline": {
         "category": "Security",
@@ -1330,9 +1327,8 @@
         "choco": "musicbee",
         "content": "MusicBee",
         "description": "MusicBee is a customizable music player with support for various audio formats. It includes features like an integrated search function, tag editing, and more.",
-        "source": "msstore",
         "link": "https://getmusicbee.com/",
-        "winget": "9P4CLT2RJ1RS"
+        "winget": "msstore:9P4CLT2RJ1RS"
     },
     "naps2": {
         "category": "Office",
@@ -1530,10 +1526,9 @@
         "category": "Microsoft",
         "choco": "na",
         "content": "Outlook",
-        "source": "msstore",
         "description": "The new Outlook for Windows is a best-in-class email experience that is free for anyone with Windows.",
         "link": "https://apps.microsoft.com/detail/9nrx63209r7b?hl=en-US&gl=US",
-        "winget": "9NRX63209R7B"
+        "winget": "msstore:9NRX63209R7B"
     },
     "Overwolf": {
         "category": "Games",
@@ -1574,18 +1569,16 @@
         "choco": "na",
         "content": "PC Manager",
         "description": "Safeguard your PC in a quiet and reliable way",
-        "source": "msstore",
         "link": "https://pcmanager.microsoft.com/en-us",
-        "winget": "9PM860492SZD"
+        "winget": "msstore:9PM860492SZD"
     },
     "perplexity": {
         "category": "AI",
         "choco": "na",
         "content": "Perplexity",
-        "source": "msstore",
         "description": "Perplexity — Ask Anything. Cut through the all the noise and get straight to credible, up-to-date answers.",
         "link": "https://www.perplexity.ai/",
-        "winget": "XP8JNQFBQH6PVF"
+        "winget": "msstore:XP8JNQFBQH6PVF"
     },
     "pdfgear": {
         "category": "Office",
@@ -2123,10 +2116,9 @@
         "category": "Multimedia",
         "choco": "na",
         "content": "Tidal",
-        "source": "msstore",
         "description": "Tidal is a music streaming service known for its high-fidelity audio quality and exclusive content. It offers a vast library of songs and curated playlists.",
         "link": "https://tidal.com/",
-        "winget": "9NNCB5BS59PH"
+        "winget": "msstore:9NNCB5BS59PH"
     },
     "tightvnc": {
         "category": "Utilities",
@@ -2169,8 +2161,7 @@
         "content": "TranslucentTB",
         "description": "TranslucentTB is a tool that allows you to customize the transparency of the Windows taskbar.",
         "link": "https://github.com/TranslucentTB/TranslucentTB",
-        "winget": "9PF4KZ2VN4W9",
-        "source": "msstore",
+        "winget": "msstore:9PF4KZ2VN4W9",
         "foss": true
     },
     "ubisoft": {
@@ -2342,8 +2333,7 @@
         "content": "WhatsApp",
         "description": "WhatsApp from Meta is a 100% free messaging app.",
         "link": "https://www.whatsapp.com/?lang=en/",
-        "winget": "9NKSQGP7F2NH",
-        "source": "msstore"
+        "winget": "msstore:9NKSQGP7F2NH"
     },
     "winamp": {
         "category": "Multimedia",
