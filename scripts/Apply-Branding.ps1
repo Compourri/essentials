@@ -243,6 +243,27 @@ if (Test-Path $docsContent) {
     }
 }
 
+# --- README.md ---
+$readmePath = Join-Path $repoRoot "README.md"
+if (Test-Path $readmePath) {
+    $content = Get-Content $readmePath -Raw
+    $content = $content -replace 'ChrisTitusTech/winutil', 'Compourri/essentials'
+    $content = $content -replace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
+    $content = $content -replace 'irm\s+https://christitus\.com/win\s*\|\s*iex', 'irm https://compourri.co.za/essentials | iex'
+    $content = $content -replace 'irm\s+https://christitus\.com/windev\s*\|\s*iex', 'irm https://compourri.co.za/essentials | iex'
+    $content = $content -replace 'irm\s+`"https://christitus\.com/win`"\s*\|\s*iex', 'irm "https://compourri.co.za/essentials" | iex'
+    $content = $content -replace 'irm\s+`"https://christitus\.com/windev`"\s*\|\s*iex', 'irm "https://compourri.co.za/essentials" | iex'
+    $content = $content -replace 'https://winutil\.christitus\.com', 'https://compourri.github.io/essentials'
+    $content = $content -replace 'christitus\.com/windows-tool/', 'compourri.co.za/'
+    $content = $content -replace 'discord\.gg/RUbZUZyByQ', ''
+    $content = $content -replace '\[Discord\]\([^)]*\)\s*', ''
+    $content = $content -replace 'cttstore\.com/windows-toolbox', ''
+    $content = $content -replace '\[.*?EXE Wrapper.*?\]\([^)]*\)', ''
+    $content = $content -replace '(?<!\w)WinUtil(?!\w|\.ps1|_)', 'Essentials'
+    $content | Set-Content $readmePath -NoNewline
+    Write-Host "  [OK] README.md" -ForegroundColor Green
+}
+
 Write-Host ""
 Write-Host "Branding patches applied successfully!" -ForegroundColor Cyan
 Write-Host "Review changes with: git diff" -ForegroundColor Yellow
