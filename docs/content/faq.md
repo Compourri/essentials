@@ -261,6 +261,5 @@ Can't find your answer? Try these resources:
 
 - **[Known Issues](/knownissues/)** - Check if it's a known problem
 - **[User Guide](/userguide/)** - Comprehensive documentation
-- **[Discord Community](https://discord.gg/RUbZUZyByQ)** - Get help from other users
 - **[GitHub Issues](https://github.com/Compourri/essentials/issues)** - Report bugs
 - **[YouTube Tutorial](https://www.youtube.com/watch?v=6UQZ5oQg8XA)** - Video walkthrough
