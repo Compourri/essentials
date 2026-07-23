@@ -15,12 +15,6 @@ A curated compilation of Windows system tasks streamline **installs**, debloat w
 
 Open PowerShell or Terminal as admin, then run:
 
-**Stable Branch (recommended)**
-```ps1
-irm https://compourri.co.za/essentials | iex
-```
-
-**Development Branch**
 ```ps1
 irm https://compourri.co.za/essentials | iex
 ```
@@ -51,18 +45,9 @@ https://github.com/Compourri/essentials/blob/main/config/preset.json
 
 ---
 
-## Build & Develop
-
-See https://github.com/Compourri/essentials/blob/main/.github/CONTRIBUTING.md
-
----
-
 ## Resources
 
 - [Official Documentation](https://compourri.github.io/essentials/)
-- [YouTube Tutorial](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
-- [Known Issues](https://compourri.github.io/essentials/knownissues/)
-- [Report an Issue](https://github.com/Compourri/essentials/issues)
 
 ---
 
@@ -70,8 +55,9 @@ See https://github.com/Compourri/essentials/blob/main/.github/CONTRIBUTING.md
 
 - Leave a ⭐ to show support!
 
-## Contributors
+---
 
-[![Contributors](https://contrib.rocks/image?repo=Compourri/essentials)](https://github.com/Compourri/essentials/graphs/contributors)
+## Acknowledgments
 
-Thanks to everyone who has contributed time and effort to this project. Keep rocking 🍻
+This project is a fork of [Chris Titus Tech's Windows Utility](https://github.com/ChrisTitusTech/winutil). Thanks to Chris Titus and the original contributors for building the foundation this project builds on.
+
