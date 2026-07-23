@@ -183,9 +183,15 @@ Proceed without asking when:
 This is a fork of ChrisTitusTech/winutil with branding applied.
 
 **Post-upstream-merge workflow:**
-1. Run `.\scripts\Apply-Branding.ps1` to restore Compourri branding
-2. Review with `git diff`
-3. Commit the branding patches
+
+1. Merge upstream into main, resolving conflicts. Branding-sensitive files (`scripts/start.ps1`, `scripts/main.ps1`, `xaml/inputXML.xaml`, `config/tweaks.json`, `config/themes.json`, `config/feature.json`, `functions/public/*.ps1`, `functions/private/*.ps1`) are the main conflict points — always prefer our Compourri versions.
+2. Run `.\scripts\Apply-Branding.ps1` to restore branding in source files and docs.
+3. Delete `docs/static/CNAME` if upstream re-introduces it (it should remain removed; we use the github.io URL).
+4. Verify static assets are still Compourri-branded: `docs/static/favicon.svg`, `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `android-chrome-*.png`, `navlogo.webp`.
+5. Verify `docs/static/site.webmanifest` has `"name":"Compourri Software Essentials"` and `"short_name":"Essentials"`.
+6. Review `git diff` — check for any new WinUtil references in changed files that the script missed.
+7. Run `.\Compile.ps1` to verify the build still works.
+8. Commit branding patches and push. The `docs.yaml` workflow deploys the Hugo site automatically on push to `main`.
 
 All branding locations are documented in `BRANDING.md`.
 
@@ -202,3 +208,4 @@ When the user corrects an agent approach, add or tighten one concrete rule here 
 - For Win11 Creator, start each new ISO modification in a fresh `WinUtil_Win11ISO_*` temp directory; existing-work detection is only for resuming/exporting already modified media.
 - For Script Analyzer cleanup, fix actionable source warnings first and do not globally suppress accepted convention warnings such as plural names, `ShouldProcess` on UI helpers, `$global:sync`, or compile-time cross-file false positives.
 - For DNS DHCP reset, keep the cmdlet reset and explicitly set IPv4 and IPv6 DNS source to DHCP.
+- After every upstream merge, run `.\scripts\Apply-Branding.ps1` and check for any new WinUtil references the script may have missed before committing.
