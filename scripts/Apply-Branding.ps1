@@ -271,7 +271,8 @@ Write-Host "Review changes with: git diff" -ForegroundColor Yellow
 # --- Remove files that should not exist in our fork ---
 $filesToRemove = @(
     "docs\static\CNAME",
-    ".github\CODE_OF_CONDUCT.md"
+    ".github\CODE_OF_CONDUCT.md",
+    ".github\CONTRIBUTING.md"
 )
 foreach ($file in $filesToRemove) {
     $filePath = Join-Path $repoRoot $file

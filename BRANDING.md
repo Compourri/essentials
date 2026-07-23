@@ -65,11 +65,17 @@ All `MessageBox` calls with title `"Winutil"` should be changed to `"Essentials"
 - Invoke-WPFundoall.ps1
 - Invoke-WPFUnInstall.ps1
 
-## Docs & Config (Fork-Only, Safe from Upstream)
+## Fork-Only Files
 
-These files only exist in our fork and won't be overwritten:
+These files only exist in our fork. The branding script auto-deletes them if upstream re-introduces them:
+- `docs/static/CNAME`
+- `.github/CODE_OF_CONDUCT.md`
+- `.github/CONTRIBUTING.md`
+
+Additional fork-only files that won't be overwritten:
+- `LICENSE` — GPL-3.0 with MIT notice for original portions
+- `NOTICE` — attribution for original MIT-licensed work
 - `docs/` — all content, branding, logo, screenshots
-- `.github/` — CONTRIBUTING, SECURITY, issue templates
 - `docs/hugo.toml`, `docs/i18n/en.yaml`
 - `config/preset.json`
 
