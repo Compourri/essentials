@@ -6,7 +6,7 @@ description: ""
 ```powershell {filename="functions/public/Invoke-WPFOOSU.ps1",linenos=inline,linenostart=1}
 function Invoke-WPFOOSU {
     if ($sync.ProcessRunning) {
-        Show-WinUtilMessage -Message "Another process is currently running." -Title "WinUtil" -Button "OK" -Icon "Warning"
+        Show-WinUtilMessage -Message "Another process is currently running." -Title "Essentials" -Button "OK" -Icon "Warning"
         return
     }
 

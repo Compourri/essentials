@@ -5,16 +5,16 @@ prev: /userguide/
 next: /userguide/application/
 ---
 
-## Welcome to Winutil!
+## Welcome to Essentials!
 
-Winutil helps you install apps, apply system tweaks, run common fixes, and manage Windows settings from one place. This guide covers the safest way to get started and the first actions most users take.
+Essentials helps you install apps, apply system tweaks, run common fixes, and manage Windows settings from one place. This guide covers the safest way to get started and the first actions most users take.
 
 ## System Requirements
 
-Before running Winutil, ensure your system meets these requirements:
+Before running Essentials, ensure your system meets these requirements:
 
 > [!IMPORTANT]
-> Windows 10 is not supported by Winutil. Windows 10 reached the end of support on **October 14, 2025**.
+> Windows 10 is not supported by Essentials. Windows 10 reached the end of support on **October 14, 2025**.
 
 - **Operating System**: Windows 11
 - **PowerShell**: Version 5.1 or later (included by default in Windows 11)
@@ -24,7 +24,7 @@ Before running Winutil, ensure your system meets these requirements:
 
 ## Installation
 
-Winutil doesn't require traditional installation. It runs directly from PowerShell as a script.
+Essentials doesn't require traditional installation. It runs directly from PowerShell as a script.
 
 ### Step 1: Open PowerShell as Administrator
 
@@ -55,22 +55,22 @@ With PowerShell running as Administrator, run one of the following commands depe
 **Stable release (recommended)**
 
 ```powershell
-irm "https://christitus.com/win" | iex
+irm "https://compourri.co.za/essentials" | iex
 ```
 
 **Development branch (bleeding edge — for testing only)**
 
 ```powershell
-irm "https://christitus.com/windev" | iex
+irm "https://compourri.co.za/essentials" | iex
 ```
 
 > [!NOTE]
 > - The `irm` command downloads the script, and `iex` executes it. This is safe when downloading from the official source.
 > - The development branch may contain experimental changes and should only be used for testing on non-production systems.
 
-### Step 3: Wait for Winutil to Load
+### Step 3: Wait for Essentials to Load
 
-The first time you run Winutil, it may take a few moments to:
+The first time you run Essentials, it may take a few moments to:
 
 - Download the latest version
 - Initialize the interface
@@ -80,7 +80,7 @@ The first time you run Winutil, it may take a few moments to:
 
 ### Understanding the Interface
 
-Winutil opens with a clean, tabbed interface:
+Essentials opens with a clean, tabbed interface:
 
 **Main Tabs**:
 
@@ -187,7 +187,7 @@ For improved privacy and speed:
 
 ## Understanding Presets
 
-Winutil offers several preset configurations:
+Essentials offers several preset configurations:
 
 - **Minimal**: Minimal changes that keep most Windows features
 - **Standard**: A good middle ground for most users
@@ -218,7 +218,7 @@ Winutil offers several preset configurations:
 If the launch command fails:
 
 - Make sure PowerShell or Terminal is running as Administrator.
-- Confirm the PC has internet access and can reach `christitus.com`.
+- Confirm the PC has internet access and can reach `compourri.co.za`.
 - Retry from a normal PowerShell session rather than a restricted enterprise shell profile.
 - If the command starts and then closes immediately, reopen Terminal as Administrator and run it again so you can read the error output.
 
@@ -239,7 +239,7 @@ If you need assistance:
 - **Documentation**: Browse this documentation site
 - **Known Issues**: Check the [Known Issues](/knownissues/) page
 - **Discord**: Join the [community Discord server](https://discord.gg/RUbZUZyByQ)
-- **GitHub Issues**: Report bugs on [GitHub](https://github.com/ChrisTitusTech/winutil/issues)
+- **GitHub Issues**: Report bugs on [GitHub](https://github.com/Compourri/essentials/issues)
 - **YouTube**: Watch [video tutorials](https://www.youtube.com/watch?v=6UQZ5oQg8XA)
 
 ## Quick Reference Card

@@ -72,3 +72,23 @@ These files only exist in our fork and won't be overwritten:
 - `.github/` — CONTRIBUTING, SECURITY, issue templates
 - `docs/hugo.toml`, `docs/i18n/en.yaml`
 - `config/preset.json`
+
+### docs/hugo.toml
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 3 | `title = "WinUtil Documentation"` | `title = "Essentials Documentation"` |
+| 80 | `url = "https://github.com/christitustech/winutil"` | `url = "https://github.com/Compourri/essentials"` |
+| 128 | `url = "https://github.com/ChrisTitusTech/winutil"` | `url = "https://github.com/Compourri/essentials"` |
+
+### docs/i18n/en.yaml
+| Line | Original (Upstream) | Compourri |
+|------|---------------------|-----------|
+| 1 | `href='https://christitus.com'>Chris Titus Tech` | `href='https://compourri.co.za'>Compourri` |
+
+### docs/content/ (all .md files)
+After upstream merges, run branding script or manually replace:
+- User-facing "WinUtil"/"Winutil" → "Essentials" (not function names in code blocks)
+- GitHub URLs → `https://github.com/Compourri/essentials`
+- Shields.io badge URLs → `Compourri/essentials`
+- Launch commands → `irm "https://compourri.co.za/essentials" | iex`
+- `winutil.christitus.com` → `compourri.github.io/essentials`

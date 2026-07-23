@@ -6,7 +6,7 @@ description: ""
 ```json {filename="config/tweaks.json",linenos=inline,linenostart=828}
   "WPFTweaksRestorePoint": {
     "Content": "Restore Point - Create",
-    "Description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications.",
+    "Description": "Creates a restore point at runtime in case a revert is needed from Essentials modifications.",
     "category": "Essential Tweaks",
     "panel": "1",
     "Checked": "False",
@@ -25,7 +25,7 @@ description: ""
           Enable-ComputerRestore -Drive $Env:SystemDrive
       }
 
-      Checkpoint-Computer -Description \"System Restore Point created by WinUtil\" -RestorePointType MODIFY_SETTINGS
+      Checkpoint-Computer -Description \"System Restore Point created by Essentials\" -RestorePointType MODIFY_SETTINGS
       Write-Host \"System Restore Point Created Successfully\" -ForegroundColor Green
       "
     ],

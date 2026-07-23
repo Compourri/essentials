@@ -5,7 +5,7 @@ prev: /userguide/features/
 next: /userguide/automation/
 ---
 
-WinUtil provides three update modes so you can choose how aggressively Windows Update is managed on your system:
+Essentials provides three update modes so you can choose how aggressively Windows Update is managed on your system:
 
 Changing modes adjusts system-wide Windows Update behavior. After switching modes, give Windows a moment to apply the policy and plan for a restart if the new state does not appear immediately.
 
@@ -15,9 +15,9 @@ Changing modes adjusts system-wide Windows Update behavior. After switching mode
 
 ### Windows Default
 
-- **What it does**: Removes Windows Update policies managed by WinUtil, restores update service startup settings, and re-enables update scheduled tasks.
+- **What it does**: Removes Windows Update policies managed by Essentials, restores update service startup settings, and re-enables update scheduled tasks.
 - **Best for**: Systems where you want Windows to manage updates normally.
-- **Notes**: Only values managed by WinUtil are removed; other Windows Update policies are left in place. If update errors continue, use the reset option in the **Config** tab to repair Microsoft Update components.
+- **Notes**: Only values managed by Essentials are removed; other Windows Update policies are left in place. If update errors continue, use the reset option in the **Config** tab to repair Microsoft Update components.
 
 ### Recommended
 

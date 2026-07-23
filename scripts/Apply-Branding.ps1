@@ -189,6 +189,60 @@ if (Test-Path $featurePath) {
     Write-Host "  [OK] config/feature.json (PS Profile)" -ForegroundColor Green
 }
 
+# --- docs/hugo.toml ---
+$hugoPath = Join-Path $repoRoot "docs\hugo.toml"
+if (Test-Path $hugoPath) {
+    $content = Get-Content $hugoPath -Raw
+    $content = $content -replace 'title\s*=\s*"WinUtil Documentation"', 'title = "Essentials Documentation"'
+    $content = $content -replace 'https://github.com/christitustech/winutil', 'https://github.com/Compourri/essentials'
+    $content = $content -replace 'https://github.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
+    $content | Set-Content $hugoPath -NoNewline
+    Write-Host "  [OK] docs/hugo.toml" -ForegroundColor Green
+}
+
+# --- docs/i18n/en.yaml ---
+$i18nPath = Join-Path $repoRoot "docs\i18n\en.yaml"
+if (Test-Path $i18nPath) {
+    $content = Get-Content $i18nPath -Raw
+    $content = $content -replace "href='https://christitus.com'>Chris Titus Tech", "href='https://compourri.co.za'>Compourri"
+    $content | Set-Content $i18nPath -NoNewline
+    Write-Host "  [OK] docs/i18n/en.yaml" -ForegroundColor Green
+}
+
+# --- docs/content/ markdown files ---
+$docsContent = Join-Path $repoRoot "docs\content"
+if (Test-Path $docsContent) {
+    $mdFiles = Get-ChildItem -Path $docsContent -Filter "*.md" -Recurse -File
+    foreach ($file in $mdFiles) {
+        $content = Get-Content $file.FullName -Raw
+        $original = $content
+
+        # User-facing WinUtil/Winutil → Essentials (but NOT inside code blocks or function names)
+        # Replace standalone "WinUtil" and "Winutil" in prose text
+        $content = $content -replace '(?<!\w)WinUtil(?!\w|\.ps1|_|Functions| variables| checkboxes| program| winget| choco| ISO| SSHServer| ExplorerUpdate| currentSystem| Message| Log| File| TweaksProgress| Taskbaritem)', 'Essentials'
+        $content = $content -replace '(?<!\w)Winutil(?!\w|\.ps1|_|Functions| variables| checkboxes| program| winget| choco| ISO| SSHServer| ExplorerUpdate| currentSystem| Message| Log| File| TweaksProgress| Taskbaritem)', 'Essentials'
+
+        # GitHub URLs
+        $content = $content -replace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
+        $content = $content -replace 'https://github\.com/christitustech/winutil', 'https://github.com/Compourri/essentials'
+
+        # Shields.io badge URLs
+        $content = $content -replace 'ChrisTitusTech/winutil', 'Compourri/essentials'
+
+        # christitus.com launch commands → compourri.co.za
+        $content = $content -replace 'irm\s+"https://christitus\.com/win"', 'irm "https://compourri.co.za/essentials"'
+        $content = $content -replace "irm\s+`"https://christitus\.com/win`"", 'irm "https://compourri.co.za/essentials"'
+
+        # Old WinUtil domain
+        $content = $content -replace 'winutil\.christitus\.com', 'compourri.github.io/essentials'
+
+        if ($content -ne $original) {
+            $content | Set-Content $file.FullName -NoNewline
+            Write-Host "  [OK] $($file.FullName.Replace($repoRoot, ''))" -ForegroundColor Green
+        }
+    }
+}
+
 Write-Host ""
 Write-Host "Branding patches applied successfully!" -ForegroundColor Cyan
 Write-Host "Review changes with: git diff" -ForegroundColor Yellow

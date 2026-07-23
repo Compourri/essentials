@@ -18,7 +18,7 @@ description: ""
         "Type": "DWord",
         "OriginalValue": "1",
         "DefaultState": "false",
-      "link": "https://winutil.christitus.com/dev/tweaks/customize-preferences/scrollbars"
+      "link": "https://compourri.github.io/essentials/dev/tweaks/customize-preferences/scrollbars"
       }
     ],
 ```
