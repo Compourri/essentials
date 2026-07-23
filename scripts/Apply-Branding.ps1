@@ -267,3 +267,16 @@ if (Test-Path $readmePath) {
 Write-Host ""
 Write-Host "Branding patches applied successfully!" -ForegroundColor Cyan
 Write-Host "Review changes with: git diff" -ForegroundColor Yellow
+
+# --- Remove files that should not exist in our fork ---
+$filesToRemove = @(
+    "docs\static\CNAME",
+    ".github\CODE_OF_CONDUCT.md"
+)
+foreach ($file in $filesToRemove) {
+    $filePath = Join-Path $repoRoot $file
+    if (Test-Path $filePath) {
+        Remove-Item $filePath -Force
+        Write-Host "  [OK] Removed $file" -ForegroundColor Green
+    }
+}

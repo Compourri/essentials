@@ -187,6 +187,7 @@ This is a fork of ChrisTitusTech/winutil with branding applied.
 1. Merge upstream into main, resolving conflicts. Branding-sensitive files (`scripts/start.ps1`, `scripts/main.ps1`, `xaml/inputXML.xaml`, `config/tweaks.json`, `config/themes.json`, `config/feature.json`, `functions/public/*.ps1`, `functions/private/*.ps1`) are the main conflict points — always prefer our Compourri versions.
 2. Run `.\scripts\Apply-Branding.ps1` to restore branding in source files and docs.
 3. Delete `docs/static/CNAME` if upstream re-introduces it (it should remain removed; we use the github.io URL).
+3. Delete `.github/CODE_OF_CONDUCT.md` if upstream re-introduces it (we maintain our own community standards).
 4. Verify static assets are still Compourri-branded: `docs/static/favicon.svg`, `favicon.ico`, `favicon-*.png`, `apple-touch-icon.png`, `android-chrome-*.png`, `navlogo.webp`.
 5. Verify `docs/static/site.webmanifest` has `"name":"Compourri Software Essentials"` and `"short_name":"Essentials"`.
 6. Review `git diff` — check for any new WinUtil references in changed files that the script missed.
