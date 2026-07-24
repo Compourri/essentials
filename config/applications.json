@@ -129,6 +129,14 @@
         "winget": "DebaucheeOpenSourceGroup.Barrier",
         "foss": true
     },
+    "battlenet": {
+        "category": "Games",
+        "choco": "na",
+        "content": "Battle.net",
+        "description": "Battle.net is Blizzard Entertainment's gaming platform for purchasing, downloading, and playing games like World of Warcraft, Diablo, and Overwatch.",
+        "link": "https://www.blizzard.com/apps/battle.net",
+        "winget": "Blizzard.BattleNet"
+    },
     "beeper": {
         "category": "Communications",
         "choco": "na",
@@ -434,6 +442,15 @@
         "winget": "DelugeTeam.Deluge",
         "foss": true
     },
+    "deskflow": {
+        "category": "Utilities",
+        "choco": "deskflow",
+        "content": "Deskflow",
+        "description": "Deskflow is a free and open-source software KVM that lets you share a single keyboard and mouse across multiple computers.",
+        "link": "https://github.com/deskflow/deskflow",
+        "winget": "Deskflow.Deskflow",
+        "foss": true
+    },
     "digikam": {
         "category": "Multimedia",
         "choco": "digikam",
@@ -582,6 +599,15 @@
         "description": "EFI Boot Editor is a tool for managing the EFI/UEFI boot entries on your system. It allows you to customize the boot configuration of your computer.",
         "link": "https://www.easyuefi.com/",
         "winget": "EFIBootEditor.EFIBootEditor"
+    },
+    "element": {
+        "category": "Communications",
+        "choco": "element-desktop",
+        "content": "Element",
+        "description": "Element is a glossy client for Matrix, the decentralized communication protocol. It provides secure messaging, voice, and video calls with end-to-end encryption.",
+        "link": "https://element.io/",
+        "winget": "Element.Element",
+        "foss": true
     },
     "emulationstation": {
         "category": "Games",
@@ -1217,6 +1243,15 @@
         "link": "https://www.malwarebytes.com/",
         "winget": "Malwarebytes.Malwarebytes"
     },
+    "mattermost": {
+        "category": "Communications",
+        "choco": "mattermost",
+        "content": "Mattermost",
+        "description": "Mattermost is an open-source, self-hosted messaging platform for team communication, offering channels, file sharing, and integrations.",
+        "link": "https://mattermost.com/",
+        "winget": "Mattermost.MattermostDesktop",
+        "foss": true
+    },
     "Mailspring": {
         "category": "Communications",
         "choco": "mailspring",
@@ -1242,6 +1277,24 @@
         "description": "Microsoft 365 Apps for enterprise is the most productive and most secure Office experience for enterprises, allowing your teams to work together seamlessly from anywhere, anytime.",
         "link": "https://www.microsoft.com/en-us/microsoft-365/download-office",
         "winget": "Microsoft.Office"
+    },
+    "minitoolpartitionwizard": {
+        "category": "Utilities",
+        "choco": "minitoolpartitionwizard",
+        "content": "MiniTool Partition Wizard",
+        "description": "Comprehensive free partition manager that performs advanced operations Windows natively cannot, such as merging partitions, converting file systems, and organizing disk capacity.",
+        "link": "https://www.partitionwizard.com/",
+        "winget": "MiniTool.PartitionWizard.Free",
+        "foss": false
+    },
+    "modrinth": {
+        "category": "Games",
+        "choco": "modrinth-app",
+        "content": "Modrinth App",
+        "description": "Modrinth App is a desktop application for managing Minecraft mods and modpacks.",
+        "link": "https://modrinth.com/app",
+        "winget": "Modrinth.ModrinthApp",
+        "foss": true
     },
     "moonlight": {
         "category": "Games",
@@ -1563,6 +1616,15 @@
         "description": "Paint.NET is a free image and photo editing software for Windows. It features an intuitive user interface and supports a wide range of powerful editing tools.",
         "link": "https://www.getpaint.net/",
         "winget": "dotPDN.PaintDotNet"
+    },
+    "peazip": {
+        "category": "Utilities",
+        "choco": "peazip",
+        "content": "PeaZip",
+        "description": "PeaZip is a free and open-source file archiver that supports over 200 archive formats. It offers encryption, secure deletion, and cross-platform compatibility.",
+        "link": "https://peazip.github.io/",
+        "winget": "Giorgiotani.PeaZip",
+        "foss": true
     },
     "pcmanager": {
         "category": "Microsoft",
