@@ -430,6 +430,9 @@ Describe "XAML and sync wiring" {
             "selectedTweaks",
             "selectedToggles",
             "selectedFeatures",
+            "AppCategoryChips",
+            "SelectedAppCategories",
+            "AppCategoryAutoExpanded",
             "currentTab",
             "selectedAppsStackPanel",
             "selectedAppsstackPanel",
@@ -514,16 +517,23 @@ Describe "WPF handler wiring" {
         $buttonSwitchNames = @(Get-WinUtilButtonSwitchNames)
         $featureNames = @((Get-WinUtilConfigObject -Name "feature").PSObject.Properties.Name)
         $mainScript = Get-Content -Path $script:mainScriptPath -Raw
+        # Controls wired through data-driven loops in main.ps1 (e.g. AppCategoryChips)
+        # register Add_Click via $sync[$name] and are invisible to literal-name matching.
+        $loopWiredNames = @(
+            [regex]::Matches($mainScript, '@\{\s*Name\s*=\s*"([A-Za-z_][A-Za-z0-9_]*)"') |
+                ForEach-Object { $_.Groups[1].Value }
+        ) | Sort-Object -Unique
         $unhandledButtons = New-Object System.Collections.Generic.List[string]
 
         foreach ($button in $buttonControls) {
             $hasSwitchHandler = (Test-WinUtilNameInSet -Name $button.Name -Set $buttonSwitchNames) -or $button.Name -like "WPFTab?BT"
             $hasFeatureHandler = Test-WinUtilNameInSet -Name $button.Name -Set $featureNames
+            $hasLoopHandler = Test-WinUtilNameInSet -Name $button.Name -Set $loopWiredNames
             $escapedName = [regex]::Escape($button.Name)
             $explicitHandlerPattern = '\$sync\s*(?:\[\s*["'']' + $escapedName + '["'']\s*\]|\.' + $escapedName + ')\.Add_Click'
             $hasExplicitHandler = $mainScript -imatch $explicitHandlerPattern
 
-            if (-not ($hasSwitchHandler -or $hasFeatureHandler -or $hasExplicitHandler)) {
+            if (-not ($hasSwitchHandler -or $hasFeatureHandler -or $hasLoopHandler -or $hasExplicitHandler)) {
                 $unhandledButtons.Add($button.Name)
             }
         }

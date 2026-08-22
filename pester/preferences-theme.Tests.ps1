@@ -235,7 +235,7 @@ Describe "Theme configuration" {
 
         foreach ($themeName in @("shared", "Light", "Dark")) {
             foreach ($property in $themes.$themeName.PSObject.Properties) {
-                if ($property.Name -like "*Color" -and [string]$property.Value -notmatch '^(#[0-9A-Fa-f]{6}|Transparent)$') {
+                if ($property.Name -like "*Color" -and [string]$property.Value -notmatch '^(#[0-9A-Fa-f]{8}|#[0-9A-Fa-f]{6}|Transparent)$') {
                     $invalidEntries.Add("$themeName.$($property.Name) should be a hex color or Transparent")
                 }
                 elseif ($property.Name -like "*Radius" -and [string]$property.Value -notmatch '^\d+(\.\d+)?$') {

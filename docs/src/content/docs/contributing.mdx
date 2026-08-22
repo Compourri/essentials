@@ -1,16 +1,16 @@
 ---
 title: Contributing
-description: How to test, report issues, and contribute code to WinUtil.
+description: How to test, report issues, and contribute code to Essentials.
 ---
 
 ## Testing
 
-* Test the latest changes to WinUtil by running the pre-release and reporting issues you are encountering to help us continually improve WinUtil!
+* Test the latest changes to Essentials by running the pre-release and reporting issues you are encountering to help us continually improve Essentials!
 
 #### Run the latest pre-release
 
 ```ps1
-irm https://christitus.com/windev | iex
+irm "https://compourri.co.za/essentials" | iex
 ```
 
 :::caution
@@ -32,7 +32,7 @@ Do not use a code formatter, make massive amounts of line changes, or make multi
 :::
 
 :::caution
-Do not open a pull request that adds support for other languages to WinUtil for now, until we decide how we want to move forward with language support.
+Do not open a pull request that adds support for other languages to Essentials for now, until we decide how we want to move forward with language support.
 :::
 
 * When creating pull requests, it is essential to thoroughly document all changes made. This includes, but is not limited to, documenting any additions made to the `tweaks` section and corresponding `undo tweak`, so users are able to remove the newly added tweaks if necessary, and comprehensive documentation is required for all code changes. Document your changes and briefly explain why you made your changes in your Pull Request Description. Failure to adhere to this format may result in the denial of the pull request. Additionally, any code lacking sufficient documentation may also be denied.
@@ -40,7 +40,7 @@ Do not open a pull request that adds support for other languages to WinUtil for 
 * By following these guidelines, we can maintain a high standard of quality and ensure that the codebase remains organized and well-documented.
 
 :::note
-When creating a function, please include "WPF" or "WinUtil" in the file name so it can be loaded into the runspace.
+When creating a function, please include "WPF" or "Essentials" in the file name so it can be loaded into the runspace.
 :::
 
 ## Walk through
@@ -75,21 +75,21 @@ This is a diagram to guide you through the process. It may vary depending on the
 :::
 
 ### Fork the Repo
-* Fork the WinUtil Repository [here](https://github.com/ChrisTitusTech/winutil) to create a copy that will be available in your repository list.
+* Fork the Essentials Repository [here](https://github.com/Compourri/essentials) to create a copy that will be available in your repository list.
 
 ![Fork Image](../../assets/contributing/Fork-Button-Dark.png)
 
 ### Clone the Fork
 :::tip
-While you can make your changes directly through the Web, we recommend cloning the repo to your device using the application GitHub Desktop (available in WinUtil) to test your fork easily.
+While you can make your changes directly through the Web, we recommend cloning the repo to your device using the application GitHub Desktop (available in Essentials) to test your fork easily.
 :::
 
 * Install GitHub Desktop if it is not already installed.
-* Log in using the same GitHub account you used to fork WinUtil.
+* Log in using the same GitHub account you used to fork Essentials.
 * Choose the fork under "Your Repositories" and press "clone `{repo name}`"
 * Create a new branch and name it something relatable to your changes.
 
-* Now you can modify WinUtil to your liking using your preferred text editor.
+* Now you can modify Essentials to your liking using your preferred text editor.
 
 
 ### Testing your changes
@@ -98,7 +98,7 @@ While you can make your changes directly through the Web, we recommend cloning t
 
 * Change the directory where you are running the commands to the forked project.
 * `cd {path to the folder with the compile.ps1}`
-* Run the following command to compile and run WinUtil:
+* Run the following command to compile and run Essentials:
 * `.\Compile.ps1 -run`
 
 ![Compile](../../assets/contributing/Complie.png)
@@ -119,6 +119,6 @@ While you can make your changes directly through the Web, we recommend cloning t
 ![Push Commit Image](../../assets/contributing/Push-Commit.png)
 
 ### Making a PR
-* To make a PR on your repo under a new branch linking to the main branch, a button will show and say Preview and Create pull request. Click that button and fill in all the information that is provided on the template. Once all the information is filled in correctly, check your PR to make sure there is no WinUtil.ps1 file attached to the PR. Once everything is good, make the PR and wait for Chris (the maintainer) to accept or deny your PR. Once it is accepted by Chris, you will be able to see your changes in the "/windev" build.
+* To make a PR on your repo under a new branch linking to the main branch, a button will show and say Preview and Create pull request. Click that button and fill in all the information that is provided on the template. Once all the information is filled in correctly, check your PR to make sure there is no Essentials.ps1 file attached to the PR. Once everything is good, make the PR and wait for Chris (the maintainer) to accept or deny your PR. Once it is accepted by Chris, you will be able to see your changes in the "/windev" build.
 * If you do not see your feature in the main "/win" build, that is fine. All new changes go into the /windev build to make sure everything is working OK before going fully public.
-* Congratulations! You just submitted your first PR. Thank you so much for contributing to WinUtil.
+* Congratulations! You just submitted your first PR. Thank you so much for contributing to Essentials.

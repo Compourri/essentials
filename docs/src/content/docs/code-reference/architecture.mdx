@@ -1,6 +1,6 @@
 ---
 title: Architecture & Design
-description: How WinUtil's GUI, functions, and JSON configuration files fit together, plus a deep dive into the Win11 Creator subsystem.
+description: How Essentials's GUI, functions, and JSON configuration files fit together, plus a deep dive into the Win11 Creator subsystem.
 ---
 
 ## Overview
@@ -97,7 +97,7 @@ winutil/
 - `Invoke-WPFFeature*`: Enables Windows features
 - `Install-WinUtilProgram*`: Installs applications
 
-**Naming Convention**: Functions start with `WPF` or `Winutil` to be loaded into the runspace.
+**Naming Convention**: Functions start with `WPF` or `Essentials` to be loaded into the runspace.
 
 #### 4. functions/private/
 **Purpose**: Internal helper functions not directly called by users.
@@ -555,7 +555,7 @@ function Invoke-WPFNewFeature {
 }
 ```
 
-2. File naming must include "WPF" or "Winutil" to load
+2. File naming must include "WPF" or "Essentials" to load
 3. Recompile: `.\Compile.ps1`
 
 ## Testing
@@ -638,7 +638,7 @@ Outputs `winutil.ps1` in the root directory.
 **File Naming**:
 - Public functions: `Invoke-WPF*.ps1` or `Invoke-Winutil*.ps1`
 - Private functions: `Get-WinUtil*.ps1` or verb-WinUtil*.ps1`
-- Must include "WPF" or "Winutil" to load
+- Must include "WPF" or "Essentials" to load
 
 ## Future Architecture Plans
 

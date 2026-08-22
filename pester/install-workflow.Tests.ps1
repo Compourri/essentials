@@ -168,7 +168,7 @@ Describe "Invoke-WPFInstall entrypoint" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "Please select the program(s) to install or upgrade." -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }
@@ -182,7 +182,7 @@ Describe "Invoke-WPFInstall entrypoint" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "[Invoke-WPFInstall] An Install process is currently running." -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }
@@ -337,7 +337,7 @@ Describe "Invoke-WPFUnInstall entrypoint" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "Please select the program(s) to uninstall" -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }
@@ -351,7 +351,7 @@ Describe "Invoke-WPFUnInstall entrypoint" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "[Invoke-WPFUnInstall] Install process is currently running" -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }

@@ -41,14 +41,14 @@ function Write-WinUtilLog {
 
         if ([string]::IsNullOrWhiteSpace($logPath) -and $null -ne $sync -and $sync.ContainsKey("winutildir")) {
             $logDirectory = Join-Path $sync.winutildir "logs"
-            $logPath = Join-Path $logDirectory "winutil_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
+            $logPath = Join-Path $logDirectory "essentials_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
             $sync.logPath = $logPath
         }
 
         if ([string]::IsNullOrWhiteSpace($logPath) -and -not [string]::IsNullOrWhiteSpace($env:LocalAppData)) {
             if ([string]::IsNullOrWhiteSpace($script:WinUtilLogPath)) {
                 $logDirectory = Join-Path (Join-Path $env:LocalAppData "winutil") "logs"
-                $script:WinUtilLogPath = Join-Path $logDirectory "winutil_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
+                $script:WinUtilLogPath = Join-Path $logDirectory "essentials_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
             }
             $logPath = $script:WinUtilLogPath
         }

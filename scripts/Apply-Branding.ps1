@@ -37,6 +37,17 @@ if (Test-Path $startPath) {
     Write-Host "  [OK] scripts/start.ps1" -ForegroundColor Green
 }
 
+# --- functions/private/Write-WinUtilLog.ps1 ---
+$logFuncPath = Join-Path $repoRoot "functions\private\Write-WinUtilLog.ps1"
+if (Test-Path $logFuncPath) {
+    $content = Get-Content $logFuncPath -Raw
+    $newContent = $content -creplace '"winutil_\$\(Get-Date', '"essentials_$(Get-Date'
+    if ($newContent -ne $content) {
+        $newContent | Set-Content $logFuncPath -NoNewline
+        Write-Host "  [OK] functions/private/Write-WinUtilLog.ps1" -ForegroundColor Green
+    }
+}
+
 # --- scripts/main.ps1 ---
 $mainPath = Join-Path $repoRoot "scripts\main.ps1"
 if (Test-Path $mainPath) {
@@ -152,6 +163,17 @@ foreach ($file in $MessageBoxFiles) {
     }
 }
 
+# --- functions/private/Show-WinUtilMessage.ps1 default dialog title ---
+$msgFuncPath = Join-Path $repoRoot "functions\private\Show-WinUtilMessage.ps1"
+if (Test-Path $msgFuncPath) {
+    $content = Get-Content $msgFuncPath -Raw
+    $newContent = $content -creplace '\$Title = "Winutil"', '$Title = "Essentials"'
+    if ($newContent -ne $content) {
+        $newContent | Set-Content $msgFuncPath -NoNewline
+        Write-Host "  [OK] functions/private/Show-WinUtilMessage.ps1" -ForegroundColor Green
+    }
+}
+
 # --- functions/public/Invoke-WPFUpdatesdefault.ps1 ---
 $updatesPath = Join-Path $repoRoot "functions\public\Invoke-WPFUpdatesdefault.ps1"
 if (Test-Path $updatesPath) {
@@ -189,52 +211,73 @@ if (Test-Path $featurePath) {
     Write-Host "  [OK] config/feature.json (PS Profile)" -ForegroundColor Green
 }
 
-# --- docs/hugo.toml ---
-$hugoPath = Join-Path $repoRoot "docs\hugo.toml"
-if (Test-Path $hugoPath) {
-    $content = Get-Content $hugoPath -Raw
-    $content = $content -replace 'title\s*=\s*"WinUtil Documentation"', 'title = "Essentials Documentation"'
-    $content = $content -replace 'https://github.com/christitustech/winutil', 'https://github.com/Compourri/essentials'
-    $content = $content -replace 'https://github.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
-    $content | Set-Content $hugoPath -NoNewline
-    Write-Host "  [OK] docs/hugo.toml" -ForegroundColor Green
+# --- docs/astro.config.mjs ---
+$astroConfigPath = Join-Path $repoRoot "docs\astro.config.mjs"
+if (Test-Path $astroConfigPath) {
+    $content = Get-Content $astroConfigPath -Raw
+    $content = $content -replace "site: 'https://winutil\.christitus\.com/'", "site: 'https://compourri.github.io/essentials/'"
+    $content = $content -replace "title: 'WinUtil'", "title: 'Essentials'"
+    $content = $content -replace 'https://winutil\.christitus\.com/', 'https://compourri.github.io/essentials/'
+    $content = $content -replace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
+    $content | Set-Content $astroConfigPath -NoNewline
+    Write-Host "  [OK] docs/astro.config.mjs" -ForegroundColor Green
 }
 
-# --- docs/i18n/en.yaml ---
-$i18nPath = Join-Path $repoRoot "docs\i18n\en.yaml"
-if (Test-Path $i18nPath) {
-    $content = Get-Content $i18nPath -Raw
-    $content = $content -replace "href='https://christitus.com'>Chris Titus Tech", "href='https://compourri.co.za'>Compourri"
-    $content | Set-Content $i18nPath -NoNewline
-    Write-Host "  [OK] docs/i18n/en.yaml" -ForegroundColor Green
+# --- docs/src/site-links.ts ---
+$siteLinksPath = Join-Path $repoRoot "docs\src\site-links.ts"
+if (Test-Path $siteLinksPath) {
+    $content = Get-Content $siteLinksPath -Raw
+    $content = $content -replace 'href: ''https://christitus\.com/downloads/''', "href: 'https://github.com/Compourri/essentials/releases'"
+    $content = $content -replace 'href: ''https://forum\.christitus\.com/''', "href: 'https://github.com/Compourri/essentials/discussions'"
+    $content | Set-Content $siteLinksPath -NoNewline
+    Write-Host "  [OK] docs/src/site-links.ts" -ForegroundColor Green
 }
 
-# --- docs/content/ markdown files ---
-$docsContent = Join-Path $repoRoot "docs\content"
+# --- docs/src/components/Footer.astro ---
+$footerPath = Join-Path $repoRoot "docs\src\components\Footer.astro"
+if (Test-Path $footerPath) {
+    $content = Get-Content $footerPath -Raw
+    $content = $content -replace '<a href="https://christitus\.com">Chris Titus Tech</a>', '<a href="https://compourri.co.za">Compourri</a>'
+    $content | Set-Content $footerPath -NoNewline
+    Write-Host "  [OK] docs/src/components/Footer.astro" -ForegroundColor Green
+}
+
+# --- docs/src/content markdown/mdx files ---
+$docsContent = Join-Path $repoRoot "docs\src\content"
 if (Test-Path $docsContent) {
-    $mdFiles = Get-ChildItem -Path $docsContent -Filter "*.md" -Recurse -File
+    $mdFiles = Get-ChildItem -Path $docsContent -Include "*.md", "*.mdx" -Recurse -File
     foreach ($file in $mdFiles) {
         $content = Get-Content $file.FullName -Raw
         $original = $content
 
-        # User-facing WinUtil/Winutil → Essentials (but NOT inside code blocks or function names)
-        # Replace standalone "WinUtil" and "Winutil" in prose text
-        $content = $content -replace '(?<!\w)WinUtil(?!\w|\.ps1|_|Functions| variables| checkboxes| program| winget| choco| ISO| SSHServer| ExplorerUpdate| currentSystem| Message| Log| File| TweaksProgress| Taskbaritem)', 'Essentials'
-        $content = $content -replace '(?<!\w)Winutil(?!\w|\.ps1|_|Functions| variables| checkboxes| program| winget| choco| ISO| SSHServer| ExplorerUpdate| currentSystem| Message| Log| File| TweaksProgress| Taskbaritem)', 'Essentials'
+        # NOTE: -creplace is required. PowerShell's -replace is case-insensitive,
+        # which would mangle lowercase "winutil" inside URLs before URL rules run.
 
         # GitHub URLs
-        $content = $content -replace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
-        $content = $content -replace 'https://github\.com/christitustech/winutil', 'https://github.com/Compourri/essentials'
+        $content = $content -creplace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
+        $content = $content -creplace 'https://github\.com/christitustech/winutil', 'https://github.com/Compourri/essentials'
 
-        # Shields.io badge URLs
-        $content = $content -replace 'ChrisTitusTech/winutil', 'Compourri/essentials'
+        # Shields.io badge URLs and any remaining repo-slug references
+        $content = $content -creplace 'ChrisTitusTech/winutil', 'Compourri/essentials'
 
-        # christitus.com launch commands → compourri.co.za
-        $content = $content -replace 'irm\s+"https://christitus\.com/win"', 'irm "https://compourri.co.za/essentials"'
-        $content = $content -replace "irm\s+`"https://christitus\.com/win`"", 'irm "https://compourri.co.za/essentials"'
+        # christitus.com launch commands -> compourri.co.za
+        $content = $content -creplace 'irm\s+"https://christitus\.com/win"', 'irm "https://compourri.co.za/essentials"'
+        $content = $content -creplace 'irm\s+https://christitus\.com/windev(?![\w.])', 'irm "https://compourri.co.za/essentials"'
+        $content = $content -creplace 'irm\s+https://christitus\.com/win(?![\w.])', 'irm "https://compourri.co.za/essentials"'
 
         # Old WinUtil domain
-        $content = $content -replace 'winutil\.christitus\.com', 'compourri.github.io/essentials'
+        $content = $content -creplace 'winutil\.christitus\.com', 'compourri.github.io/essentials'
+        $content = $content -creplace 'forum\.christitus\.com[^\s)"''<>]*', 'github.com/Compourri/essentials/discussions'
+        $content = $content -creplace 'christitus\.com/windows-tool/[^\s)"''<>]*', 'compourri.co.za/'
+        $content = $content -creplace 'christitus\.com', 'compourri.co.za'
+        # Blanket domain swap can leave CTT-only paths; remap them to our launcher URL
+        $content = $content -creplace 'compourri\.co\.za/windev(?![\w.])', 'compourri.co.za/essentials'
+        $content = $content -creplace 'compourri\.co\.za/win(?![\w./-])', 'compourri.co.za/essentials'
+
+        # User-facing WinUtil/Winutil -> Essentials in prose (case-sensitive;
+        # negative lookaheads protect code identifiers like Invoke-WinUtilISO, WinUtilMessage, winutil.ps1)
+        $content = $content -creplace '(?<![\w.-])WinUtil(?!\w)', 'Essentials'
+        $content = $content -creplace '(?<![\w.-])Winutil(?!\w)', 'Essentials'
 
         if ($content -ne $original) {
             $content | Set-Content $file.FullName -NoNewline
@@ -260,6 +303,8 @@ if (Test-Path $readmePath) {
     $content = $content -replace 'cttstore\.com/windows-toolbox', ''
     $content = $content -replace '\[.*?EXE Wrapper.*?\]\([^)]*\)', ''
     $content = $content -replace '(?<!\w)WinUtil(?!\w|\.ps1|_)', 'Essentials'
+    # Keep the upstream acknowledgment pointing at ChrisTitusTech/winutil (re-branding rules above rewrite it)
+    $content = $content -replace 'This project is a fork of .*?Thanks to Chris Titus and', "This project is a fork of [Chris Titus Tech's Windows Utility](https://github.com/ChrisTitusTech/winutil). Thanks to Chris Titus and"
     $content | Set-Content $readmePath -NoNewline
     Write-Host "  [OK] README.md" -ForegroundColor Green
 }

@@ -13,3 +13,7 @@ desktop.ini
 
 .vscode/
 .idea/
+
+# Local-only docs (per AGENTS.md policy, commit b77e7ea)
+AGENTS.md
+BRANDING.md

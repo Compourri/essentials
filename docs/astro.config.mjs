@@ -5,10 +5,10 @@ import { siteLinks } from './src/site-links.ts';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://winutil.christitus.com/',
+	site: 'https://compourri.github.io/essentials/',
 	integrations: [
 		starlight({
-			title: 'WinUtil',
+			title: 'Essentials',
 			description: "Chris Titus Tech's Windows Utility — install apps, apply tweaks, run fixes, and manage Windows from one place.",
 			logo: {
 				src: './src/assets/branding/navlogo.png',
@@ -16,13 +16,13 @@ export default defineConfig({
 			},
 			favicon: '/favicon.svg',
 			head: [
-				{ tag: 'meta', attrs: { property: 'og:image', content: 'https://winutil.christitus.com/social-preview.png' } },
+				{ tag: 'meta', attrs: { property: 'og:image', content: 'https://compourri.github.io/essentials/social-preview.png' } },
 				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
 				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
-				{ tag: 'meta', attrs: { name: 'twitter:image', content: 'https://winutil.christitus.com/social-preview.png' } },
+				{ tag: 'meta', attrs: { name: 'twitter:image', content: 'https://compourri.github.io/essentials/social-preview.png' } },
 			],
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/ChrisTitusTech/winutil' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/Compourri/essentials' },
 				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/RUbZUZyByQ' },
 			],
 			// Global theme overrides (colors, fonts, landing-page section styles).
@@ -35,7 +35,7 @@ export default defineConfig({
 				Footer: './src/components/Footer.astro',
 			},
 			editLink: {
-				baseUrl: 'https://github.com/ChrisTitusTech/winutil/edit/main/docs/',
+				baseUrl: 'https://github.com/Compourri/essentials/edit/main/docs/',
 			},
 			// Sidebar groups, top to bottom: User Guide, Code Reference, Help.
 			sidebar: [

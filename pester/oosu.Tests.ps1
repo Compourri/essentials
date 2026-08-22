@@ -92,7 +92,7 @@ Describe "Invoke-WPFOOSU" {
 
         Should -Invoke Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "Another process is currently running." -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }

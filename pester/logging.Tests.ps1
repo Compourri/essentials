@@ -22,7 +22,7 @@ Describe "Write-WinUtilLog" {
     }
 
     It "writes to the active timestamped session log under logs" {
-        $logPath = Join-Path $script:testRoot "logs\winutil_2026-07-01_12-00-00.log"
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
         $script:sync = [hashtable]::Synchronized(@{
             winutildir = $script:testRoot
             logPath = $logPath
@@ -36,7 +36,7 @@ Describe "Write-WinUtilLog" {
     }
 
     It "uses the transcript stream when logPath is not set" {
-        $transcriptPath = Join-Path $script:testRoot "logs\winutil_2026-07-01_12-00-00.log"
+        $transcriptPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
         $script:sync = [hashtable]::Synchronized(@{
             winutildir = $script:testRoot
             transcriptPath = $transcriptPath
@@ -61,7 +61,7 @@ Describe "Write-WinUtilLog" {
         Write-WinUtilLog -Component "Test" -Message "first fallback entry"
         Write-WinUtilLog -Component "Test" -Message "second fallback entry"
 
-        $logFiles = @(Get-ChildItem -Path (Join-Path $script:testRoot "logs") -Filter "winutil_*.log")
+        $logFiles = @(Get-ChildItem -Path (Join-Path $script:testRoot "logs") -Filter "essentials_*.log")
         $logFiles.Count | Should -Be 1
         Test-Path -Path (Join-Path $script:testRoot "winutil.log") | Should -BeFalse
 
@@ -71,7 +71,7 @@ Describe "Write-WinUtilLog" {
     }
 
     It "does not append directly when the active log file is the transcript" {
-        $logPath = Join-Path $script:testRoot "logs\winutil_2026-07-01_12-00-00.log"
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
         $script:sync = [hashtable]::Synchronized(@{
             winutildir = $script:testRoot
             logPath = $logPath
@@ -99,7 +99,7 @@ Describe "WinUtil startup logging path" {
     It "uses one timestamped log file under the logs directory" {
         $startScript = Get-Content -Path (Join-Path $script:repoRoot "scripts\start.ps1") -Raw
 
-        $startScript | Should -Match '\$sync\.logPath = "\$logdir\\winutil_\$dateTime\.log"'
+        $startScript | Should -Match '\$sync\.logPath = "\$logdir\\essentials_\$dateTime\.log"'
         $startScript | Should -Match '\$sync\.transcriptPath = \$sync\.logPath'
         $startScript | Should -Match 'Start-Transcript -Path \$sync\.logPath'
         $startScript | Should -Not -Match '\$sync\.logPath = "\$winutildir\\winutil\.log"'

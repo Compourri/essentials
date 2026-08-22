@@ -408,7 +408,7 @@ Describe "Invoke-WPFAppxInstall" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "An AppX process is currently running." -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }
@@ -507,7 +507,7 @@ Describe "Invoke-WPFAppxRemoval entrypoint" {
 
         Should -Invoke -CommandName Show-WinUtilMessage -Times 1 -Exactly -ParameterFilter {
             $Message -eq "An AppX process is currently running." -and
-                $Title -eq "WinUtil" -and
+                $Title -eq "Essentials" -and
                 $Button -eq "OK" -and
                 $Icon -eq "Warning"
         }

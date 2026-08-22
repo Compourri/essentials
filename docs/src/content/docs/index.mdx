@@ -6,10 +6,10 @@ editUrl: false
 heroEyebrow: Open Source Windows Setup Utility
 heroCaption: Free. Open source. No installer, no telemetry, no bloat.
 heroBadges:
-  - src: https://img.shields.io/github/v/release/ChrisTitusTech/winutil?color=%230567ff&label=Latest%20Release&style=for-the-badge
+  - src: https://img.shields.io/github/v/release/Compourri/essentials?color=%230567ff&label=Latest%20Release&style=for-the-badge
     alt: Latest release
-    href: https://github.com/ChrisTitusTech/winutil/releases/latest
-  - src: https://img.shields.io/github/downloads/ChrisTitusTech/winutil/winutil.ps1?label=Total%20Downloads&style=for-the-badge
+    href: https://github.com/Compourri/essentials/releases/latest
+  - src: https://img.shields.io/github/downloads/Compourri/essentials/winutil.ps1?label=Total%20Downloads&style=for-the-badge
     alt: Total downloads
   - src: https://dcbadge.limes.pink/api/server/https://discord.gg/RUbZUZyByQ
     alt: Discord community server
@@ -24,18 +24,18 @@ hero:
       link: /guides/
       icon: right-arrow
     - text: View on GitHub
-      link: https://github.com/ChrisTitusTech/winutil
+      link: https://github.com/Compourri/essentials
       icon: external
       variant: secondary
 head:
   - tag: meta
     attrs:
       property: og:title
-      content: Documentation | WinUtil
+      content: Documentation | Essentials
   - tag: meta
     attrs:
       name: twitter:title
-      content: Documentation | WinUtil
+      content: Documentation | Essentials
   - tag: script
     attrs:
       type: application/ld+json
@@ -43,10 +43,10 @@ head:
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "WinUtil",
+        "name": "Essentials",
         "description": "Chris Titus Tech's Windows Utility — install apps, apply tweaks, run fixes, and manage Windows from one place.",
-        "url": "https://winutil.christitus.com/",
-        "downloadUrl": "https://github.com/ChrisTitusTech/winutil",
+        "url": "https://compourri.github.io/essentials/",
+        "downloadUrl": "https://github.com/Compourri/essentials",
         "operatingSystem": "Windows",
         "applicationCategory": "UtilitiesApplication",
         "offers": {
@@ -75,7 +75,7 @@ import CornerCard from '../../components/CornerCard.astro';
 	</div>
 </section>
 
-{/* Problem section: pain points WinUtil solves. */}
+{/* Problem section: pain points Essentials solves. */}
 <section class="wu-section wu-section--tint">
 	<div class="wu-section-inner wu-text-narrow">
 		<div class="wu-section-head wu-align-left">
@@ -92,11 +92,11 @@ import CornerCard from '../../components/CornerCard.astro';
 	</div>
 </section>
 
-{/* Solution grid: how WinUtil addresses each problem above. */}
+{/* Solution grid: how Essentials addresses each problem above. */}
 <section class="wu-section">
 	<div class="wu-section-inner">
 		<div class="wu-section-head">
-			<h2>WinUtil puts a real control panel on top of Windows</h2>
+			<h2>Essentials puts a real control panel on top of Windows</h2>
 			<p>Instead of stitching together installers, registry hacks, and forum wisdom, you manage the whole setup from one window.</p>
 		</div>
 		<div class="wu-solution-grid">
@@ -142,7 +142,7 @@ import CornerCard from '../../components/CornerCard.astro';
 		</div>
 		<div class="wu-feature-grid">
 			<CornerCard icon="padlock" title="Nothing phones home">
-				WinUtil doesn't collect or transmit anything. It's a script that runs, makes the changes you selected, and exits.
+				Essentials doesn't collect or transmit anything. It's a script that runs, makes the changes you selected, and exits.
 			</CornerCard>
 			<CornerCard icon="approve-check-circle" title="Reversible by default">
 				Tweaks are applied through documented, undoable actions instead of one-way registry edits.
@@ -154,7 +154,7 @@ import CornerCard from '../../components/CornerCard.astro';
 				Application installs go through package managers you can audit, not opaque bundled installers.
 			</CornerCard>
 			<CornerCard icon="server" title="Automation-friendly">
-				Drive WinUtil unattended with config files and parameters for repeatable rollouts across machines.
+				Drive Essentials unattended with config files and parameters for repeatable rollouts across machines.
 			</CornerCard>
 			<CornerCard icon="desktop" title="Custom Win11 ISOs">
 				Debloat and preconfigure a Windows 11 image before it's ever installed.
@@ -179,7 +179,7 @@ import CornerCard from '../../components/CornerCard.astro';
 				<span class="wu-timeline-number">2</span>
 				<h3>Run the launch command</h3>
 				<p>Downloads and starts the latest release.</p>
-				<Code code={'irm "https://christitus.com/win" | iex'} lang="powershell" />
+				<Code code={'irm "https://compourri.co.za/essentials" | iex'} lang="powershell" />
 			</div>
 			<div class="wu-timeline-step">
 				<span class="wu-timeline-number">3</span>
@@ -201,7 +201,7 @@ import CornerCard from '../../components/CornerCard.astro';
 	<div class="wu-section-inner wu-text-narrow">
 		<div class="wu-section-head wu-align-left">
 			<h2>Built for the gap between a fresh install and a finished machine</h2>
-			<p>Registry edits and PowerShell one-liners work. WinUtil makes them repeatable.</p>
+			<p>Registry edits and PowerShell one-liners work. Essentials makes them repeatable.</p>
 		</div>
 		<ul class="wu-benefit-list">
 			<li><span class="wu-check"><Icon name="approve-check" /></span> You keep full control — every tweak is visible, documented, and reversible.</li>
@@ -221,7 +221,7 @@ import CornerCard from '../../components/CornerCard.astro';
 				{'Get Started'}
 				<Icon name="right-arrow" size="1.5em" class="wu-icon-arrow" />
 			</a>
-			<a class="wu-btn wu-btn-secondary" href="https://github.com/ChrisTitusTech/winutil">
+			<a class="wu-btn wu-btn-secondary" href="https://github.com/Compourri/essentials">
 				<Icon name="github" />
 				{' View on GitHub'}
 			</a>
