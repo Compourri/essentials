@@ -253,10 +253,10 @@ $sync["Form"].Add_MouseDoubleClick({
     if ($_.OriginalSource.Name -eq "NavDockPanel" -or
         $_.OriginalSource.Name -eq "GridBesideNavDockPanel") {
             if ($sync["Form"].WindowState -eq [Windows.WindowState]::Normal) {
-                $sync["Form"].WindowState = [Windows.WindowState]::Maximized
+                [Windows.SystemCommands]::MaximizeWindow($sync.Form)
             }
             else{
-                $sync["Form"].WindowState = [Windows.WindowState]::Normal
+                [Windows.SystemCommands]::RestoreWindow($sync.Form)
             }
     }
 })
@@ -330,7 +330,7 @@ $searchBarTimer.add_Tick({
     $searchBarTimer.Stop()
     switch ($sync.currentTab) {
         "Install" {
-            Find-AppsByNameOrDescription -SearchString $sync.SearchBar.Text -Category $sync.SearchBar.Tag
+            Find-AppsByNameOrDescription -SearchString $sync.SearchBar.Text -Categories $sync.SelectedAppCategories.ToArray()
         }
         "Tweaks" {
             Find-TweaksByNameOrDescription -SearchString $sync.SearchBar.Text
@@ -341,10 +341,6 @@ $searchBarTimer.add_Tick({
     }
 })
 $sync["SearchBar"].Add_TextChanged({
-    if ($sync.SearchBar.Tag -ne $sync.SearchBar.Text) {
-        $sync.SearchBar.Tag = $null
-    }
-
     if ($sync.SearchBar.Text -ne "") {
         $sync.SearchBarClearButton.Visibility = "Visible"
         $sync.SearchBarIcon.Visibility = "Collapsed"
@@ -353,30 +349,33 @@ $sync["SearchBar"].Add_TextChanged({
         $sync.SearchBarIcon.Visibility = "Visible"
     }
 
-    # Category chip handlers apply their filter immediately.
-    if ($sync.SearchBar.Tag -eq $sync.SearchBar.Text) {
-        return
-    }
-
     if ($searchBarTimer.IsEnabled) {
         $searchBarTimer.Stop()
     }
     $searchBarTimer.Start()
 })
 
-# Quick Category Search Chips
-$sync["WPFSearchChipAll"].Add_Click({ Set-WinUtilAppCategoryFilter })
-$sync["WPFSearchChipAI"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "AI" })
-$sync["WPFSearchChipBenchmarking"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Benchmarking" })
-$sync["WPFSearchChipBrowsers"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Browsers" })
-$sync["WPFSearchChipCommunications"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Communications" })
-$sync["WPFSearchChipGames"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Games" })
-$sync["WPFSearchChipMicrosoft"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Microsoft" })
-$sync["WPFSearchChipMultimedia"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Multimedia" })
-$sync["WPFSearchChipOffice"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Office" })
-$sync["WPFSearchChipSecurity"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Security" })
-$sync["WPFSearchChipSmartphone"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Smartphone" })
-$sync["WPFSearchChipUtilities"].Add_Click({ Set-WinUtilAppCategoryFilter -Category "Utilities" })
+# Category filter chips. The chip carries its category in Tag, so one handler covers all of them.
+$sync.AppCategoryChips = @(
+    @{ Name = "WPFSearchChipAll";            Category = "" }
+    @{ Name = "WPFSearchChipAI";             Category = "AI" }
+    @{ Name = "WPFSearchChipBenchmarking";   Category = "Benchmarking" }
+    @{ Name = "WPFSearchChipBrowsers";       Category = "Browsers" }
+    @{ Name = "WPFSearchChipCommunications"; Category = "Communications" }
+    @{ Name = "WPFSearchChipGames";          Category = "Games" }
+    @{ Name = "WPFSearchChipMicrosoft";      Category = "Microsoft" }
+    @{ Name = "WPFSearchChipMultimedia";     Category = "Multimedia" }
+    @{ Name = "WPFSearchChipOffice";         Category = "Office" }
+    @{ Name = "WPFSearchChipSecurity";       Category = "Security" }
+    @{ Name = "WPFSearchChipSmartphone";     Category = "Smartphone" }
+    @{ Name = "WPFSearchChipUtilities";      Category = "Utilities" }
+)
+$sync.SelectedAppCategories = [System.Collections.Generic.List[string]]::new()
+
+foreach ($appCategoryChip in $sync.AppCategoryChips) {
+    $sync[$appCategoryChip.Name].Tag = $appCategoryChip.Category
+    $sync[$appCategoryChip.Name].Add_Click({ Invoke-WinUtilAppCategoryChip -Chip $this })
+}
 
 $sync["Form"].Add_Loaded({
     param($e)
@@ -501,7 +500,31 @@ $sync["WPFWin11ISOCleanResetButton"].Add_Click({
     Invoke-WinUtilISOCleanAndReset
 })
 
+function Remove-WinUtilTempScript {
+    <#
+    .SYNOPSIS
+        Removes the temporary script downloaded by windev.ps1.
+
+    .DESCRIPTION
+        Deletes the current script only when it is a winutil-*.ps1 file in
+        the system temporary directory. This preserves normal file-backed
+        and in-memory WinUtil launches.
+    #>
+
+    $scriptPath = $PSCommandPath
+    $tempPath = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\')
+
+    if (
+        $scriptPath -and
+        [IO.Path]::GetDirectoryName($scriptPath) -eq $tempPath -and
+        [IO.Path]::GetFileName($scriptPath) -like 'winutil-*.ps1'
+    ) {
+        Remove-Item -LiteralPath $scriptPath -Force -ErrorAction SilentlyContinue
+    }
+}
+
 # ──────────────────────────────────────────────────────────────────────────────
 
 $sync["Form"].ShowDialog() | out-null
+Remove-WinUtilTempScript
 Stop-Transcript
