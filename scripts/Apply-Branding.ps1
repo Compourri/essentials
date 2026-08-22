@@ -286,10 +286,29 @@ if (Test-Path $docsContent) {
     }
 }
 
+# --- Branded assets (canonical copies in scripts/branding-assets/) ---
+$brandingAssets = Join-Path $PSScriptRoot "branding-assets"
+$assetTargets = @(
+    @{ Source = "favicon.svg";       Target = "docs\public\favicon.svg" },
+    @{ Source = "Title-Screen.png";  Target = "docs\src\assets\branding\title-screen.png" }
+)
+foreach ($asset in $assetTargets) {
+    $sourcePath = Join-Path $brandingAssets $asset.Source
+    $targetPath = Join-Path $repoRoot $asset.Target
+    if ((Test-Path $sourcePath) -and (Test-Path (Split-Path -Parent $targetPath))) {
+        if (-not (Test-Path $targetPath) -or ((Get-FileHash $sourcePath).Hash -ne (Get-FileHash $targetPath).Hash)) {
+            Copy-Item $sourcePath $targetPath -Force
+            Write-Host "  [OK] $($asset.Target) (branded asset restored)" -ForegroundColor Green
+        }
+    }
+}
+
 # --- README.md ---
 $readmePath = Join-Path $repoRoot "README.md"
 if (Test-Path $readmePath) {
     $content = Get-Content $readmePath -Raw
+    # Fix image paths broken by upstream doc restructures (Hugo/Astro moves)
+    $content = $content -creplace '\(/docs/assets/images/Title-Screen\.png\)', '(docs/src/assets/branding/title-screen.png)'
     $content = $content -replace 'ChrisTitusTech/winutil', 'Compourri/essentials'
     $content = $content -replace 'https://github\.com/ChrisTitusTech/winutil', 'https://github.com/Compourri/essentials'
     $content = $content -replace 'irm\s+https://christitus\.com/win\s*\|\s*iex', 'irm https://compourri.co.za/essentials | iex'
