@@ -2612,5 +2612,14 @@
         "link": "https://github.com/ajeetdsouza/zoxide",
         "winget": "ajeetdsouza.zoxide",
         "foss": true
+    },
+    "Canva.Affinity": {
+        "category": "Multimedia",
+        "choco": "na",
+        "content": "Affinity",
+        "description": "Affinity by Canva is a fast, smooth, and precise creative suite for photo editing, vector illustration, and desktop publishing.",
+        "link": "https://affinity.serif.com/",
+        "winget": "Canva.Affinity",
+        "foss": false
     }
 }
