@@ -44,8 +44,8 @@ function Initialize-InstallAppEntry {
         })
 
         $checkBox = New-Object Windows.Controls.CheckBox
-        # Sanitize the name for WPF
-        $checkBox.Name = $appKey -replace '-', '_'
+        # Sanitize the name for WPF (dots and other invalid name characters become underscores)
+        $checkBox.Name = $appKey -replace '[^a-zA-Z0-9_]', '_'
         # Store the original appKey in Tag
         $checkBox.Tag = $appKey
         $checkbox.Style = $sync.Form.Resources.AppEntryCheckboxStyle
