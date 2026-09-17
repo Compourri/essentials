@@ -53,8 +53,21 @@ function Initialize-InstallAppEntry {
             $fallback.Visibility = "Collapsed"
             $logo = New-Object Windows.Controls.Image
             $logo.Stretch = [Windows.Media.Stretch]::Uniform
-            $logo.Source = "https://www.google.com/s2/favicons?sz=64&domain_url=$([uri]::EscapeDataString($app.link))"
             $logo.Add_ImageFailed($handlers.ImageFailed)
+            try {
+                # BitmapImage with default (on-demand) caching downloads
+                # asynchronously: a blocked or failed favicon surfaces through
+                # ImageFailed instead of throwing here and aborting the whole
+                # render batch, which would leave the Install tab empty.
+                $favicon = New-Object Windows.Media.Imaging.BitmapImage
+                $favicon.BeginInit()
+                $favicon.UriSource = "https://www.google.com/s2/favicons?sz=64&domain_url=$([uri]::EscapeDataString($app.link))"
+                $favicon.EndInit()
+                $logo.Source = $favicon
+            } catch {
+                $logo.Visibility = "Collapsed"
+                $fallback.Visibility = "Visible"
+            }
 
             [void]$icon.Children.Add($logo)
         }

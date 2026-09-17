@@ -81,6 +81,24 @@ Describe "Get-WinUtilEntryToolTip" {
     }
 }
 
+Describe "App entry favicon resilience" {
+    It "loads favicons asynchronously so a failed download cannot abort rendering" {
+        # A direct string assignment to Image.Source downloads synchronously
+        # and throws on failure, which aborts the whole render batch and
+        # leaves the Install tab empty. BitmapImage with on-demand caching
+        # defers the download; failures surface through ImageFailed instead.
+        $script:appRenderer | Should -Match 'New-Object Windows\.Media\.Imaging\.BitmapImage'
+        $script:appRenderer | Should -Match '\$favicon\.BeginInit\(\)'
+        $script:appRenderer | Should -Match '\$favicon\.EndInit\(\)'
+        $script:appRenderer | Should -Not -Match '\$logo\.Source\s*=\s*"https?://'
+    }
+
+    It "falls back to the letter icon when the favicon cannot be created" {
+        $script:appRenderer | Should -Match '(?s)catch\s*\{\s*\r?\n?\s*\$logo\.Visibility\s*=\s*"Collapsed"'
+        $script:appRenderer | Should -Match '\$fallback\.Visibility\s*=\s*"Visible"'
+    }
+}
+
 Describe "Preset key tooltips" {
     It "leaves unsupported controls unlabelled" {
         # Comboboxes and radio buttons are not representable in the flat preset format.
