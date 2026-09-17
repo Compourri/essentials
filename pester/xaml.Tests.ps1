@@ -468,6 +468,7 @@ Describe "XAML and sync wiring" {
             "AppCategoryAutoExpanded",
             "RenderedAssetCache",
             "ToggleStatusCache",
+            "FaviconFailureLog",
             "InstallAppRenderQueue",
             "InstallAppEntriesRendered",
             "FontScaleFactor",

@@ -51,6 +51,30 @@ function Get-WinUtilAppEntryHandlers {
             $borderElement.SetResourceReference([Windows.Controls.Control]::BackgroundProperty, "AppInstallUnselectedColor")
         }
         ImageFailed = {
+            # Retry once through the alternate favicon provider before giving
+            # up on the icon. The logo's Tag carries @{ Link = ...; Retried = $bool }.
+            $faviconState = $this.Tag
+            if ($faviconState -is [hashtable] -and $faviconState.Link -and -not $faviconState.Retried) {
+                $faviconState.Retried = $true
+                try {
+                    $iconHost = ([uri]$faviconState.Link).Host
+                    $retry = New-Object Windows.Media.Imaging.BitmapImage
+                    $retry.BeginInit()
+                    $retry.UriSource = "https://icons.duckduckgo.com/ip3/$iconHost.ico"
+                    $retry.EndInit()
+                    $this.Source = $retry
+                    return
+                } catch { }
+            }
+            # Log each distinct failure reason once so a blocked provider
+            # shows up in the log instead of failing silently 300+ times.
+            if ($null -eq $sync.FaviconFailureLog) { $sync.FaviconFailureLog = @{} }
+            $reason = "unknown error"
+            if ($_.ErrorException) { $reason = $_.ErrorException.GetType().Name + ": " + $_.ErrorException.Message }
+            if (-not $sync.FaviconFailureLog.ContainsKey($reason)) {
+                $sync.FaviconFailureLog[$reason] = $true
+                Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "Favicon load failed ($reason); showing letter fallback."
+            }
             $this.Visibility = "Collapsed"
             $this.Parent.Children[0].Visibility = "Visible"
         }

@@ -53,6 +53,9 @@ function Initialize-InstallAppEntry {
             $fallback.Visibility = "Collapsed"
             $logo = New-Object Windows.Controls.Image
             $logo.Stretch = [Windows.Media.Stretch]::Uniform
+            # Carries the app link so the shared ImageFailed handler can
+            # retry once through the alternate favicon provider.
+            $logo.Tag = @{ Link = $app.link; Retried = $false }
             $logo.Add_ImageFailed($handlers.ImageFailed)
             try {
                 # BitmapImage with default (on-demand) caching downloads

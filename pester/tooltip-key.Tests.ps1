@@ -97,6 +97,16 @@ Describe "App entry favicon resilience" {
         $script:appRenderer | Should -Match '(?s)catch\s*\{\s*\r?\n?\s*\$logo\.Visibility\s*=\s*"Collapsed"'
         $script:appRenderer | Should -Match '\$fallback\.Visibility\s*=\s*"Visible"'
     }
+
+    It "hands the app link to the logo so ImageFailed can retry once" {
+        $script:appRenderer | Should -Match '\$logo\.Tag\s*=\s*@\{\s*Link\s*=\s*\$app\.link;\s*Retried\s*=\s*\$false\s*\}'
+
+        $handlersPath = Join-Path $script:repoRoot "functions\private\Get-WinUtilAppEntryHandlers.ps1"
+        $handlers = Get-Content -Path $handlersPath -Raw
+        $handlers | Should -Match 'icons\.duckduckgo\.com/ip3/'
+        $handlers | Should -Match 'FaviconFailureLog'
+        $handlers | Should -Match '\$this\.Visibility\s*=\s*"Collapsed"'
+    }
 }
 
 Describe "Preset key tooltips" {
