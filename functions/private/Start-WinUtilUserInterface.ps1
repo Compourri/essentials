@@ -350,17 +350,18 @@ function Start-WinUtilUserInterface {
 
     # Category filter chips. The chip carries its category in Tag, so one handler covers all of them.
     $sync.AppCategoryChips = @(
-        @{ Name = "WPFSearchChipAll";             Category = "" }
-        @{ Name = "WPFSearchChipBrowsers";        Category = "Browsers" }
-        @{ Name = "WPFSearchChipCommunications";  Category = "Communications" }
-        @{ Name = "WPFSearchChipDevelopment";     Category = "Development" }
-        @{ Name = "WPFSearchChipDocument";        Category = "Document" }
-        @{ Name = "WPFSearchChipGames";           Category = "Games" }
-        @{ Name = "WPFSearchChipMicrosoftTools";  Category = "Microsoft Tools" }
-        @{ Name = "WPFSearchChipMultimediaTools"; Category = "Multimedia Tools" }
-        @{ Name = "WPFSearchChipProTools";        Category = "Pro Tools" }
-        @{ Name = "WPFSearchChipSelfhostedTools"; Category = "Selfhosted Tools" }
-        @{ Name = "WPFSearchChipUtilities";       Category = "Utilities" }
+        @{ Name = "WPFSearchChipAll";            Category = "" }
+        @{ Name = "WPFSearchChipAI";             Category = "AI" }
+        @{ Name = "WPFSearchChipBenchmarking";   Category = "Benchmarking" }
+        @{ Name = "WPFSearchChipBrowsers";       Category = "Browsers" }
+        @{ Name = "WPFSearchChipCommunications"; Category = "Communications" }
+        @{ Name = "WPFSearchChipGames";          Category = "Games" }
+        @{ Name = "WPFSearchChipMicrosoft";      Category = "Microsoft" }
+        @{ Name = "WPFSearchChipMultimedia";     Category = "Multimedia" }
+        @{ Name = "WPFSearchChipOffice";         Category = "Office" }
+        @{ Name = "WPFSearchChipSecurity";       Category = "Security" }
+        @{ Name = "WPFSearchChipSmartphone";     Category = "Smartphone" }
+        @{ Name = "WPFSearchChipUtilities";      Category = "Utilities" }
     )
     $sync.SelectedAppCategories = [System.Collections.Generic.List[string]]::new()
 
