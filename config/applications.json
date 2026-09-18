@@ -431,7 +431,7 @@
         "content": "digiKam",
         "description": "digiKam is an advanced open-source photo management software with features for organizing, editing, and sharing photos.",
         "link": "https://www.digikam.org/",
-        "winget": "KDE.digikam",
+        "winget": "KDE.digiKam",
         "foss": true
     },
     "discord": {
@@ -1337,7 +1337,7 @@
         "content": "Tailscale",
         "description": "Tailscale is a secure and easy-to-use VPN solution for connecting your devices and networks.",
         "link": "https://tailscale.com/",
-        "winget": "tailscale.tailscale",
+        "winget": "Tailscale.Tailscale",
         "foss": true
     },
     "musescore": {
@@ -1579,7 +1579,7 @@
         "content": "PeaZip",
         "description": "PeaZip is a free and open-source file archiver that supports over 200 archive formats. It offers encryption, secure deletion, and cross-platform compatibility.",
         "link": "https://peazip.github.io/",
-        "winget": "Giorgiotani.PeaZip",
+        "winget": "Giorgiotani.Peazip",
         "foss": true
     },
     "pcmanager": {
@@ -1596,7 +1596,7 @@
         "content": "Perplexity",
         "description": "Perplexity — Ask Anything. Cut through the all the noise and get straight to credible, up-to-date answers.",
         "link": "https://www.perplexity.ai/",
-        "winget": "msstore:XP8JNQFBQH6PVF"
+        "winget": "Perplexity.Perplexity"
     },
     "pdfgear": {
         "category": "Office",
@@ -1749,7 +1749,7 @@
         "content": "PrusaSlicer",
         "description": "PrusaSlicer is a powerful and easy-to-use slicing software for 3D printing with Prusa 3D printers.",
         "link": "https://www.prusa3d.com/prusaslicer/",
-        "winget": "Prusa3d.PrusaSlicer",
+        "winget": "Prusa3D.PrusaSlicer",
         "foss": false
     },
     "psremoteplay": {
@@ -2155,7 +2155,7 @@
         "content": "UltraVNC",
         "description": "UltraVNC is a powerful, easy to use and free - remote pc access software - that can display the screen of another computer (via internet or network) on your own screen. The program allows you to use your mouse and keyboard to control the other PC remotely. It means that you can work on a remote computer, as if you were sitting in front of it, right from your current location.",
         "link": "https://uvnc.com/",
-        "winget": "uvncbvba.UltraVnc",
+        "winget": "uvncbvba.UltraVNC",
         "foss": true
     },
     "ungoogled": {
