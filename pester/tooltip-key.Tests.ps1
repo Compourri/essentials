@@ -82,18 +82,16 @@ Describe "Get-WinUtilEntryToolTip" {
 }
 
 Describe "App entry favicon resilience" {
-    It "loads favicons asynchronously so a failed download cannot abort rendering" {
-        # A direct string assignment to Image.Source downloads synchronously
-        # and throws on failure, which aborts the whole render batch and
-        # leaves the Install tab empty. BitmapImage with on-demand caching
-        # defers the download; failures surface through ImageFailed instead.
-        $script:appRenderer | Should -Match 'New-Object Windows\.Media\.Imaging\.BitmapImage'
-        $script:appRenderer | Should -Match '\$favicon\.BeginInit\(\)'
-        $script:appRenderer | Should -Match '\$favicon\.EndInit\(\)'
-        $script:appRenderer | Should -Not -Match '\$logo\.Source\s*=\s*"https?://'
+    It "loads favicons with the release-proven direct assignment first" {
+        # The 26.08.22 release loaded icons via direct string assignment;
+        # keep that as the primary path and layer fallbacks beneath it.
+        $script:appRenderer | Should -Match '\$logo\.Source\s*=\s*"https://www\.google\.com/s2/favicons'
+        $script:appRenderer | Should -Match 'icons\.duckduckgo\.com/ip3/'
     }
 
-    It "falls back to the letter icon when the favicon cannot be created" {
+    It "never lets a favicon failure abort the entry" {
+        # Every Source assignment must sit inside a try whose catch ends
+        # on the letter fallback, or one bad icon empties the Install tab.
         $script:appRenderer | Should -Match '(?s)catch\s*\{.*?\$logo\.Visibility\s*=\s*"Collapsed"'
         $script:appRenderer | Should -Match '\$fallback\.Visibility\s*=\s*"Visible"'
     }

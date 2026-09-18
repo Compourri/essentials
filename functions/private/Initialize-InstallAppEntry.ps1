@@ -58,29 +58,34 @@ function Initialize-InstallAppEntry {
             $logo.Tag = @{ Link = $app.link; Retried = $false }
             $logo.Add_ImageFailed($handlers.ImageFailed)
             try {
-                # BitmapImage with default (on-demand) caching downloads
-                # asynchronously: a blocked or failed favicon surfaces through
-                # ImageFailed instead of throwing here and aborting the whole
-                # render batch, which would leave the Install tab empty.
-                $favicon = New-Object Windows.Media.Imaging.BitmapImage
-                $favicon.BeginInit()
-                $favicon.UriSource = "https://www.google.com/s2/favicons?sz=64&domain_url=$([uri]::EscapeDataString($app.link))"
-                $favicon.EndInit()
-                $logo.Source = $favicon
+                # Primary: direct assignment (synchronous download, proven in
+                # the 26.08.22 release). A failure here must never abort the
+                # entry, so every fallback below stays inside this try.
+                $logo.Source = "https://www.google.com/s2/favicons?sz=64&domain_url=$([uri]::EscapeDataString($app.link))"
             } catch {
-                # Log each distinct failure once: silent fallbacks make
-                # icon outages undebuggable (every entry just shows a letter).
-                if ($null -eq $sync.FaviconFailureLog) { $sync.FaviconFailureLog = @{} }
-                $inner = ""
-                if ($_.Exception.InnerException) { $inner = " <- " + $_.Exception.InnerException.GetType().Name + ": " + $_.Exception.InnerException.Message }
-                $catchReason = "entry-setup: " + $_.Exception.GetType().Name + ": " + $_.Exception.Message + $inner
-                if ($catchReason.Length -gt 300) { $catchReason = $catchReason.Substring(0, 300) }
-                if (-not $sync.FaviconFailureLog.ContainsKey($catchReason)) {
-                    $sync.FaviconFailureLog[$catchReason] = $true
-                    Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "Favicon setup failed ($catchReason); showing letter fallback."
+                try {
+                    # Secondary: alternate provider through an async bitmap so
+                    # a blocked primary surfaces via ImageFailed, not a throw.
+                    $fallbackIcon = New-Object Windows.Media.Imaging.BitmapImage
+                    $fallbackIcon.BeginInit()
+                    $fallbackIcon.UriSource = "https://icons.duckduckgo.com/ip3/$(([uri]$app.link).Host).ico"
+                    $fallbackIcon.EndInit()
+                    $logo.Source = $fallbackIcon
+                } catch {
+                    # Log each distinct failure once: silent fallbacks make
+                    # icon outages undebuggable (every entry just shows a letter).
+                    if ($null -eq $sync.FaviconFailureLog) { $sync.FaviconFailureLog = @{} }
+                    $inner = ""
+                    if ($_.Exception.InnerException) { $inner = " <- " + $_.Exception.InnerException.GetType().Name + ": " + $_.Exception.InnerException.Message }
+                    $catchReason = "entry-setup: " + $_.Exception.GetType().Name + ": " + $_.Exception.Message + $inner
+                    if ($catchReason.Length -gt 300) { $catchReason = $catchReason.Substring(0, 300) }
+                    if (-not $sync.FaviconFailureLog.ContainsKey($catchReason)) {
+                        $sync.FaviconFailureLog[$catchReason] = $true
+                        Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "Favicon setup failed ($catchReason); showing letter fallback."
+                    }
+                    $logo.Visibility = "Collapsed"
+                    $fallback.Visibility = "Visible"
                 }
-                $logo.Visibility = "Collapsed"
-                $fallback.Visibility = "Visible"
             }
 
             [void]$icon.Children.Add($logo)
