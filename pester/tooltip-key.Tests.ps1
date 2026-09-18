@@ -94,7 +94,7 @@ Describe "App entry favicon resilience" {
     }
 
     It "falls back to the letter icon when the favicon cannot be created" {
-        $script:appRenderer | Should -Match '(?s)catch\s*\{\s*\r?\n?\s*\$logo\.Visibility\s*=\s*"Collapsed"'
+        $script:appRenderer | Should -Match '(?s)catch\s*\{.*?\$logo\.Visibility\s*=\s*"Collapsed"'
         $script:appRenderer | Should -Match '\$fallback\.Visibility\s*=\s*"Visible"'
     }
 
@@ -106,6 +106,12 @@ Describe "App entry favicon resilience" {
         $handlers | Should -Match 'icons\.duckduckgo\.com/ip3/'
         $handlers | Should -Match 'FaviconFailureLog'
         $handlers | Should -Match '\$this\.Visibility\s*=\s*"Collapsed"'
+    }
+
+    It "logs distinct favicon setup failures instead of failing silently" {
+        $script:appRenderer | Should -Match 'FaviconFailureLog'
+        $script:appRenderer | Should -Match 'Favicon setup failed'
+        $script:appRenderer | Should -Match 'Write-WinUtilLog\s+-Level\s+"DEBUG"\s+-Component\s+"UI"'
     }
 }
 

@@ -68,6 +68,17 @@ function Initialize-InstallAppEntry {
                 $favicon.EndInit()
                 $logo.Source = $favicon
             } catch {
+                # Log each distinct failure once: silent fallbacks make
+                # icon outages undebuggable (every entry just shows a letter).
+                if ($null -eq $sync.FaviconFailureLog) { $sync.FaviconFailureLog = @{} }
+                $inner = ""
+                if ($_.Exception.InnerException) { $inner = " <- " + $_.Exception.InnerException.GetType().Name + ": " + $_.Exception.InnerException.Message }
+                $catchReason = "entry-setup: " + $_.Exception.GetType().Name + ": " + $_.Exception.Message + $inner
+                if ($catchReason.Length -gt 300) { $catchReason = $catchReason.Substring(0, 300) }
+                if (-not $sync.FaviconFailureLog.ContainsKey($catchReason)) {
+                    $sync.FaviconFailureLog[$catchReason] = $true
+                    Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "Favicon setup failed ($catchReason); showing letter fallback."
+                }
                 $logo.Visibility = "Collapsed"
                 $fallback.Visibility = "Visible"
             }
