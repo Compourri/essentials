@@ -36,6 +36,12 @@ Get-ChildItem config | ForEach-Object {
 $xaml = Get-Content -Path xaml\inputXML.xaml -Raw
 $script += "`$inputXML = @'`r`n$xaml`r`n'@"
 
+# Embed the Compourri logo PNG so the UI never downloads it at runtime.
+# A remote BitmapImage ctor on the transient off-thread asset runspace throws
+# "COM object that has been separated from its underlying RCW" and can kill
+# the interface thread; bytes + OnLoad + Freeze is thread-safe and offline-capable.
+$logoBytes = [IO.File]::ReadAllBytes((Join-Path $PSScriptRoot "essentials.png"))
+$script += ("`$sync.CompourriLogoPng = '" + [Convert]::ToBase64String($logoBytes) + "'")
 $autounattendXml = Get-Content -Path tools\autounattend.xml -Raw
 $script += "`$WinUtilAutounattendXml = @'`r`n$autounattendXml`r`n'@"
 

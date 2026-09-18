@@ -35,12 +35,36 @@ function Invoke-WinUtilAssets {
 
   switch ($type) {
       'logo' {
-        $LogoUrl = "https://raw.githubusercontent.com/Compourri/essentials/refs/heads/main/essentials.png"
-        $BitmapImage = [Windows.Media.Imaging.BitmapImage]::new([Uri]::new($LogoUrl))
+        # Prefer the logo bytes embedded by Compile.ps1: bytes + OnLoad +
+        # Freeze is thread-safe and works offline. A remote BitmapImage ctor
+        # on the transient off-thread asset runspace throws "COM object that
+        # has been separated from its underlying RCW" and can kill the UI.
+        $logoBitmap = $null
+        if ($sync.CompourriLogoPng) {
+            try {
+                $logoBytes = [byte[]][Convert]::FromBase64String($sync.CompourriLogoPng)
+                $logoStream = New-Object System.IO.MemoryStream(, $logoBytes)
+                $logoBitmap = New-Object Windows.Media.Imaging.BitmapImage
+                $logoBitmap.BeginInit()
+                $logoBitmap.StreamSource = $logoStream
+                $logoBitmap.CacheOption = [Windows.Media.Imaging.BitmapCacheOption]::OnLoad
+                $logoBitmap.EndInit()
+                if ($logoBitmap.CanFreeze) { $logoBitmap.Freeze() }
+            } catch { $logoBitmap = $null }
+        }
+        if ($null -eq $logoBitmap) {
+            # Fallback: remote load, asynchronous so a blocked download
+            # surfaces through failure rather than throwing here.
+            $LogoUrl = "https://raw.githubusercontent.com/Compourri/essentials/refs/heads/main/essentials.png"
+            $logoBitmap = New-Object Windows.Media.Imaging.BitmapImage
+            $logoBitmap.BeginInit()
+            $logoBitmap.UriSource = $LogoUrl
+            $logoBitmap.EndInit()
+        }
 
         # Create an Image control to hold the BitmapImage
         $ImageControl = New-Object System.Windows.Controls.Image
-        $ImageControl.Source = $BitmapImage
+        $ImageControl.Source = $logoBitmap
 
         # Add the Image control to the canvas
         $canvas.Children.Add($ImageControl) | Out-Null

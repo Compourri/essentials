@@ -66,3 +66,32 @@ public static class WinUtilRunspaceCleanup
         $runspace.RunspaceStateInfo.State | Should -Not -Be 'Opened'
     }
 }
+
+Describe "Embedded Compourri logo" {
+    BeforeAll {
+        $script:assetsSource = Get-Content -Path (Join-Path $script:repoRoot "functions\private\Invoke-WinUtilAssets.ps1") -Raw
+        $script:compileSource = Get-Content -Path (Join-Path $script:repoRoot "Compile.ps1") -Raw
+    }
+
+    It "never constructs a remote BitmapImage synchronously for the logo" {
+        # [BitmapImage]::new([Uri]) on the transient off-thread asset runspace
+        # throws "COM object that has been separated from its underlying RCW"
+        # and can kill the interface thread.
+        $script:assetsSource | Should -Not -Match 'BitmapImage\]::new\(\[Uri\]'
+    }
+
+    It "embeds essentials.png at compile time" {
+        $script:compileSource | Should -Match 'essentials\.png'
+        $script:compileSource | Should -Match 'CompourriLogoPng'
+        $script:assetsSource | Should -Match 'CompourriLogoPng'
+        $script:assetsSource | Should -Match 'Freeze\(\)'
+    }
+
+    It "loads the embedded logo from bytes without network in any runspace" {
+        $logoBytes = [IO.File]::ReadAllBytes((Join-Path $script:repoRoot "essentials.png"))
+        $logoBytes.Length | Should -BeGreaterThan 0
+        # PNG magic bytes
+        $logoBytes[0] | Should -Be 0x89
+        $logoBytes[1] | Should -Be 0x50
+    }
+}

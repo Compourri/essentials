@@ -469,6 +469,7 @@ Describe "XAML and sync wiring" {
             "RenderedAssetCache",
             "ToggleStatusCache",
             "FaviconFailureLog",
+            "CompourriLogoPng",
             "InstallAppRenderQueue",
             "InstallAppEntriesRendered",
             "FontScaleFactor",
