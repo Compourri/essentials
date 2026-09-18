@@ -88,7 +88,12 @@ function Write-WinUtilLog {
         $line = "[$timestamp] [$Level] [$Component] $Message"
 
         if (-not [string]::IsNullOrWhiteSpace($transcriptPath) -and $logPath -eq $transcriptPath) {
-            Write-Host $line
+            # Diagnostic entries stay out of the terminal (and its transcript)
+            # unless explicitly asked for via ESSENTIALS_DEBUG; the terminal
+            # stays a clean console record of user-facing output.
+            if ($Level -ne "DEBUG" -or -not [string]::IsNullOrWhiteSpace($env:ESSENTIALS_DEBUG)) {
+                Write-Host $line
+            }
             return
         }
 

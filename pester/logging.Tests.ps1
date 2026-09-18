@@ -54,6 +54,50 @@ Describe "Write-WinUtilLog" {
         Should -Invoke Add-Content -Times 0 -Exactly
     }
 
+    It "keeps diagnostic entries out of the terminal transcript" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            IsLocalCompile = $true
+            logPath = $logPath
+            transcriptPath = $logPath
+        })
+        Mock Write-Host { }
+        Mock Add-Content { }
+
+        Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "timing detail"
+
+        Should -Invoke Write-Host -Times 0 -Exactly
+        Should -Invoke Add-Content -Times 0 -Exactly
+    }
+
+    It "echoes diagnostic entries when ESSENTIALS_DEBUG is set" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            IsLocalCompile = $true
+            logPath = $logPath
+            transcriptPath = $logPath
+        })
+        Mock Write-Host { }
+        Mock Add-Content { }
+
+        $previousDebugFlag = $env:ESSENTIALS_DEBUG
+        try {
+            $env:ESSENTIALS_DEBUG = "1"
+            Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "timing detail"
+        } finally {
+            if ($null -eq $previousDebugFlag) {
+                Remove-Item Env:\ESSENTIALS_DEBUG -ErrorAction SilentlyContinue
+            } else {
+                $env:ESSENTIALS_DEBUG = $previousDebugFlag
+            }
+        }
+
+        Should -Invoke Write-Host -Times 1 -Exactly -ParameterFilter {
+            $Object -match "\[DEBUG\] \[UI\] timing detail"
+        }
+        Should -Invoke Add-Content -Times 0 -Exactly
+    }
+
     It "writes entries produced concurrently by several threads" {
         $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
         $script:sync = [hashtable]::Synchronized(@{
