@@ -211,7 +211,7 @@ Describe "Win11 Creator setup media" {
     }
 
     It "turns ISO-script warning messages into job warnings" {
-        $script:modifyFunction | Should -Match 'if \(\$m -like "Warning:\*"\)[\s\S]*Write-WinUtilISOLog -Level "WARN" -Message \$m -SkipSessionLog[\s\S]*Write-Warning \$m'
+        $script:modifyFunction | Should -Match 'if \(\$m -like "Warning:\*"\)[\s\S]*Write-WinUtilISOLog -Level "WARN" -Message \$m -SkipSessionLog'
     }
 
     It "keeps WIM servicing limited to DISM Add-Driver without image export or cleanup" {

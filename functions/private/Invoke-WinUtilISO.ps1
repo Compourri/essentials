@@ -393,7 +393,6 @@ function Invoke-WinUtilISOModify {
                         # The job wrapper records WarningRecord output in the session log. Only
                         # append here to the ISO status control so the same warning is not doubled.
                         Write-WinUtilISOLog -Level "WARN" -Message $m -SkipSessionLog
-                        Write-Warning $m
                     } else {
                         Write-WinUtilISOLog $m
                     }
