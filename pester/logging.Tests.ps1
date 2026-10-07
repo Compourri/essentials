@@ -37,7 +37,7 @@ Describe "Write-WinUtilLog" {
         Get-Content -Path $logPath -Raw | Should -Match "\[INFO\] \[Test\] same session log"
     }
 
-    It "writes through the host when the transcript owns the active session log" {
+    It "keeps INFO out of the terminal when the transcript owns the active session log" {
         $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
         $script:sync = [hashtable]::Synchronized(@{
             logPath = $logPath
@@ -48,10 +48,63 @@ Describe "Write-WinUtilLog" {
 
         Write-WinUtilLog -Component "Test" -Message "transcript entry"
 
+        Should -Invoke Write-Host -Times 0 -Exactly
+        Should -Invoke Add-Content -Times 0 -Exactly
+    }
+
+    It "writes WARN through the host when the transcript owns the active session log" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            logPath = $logPath
+            transcriptPath = $logPath
+        })
+        Mock Write-Host { }
+        Mock Add-Content { }
+
+        Write-WinUtilLog -Level "WARN" -Component "Test" -Message "transcript warning"
+
         Should -Invoke Write-Host -Times 1 -Exactly -ParameterFilter {
-            $Object -match "\[INFO\] \[Test\] transcript entry"
+            $Object -match "\[WARN\] \[Test\] transcript warning"
         }
         Should -Invoke Add-Content -Times 0 -Exactly
+    }
+
+    It "writes INFO silently to a separate session log without touching the terminal" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $transcriptPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00_transcript.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            logPath = $logPath
+            transcriptPath = $transcriptPath
+        })
+        Mock Write-Host { }
+        Mock Add-Content { }
+
+        Write-WinUtilLog -Component "Test" -Message "silent entry"
+
+        Should -Invoke Write-Host -Times 0 -Exactly
+        Should -Invoke Add-Content -Times 1 -Exactly -ParameterFilter {
+            $Path -eq $logPath -and $Value -match "\[INFO\] \[Test\] silent entry"
+        }
+    }
+
+    It "echoes WARN to the terminal while also writing a separate session log" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $transcriptPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00_transcript.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            logPath = $logPath
+            transcriptPath = $transcriptPath
+        })
+        Mock Write-Host { }
+        Mock Add-Content { }
+
+        Write-WinUtilLog -Level "WARN" -Component "Test" -Message "visible warning"
+
+        Should -Invoke Add-Content -Times 1 -Exactly -ParameterFilter {
+            $Path -eq $logPath -and $Value -match "\[WARN\] \[Test\] visible warning"
+        }
+        Should -Invoke Write-Host -Times 1 -Exactly -ParameterFilter {
+            $Object -match "\[WARN\] \[Test\] visible warning"
+        }
     }
 
     It "keeps diagnostic entries out of the terminal transcript" {
@@ -167,15 +220,34 @@ Describe "Write-WinUtilLog" {
         Mock Write-Host { }
         Mock Write-Warning { }
 
-        Write-WinUtilLog -Component "Test" -Message "locked file fallback"
+        Write-WinUtilLog -Level "WARN" -Component "Test" -Message "locked file fallback"
 
         Should -Invoke -CommandName Write-Host -Times 1 -Exactly -ParameterFilter {
-            $Object -match "\[INFO\] \[Test\] locked file fallback"
+            $Object -match "\[WARN\] \[Test\] locked file fallback"
         }
         Should -Invoke -CommandName Write-Warning -Times 0 -Exactly
     }
 
-    It "counts only headline errors written by the active job worker" {
+    It "keeps INFO out of the terminal when the log file cannot be opened" {
+        $logPath = Join-Path $script:testRoot "logs\essentials_2026-07-01_12-00-00.log"
+        $script:sync = [hashtable]::Synchronized(@{
+            winutildir = $script:testRoot
+            logPath = $logPath
+        })
+
+        Mock Add-Content { throw [System.IO.IOException]::new("file is locked") } -ParameterFilter {
+            $Path -eq $logPath -and $ErrorAction -eq "Stop"
+        }
+        Mock Write-Host { }
+        Mock Write-Warning { }
+
+        Write-WinUtilLog -Component "Test" -Message "locked file silent"
+
+        Should -Invoke -CommandName Write-Host -Times 0 -Exactly
+        Should -Invoke -CommandName Write-Warning -Times 0 -Exactly
+    }
+
+    It "counts headline errors in the logging runspace whether or not it is a job worker" {
         $script:sync = [hashtable]::Synchronized(@{
             winutildir = $script:testRoot
             LoggedErrors = [System.Collections.ArrayList]::Synchronized([System.Collections.ArrayList]::new())
@@ -186,9 +258,9 @@ Describe "Write-WinUtilLog" {
         Write-WinUtilLog -Level "ERROR" -Component "Test" -Message "job error"
         Write-WinUtilLog -Level "ERROR" -Detail -Component "Test" -Message "error detail"
         $global:WinUtilIsJobWorker = $false
-        Write-WinUtilLog -Level "ERROR" -Component "UI" -Message "unrelated error"
+        Write-WinUtilLog -Level "ERROR" -Component "UI" -Message "toggle error"
 
-        $global:WinUtilJobErrorCount | Should -Be 1
+        $global:WinUtilJobErrorCount | Should -Be 2
         $script:sync.LoggedErrors.Count | Should -Be 2
     }
 

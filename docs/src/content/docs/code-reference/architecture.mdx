@@ -210,7 +210,7 @@ Invoke-WinUtilISOCleanAndReset (optional)
 
 **Work Session Recovery**:
 - Auto-detects incomplete work from previous sessions
-- Allows resuming Step 4 (export) without re-running Steps 1-3
+- Allows resuming the export step without re-running selection and modification
 - Prevents redundant modifications
 
 **Modification Safety**:
@@ -259,9 +259,9 @@ The `Invoke-WinUtilISOScript` function applies **50+ offline registry tweaks**:
 
 ### Driver Injection Feature
 
-**Optional Enhancement**: When enabled, exports all drivers from the running system and injects them into both:
-- `install.wim` (main OS image)
-- `boot.wim` index 2 (Windows Setup PE environment)
+**Optional Enhancement**: When enabled, exports all drivers from the running system and injects them into:
+- `install.wim` (main OS image), excluding stale duplicates
+- `boot.wim` index 2 (Windows Setup PE environment), storage controllers only (`SCSIAdapter` / `HDC`)
 
 **Use Case**: Enables offline installation on systems with missing drivers.
 
@@ -509,10 +509,12 @@ such as cleaning up a mounted image, and then rethrow.
 Write-WinUtilLog -Level "ERROR" -Component "Install" -Message "winget install failed: $($_.Exception.Message)"
 ```
 
-Entries and console diagnostics go to the same
-`%LocalAppData%\winutil\logs\winutil_<timestamp>.log` session file. While `Start-Transcript`
-owns that file, `Write-WinUtilLog` writes through the host so the transcript captures the entry
-without a competing direct file write.
+Structured entries go to the `%LocalAppData%\winutil\logs\essentials_<timestamp>.log`
+session file via a mutex-serialized silent append, while console output is captured by
+`Start-Transcript` to a separate `essentials_<timestamp>_transcript.log`. The files stay
+separate because the transcript locks its file exclusively. INFO entries stay out of the
+terminal to keep the CLI a clean console record; WARN and ERROR still echo through the
+host so they are visible and captured by the transcript.
 
 ## Configuration Loading
 

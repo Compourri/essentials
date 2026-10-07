@@ -74,6 +74,21 @@ Describe "Install-WinUtilProgramWinget outcomes" {
         Should -Invoke -CommandName Start-Process -Times 2 -Exactly
     }
 
+    It "reports installer hash mismatch as a failure with actionable detail" {
+        Mock Start-Process { [pscustomobject]@{ ExitCode = -1978335215 } }
+
+        $result = Install-WinUtilProgramWinget -Action Install -Programs @("Microsoft.Office")
+
+        $result.Outcome | Should -Be "Failed"
+        $result.ExitCode | Should -Be -1978335215
+        $result.Detail | Should -Match "hash mismatch"
+        $result.Detail | Should -Match "0x8A150011"
+        $result.Detail | Should -Match "blocked when elevated"
+        Should -Invoke -CommandName Write-WinUtilLog -Times 1 -Exactly -ParameterFilter {
+            $Level -eq "ERROR" -and $Message -like "*failed: Microsoft.Office*"
+        }
+    }
+
     It "reports any other exit code as a failure" {
         Mock Start-Process { [pscustomobject]@{ ExitCode = -1978335212 } }
 

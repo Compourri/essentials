@@ -27,6 +27,14 @@ Function Install-WinUtilProgramWinget {
     # elevated, so every per-user app answers this and nothing happens.
     $adminContextProhibited = -1978335107
 
+    # APPINSTALLER_CLI_ERROR_INSTALLER_HASH_MISMATCH (0x8A150011). The manifest hash no longer
+    # matches the file the vendor CDN serves. Evergreen bootstrappers such as
+    # Microsoft.Office's setup.exe change without a manifest update, so this recurs for them.
+    # WinGet blocks --ignore-security-hash when elevated, and WinUtil is always elevated, so
+    # the hash cannot be overridden here; the user must retry once the manifest is fixed or
+    # install from the vendor.
+    $hashMismatch = -1978335215
+
     # WinGet reports "there was nothing to do" through the exit code rather than as success
     $nothingToDo = @{
         -1978335135 = "already installed"
@@ -94,6 +102,9 @@ Function Install-WinUtilProgramWinget {
                 "Upgrade" { "not upgraded; installed for the current user and elevated WinUtil cannot modify it" }
                 "Uninstall" { "remains installed for the current user; elevated WinUtil cannot uninstall it" }
             }
+        } elseif ($exitCode -eq $hashMismatch) {
+            $outcome = "Failed"
+            $detail = "installer hash mismatch (0x8A150011): the winget manifest hash no longer matches the file on the vendor CDN; override is blocked when elevated - run 'winget source update' and retry later, or install from the vendor. See https://learn.microsoft.com/windows/package-manager/winget/returnCodes"
         } else {
             $outcome = "Failed"
             # The client module reports the same failure as a bare HRESULT, so the hex form and

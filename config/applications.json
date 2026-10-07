@@ -8,6 +8,15 @@
         "winget": "7zip.7zip",
         "foss": true
     },
+    "abdownloadmanager": {
+        "category": "Utilities",
+        "choco": "ab-download-manager",
+        "content": "AB Download Manager",
+        "description": "AB Download Manager is an open-source download accelerator and manager with multi-threaded downloads, queue scheduling, speed limiting, and browser integration.",
+        "link": "https://abdownloadmanager.com/",
+        "winget": "amir1376.ABDownloadManager",
+        "foss": true
+    },
     "adobe": {
         "category": "Office",
         "choco": "adobereader",
@@ -627,14 +636,6 @@
         "winget": "viarotel.Escrcpy",
         "foss": true
     },
-    "esearch": {
-        "category": "Utilities",
-        "choco": "everything",
-        "content": "Everything Search",
-        "description": "Everything Search is a fast and efficient file search utility for Windows.",
-        "link": "https://www.voidtools.com/",
-        "winget": "voidtools.Everything"
-    },
     "ESET": {
         "category": "Security",
         "choco": "eset-internet-security",
@@ -650,6 +651,15 @@
         "description": "Expert removal of malware—clean viruses and spyware from your computer.",
         "link": "https://www.eset.com/int/support/av-rem",
         "winget": "ESET.AVRemover"
+    },
+    "everything": {
+        "category": "Utilities",
+        "choco": "everything",
+        "content": "Everything",
+        "description": "Everything is a fast and efficient file search utility for Windows, locating files and folders by filename instantly.",
+        "link": "https://www.voidtools.com/",
+        "winget": "voidtools.Everything",
+        "foss": false
     },
     "ExifCleaner": {
         "category": "Utilities",
@@ -921,6 +931,15 @@
         "winget": "ImputNet.Helium",
         "foss": true
     },
+    "hermesdesktop": {
+        "category": "AI",
+        "choco": "na",
+        "content": "Hermes Desktop",
+        "description": "Hermes Desktop is a native desktop app for chatting with Hermes Agent, a self-improving open-source AI assistant with tool use, memory, skills, and messaging integrations.",
+        "link": "https://github.com/fathah/hermes-desktop",
+        "winget": "fathah.HermesDesktop",
+        "foss": true
+    },
     "heroiclauncher": {
         "category": "Games",
         "choco": "na",
@@ -1086,7 +1105,7 @@
         "winget": "KDE.Kdenlive",
         "foss": true
     },
-    "keepass": {
+    "keepassxc": {
         "category": "Security",
         "choco": "keepassxc",
         "content": "KeePassXC",
@@ -1541,11 +1560,11 @@
     },
     "Overwolf": {
         "category": "Games",
-        "choco": "overwolf",
-        "content": "Overwolf",
-        "description": "Popular platform for game overlays and companion apps (mod managers, trackers, etc.), widely used by gamers.",
+        "content": "CurseForge",
+        "description": "CurseForge is a desktop application for managing mods and modpacks across multiple games, powered by Overwolf.",
         "link": "https://www.overwolf.com/app/overwolf-curseforge",
-        "winget": "Overwolf.CurseForge"
+        "winget": "Overwolf.CurseForge",
+        "foss": false
     },
     "OVirtualBox": {
         "category": "Utilities",
@@ -1998,9 +2017,9 @@
         "category": "Utilities",
         "choco": "synctrayzor",
         "content": "SyncTrayzor",
-        "description": "Windows tray utility / filesystem watcher / launcher for Syncthing",
-        "link": "https://github.com/canton7/SyncTrayzor/",
-        "winget": "SyncTrayzor.SyncTrayzor",
+        "description": "SyncTrayzor is a Windows tray utility that bundles and wraps Syncthing, making it behave like a native application to easily manage and monitor file synchronization.",
+        "link": "https://github.com/GermanCoding/SyncTrayzor",
+        "winget": "GermanCoding.SyncTrayzor",
         "foss": true
     },
     "tabby": {
@@ -2616,24 +2635,6 @@
         "winget": "AgileBits.1Password",
         "foss": false
     },
-    "keepassxc": {
-        "category": "Security",
-        "choco": "keepassxc",
-        "content": "KeePassXC",
-        "description": "KeePassXC is a modern, secure, and open-source password manager that stores and manages your most sensitive information. You can run KeePassXC on Windows, macOS, and Linux systems. KeePassXC is for people with extremely high demands of secure personal data management. It saves many different types of information, such as usernames, passwords, URLs, attachments, and notes in an offline, encrypted file that can be stored in any location, including private and public cloud solutions. For easy identification and management, user-defined titles and icons can be specified for entries. In addition, entries are sorted into customizable groups. An integrated search function allows you to use advanced patterns to easily find any entry in your database. A customizable, fast, and easy-to-use password generator utility allows you to create passwords with any combination of characters or easy to remember passphrases.",
-        "link": "https://keepassxc.org/",
-        "winget": "KeePassXCTeam.KeePassXC",
-        "foss": true
-    },
-    "enteauth": {
-        "category": "Security",
-        "choco": "ente-auth",
-        "content": "Ente Auth",
-        "description": "Ente Auth is a free, cross-platform, end-to-end encrypted authenticator app.",
-        "link": "https://ente.io/auth/",
-        "winget": "ente-io.auth-desktop",
-        "foss": true
-    },
     "protonpass": {
         "category": "Security",
         "choco": "protonpass",
@@ -2731,15 +2732,6 @@
         "description": "TreeSize Free is a disk space manager that helps you analyze and visualize the space usage on your drives.",
         "link": "https://www.jam-software.com/treesize_free/",
         "winget": "JAMSoftware.TreeSize.Free",
-        "foss": false
-    },
-    "everything": {
-        "category": "Utilities",
-        "choco": "everything",
-        "content": "Everything",
-        "description": "Everything is a search engine that locates files and folders by filename instantly for Windows. Unlike Windows search Everything initially displays every file and folder on your computer (hence the name Everything). You type in a search filter to limit what files and folders are displayed.",
-        "link": "https://www.voidtools.com/",
-        "winget": "voidtools.Everything",
         "foss": false
     },
     "processexplorer": {

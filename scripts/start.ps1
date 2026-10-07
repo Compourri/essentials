@@ -257,10 +257,12 @@ $logdir = "$winutildir\logs"
 if (-not (Test-Path $logdir)) {
     New-Item -ItemType Directory -Path $logdir -Force | Out-Null
 }
-# Keep console output and structured entries in the path reported to the user. Write-WinUtilLog
-# writes through the host while this transcript owns the file, avoiding competing file handles.
+# The structured log stays a silent file record (Write-WinUtilLog appends with a mutex),
+# while the transcript captures the console. Keeping them on separate files lets INFO
+# entries stay out of the terminal without losing them, and avoids competing file
+# handles since Start-Transcript locks its file exclusively.
 $sync.logPath = "$logdir\essentials_$dateTime.log"
-$sync.transcriptPath = $sync.logPath
+$sync.transcriptPath = "$logdir\essentials_${dateTime}_transcript.log"
 Start-Transcript -Path $sync.transcriptPath -Append -NoClobber | Out-Null
 
 $Host.UI.RawUI.WindowTitle = "Essentials"

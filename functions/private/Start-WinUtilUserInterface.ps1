@@ -496,6 +496,14 @@ Version  : <a href="https://github.com/Compourri/essentials/releases/tag/$($sync
         Invoke-WinUtilISOCleanAndReset
     })
 
+    $sync["WPFWin11ISOBackButton"].Add_Click({
+        $sync["WPFWin11ISOSelectSection"].IsSelected = $true
+    })
+
+    $sync["WPFWin11ISOForwardButton"].Add_Click({
+        $sync["WPFWin11ISOModifySection"].IsSelected = $true
+    })
+
     $buildClock.Stop()
     Write-WinUtilLog -Level "DEBUG" -Component "UI" -Message "Interface built in $($buildClock.ElapsedMilliseconds) ms, showing the window."
     Write-WinUtilTimingSummary -Scope "UI" -TotalMilliseconds $buildClock.ElapsedMilliseconds

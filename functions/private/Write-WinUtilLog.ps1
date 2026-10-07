@@ -5,9 +5,13 @@ function Write-WinUtilLog {
         Writes a timestamped WinUtil log entry to the active session log.
 
     .DESCRIPTION
-        Called from the interface thread and from every job body. When Start-Transcript owns the
-        active session log, entries go through the host so the transcript records them without a
-        competing file write. Standalone callers use a named mutex to serialize direct appends.
+        Called from the interface thread and from every job body. The structured log is a
+        silent file record (named mutex serializes direct appends) on a different file from
+        the Start-Transcript console capture, since the transcript locks its file exclusively.
+        INFO entries stay out of the terminal to keep the CLI a clean console record of
+        user-facing output; WARN and ERROR still echo through the host so they are visible
+        and captured by the transcript. When the transcript owns the active session log
+        (legacy single-file mode), entries go through the host for the same reason.
 
     .PARAMETER Message
         The message to write.
@@ -42,7 +46,10 @@ function Write-WinUtilLog {
         $null = $sync.LoggedErrors.Add("[$Component] $Message")
     }
 
-    if ($Level -eq "ERROR" -and -not $Detail -and $global:WinUtilIsJobWorker) {
+    # Global scope is per runspace, so this counter only ever sees errors logged by the
+    # runspace that owns it: a job worker reads its own, and a tweak on the UI thread reads the
+    # UI thread's
+    if ($Level -eq "ERROR" -and -not $Detail) {
         $global:WinUtilJobErrorCount++
     }
 
@@ -87,11 +94,17 @@ function Write-WinUtilLog {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
         $line = "[$timestamp] [$Level] [$Component] $Message"
 
+        # INFO stays out of the terminal (and its transcript); the terminal stays a clean
+        # console record of user-facing output. WARN/ERROR still echo so they are visible.
+        # DEBUG echoes only when explicitly asked for via ESSENTIALS_DEBUG.
+        $echoToConsole = ($Level -eq "WARN" -or $Level -eq "ERROR") -or `
+            ($Level -eq "DEBUG" -and -not [string]::IsNullOrWhiteSpace($env:ESSENTIALS_DEBUG))
+
         if (-not [string]::IsNullOrWhiteSpace($transcriptPath) -and $logPath -eq $transcriptPath) {
-            # Diagnostic entries stay out of the terminal (and its transcript)
-            # unless explicitly asked for via ESSENTIALS_DEBUG; the terminal
-            # stays a clean console record of user-facing output.
-            if ($Level -ne "DEBUG" -or -not [string]::IsNullOrWhiteSpace($env:ESSENTIALS_DEBUG)) {
+            # Legacy single-file mode: Start-Transcript locks its file exclusively, so a
+            # direct append would throw. Echo the user-facing levels through the host so
+            # the transcript captures them; INFO has no silent channel here by design.
+            if ($echoToConsole) {
                 Write-Host $line
             }
             return
@@ -109,14 +122,21 @@ function Write-WinUtilLog {
 
             if (-not $held) {
                 # Writing anyway is what interleaves lines, and the wait only times out when
-                # contention is at its worst
-                Write-Host $line
+                # contention is at its worst. Still keep INFO out of the terminal.
+                if ($echoToConsole) {
+                    Write-Host $line
+                }
                 return
             }
 
             Add-Content -Path $logPath -Value $line -Encoding UTF8 -ErrorAction Stop
+            if ($echoToConsole) {
+                Write-Host $line
+            }
         } catch [System.IO.IOException] {
-            Write-Host $line
+            if ($echoToConsole) {
+                Write-Host $line
+            }
         } finally {
             if ($held) { $mutex.ReleaseMutex() }
             $mutex.Dispose()
