@@ -37,7 +37,18 @@
     "WPFTweaksWidget",
     "WPFTweaksRemoveOneDrive",
     "WPFTweaksWindowsAI",
-    "WPFTweaksRightClickMenu"
+    "WPFTweaksRightClickMenu",
+    "WPFTweaksMcAfeeBlock",
+    "WPFTweaksDisableBitLocker",
+    "WPFTweaksDiskCleanup",
+    "WPFTweaksHiber",
+    "WPFTweaksPreventDeviceMetadataFromNetwork",
+    "WPFTweaksBraveDebloat",
+    "WPFTweaksRemoveHomeAndGallery",
+    "WPFTweaksIPv46",
+    "WPFTweaksLogiBlock",
+    "WPFTweaksEdgeDebloat",
+    "WPFTweaksTeredo"
   ],
   "AppxDefault": [
     "WPFAppxMicrosoft_WindowsFeedbackHub",
