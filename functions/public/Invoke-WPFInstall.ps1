@@ -34,6 +34,25 @@ function Invoke-WPFInstall {
 
         $results = @()
 
+        $unresolvedEntries = @($packagesSorted['Unresolved'] | Where-Object { $null -ne $_ })
+        foreach ($entry in $unresolvedEntries) {
+            $entryName = if ($entry -is [string]) { $entry } elseif (-not [string]::IsNullOrWhiteSpace([string]$entry.Name)) { [string]$entry.Name } else { "Unknown package" }
+            $entryDetail = if ($entry -is [string] -or [string]::IsNullOrWhiteSpace([string]$entry.Detail)) {
+                "no $ManagerPreference package id is configured for this app"
+            } else {
+                [string]$entry.Detail
+            }
+            Write-WinUtilLog -Component "Install" -Message "Install skipped: $entryName ($entryDetail)"
+            $results += [pscustomobject]@{
+                Package = $entryName
+                Manager = "$ManagerPreference".ToLowerInvariant()
+                Action = "Install"
+                ExitCode = 0
+                Outcome = "Skipped"
+                Detail = $entryDetail
+            }
+        }
+
         if ($packagesWinget.Count -gt 0 -and $packagesWinget -ne "0") {
             Install-WinUtilWinget
             foreach ($program in $packagesWinget) {

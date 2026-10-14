@@ -97,12 +97,14 @@ BeforeAll {
     function script:New-WinUtilPackageSplit {
         param(
             [string[]]$Winget = @(),
-            [string[]]$Choco = @()
+            [string[]]$Choco = @(),
+            [object[]]$Unresolved = @()
         )
 
         $packages = @{}
         $packages["Winget"] = [System.Collections.Generic.List[string]]::new()
         $packages["Choco"] = [System.Collections.Generic.List[string]]::new()
+        $packages["Unresolved"] = [System.Collections.Generic.List[object]]::new()
 
         foreach ($package in $Winget) {
             $null = $packages["Winget"].Add($package)
@@ -110,6 +112,10 @@ BeforeAll {
 
         foreach ($package in $Choco) {
             $null = $packages["Choco"].Add($package)
+        }
+
+        foreach ($package in $Unresolved) {
+            $null = $packages["Unresolved"].Add($package)
         }
 
         $packages
@@ -254,6 +260,30 @@ Describe "Invoke-WPFInstall job body" {
         & $script:capturedInstallJob.ScriptBlock @jobParameters } |
             Should -Throw "winget failed"
     }
+
+    It "reports apps with no package id for the preference as skipped instead of silently doing nothing" {
+        Mock Get-WinUtilSelectedPackages {
+            New-WinUtilPackageSplit -Unresolved @(
+                [pscustomobject]@{ Name = "ArtCraft Launcher"; Detail = "no WinGet package id is configured" }
+            )
+        }
+        Mock Complete-WinUtilPackageRun { }
+
+        Invoke-WPFInstall
+
+        $jobParameters = $script:capturedInstallJob.Parameters
+        & $script:capturedInstallJob.ScriptBlock @jobParameters
+
+        Should -Invoke -CommandName Write-WinUtilLog -Times 1 -Exactly -ParameterFilter {
+            $Component -eq "Install" -and $Message -like "Install skipped: ArtCraft Launcher*"
+        }
+        Should -Invoke -CommandName Complete-WinUtilPackageRun -Times 1 -Exactly -ParameterFilter {
+            $Action -eq "Install" -and
+                @($Results | Where-Object { $_.Outcome -eq "Skipped" -and $_.Package -eq "ArtCraft Launcher" }).Count -eq 1
+        }
+        Should -Invoke -CommandName Install-WinUtilProgramWinget -Times 0 -Exactly
+        Should -Invoke -CommandName Install-WinUtilProgramChoco -Times 0 -Exactly
+    }
 }
 
 Describe "Invoke-WPFUnInstall entrypoint" {
@@ -379,5 +409,29 @@ Describe "Invoke-WPFUnInstall job body" {
 
         $jobParameters = $script:capturedUninstallJob.Parameters
         { & $script:capturedUninstallJob.ScriptBlock @jobParameters } | Should -Throw "winget failed"
+    }
+
+    It "reports apps with no package id for the preference as skipped instead of silently doing nothing" {
+        Mock Get-WinUtilSelectedPackages {
+            New-WinUtilPackageSplit -Unresolved @(
+                [pscustomobject]@{ Name = "ArtCraft Launcher"; Detail = "no WinGet package id is configured" }
+            )
+        }
+        Mock Complete-WinUtilPackageRun { }
+
+        Invoke-WPFUnInstall
+
+        $jobParameters = $script:capturedUninstallJob.Parameters
+        & $script:capturedUninstallJob.ScriptBlock @jobParameters
+
+        Should -Invoke -CommandName Write-WinUtilLog -Times 1 -Exactly -ParameterFilter {
+            $Component -eq "Uninstall" -and $Message -like "Uninstall skipped: ArtCraft Launcher*"
+        }
+        Should -Invoke -CommandName Complete-WinUtilPackageRun -Times 1 -Exactly -ParameterFilter {
+            $Action -eq "Uninstall" -and
+                @($Results | Where-Object { $_.Outcome -eq "Skipped" -and $_.Package -eq "ArtCraft Launcher" }).Count -eq 1
+        }
+        Should -Invoke -CommandName Install-WinUtilProgramWinget -Times 0 -Exactly
+        Should -Invoke -CommandName Install-WinUtilProgramChoco -Times 0 -Exactly
     }
 }

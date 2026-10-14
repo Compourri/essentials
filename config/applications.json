@@ -94,6 +94,15 @@
         "link": "https://anydesk.com/",
         "winget": "AnyDesk.AnyDesk"
     },
+    "artcraftlauncher": {
+        "category": "Multimedia",
+        "choco": "artcraft",
+        "content": "ArtCraft Launcher",
+        "description": "ArtCraft Launcher is a free and open-source hub to install, update and open every app in the Craft App Suite from one place, rebuilt in pure Rust.",
+        "link": "https://getartcraft.com/apps",
+        "winget": "na",
+        "foss": true
+    },
     "audacity": {
         "category": "Multimedia",
         "choco": "audacity",

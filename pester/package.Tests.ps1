@@ -90,6 +90,35 @@ Describe "Get-WinUtilSelectedPackages" {
 
         @($result["Winget"]).Count | Should -Be 0
         @($result["Choco"]).Count | Should -Be 0
+        @($result["Unresolved"]).Count | Should -Be 0
+    }
+
+    It "reports winget-unavailable packages as unresolved with the choco fallback named" {
+        $packages = @(
+            [pscustomobject]@{ content = "ArtCraft Launcher"; winget = "na"; choco = "artcraft" }
+        )
+
+        $result = Get-WinUtilSelectedPackages -PackageList $packages -Preference "Winget"
+
+        @($result["Winget"]).Count | Should -Be 0
+        @($result["Choco"]).Count | Should -Be 0
+        @($result["Unresolved"]).Count | Should -Be 1
+        @($result["Unresolved"])[0].Name | Should -Be "ArtCraft Launcher"
+        @($result["Unresolved"])[0].Detail | Should -BeLike "*Chocolatey as 'artcraft'*"
+    }
+
+    It "reports packages with no usable ID under either preference as unresolved" {
+        $packages = @(
+            [pscustomobject]@{ content = "No Source App"; winget = "na"; choco = "na" }
+        )
+
+        $wingetResult = Get-WinUtilSelectedPackages -PackageList $packages -Preference "Winget"
+        $chocoResult = Get-WinUtilSelectedPackages -PackageList $packages -Preference "Choco"
+
+        @($wingetResult["Unresolved"]).Count | Should -Be 1
+        @($wingetResult["Unresolved"])[0].Name | Should -Be "No Source App"
+        @($chocoResult["Unresolved"]).Count | Should -Be 1
+        @($chocoResult["Unresolved"])[0].Name | Should -Be "No Source App"
     }
 }
 
