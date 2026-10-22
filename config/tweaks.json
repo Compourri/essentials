@@ -2002,7 +2002,6 @@
           $existed = Test-Path $ifeo
           $prior = $null
           if ($existed) { $prior = (Get-ItemProperty -Path $ifeo -Name 'Debugger' -ErrorAction SilentlyContinue).Debugger }
-          if ($prior -eq $blockDebugger) { $prior = $null }
           New-Item -Path $backup -Force -ErrorAction SilentlyContinue | Out-Null
           New-ItemProperty -Path $backup -Name 'KeyExisted' -Value ([int]$existed) -PropertyType DWord -Force -ErrorAction SilentlyContinue | Out-Null
           if ($null -ne $prior) { New-ItemProperty -Path $backup -Name 'PriorDebugger' -Value $prior -PropertyType String -Force -ErrorAction SilentlyContinue | Out-Null }
@@ -2012,13 +2011,30 @@
       }
 
       # 7. Stub McAfee folders + deny write so bundlers cannot drop files back (same pattern as Razer/Logi block)
+      # Existing folders are never emptied; prior ACLs are backed up so undo restores them exactly.
       $stubPaths = @(\"$Env:ProgramFiles\\McAfee\", \"$Env:ProgramFiles\\McAfee Security Scan\", \"$Env:ProgramData\\McAfee\")
       $pf86 = ${Env:ProgramFiles(x86)}
       if ($pf86) { $stubPaths += \"$pf86\\McAfee\"; $stubPaths += \"$pf86\\McAfee Security Scan\" }
+      $stubBackupRoot = 'HKLM:\\SOFTWARE\\Essentials\\McAfeeBlock\\Stubs'
+      $i = 0
       foreach ($p in $stubPaths) {
-        if (Test-Path $p) { Remove-Item \"$p\\*\" -Recurse -Force -ErrorAction SilentlyContinue }
-        else { New-Item -Path $p -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
-        icacls \"$p\" /deny \"*S-1-1-0:(W)\" | Out-Null
+        $stubKey = \"$stubBackupRoot\\$i\"
+        $existed = Test-Path $p
+        if (-not $existed) { New-Item -Path $p -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null }
+        $priorSddl = (Get-Acl -Path $p -ErrorAction SilentlyContinue).Sddl
+        $hasDeny = $false
+        foreach ($ace in @((Get-Acl -Path $p -ErrorAction SilentlyContinue).Access)) {
+          if ($ace.AccessControlType -ne 'Deny') { continue }
+          try { if ($ace.IdentityReference.Translate([System.Security.Principal.SecurityIdentifier]).Value -eq 'S-1-1-0') { $hasDeny = $true } } catch { }
+        }
+        if (-not (Test-Path $stubKey)) {
+          New-Item -Path $stubKey -Force -ErrorAction SilentlyContinue | Out-Null
+          New-ItemProperty -Path $stubKey -Name 'DirExisted' -Value ([int]$existed) -PropertyType DWord -Force -ErrorAction SilentlyContinue | Out-Null
+          New-ItemProperty -Path $stubKey -Name 'AddedDeny' -Value ([int](-not $hasDeny)) -PropertyType DWord -Force -ErrorAction SilentlyContinue | Out-Null
+          if ($priorSddl) { New-ItemProperty -Path $stubKey -Name 'PriorSddl' -Value $priorSddl -PropertyType String -Force -ErrorAction SilentlyContinue | Out-Null }
+        }
+        if (-not $hasDeny) { icacls \"$p\" /deny \"*S-1-1-0:(W)\" | Out-Null }
+        $i++
       }
 
       Write-Host \"McAfee block applied. Windows Defender remains active.\"
@@ -2058,11 +2074,43 @@
         }
       }
 
+      # Undo stub folders: restore the saved ACL, and remove only folders this tweak created.
       $stubPaths = @(\"$Env:ProgramFiles\\McAfee\", \"$Env:ProgramFiles\\McAfee Security Scan\", \"$Env:ProgramData\\McAfee\")
       $pf86 = ${Env:ProgramFiles(x86)}
       if ($pf86) { $stubPaths += \"$pf86\\McAfee\"; $stubPaths += \"$pf86\\McAfee Security Scan\" }
+      $stubBackupRoot = 'HKLM:\\SOFTWARE\\Essentials\\McAfeeBlock\\Stubs'
+      $i = 0
       foreach ($p in $stubPaths) {
-        if (Test-Path $p) { icacls \"$p\" /remove:d \"*S-1-1-0\" | Out-Null }
+        $stubKey = \"$stubBackupRoot\\$i\"
+        $saved = Get-ItemProperty -Path $stubKey -ErrorAction SilentlyContinue
+        if ($saved) {
+          if ($saved.DirExisted -eq 1) {
+            $added = $true
+            if ($saved.PSObject.Properties['AddedDeny'] -and $saved.AddedDeny -eq 0) { $added = $false }
+            if ($added) {
+              $restoredAcl = $false
+              if (-not [string]::IsNullOrEmpty($saved.PriorSddl)) {
+                $acl = Get-Acl -Path $p -ErrorAction SilentlyContinue
+                if ($acl) { try { $acl.SetSecurityDescriptorSddlForm([string]$saved.PriorSddl); Set-Acl -Path $p -AclObject $acl; $restoredAcl = $true } catch { } }
+              }
+              if (-not $restoredAcl) { icacls \"$p\" /remove:d \"*S-1-1-0\" | Out-Null }
+            }
+          }
+          else {
+            icacls \"$p\" /remove:d \"*S-1-1-0\" | Out-Null
+            $item = Get-Item -Path $p -ErrorAction SilentlyContinue
+            if ($item -and @(Get-ChildItem -Path $p -ErrorAction SilentlyContinue).Count -eq 0) {
+              Remove-Item -Path $p -Force -ErrorAction SilentlyContinue
+            }
+          }
+          Remove-Item -Path $stubKey -Recurse -Force -ErrorAction SilentlyContinue
+        }
+        $i++
+      }
+      if (Test-Path $stubBackupRoot) {
+        if (@(Get-ChildItem -Path $stubBackupRoot -ErrorAction SilentlyContinue).Count -eq 0) {
+          Remove-Item -Path $stubBackupRoot -Force -ErrorAction SilentlyContinue
+        }
       }
 
       Write-Host \"McAfee block removed. Reinstall McAfee manually if you actually want it.\"
