@@ -2796,5 +2796,23 @@
         "link": "https://parsec.app/",
         "winget": "Parsec.Parsec",
         "foss": false
+    },
+    "pdfcraft": {
+        "category": "Office",
+        "choco": "na",
+        "content": "PDFCraft",
+        "description": "PDFCraft is a tool to view, manage, and edit PDF documents as part of the Craft App Suite.",
+        "link": "https://getartcraft.com/apps",
+        "winget": "ArtCraft.PdfCraft",
+        "foss": true
+    },
+    "solidcraft": {
+        "category": "Multimedia",
+        "choco": "solidcraft",
+        "content": "SolidCraft",
+        "description": "SolidCraft is a 3D CAD and modeling application as part of the Craft App Suite.",
+        "link": "https://getartcraft.com/apps",
+        "winget": "na",
+        "foss": true
     }
 }
