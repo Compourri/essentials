@@ -283,6 +283,22 @@ Describe "XAML document" {
         }
     }
 
+    It "names the Win11 Creator wizard controls for screen readers" {
+        $expectedNames = @{
+            WPFWin11ISOBackButton = "Previous Step"
+            WPFWin11ISOForwardButton = "Next Step"
+            WPFWin11ISOPath = "ISO file"
+            WPFWin11ISOEditionComboBox = "Windows edition"
+            WPFWin11ISOUSBDriveComboBox = "USB drive"
+            WPFWin11ISOStatusLog = "Status Log"
+        }
+
+        foreach ($controlName in $expectedNames.Keys) {
+            $control = $script:xaml.SelectSingleNode("//*[@Name='$controlName']")
+            $control.GetAttribute("AutomationProperties.Name") | Should -Be $expectedNames[$controlName]
+        }
+    }
+
     It "defines core tabs in the expected order" {
         $tabItems = @($script:xaml.SelectNodes('//*[local-name()="TabControl"][@Name="WPFTabNav"]/*[local-name()="TabItem"]'))
         $actualTabs = @($tabItems | ForEach-Object { "$($_.GetAttribute("Name")):$($_.GetAttribute("Header"))" })
@@ -430,7 +446,8 @@ Describe "XAML and sync wiring" {
             "IsLocalCompile",
             "winutildir",
             "logPath",
-            "transcriptPath",
+            "LogWriter",
+            "LogWriterPath",
             "ActiveJob",
             "ActiveJobToken",
             "LastJobResult",
@@ -482,6 +499,7 @@ Describe "XAML and sync wiring" {
             "AppCategoryChips",
             "SelectedAppCategories",
             "AppCategoryAutoExpanded",
+            "TweakCategoryAutoExpanded",
             "RenderedAssetCache",
             "ToggleStatusCache",
             "InstallAppRenderQueue",
