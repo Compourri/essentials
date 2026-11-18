@@ -930,6 +930,9 @@ Describe "UI-rendered config entries" {
             $themes.Dark.PSObject.Properties.Name
             "CBorderColor"
             "CButtonBackgroundMouseoverColor"
+            # Colour resources derived from MainGradient* by Invoke-WinutilThemeChange
+            "CMainGradientTopColor"
+            "CMainGradientBottomColor"
         ) | Sort-Object -Unique
 
         foreach ($resourceName in $dynamicResourceNames) {
