@@ -15,6 +15,7 @@ __pycache__/
 .venv/
 
 .vscode/
+.vs/
 .idea/
 
 # Local-only docs (per AGENTS.md policy, commit b77e7ea)

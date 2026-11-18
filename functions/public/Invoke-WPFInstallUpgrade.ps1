@@ -10,11 +10,13 @@ function Invoke-WPFInstallUpgrade {
 
     #>
 
-    # The radio button belongs to the interface thread; this body runs on a worker. The
-    # preference it maintains carries the same answer and is what every other workflow reads.
+    param([string]$ManagerPreference = $sync.preferences.packagemanager)
+
+    # The radio button belongs to the interface thread; this body runs on a worker.
+    # Queued work receives the preference selected when the user requested the upgrade.
     Set-WinUtilWorkingView -Area "Install" -Working $true -Label "Upgrading apps..."
     try {
-    if ($sync.preferences.packagemanager -eq "Choco") {
+    if ($ManagerPreference -eq "Choco") {
         Step-WinUtilJob -Status "Preparing Chocolatey" -State "Indeterminate"
         Install-WinUtilChoco
 

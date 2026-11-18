@@ -16,7 +16,7 @@ $script += Get-ChildItem -Path functions -Recurse -File | ForEach-Object {
     Get-Content -Path $_.FullName -Raw
 }
 
-Get-ChildItem config | ForEach-Object {
+Get-ChildItem config -File -Filter *.json | ForEach-Object {
     $obj = Get-Content -Path $_.FullName -Raw | ConvertFrom-Json
 
     if ($_.Name -eq "applications.json") {

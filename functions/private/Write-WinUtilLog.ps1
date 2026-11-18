@@ -1,27 +1,12 @@
 function Write-WinUtilLog {
     <#
-
     .SYNOPSIS
-        Writes a timestamped WinUtil log entry to the active session log.
+        Writes a timestamped entry to the shared session log.
 
     .DESCRIPTION
-        Called from the interface thread and from every job body. The structured log is a
-        silent file record (named mutex serializes direct appends) on a different file from
-        the Start-Transcript console capture, since the transcript locks its file exclusively.
-        INFO entries stay out of the terminal to keep the CLI a clean console record of
-        user-facing output; WARN and ERROR still echo through the host so they are visible
-        and captured by the transcript. When the transcript owns the active session log
-        (legacy single-file mode), entries go through the host for the same reason.
-
-    .PARAMETER Message
-        The message to write.
-
-    .PARAMETER Level
-        The severity level for the log entry.
-
-    .PARAMETER Component
-        The WinUtil component producing the log entry.
-
+        Called from the interface thread and from every job body. A shared StreamWriter
+        records every runspace. INFO stays out of the terminal; WARN and ERROR echo through
+        the host, and DEBUG only when ESSENTIALS_DEBUG is set.
     #>
     param (
         [Parameter(Mandatory = $true)]
@@ -33,11 +18,13 @@ function Write-WinUtilLog {
         [string]$Component = "WinUtil",
 
         # Continuation of an error already counted, such as a stack frame
-        [switch]$Detail
+        [switch]$Detail,
+
+        [switch]$FileOnly
     )
 
     # UI performance diagnostics are useful to developers but are too noisy for the release
-    # transcript. Compile.ps1 stamps local builds so DEBUG output cannot leak into CI artifacts.
+    # log. Compile.ps1 stamps local builds so DEBUG output cannot leak into CI artifacts.
     if ($Level -eq "DEBUG" -and ($null -eq $sync -or -not $sync.IsLocalCompile)) {
         return
     }
@@ -53,95 +40,191 @@ function Write-WinUtilLog {
         $global:WinUtilJobErrorCount++
     }
 
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
+    $line = "[$timestamp] [$Level] [$Component] $Message"
+
     try {
-        $logPath = $null
-        $transcriptPath = $null
-        if ($null -ne $sync -and $sync.ContainsKey("logPath")) {
-            $logPath = $sync.logPath
-        }
-
-        if ($null -ne $sync -and $sync.ContainsKey("transcriptPath")) {
-            $transcriptPath = $sync.transcriptPath
-        }
-
-        if ([string]::IsNullOrWhiteSpace($logPath) -and -not [string]::IsNullOrWhiteSpace($transcriptPath)) {
-            $logPath = $transcriptPath
-        }
-
-        if ([string]::IsNullOrWhiteSpace($logPath) -and $null -ne $sync -and $sync.ContainsKey("winutildir")) {
-            $logDirectory = Join-Path $sync.winutildir "logs"
-            $logPath = Join-Path $logDirectory "essentials_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
-            $sync.logPath = $logPath
-        }
-
-        if ([string]::IsNullOrWhiteSpace($logPath) -and -not [string]::IsNullOrWhiteSpace($env:LocalAppData)) {
-            if ([string]::IsNullOrWhiteSpace($script:WinUtilLogPath)) {
-                $logDirectory = Join-Path (Join-Path $env:LocalAppData "winutil") "logs"
-                $script:WinUtilLogPath = Join-Path $logDirectory "essentials_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
+        $writer = Get-WinUtilLogWriter
+        if ($null -ne $writer) {
+            [System.Threading.Monitor]::Enter($writer)
+            try {
+                $writer.WriteLine($line)
+            } finally {
+                [System.Threading.Monitor]::Exit($writer)
             }
-            $logPath = $script:WinUtilLogPath
+
+        }
+    } catch [System.IO.IOException] {
+        Write-Verbose "Unable to write WinUtil log entry: $($_.Exception.Message)"
+    } catch {
+        Write-Warning "Unable to write WinUtil log entry: $($_.Exception.Message)"
+    }
+
+    # INFO stays out of the terminal so the console remains a clean record of user-facing
+    # output. WARN/ERROR are always shown; DEBUG is opt-in via ESSENTIALS_DEBUG.
+    $echoToConsole = ($Level -eq "WARN" -or $Level -eq "ERROR") -or `
+        ($Level -eq "DEBUG" -and -not [string]::IsNullOrWhiteSpace($env:ESSENTIALS_DEBUG))
+    if ($echoToConsole -and -not $FileOnly) {
+        Write-WinUtilHost $line
+    }
+}
+
+# Opens the session log once for every runspace to share. Others can still read it, e.g. the environment report.
+function Get-WinUtilLogWriter {
+    $state = $sync
+    if ($null -eq $state) {
+        if ([string]::IsNullOrWhiteSpace($env:LocalAppData)) {
+            return $null
+        }
+        if ($null -eq $script:WinUtilLogState) {
+            $script:WinUtilLogState = [hashtable]::Synchronized(@{
+                winutildir = Join-Path $env:LocalAppData "winutil"
+            })
+        }
+        $state = $script:WinUtilLogState
+    }
+
+    $writer = $state.LogWriter
+    if ($null -ne $writer -and $state.LogWriterPath -eq $state.logPath) {
+        return $writer
+    }
+
+    [System.Threading.Monitor]::Enter($state.SyncRoot)
+    try {
+        if ([string]::IsNullOrWhiteSpace($state.logPath)) {
+            if ([string]::IsNullOrWhiteSpace($state.winutildir)) {
+                return $null
+            }
+            $state.logPath = Join-Path (Join-Path $state.winutildir "logs") "essentials_$(Get-Date -Format "yyyy-MM-dd_HH-mm-ss").log"
         }
 
-        if ([string]::IsNullOrWhiteSpace($logPath)) {
-            return
+        if ($null -ne $state.LogWriter -and $state.LogWriterPath -eq $state.logPath) {
+            return $state.LogWriter
         }
 
-        $logDirectory = Split-Path -Path $logPath -Parent
-        if (-not (Test-Path $logDirectory)) {
+        if ($null -ne $state.LogWriter) {
+            $state.LogWriter.Dispose()
+            $state.LogWriter = $null
+        }
+
+        $logDirectory = Split-Path -Path $state.logPath -Parent
+        if (-not (Test-Path -LiteralPath $logDirectory)) {
             New-Item -Path $logDirectory -ItemType Directory -Force | Out-Null
         }
 
-        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss.fff"
-        $line = "[$timestamp] [$Level] [$Component] $Message"
+        $stream = [System.IO.FileStream]::new(
+            $state.logPath,
+            [System.IO.FileMode]::Append,
+            [System.IO.FileAccess]::Write,
+            [System.IO.FileShare]::Read)
+        $newWriter = [System.IO.StreamWriter]::new($stream, [System.Text.UTF8Encoding]::new($true))
+        $newWriter.AutoFlush = $true
 
-        # INFO stays out of the terminal (and its transcript); the terminal stays a clean
-        # console record of user-facing output. WARN/ERROR still echo so they are visible.
-        # DEBUG echoes only when explicitly asked for via ESSENTIALS_DEBUG.
-        $echoToConsole = ($Level -eq "WARN" -or $Level -eq "ERROR") -or `
-            ($Level -eq "DEBUG" -and -not [string]::IsNullOrWhiteSpace($env:ESSENTIALS_DEBUG))
+        $state.LogWriterPath = $state.logPath
+        $state.LogWriter = $newWriter
+        return $newWriter
+    } finally {
+        [System.Threading.Monitor]::Exit($state.SyncRoot)
+    }
+}
 
-        if (-not [string]::IsNullOrWhiteSpace($transcriptPath) -and $logPath -eq $transcriptPath) {
-            # Legacy single-file mode: Start-Transcript locks its file exclusively, so a
-            # direct append would throw. Echo the user-facing levels through the host so
-            # the transcript captures them; INFO has no silent channel here by design.
-            if ($echoToConsole) {
-                Write-Host $line
-            }
-            return
+# Lets go of the log file when WinUtil exits, so the terminal it ran in doesn't keep it locked
+function Close-WinUtilLog {
+    $state = if ($null -ne $sync) { $sync } else { $script:WinUtilLogState }
+    if ($null -eq $state -or $null -eq $state.LogWriter) {
+        return
+    }
+
+    $writer = $state.LogWriter
+    [System.Threading.Monitor]::Enter($writer)
+    try {
+        $state.LogWriter = $null
+        $state.LogWriterPath = $null
+        $writer.Dispose()
+    } finally {
+        [System.Threading.Monitor]::Exit($writer)
+    }
+}
+
+# Console-only output like banners and progress. Unlike Write-Host, a job won't log it.
+function Write-WinUtilHost {
+    param(
+        [string]$Object = "",
+        [Nullable[System.ConsoleColor]]$ForegroundColor,
+        [Nullable[System.ConsoleColor]]$BackgroundColor,
+        [switch]$NoNewline
+    )
+
+    $rawUI = $Host.UI.RawUI
+    if ($null -eq $rawUI -or ($null -eq $ForegroundColor -and $null -eq $BackgroundColor)) {
+        if ($NoNewline) {
+            $Host.UI.Write($Object)
+        } else {
+            $Host.UI.WriteLine($Object)
+        }
+        return
+    }
+
+    $foreground = if ($null -ne $ForegroundColor) { $ForegroundColor } else { $rawUI.ForegroundColor }
+    $background = if ($null -ne $BackgroundColor) { $BackgroundColor } else { $rawUI.BackgroundColor }
+
+    if ($NoNewline) {
+        $Host.UI.Write($foreground, $background, $Object)
+    } else {
+        $Host.UI.WriteLine($foreground, $background, $Object)
+    }
+}
+
+# Logs a warning, error or Write-Host record from another runspace, and shows it too unless -Shown says it already was
+function Write-WinUtilStreamRecord {
+    param(
+        [Parameter(Mandatory)]
+        $Record,
+
+        [string]$Component = "WinUtil",
+
+        [switch]$Shown
+    )
+
+    if ($Record -is [System.Management.Automation.WarningRecord]) {
+        Write-WinUtilLog -Level "WARN" -Component $Component -Message $Record.Message -FileOnly:$Shown
+    } elseif ($Record -is [System.Management.Automation.ErrorRecord]) {
+        Write-WinUtilErrorRecord -ErrorRecord $Record -Component $Component -Context "Non-terminating error"
+    } elseif ($Record -is [System.Management.Automation.InformationRecord]) {
+        $message = $Record.MessageData
+
+        if (-not $Shown -and $message -is [System.Management.Automation.HostInformationMessage]) {
+            Write-WinUtilHost -Object $message.Message -ForegroundColor $message.ForegroundColor `
+                -BackgroundColor $message.BackgroundColor -NoNewline:([bool]$message.NoNewLine)
         }
 
-        $mutex = [System.Threading.Mutex]::new($false, "WinUtilSessionLog")
-        $held = $false
-        try {
-            try {
-                $held = $mutex.WaitOne(2000)
-            } catch [System.Threading.AbandonedMutexException] {
-                # A thread died holding the mutex; ownership transfers to us either way
-                $held = $true
-            }
+        $text = "$message".TrimEnd()
+        if ($text) {
+            Write-WinUtilLog -Component $Component -Message $text -FileOnly
+        }
+    }
+}
 
-            if (-not $held) {
-                # Writing anyway is what interleaves lines, and the wait only times out when
-                # contention is at its worst. Still keep INFO out of the terminal.
-                if ($echoToConsole) {
-                    Write-Host $line
-                }
-                return
-            }
+# Logs and clears a runspace's warnings, errors and Write-Host output. Never throws, as the main thread runs it.
+function Receive-WinUtilStreamOutput {
+    param(
+        [Parameter(Mandatory)]
+        $PowerShell,
 
-            Add-Content -Path $logPath -Value $line -Encoding UTF8 -ErrorAction Stop
-            if ($echoToConsole) {
-                Write-Host $line
-            }
-        } catch [System.IO.IOException] {
-            if ($echoToConsole) {
-                Write-Host $line
-            }
-        } finally {
-            if ($held) { $mutex.ReleaseMutex() }
-            $mutex.Dispose()
+        [string]$Component = "WinUtil"
+    )
+
+    try {
+        foreach ($record in $PowerShell.Streams.Information.ReadAll()) {
+            Write-WinUtilStreamRecord -Record $record -Component $Component -Shown
+        }
+        foreach ($record in $PowerShell.Streams.Warning.ReadAll()) {
+            Write-WinUtilStreamRecord -Record $record -Component $Component -Shown
+        }
+        foreach ($record in $PowerShell.Streams.Error.ReadAll()) {
+            Write-WinUtilStreamRecord -Record $record -Component $Component
         }
     } catch {
-        Write-Warning "Unable to write WinUtil log entry: $($_.Exception.Message)"
+        Write-Warning "Unable to log $Component output: $($_.Exception.Message)"
     }
 }
