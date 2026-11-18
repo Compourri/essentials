@@ -89,6 +89,24 @@ Describe "Install-WinUtilProgramWinget outcomes" {
         }
     }
 
+    It "falls back to the signed vendor MSI when Chrome hits a WinGet hash mismatch" {
+        Mock Start-Process { [pscustomobject]@{ ExitCode = -1978335215 } }
+        Mock Install-WinUtilChromeMSI {
+            [pscustomobject]@{
+                Outcome = "Succeeded"
+                ExitCode = 0
+                Detail = "Chrome vendor MSI install succeeded"
+            }
+        }
+
+        $result = Install-WinUtilProgramWinget -Action Install -Programs @("Google.Chrome")
+
+        $result.Outcome | Should -Be "Succeeded"
+        $result.Manager | Should -Be "vendor-msi"
+        $result.Detail | Should -Match "vendor MSI install succeeded"
+        Should -Invoke -CommandName Install-WinUtilChromeMSI -Times 1 -Exactly
+    }
+
     It "reports any other exit code as a failure" {
         Mock Start-Process { [pscustomobject]@{ ExitCode = -1978335212 } }
 

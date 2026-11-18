@@ -238,6 +238,51 @@ Describe "Install-WinUtilProgramWinget" {
     }
 }
 
+Describe "Install-WinUtilChromeMSI" {
+    BeforeEach {
+        Mock Write-WinUtilLog { }
+        Mock Invoke-WebRequest { }
+        Mock Get-AuthenticodeSignature {
+            [pscustomobject]@{
+                Status = "Valid"
+                SignerCertificate = [pscustomobject]@{ Subject = "CN=Google LLC, O=Google LLC" }
+            }
+        }
+        Mock Start-Process { [pscustomobject]@{ ExitCode = 0 } }
+        Mock Remove-Item { }
+    }
+
+    It "downloads, verifies and installs the signed Google MSI" {
+        $result = Install-WinUtilChromeMSI -Architecture x64
+
+        $result.Outcome | Should -Be "Succeeded"
+        $result.ExitCode | Should -Be 0
+        $result.Detail | Should -Match "vendor MSI install succeeded"
+        Should -Invoke -CommandName Invoke-WebRequest -Times 1 -Exactly -ParameterFilter {
+            $Uri -eq "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+        }
+        Should -Invoke -CommandName Get-AuthenticodeSignature -Times 1 -Exactly
+        Should -Invoke -CommandName Start-Process -Times 1 -Exactly -ParameterFilter {
+            $FilePath -eq "msiexec.exe" -and ((@($ArgumentList) -join "|") -like "/i*")
+        }
+    }
+
+    It "refuses an MSI that is not signed by Google" {
+        Mock Get-AuthenticodeSignature {
+            [pscustomobject]@{
+                Status = "Valid"
+                SignerCertificate = [pscustomobject]@{ Subject = "CN=Someone Else" }
+            }
+        }
+
+        $result = Install-WinUtilChromeMSI -Architecture x64
+
+        $result.Outcome | Should -Be "Failed"
+        $result.Detail | Should -Match "signature verification failed"
+        Should -Invoke -CommandName Start-Process -Times 0 -Exactly
+    }
+}
+
 Describe "Install-WinUtilProgramChoco" {
     BeforeAll {
         # choco is a native command, so it needs a function to stand in for it

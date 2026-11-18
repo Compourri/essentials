@@ -148,6 +148,71 @@ Function Update-WinUtilPowerShellMSI {
     }
 }
 
+Function Install-WinUtilChromeMSI {
+    param (
+        [ValidateSet("x86", "x64", "arm64")]
+        [string]$Architecture = ([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant())
+    )
+
+    # Google republishes the same stable MSI URLs whenever Chrome changes, so the hash in a
+    # WinGet manifest can go stale between releases. The vendor MSI is signed by Google LLC;
+    # verifying that signature is safer than bypassing WinGet's hash check while elevated.
+    $installers = @{
+        x86   = "googlechromestandaloneenterprise.msi"
+        x64   = "googlechromestandaloneenterprise64.msi"
+        arm64 = "googlechromestandaloneenterprise_arm64.msi"
+    }
+    $url = "https://dl.google.com/dl/chrome/install/$($installers[$Architecture])"
+    $msiPath = Join-Path $env:TEMP "Chrome-$Architecture-$([guid]::NewGuid()).msi"
+
+    try {
+        Write-WinUtilLog -Component "Package" -Message "Chrome WinGet manifest hash is stale; installing the signed vendor MSI directly"
+
+        Invoke-WebRequest -Uri $url -OutFile $msiPath -UseBasicParsing -TimeoutSec 300
+
+        $signature = Get-AuthenticodeSignature -LiteralPath $msiPath
+        if (
+            $signature.Status -ne "Valid" -or
+            -not $signature.SignerCertificate -or
+            $signature.SignerCertificate.Subject -notmatch '(^|,\s*)CN=Google LLC(,|$)'
+        ) {
+            throw "Chrome MSI signature verification failed"
+        }
+
+        $install = Start-Process msiexec.exe -ArgumentList "/i `"$msiPath`" /qn /norestart" -Wait -PassThru
+
+        if ($install.ExitCode -notin @(0, 3010, 1641)) {
+            throw "Chrome MSI installation failed with exit code $($install.ExitCode)"
+        }
+
+        $detail = switch ($install.ExitCode) {
+            3010 { "Chrome vendor MSI install succeeded; a restart is required to finish" }
+            1641 { "Chrome vendor MSI install succeeded; the installer started a restart" }
+            default { "Chrome vendor MSI install succeeded after WinGet hash mismatch" }
+        }
+        Write-WinUtilLog -Component "Package" -Message "$detail (exit code $($install.ExitCode))"
+        if ($install.ExitCode -in @(3010, 1641)) { Write-Host $detail }
+
+        return [pscustomobject]@{
+            Outcome = "Succeeded"
+            ExitCode = $install.ExitCode
+            Detail = $detail
+        }
+    }
+    catch {
+        Write-WinUtilLog -Level "ERROR" -Component "Package" -Message "Chrome vendor MSI install failed: $($_.Exception.Message)"
+
+        return [pscustomobject]@{
+            Outcome = "Failed"
+            ExitCode = -1
+            Detail = "Chrome vendor MSI install failed: $($_.Exception.Message)"
+        }
+    }
+    finally {
+        Remove-Item -LiteralPath $msiPath -Force -ErrorAction SilentlyContinue
+    }
+}
+
 Function Install-WinUtilProgramWinget {
     <#
 
@@ -180,9 +245,8 @@ Function Install-WinUtilProgramWinget {
     # APPINSTALLER_CLI_ERROR_INSTALLER_HASH_MISMATCH (0x8A150011). The manifest hash no longer
     # matches the file the vendor CDN serves. Evergreen bootstrappers such as
     # Microsoft.Office's setup.exe change without a manifest update, so this recurs for them.
-    # WinGet blocks --ignore-security-hash when elevated, and WinUtil is always elevated, so
-    # the hash cannot be overridden here; the user must retry once the manifest is fixed or
-    # install from the vendor.
+    # WinGet blocks --ignore-security-hash when elevated, and WinUtil is always elevated. Most
+    # packages must wait for a manifest fix; Google.Chrome has a signed vendor MSI fallback.
     $hashMismatch = -1978335215
 
     # WinGet reports "there was nothing to do" through the exit code rather than as success
@@ -237,6 +301,7 @@ Function Install-WinUtilProgramWinget {
         $outcome = "Failed"
         $detail = "no result"
         $exitCode = -1
+        $manager = "winget"
 
         $arguments = switch ($Action) {
             "Uninstall" {
@@ -273,6 +338,12 @@ Function Install-WinUtilProgramWinget {
                 "Upgrade" { "not upgraded; installed for the current user and elevated WinUtil cannot modify it" }
                 "Uninstall" { "remains installed for the current user; elevated WinUtil cannot uninstall it" }
             }
+        } elseif ($exitCode -eq $hashMismatch -and $Action -in @("Install", "Upgrade") -and $program -eq "Google.Chrome") {
+            $fallback = Install-WinUtilChromeMSI
+            $manager = "vendor-msi"
+            $exitCode = $fallback.ExitCode
+            $outcome = $fallback.Outcome
+            $detail = $fallback.Detail
         } elseif ($exitCode -eq $hashMismatch) {
             $outcome = "Failed"
             $detail = "installer hash mismatch (0x8A150011): the winget manifest hash no longer matches the file on the vendor CDN; override is blocked when elevated - run 'winget source update' and retry later, or install from the vendor. See https://learn.microsoft.com/windows/package-manager/winget/returnCodes"
@@ -282,12 +353,13 @@ Function Install-WinUtilProgramWinget {
         }
 
         $level = if ($outcome -eq "Failed") { "ERROR" } else { "INFO" }
+        $packageLabel = if ($manager -eq "winget") { "winget package" } else { "vendor MSI package" }
 
-        Write-WinUtilLog -Level $level -Component "Package" -Message "$Action winget package $($outcome.ToLowerInvariant()): $program ($detail)"
+        Write-WinUtilLog -Level $level -Component "Package" -Message "$Action $packageLabel $($outcome.ToLowerInvariant()): $program ($detail)"
 
         [pscustomobject]@{
             Package  = $program
-            Manager  = "winget"
+            Manager  = $manager
             Action   = $Action
             ExitCode = $exitCode
             Outcome  = $outcome

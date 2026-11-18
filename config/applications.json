@@ -284,7 +284,7 @@
         "content": "ChatGPT",
         "description": "ChatGPT desktop app provides direct access to OpenAI's conversational AI assistant for writing, analysis, and productivity tasks.",
         "link": "https://openai.com/chatgpt/desktop/",
-        "winget": "msstore:9NT1R1C2HH7J",
+        "winget": "OpenAI.ChatGPT",
         "foss": false
     },
     "chrome": {
@@ -922,15 +922,6 @@
         "winget": "HandBrake.HandBrake",
         "foss": true
     },
-    "harmonoid": {
-        "category": "Multimedia",
-        "choco": "na",
-        "content": "Harmonoid",
-        "description": "Plays and manages your music library. Looks beautiful and juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost and more.",
-        "link": "https://harmonoid.com/",
-        "winget": "Harmonoid.Harmonoid",
-        "foss": true
-    },
     "helium": {
         "category": "Browsers",
         "choco": "helium",
@@ -1520,7 +1511,7 @@
         "content": "Opencode Desktop",
         "description": "The open source AI coding agent. Free models included or connect any model from any provider.",
         "link": "https://opencode.ai/",
-        "winget": "SST.OpenCodeDesktop",
+        "winget": "Anomaly.OpenCode.Desktop",
         "foss": true
     },
     "openrgb": {
@@ -1624,7 +1615,7 @@
         "content": "Perplexity",
         "description": "Perplexity — Ask Anything. Cut through the all the noise and get straight to credible, up-to-date answers.",
         "link": "https://www.perplexity.ai/",
-        "winget": "Perplexity.Perplexity"
+        "winget": "msstore:9P9XG917PWCJ"
     },
     "pdfgear": {
         "category": "Office",
